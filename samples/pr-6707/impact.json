@@ -1,0 +1,212 @@
+{
+ "change_areas": [
+  {
+   "area": "the lenses renderers htmllens renderer area",
+   "file": "src/components/lenses/renderers/HTMLLensRenderer.vue"
+  },
+  {
+   "area": "shared logic behind the screens listed",
+   "file": "src/composables/lens-actions.ts"
+  },
+  {
+   "area": "automated tests (no user impact)",
+   "file": "src/helpers/lenses/__tests__/htmlPreview.spec.ts"
+  },
+  {
+   "area": "shared logic behind the screens listed",
+   "file": "src/helpers/lenses/htmlPreview.ts"
+  }
+ ],
+ "changes": [
+  {
+   "additions": 3,
+   "deletions": 0,
+   "drift": false,
+   "file": "src/components/lenses/renderers/HTMLLensRenderer.vue",
+   "keys_added": [],
+   "keys_removed": [],
+   "kinds": [
+    "style",
+    "template"
+   ],
+   "patch_missing": false,
+   "previous": null,
+   "spans": [
+    [
+     103,
+     103
+    ],
+    [
+     248,
+     248
+    ]
+   ],
+   "spans_all": [
+    [
+     96,
+     96
+    ],
+    [
+     103,
+     103
+    ],
+    [
+     248,
+     248
+    ]
+   ],
+   "status": "modified",
+   "type": "component"
+  },
+  {
+   "additions": 3,
+   "deletions": 9,
+   "drift": false,
+   "file": "src/composables/lens-actions.ts",
+   "kinds": [
+    "symbol"
+   ],
+   "patch_missing": false,
+   "previous": null,
+   "spans": [
+    [
+     108,
+     108
+    ],
+    [
+     110,
+     110
+    ],
+    [
+     113,
+     114
+    ],
+    [
+     117,
+     117
+    ]
+   ],
+   "spans_all": [
+    [
+     5,
+     5
+    ],
+    [
+     107,
+     108
+    ],
+    [
+     110,
+     110
+    ],
+    [
+     112,
+     117
+    ]
+   ],
+   "status": "modified",
+   "symbols": [
+    "usePreview"
+   ],
+   "type": "ts"
+  },
+  {
+   "additions": 60,
+   "deletions": 0,
+   "drift": false,
+   "file": "src/helpers/lenses/__tests__/htmlPreview.spec.ts",
+   "kinds": [
+    "added"
+   ],
+   "patch_missing": false,
+   "previous": null,
+   "spans": [
+    [
+     1,
+     1
+    ]
+   ],
+   "spans_all": [
+    [
+     1,
+     1
+    ]
+   ],
+   "status": "added",
+   "symbols": [],
+   "type": "test"
+  },
+  {
+   "additions": 31,
+   "deletions": 0,
+   "drift": false,
+   "file": "src/helpers/lenses/htmlPreview.ts",
+   "kinds": [
+    "added"
+   ],
+   "patch_missing": false,
+   "previous": null,
+   "spans": [
+    [
+     1,
+     1
+    ]
+   ],
+   "spans_all": [
+    [
+     1,
+     1
+    ]
+   ],
+   "status": "added",
+   "symbols": [],
+   "type": "ts"
+  }
+ ],
+ "elements": [],
+ "flows": [],
+ "gaps_touched": [],
+ "needs_human": [
+  {
+   "about": [
+    "src/components/lenses/renderers/HTMLLensRenderer.vue"
+   ],
+   "id": "RV-a8c71d3b17",
+   "question": "This change touches 'Lenses › Renderers › HTMLLens Renderer', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?",
+   "trigger": "unmapped_ui_change"
+  }
+ ],
+ "outside": [],
+ "pr": {
+  "base_ref": "main",
+  "base_sha": "63273f8e599e73f0fb38c0739314e8d46b6bc83d",
+  "body": "Closes #6665 — light color-scheme on HTML preview iframe/srcdoc; includes tests.\n\n<!-- This is an auto-generated description by cubic. -->\n---\n## Summary by cubic\nFixes the HTML response preview being unreadable in dark themes. The preview iframe inherited the app's dark `color-scheme`, which made unstyled HTML text invisible (light text on a light background). The preview now forces a light color-scheme unless the response HTML already declares its own.\n\n- Extracts srcdoc building (base href injection and color-scheme handling) into a `buildHtmlPreviewSrcdoc` helper.\n- Adds tests covering base href injection, color-scheme forcing, and case-insensitive meta name detection.\n\n<sup>Written for commit 600aba00d49b04f2944780ba5b3897c0e51577d0. Summary will update on new commits.</sup>\n\n<a href=\"https://cubic.dev/pr/hoppscotch/hoppscotch/pull/6707?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n\n<!-- End of auto-generated description by cubic. -->\n\n",
+  "head_sha": "600aba00d49b04f2944780ba5b3897c0e51577d0",
+  "html_url": "https://github.com/hoppscotch/hoppscotch/pull/6707",
+  "merged": false,
+  "number": 6707,
+  "state": "open",
+  "title": "fix(common): keep HTML response preview readable in dark theme",
+  "user": "whoalin1"
+ },
+ "requirements": [],
+ "screens": [],
+ "summary": {
+  "elements_at_risk": 0,
+  "flows": 0,
+  "high": 0,
+  "medium": 0,
+  "needs_human": 1,
+  "overall_risk": "Low",
+  "requirements": 0,
+  "requirements_losing_coverage": 0,
+  "screens": 0,
+  "unmapped_changes": 1
+ },
+ "unmapped": [
+  {
+   "file": "src/components/lenses/renderers/HTMLLensRenderer.vue",
+   "why": "Lenses › Renderers › HTMLLens Renderer: can appear on the REST page, but the crawl never showed any of its controls"
+  }
+ ]
+}

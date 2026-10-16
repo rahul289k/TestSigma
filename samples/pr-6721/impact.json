@@ -1,0 +1,7927 @@
+{
+ "change_areas": [
+  {
+   "area": "automated tests (no user impact)",
+   "file": "src/helpers/__tests__/formData.spec.ts"
+  },
+  {
+   "area": "shared logic behind the screens listed",
+   "file": "src/helpers/functional/formData.ts"
+  },
+  {
+   "area": "shared logic behind the screens listed",
+   "file": "src/helpers/utils/EffectiveURL.ts"
+  }
+ ],
+ "changes": [
+  {
+   "additions": 76,
+   "deletions": 0,
+   "drift": false,
+   "file": "src/helpers/__tests__/formData.spec.ts",
+   "kinds": [
+    "added"
+   ],
+   "patch_missing": false,
+   "previous": null,
+   "spans": [
+    [
+     1,
+     1
+    ]
+   ],
+   "spans_all": [
+    [
+     1,
+     1
+    ]
+   ],
+   "status": "added",
+   "symbols": [],
+   "type": "test"
+  },
+  {
+   "additions": 18,
+   "deletions": 9,
+   "drift": false,
+   "file": "src/helpers/functional/formData.ts",
+   "kinds": [
+    "symbol"
+   ],
+   "patch_missing": false,
+   "previous": null,
+   "spans": [
+    [
+     4,
+     4
+    ],
+    [
+     10,
+     19
+    ]
+   ],
+   "spans_all": [
+    [
+     4,
+     4
+    ],
+    [
+     10,
+     19
+    ]
+   ],
+   "status": "modified",
+   "symbols": [
+    "FormDataEntry",
+    "toFormData"
+   ],
+   "type": "ts"
+  },
+  {
+   "additions": 2,
+   "deletions": 0,
+   "drift": false,
+   "file": "src/helpers/utils/EffectiveURL.ts",
+   "kinds": [
+    "symbol"
+   ],
+   "patch_missing": false,
+   "previous": null,
+   "spans": [
+    [
+     373,
+     373
+    ],
+    [
+     379,
+     379
+    ]
+   ],
+   "spans_all": [
+    [
+     373,
+     373
+    ],
+    [
+     379,
+     379
+    ]
+   ],
+   "status": "modified",
+   "symbols": [
+    "getFinalBodyFromRequest"
+   ],
+   "type": "ts"
+  }
+ ],
+ "elements": [
+  {
+   "ambiguous": false,
+   "band": "Medium",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by CollectionsDocumentationSectionsCurlView (2 import hop(s))",
+    "draws 'C - cURL' (i18n route unique, 0.93)"
+   ],
+   "comp": "src/components/collections/documentation/sections/CurlView.vue",
+   "confirmed": true,
+   "eid": "E-c07290fa103e",
+   "kind": "behaviour-via-import",
+   "label": "C - cURL",
+   "lost": false,
+   "risk": 0.4552,
+   "role": "menuitem",
+   "route": "/",
+   "unique": true
+  },
+  {
+   "ambiguous": false,
+   "band": "Medium",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by CollectionsDocumentationSectionsCurlView (2 import hop(s))",
+    "draws 'PHP - cURL' (i18n route unique, 0.93)"
+   ],
+   "comp": "src/components/collections/documentation/sections/CurlView.vue",
+   "confirmed": true,
+   "eid": "E-af7532249e2f",
+   "kind": "behaviour-via-import",
+   "label": "PHP - cURL",
+   "lost": false,
+   "risk": 0.4552,
+   "role": "menuitem",
+   "route": "/",
+   "unique": true
+  },
+  {
+   "ambiguous": false,
+   "band": "Medium",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by CollectionsDocumentationSectionsCurlView (2 import hop(s))",
+    "draws 'Shell - cURL' (i18n route unique, 0.93)"
+   ],
+   "comp": "src/components/collections/documentation/sections/CurlView.vue",
+   "confirmed": true,
+   "eid": "E-24db6a8594da",
+   "kind": "behaviour-via-import",
+   "label": "Shell - cURL",
+   "lost": false,
+   "risk": 0.4552,
+   "role": "button",
+   "route": "/",
+   "unique": true
+  },
+  {
+   "ambiguous": false,
+   "band": "Medium",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by CollectionsDocumentationSectionsCurlView (2 import hop(s))",
+    "draws 'Shell - cURL' (i18n route unique, 0.93)"
+   ],
+   "comp": "src/components/collections/documentation/sections/CurlView.vue",
+   "confirmed": true,
+   "eid": "E-94e90e6d80d0",
+   "kind": "behaviour-via-import",
+   "label": "Shell - cURL",
+   "lost": false,
+   "risk": 0.4552,
+   "role": "menuitem",
+   "route": "/",
+   "unique": true
+  },
+  {
+   "ambiguous": false,
+   "band": "Medium",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by CollectionsDocumentationSectionsCurlView (2 import hop(s))",
+    "draws 'cURL' (i18n route unique, 0.93)"
+   ],
+   "comp": "src/components/collections/documentation/sections/CurlView.vue",
+   "confirmed": true,
+   "eid": "E-f3de0a5c23c2",
+   "kind": "behaviour-via-import",
+   "label": "cURL",
+   "lost": false,
+   "risk": 0.4552,
+   "role": "label",
+   "route": "/",
+   "unique": true
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpSidebar (3 import hop(s))",
+    "draws 'Mock Servers' (i18n route unique, 0.93)"
+   ],
+   "comp": "src/components/http/Sidebar.vue",
+   "confirmed": true,
+   "eid": "E-5990c8647029",
+   "kind": "behaviour-via-import",
+   "label": "Mock Servers",
+   "lost": false,
+   "risk": 0.3186,
+   "role": "button",
+   "route": "/",
+   "unique": true
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpSidebar (3 import hop(s))",
+    "draws 'Request' (i18n route unique, 0.93)"
+   ],
+   "comp": "src/components/http/Sidebar.vue",
+   "confirmed": true,
+   "eid": "E-65fda0dc5772",
+   "kind": "behaviour-via-import",
+   "label": "Request",
+   "lost": false,
+   "risk": 0.3186,
+   "role": "button",
+   "route": "/",
+   "unique": true
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpRequest (3 import hop(s))",
+    "draws 'Show code S' (i18n route unique, 0.93)"
+   ],
+   "comp": "src/components/http/Request.vue",
+   "confirmed": true,
+   "eid": "E-a6734f8b2c32",
+   "kind": "behaviour-via-import",
+   "label": "Show code S",
+   "lost": false,
+   "risk": 0.3186,
+   "role": "menuitem",
+   "route": "/",
+   "unique": true
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpProtocolSwitcher (3 import hop(s))",
+    "draws 'Switch protocol' (i18n route unique, 0.93)"
+   ],
+   "comp": "src/components/http/ProtocolSwitcher.vue",
+   "confirmed": true,
+   "eid": "E-583f79f4c78e",
+   "kind": "behaviour-via-import",
+   "label": "Switch protocol",
+   "lost": false,
+   "risk": 0.3186,
+   "role": "button",
+   "route": "/",
+   "unique": true
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpRequest (3 import hop(s))",
+    "draws 'Clear all ⌫' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/http/Request.vue",
+   "confirmed": true,
+   "eid": "E-785fcb86ffa1",
+   "kind": "behaviour-via-import",
+   "label": "Clear all ⌫",
+   "lost": false,
+   "risk": 0.2168,
+   "role": "menuitem",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpSidebar (3 import hop(s))",
+    "draws 'Collections' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/http/Sidebar.vue",
+   "confirmed": true,
+   "eid": "E-003c0bc22897",
+   "kind": "behaviour-via-import",
+   "label": "Collections",
+   "lost": false,
+   "risk": 0.2168,
+   "role": "heading",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpSidebar (3 import hop(s))",
+    "draws 'Collections' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/http/Sidebar.vue",
+   "confirmed": true,
+   "eid": "E-f2bb3bf0e1e5",
+   "kind": "behaviour-via-import",
+   "label": "Collections",
+   "lost": false,
+   "risk": 0.2168,
+   "role": "button",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by GqlRequest (3 import hop(s))",
+    "draws 'Connect' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/gql/Request.vue",
+   "confirmed": true,
+   "eid": "E-fcd94245f618",
+   "kind": "behaviour-via-import",
+   "label": "Connect",
+   "lost": false,
+   "risk": 0.2168,
+   "role": "button",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpRequest (3 import hop(s))",
+    "draws 'Enter a URL or paste a cURL command' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/http/Request.vue",
+   "confirmed": true,
+   "eid": "E-240baa4d54af",
+   "kind": "behaviour-via-import",
+   "label": "Enter a URL or paste a cURL command",
+   "lost": false,
+   "risk": 0.2168,
+   "role": "textbox",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpSidebar (3 import hop(s))",
+    "draws 'Environments' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/http/Sidebar.vue",
+   "confirmed": true,
+   "eid": "E-5231e23ed8d7",
+   "kind": "behaviour-via-import",
+   "label": "Environments",
+   "lost": false,
+   "risk": 0.2168,
+   "role": "button",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpSidebar (3 import hop(s))",
+    "draws 'Generate Code' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/http/Sidebar.vue",
+   "confirmed": true,
+   "eid": "E-1e11fb0333cc",
+   "kind": "behaviour-via-import",
+   "label": "Generate Code",
+   "lost": false,
+   "risk": 0.2168,
+   "role": "button",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpSidebar (3 import hop(s))",
+    "draws 'History' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/http/Sidebar.vue",
+   "confirmed": true,
+   "eid": "E-e831bb43a4d2",
+   "kind": "behaviour-via-import",
+   "label": "History",
+   "lost": false,
+   "risk": 0.2168,
+   "role": "button",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpRequest (3 import hop(s))",
+    "draws 'Import cURL C' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/http/Request.vue",
+   "confirmed": true,
+   "eid": "E-64d58a24f78f",
+   "kind": "behaviour-via-import",
+   "label": "Import cURL C",
+   "lost": false,
+   "risk": 0.2168,
+   "role": "menuitem",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpSidebar (3 import hop(s))",
+    "draws 'Schema' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/http/Sidebar.vue",
+   "confirmed": true,
+   "eid": "E-4db810b3f36f",
+   "kind": "behaviour-via-import",
+   "label": "Schema",
+   "lost": false,
+   "risk": 0.2168,
+   "role": "button",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpRequest (3 import hop(s))",
+    "draws 'Send' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/http/Request.vue",
+   "confirmed": true,
+   "eid": "E-f9d2c60eab5d",
+   "kind": "behaviour-via-import",
+   "label": "Send",
+   "lost": false,
+   "risk": 0.2168,
+   "role": "button",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpSidebar (3 import hop(s))",
+    "draws 'Shared Requests' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/http/Sidebar.vue",
+   "confirmed": true,
+   "eid": "E-1950cad8abd3",
+   "kind": "behaviour-via-import",
+   "label": "Shared Requests",
+   "lost": false,
+   "risk": 0.2168,
+   "role": "button",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by GqlRequestOptions (3 import hop(s))",
+    "draws 'Query' (i18n route tiebreak, 0.63)",
+    "but no crawled screen shows this part of the code together with it (risk halved)"
+   ],
+   "comp": "src/components/gql/RequestOptions.vue",
+   "confirmed": false,
+   "eid": "E-ecfdf87270b3",
+   "kind": "behaviour-via-import",
+   "label": "Query",
+   "lost": false,
+   "risk": 0.1084,
+   "role": "button",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpSidebar (3 import hop(s))",
+    "draws 'Request' (i18n global unique, 0.50)",
+    "but no crawled screen shows this part of the code together with it (risk halved)"
+   ],
+   "comp": "src/components/http/Sidebar.vue",
+   "confirmed": false,
+   "eid": "E-dfa06149c2af",
+   "kind": "behaviour-via-import",
+   "label": "Request",
+   "lost": false,
+   "risk": 0.0858,
+   "role": "button",
+   "route": "/graphql",
+   "unique": false
+  },
+  {
+   "ambiguous": true,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by GqlRequest (3 import hop(s))",
+    "draws 'Enter a GraphQL endpoint URL' (i18n route ambiguous, 0.20)"
+   ],
+   "comp": "src/components/gql/Request.vue",
+   "confirmed": true,
+   "eid": "E-7be0240d9481",
+   "kind": "behaviour-via-import",
+   "label": "Enter a GraphQL endpoint URL",
+   "lost": false,
+   "risk": 0.0686,
+   "role": "textbox",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": true,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by GqlHeaders (2 import hop(s))",
+    "draws 'Entries are separated by newline Keys and values are separated by : Prepend # to any row you want to add but keep disabled' (i18n route ambiguous, 0.20)",
+    "but no crawled screen shows this part of the code together with it (risk halved)"
+   ],
+   "comp": "src/components/gql/Headers.vue",
+   "confirmed": false,
+   "eid": "E-6379f23f3df5",
+   "kind": "behaviour-via-import",
+   "label": "Entries are separated by newline Keys and values are separated by : Prepend # to any row you want to add but keep disabled",
+   "lost": false,
+   "risk": 0.049,
+   "role": "textbox",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": true,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpCodegen (2 import hop(s))",
+    "draws 'Generated code' (i18n route ambiguous, 0.20)",
+    "but no crawled screen shows this part of the code together with it (risk halved)"
+   ],
+   "comp": "src/components/http/Codegen.vue",
+   "confirmed": false,
+   "eid": "E-b8cfa2203ad4",
+   "kind": "behaviour-via-import",
+   "label": "Generated code",
+   "lost": false,
+   "risk": 0.049,
+   "role": "label",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": true,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by HttpHeaders (2 import hop(s))",
+    "draws 'Header List' (i18n route ambiguous, 0.20)",
+    "but no crawled screen shows this part of the code together with it (risk halved)"
+   ],
+   "comp": "src/components/http/Headers.vue",
+   "confirmed": false,
+   "eid": "E-b734ac0e3ccc",
+   "kind": "behaviour-via-import",
+   "label": "Header List",
+   "lost": false,
+   "risk": 0.049,
+   "role": "label",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": true,
+   "band": "Low",
+   "chain": [
+    "changed: formData.ts (FormDataEntry, toFormData)",
+    "used by GqlQuery (3 import hop(s))",
+    "draws 'Prettify' (i18n route ambiguous, 0.20)",
+    "but no crawled screen shows this part of the code together with it (risk halved)"
+   ],
+   "comp": "src/components/gql/Query.vue",
+   "confirmed": false,
+   "eid": "E-2fcc73964298",
+   "kind": "behaviour-via-import",
+   "label": "Prettify",
+   "lost": false,
+   "risk": 0.0343,
+   "role": "button",
+   "route": "/",
+   "unique": false
+  }
+ ],
+ "flows": [
+  {
+   "band": "Low",
+   "id": "FLOW-8d5cb93234",
+   "name": "View the GraphQL schema explorer",
+   "requirements": [
+    "REQ-graphql-api-testing-43518fde"
+   ],
+   "risk": 0.3186,
+   "start_route": "/",
+   "steps": [
+    "Switch protocol",
+    "GraphQL"
+   ],
+   "target_state": "S-417fc3bb0aff",
+   "touches": [
+    "E-4db810b3f36f",
+    "E-583f79f4c78e"
+   ]
+  },
+  {
+   "band": "Low",
+   "id": "FLOW-9548e6af2f",
+   "name": "Access API request collections",
+   "requirements": [
+    "REQ-ai-features-ae7cdd42",
+    "REQ-collections-35318232",
+    "REQ-collections-53fde610"
+   ],
+   "risk": 0.2168,
+   "start_route": "/",
+   "steps": [],
+   "target_state": "S-0284553ef7c6",
+   "touches": [
+    "E-f2bb3bf0e1e5"
+   ]
+  },
+  {
+   "band": "Low",
+   "id": "FLOW-03e029bd67",
+   "name": "Access previous requests via the history panel",
+   "requirements": [
+    "REQ-history-932d6e68",
+    "REQ-history-e96a2b63"
+   ],
+   "risk": 0.2168,
+   "start_route": "/",
+   "steps": [],
+   "target_state": "S-0284553ef7c6",
+   "touches": [
+    "E-e831bb43a4d2"
+   ]
+  },
+  {
+   "band": "Low",
+   "id": "FLOW-8e38524656",
+   "name": "Copy generated code snippet to clipboard",
+   "requirements": [
+    "REQ-documentation-6a18b7c4",
+    "REQ-snippets-f0d87372"
+   ],
+   "risk": 0.2168,
+   "start_route": "/",
+   "steps": [
+    "Generate Code"
+   ],
+   "target_state": "S-90409d5cef06",
+   "touches": [
+    "E-1e11fb0333cc"
+   ]
+  },
+  {
+   "band": "Low",
+   "id": "FLOW-e187b592d2",
+   "name": "Create and manage API environments",
+   "requirements": [
+    "REQ-environments-1106d03b",
+    "REQ-environments-8bafca57",
+    "REQ-environments-d5e400c9"
+   ],
+   "risk": 0.2168,
+   "start_route": "/",
+   "steps": [],
+   "target_state": "S-0284553ef7c6",
+   "touches": [
+    "E-5231e23ed8d7"
+   ]
+  },
+  {
+   "band": "Low",
+   "id": "FLOW-c701ca7af1",
+   "name": "Filter history items in the history section",
+   "requirements": [
+    "REQ-history-e416accb"
+   ],
+   "risk": 0.2168,
+   "start_route": "/",
+   "steps": [
+    "Send"
+   ],
+   "target_state": "S-e28a15c025a8",
+   "touches": [
+    "E-f9d2c60eab5d"
+   ]
+  },
+  {
+   "band": "Low",
+   "id": "FLOW-169325b9ba",
+   "name": "Generate code snippets for API requests",
+   "requirements": [
+    "REQ-snippets-2fa655c1"
+   ],
+   "risk": 0.2168,
+   "start_route": "/",
+   "steps": [],
+   "target_state": "S-0284553ef7c6",
+   "touches": [
+    "E-1e11fb0333cc"
+   ]
+  },
+  {
+   "band": "Low",
+   "id": "FLOW-d1bb010a62",
+   "name": "Save a response as an example",
+   "requirements": [
+    "REQ-mock-0d33db6b"
+   ],
+   "risk": 0.2168,
+   "start_route": "/",
+   "steps": [
+    "Send"
+   ],
+   "target_state": "S-e28a15c025a8",
+   "touches": [
+    "E-f9d2c60eab5d"
+   ]
+  },
+  {
+   "band": "Low",
+   "id": "FLOW-938302668f",
+   "name": "Send a request and save to history",
+   "requirements": [
+    "REQ-history-a7cb01bd"
+   ],
+   "risk": 0.2168,
+   "start_route": "/",
+   "steps": [],
+   "target_state": "S-0284553ef7c6",
+   "touches": [
+    "E-f9d2c60eab5d"
+   ]
+  }
+ ],
+ "gaps_touched": [
+  {
+   "components": [
+    "CollectionsDocumentationRequestPreview"
+   ],
+   "gap_id": "GAP-context-menu-9aa874cf",
+   "kind": "UNOBSERVED_IN_UI",
+   "req_id": "REQ-context-menu-9aa874cf",
+   "statement": "User can open a selected URL or text as a new request in a separate tab."
+  },
+  {
+   "components": [
+    "GqlResponse"
+   ],
+   "gap_id": "GAP-documentation-7df0b03e",
+   "kind": "UNOBSERVED_IN_UI",
+   "req_id": "REQ-documentation-7df0b03e",
+   "statement": "User can view multiple example responses for different API scenarios."
+  },
+  {
+   "components": [
+    "HttpRequest"
+   ],
+   "gap_id": "GAP-widgets-204959e8",
+   "kind": "OUTSIDE_CRAWL_BOUNDARY",
+   "req_id": "REQ-widgets-204959e8",
+   "statement": "User can share a request from a collection by right-clicking and selecting Share Request."
+  },
+  {
+   "components": [
+    "HttpSidebar"
+   ],
+   "gap_id": "GAP-widgets-e19ad8cf",
+   "kind": "OUTSIDE_CRAWL_BOUNDARY",
+   "req_id": "REQ-widgets-e19ad8cf",
+   "statement": "User can view a list of shared requests by clicking the Shared Requests button in the sidebar."
+  }
+ ],
+ "needs_human": [
+  {
+   "about": [
+    "src/components/collections/documentation/RequestPreview.vue"
+   ],
+   "id": "RV-1fcb29d753",
+   "question": "This change touches 'Collections › Documentation › Request Preview', which can appear on the REST page, the GraphQL page, but we never saw it on screen. Which screen shows it, and does it need a retest?",
+   "trigger": "unmapped_ui_change"
+  },
+  {
+   "about": [
+    "src/components/gql/DocExplorer.vue"
+   ],
+   "id": "RV-4b1dcba8d8",
+   "question": "This change touches 'Gql › Doc Explorer', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?",
+   "trigger": "unmapped_ui_change"
+  },
+  {
+   "about": [
+    "src/components/gql/Response.vue"
+   ],
+   "id": "RV-289d2348cc",
+   "question": "This change touches 'Gql › Response', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?",
+   "trigger": "unmapped_ui_change"
+  },
+  {
+   "about": [
+    "src/components/gql/ResponseMeta.vue"
+   ],
+   "id": "RV-b4018d2fe8",
+   "question": "This change touches 'Gql › Response Meta', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?",
+   "trigger": "unmapped_ui_change"
+  },
+  {
+   "about": [
+    "src/components/gql/Schema.vue"
+   ],
+   "id": "RV-d4d7832403",
+   "question": "This change touches 'Gql › Schema', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?",
+   "trigger": "unmapped_ui_change"
+  },
+  {
+   "about": [
+    "src/components/gql/SchemaSearch.vue"
+   ],
+   "id": "RV-ee0b118696",
+   "question": "This change touches 'Gql › Schema Search', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?",
+   "trigger": "unmapped_ui_change"
+  },
+  {
+   "about": [
+    "src/components/gql/SubscriptionLog.vue"
+   ],
+   "id": "RV-03af5763e0",
+   "question": "This change touches 'Gql › Subscription Log', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?",
+   "trigger": "unmapped_ui_change"
+  },
+  {
+   "about": [
+    "src/pages/index.vue"
+   ],
+   "id": "RV-6a6ffc799c",
+   "question": "This change touches 'src/pages/index.vue', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?",
+   "trigger": "unmapped_ui_change"
+  }
+ ],
+ "outside": [
+  {
+   "file": "packages/hoppscotch-cli/src/__tests__/unit/formData.spec.ts",
+   "status": "added",
+   "why": "CLI (not part of the web UI)"
+  },
+  {
+   "file": "packages/hoppscotch-cli/src/types/request.ts",
+   "status": "modified",
+   "why": "CLI (not part of the web UI)"
+  },
+  {
+   "file": "packages/hoppscotch-cli/src/utils/mutators.ts",
+   "status": "modified",
+   "why": "CLI (not part of the web UI)"
+  },
+  {
+   "file": "packages/hoppscotch-cli/src/utils/pre-request.ts",
+   "status": "modified",
+   "why": "CLI (not part of the web UI)"
+  },
+  {
+   "file": "packages/hoppscotch-desktop/plugin-workspace/relay/src/content.rs",
+   "status": "modified",
+   "why": "desktop app shell (not part of the web UI)"
+  },
+  {
+   "file": "packages/hoppscotch-desktop/plugin-workspace/relay/src/interop.rs",
+   "status": "modified",
+   "why": "desktop app shell (not part of the web UI)"
+  },
+  {
+   "file": "packages/hoppscotch-kernel/src/relay/v/1.ts",
+   "status": "modified",
+   "why": "platform kernel library"
+  }
+ ],
+ "pr": {
+  "base_ref": "main",
+  "base_sha": "63273f8e599e73f0fb38c0739314e8d46b6bc83d",
+  "body": "Text fields with a manually set content type were serialized as file parts carrying filename=\"<field key>\". Keep them as text parts carrying only their content type across hoppscotch-common, the kernel relay adapter, the desktop Rust relay and the CLI, while preserving real file names and content types.\n\n<!--\nThanks for creating this pull request 🤗\n\nPlease make sure that the pull request is limited to one type (docs, feature, etc.) and keep it as small as possible. You can open multiple prs instead of opening a huge one.\n-->\n\n<!-- If this pull request closes an issue, please mention the issue number below -->\nCloses # <!-- Issue # here -->\n\n<!-- Add an introduction into what this PR tries to solve in a couple of sentences -->\n\n### What's changed\n<!-- Describe point by point the different things you have changed in this PR -->\n\n<!-- You can also choose to add a list of changes and if they have been completed or not by using the markdown to-do list syntax\n- [ ] Not Completed\n- [x] Completed\n-->\n\n### Notes to reviewers\n<!-- Any information you feel the reviewer should know about when reviewing your PR -->\n\n\n<!-- This is an auto-generated description by cubic. -->\n---\n## Summary by cubic\nFixes multipart serialization so text fields with a manually set content type are no longer sent as file parts carrying `filename=\"<field key>\"`. They now stay text parts carrying only their content type, across `hoppscotch-common`, the kernel relay adapter, the desktop Rust relay, and the CLI. Real filenames and content types are preserved for file fields.\n\n<sup>Written for commit 455b33578c0b8c56f37f60502724b0812854016e. Summary will update on new commits.</sup>\n\n<a href=\"https://cubic.dev/pr/hoppscotch/hoppscotch/pull/6721?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"View guided diff\" src=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"></picture></a>\n\n<!-- End of auto-generated description by cubic. -->\n\n",
+  "head_sha": "455b33578c0b8c56f37f60502724b0812854016e",
+  "html_url": "https://github.com/hoppscotch/hoppscotch/pull/6721",
+  "merged": false,
+  "number": 6721,
+  "state": "open",
+  "title": "fix(common): do not add filename to text fields in multipart requests",
+  "user": "RubenPari"
+ },
+ "requirements": [
+  {
+   "band": "Low",
+   "evidence": [
+    "E-f2bb3bf0e1e5"
+   ],
+   "feature": "AI Features",
+   "id": "REQ-ai-features-ae7cdd42",
+   "quote": "The AI Assistant is an experimental chat assistant that can act on the request, response, environment, and collections you're working with.",
+   "risk": 0.1734,
+   "statement": "The AI Assistant is an experimental chat assistant that can act on requests and collections.",
+   "status": "WEAK_SIGNAL",
+   "url": "https://docs.hoppscotch.io/documentation/features/ai-features#ai-assistant",
+   "via": [
+    "E-f2bb3bf0e1e5"
+   ]
+  },
+  {
+   "band": "Low",
+   "evidence": [
+    "E-f2bb3bf0e1e5"
+   ],
+   "feature": "Collections",
+   "id": "REQ-collections-35318232",
+   "quote": "You can organize your collections by dragging and dropping them to the desired location.",
+   "risk": 0.1734,
+   "statement": "User can organize collections and create sub-collections via drag and drop.",
+   "status": "WEAK_SIGNAL",
+   "url": "https://docs.hoppscotch.io/documentation/features/collections#organizing-collections",
+   "via": [
+    "E-f2bb3bf0e1e5"
+   ]
+  },
+  {
+   "band": "Low",
+   "evidence": [
+    "E-f2bb3bf0e1e5"
+   ],
+   "feature": "Collections",
+   "id": "REQ-collections-53fde610",
+   "quote": "You can access the collections by clicking the \"Collections\" icon on the side panel.",
+   "risk": 0.1734,
+   "statement": "User can organize API requests using collections and access them via the side panel.",
+   "status": "WEAK_SIGNAL",
+   "url": "https://docs.hoppscotch.io/documentation/features/collections",
+   "via": [
+    "E-f2bb3bf0e1e5"
+   ]
+  },
+  {
+   "band": "Low",
+   "evidence": [
+    "E-5231e23ed8d7"
+   ],
+   "feature": "Environments",
+   "id": "REQ-environments-1106d03b",
+   "quote": "Click on the ”Environments” icon on the sidebar to create environments.",
+   "risk": 0.1734,
+   "statement": "User can create environments by clicking the Environments icon and reference variables using double angle brackets.",
+   "status": "WEAK_SIGNAL",
+   "url": "https://docs.hoppscotch.io/documentation/features/environments#creating-an-environment",
+   "via": [
+    "E-5231e23ed8d7"
+   ]
+  },
+  {
+   "band": "Low",
+   "evidence": [
+    "E-5231e23ed8d7"
+   ],
+   "feature": "Environments",
+   "id": "REQ-environments-8bafca57",
+   "quote": "An environment allows you to group together a set of variable data.",
+   "risk": 0.1734,
+   "statement": "User can group variable data into environments to reference throughout requests and scripts.",
+   "status": "WEAK_SIGNAL",
+   "url": "https://docs.hoppscotch.io/documentation/features/environments",
+   "via": [
+    "E-5231e23ed8d7"
+   ]
+  },
+  {
+   "band": "Low",
+   "evidence": [
+    "E-5231e23ed8d7",
+    "E-84a1ad0ebc7a"
+   ],
+   "feature": "Environments",
+   "id": "REQ-environments-d5e400c9",
+   "quote": "From the dropdown menu, select Duplicate. A new environment with the suffix - Duplicate will be created.",
+   "risk": 0.1734,
+   "statement": "User can duplicate an existing environment from the More menu option.",
+   "status": "WEAK_SIGNAL",
+   "url": "https://docs.hoppscotch.io/documentation/features/environments#duplicating-an-environment",
+   "via": [
+    "E-5231e23ed8d7"
+   ]
+  },
+  {
+   "band": "Low",
+   "evidence": [
+    "E-4db810b3f36f",
+    "E-f99a3024320f"
+   ],
+   "feature": "GraphQL API Testing",
+   "id": "REQ-graphql-api-testing-43518fde",
+   "quote": "GraphQL uses a schema to define the structure of the data, the schema explorer helps you",
+   "risk": 0.1734,
+   "statement": "User can explore the data structure using the GraphQL schema explorer.",
+   "status": "WEAK_SIGNAL",
+   "url": "https://docs.hoppscotch.io/documentation/features/graphql-api-testing#schema",
+   "via": [
+    "E-4db810b3f36f"
+   ]
+  },
+  {
+   "band": "Low",
+   "evidence": [
+    "E-873c28f21205",
+    "E-e831bb43a4d2"
+   ],
+   "feature": "History",
+   "id": "REQ-history-932d6e68",
+   "quote": "click on the desired request in the history section.",
+   "risk": 0.1734,
+   "statement": "User can access previous requests by clicking on the desired entry in the history section.",
+   "status": "WEAK_SIGNAL",
+   "url": "https://docs.hoppscotch.io/documentation/features/history#accessing-requests-from-history",
+   "via": [
+    "E-e831bb43a4d2"
+   ]
+  },
+  {
+   "band": "Low",
+   "evidence": [
+    "E-f9d2c60eab5d"
+   ],
+   "feature": "History",
+   "id": "REQ-history-a7cb01bd",
+   "quote": "click on the \"Send\" button on the request page. Hoppscotch will automatically save the request",
+   "risk": 0.1734,
+   "statement": "Hoppscotch automatically saves requests to history when clicking the Send button.",
+   "status": "WEAK_SIGNAL",
+   "url": "https://docs.hoppscotch.io/documentation/features/history#save-requests-to-history",
+   "via": [
+    "E-f9d2c60eab5d"
+   ]
+  },
+  {
+   "band": "Low",
+   "evidence": [
+    "E-873c28f21205",
+    "E-e831bb43a4d2"
+   ],
+   "feature": "History",
+   "id": "REQ-history-e96a2b63",
+   "quote": "You can access the history of your requests by clicking on the \"History\" icon on the side panel.",
+   "risk": 0.1734,
+   "statement": "User can access the request and response history by clicking the History icon on the side panel.",
+   "status": "WEAK_SIGNAL",
+   "url": "https://docs.hoppscotch.io/documentation/features/history",
+   "via": [
+    "E-e831bb43a4d2"
+   ]
+  },
+  {
+   "band": "Low",
+   "evidence": [
+    "E-1e11fb0333cc"
+   ],
+   "feature": "Code Snippets",
+   "id": "REQ-snippets-2fa655c1",
+   "quote": "locate the Code Generate <> icon in the right sidebar, alongside collections, environments, and history.",
+   "risk": 0.1734,
+   "statement": "User can generate code snippets by clicking the Code Generate icon in the right sidebar.",
+   "status": "WEAK_SIGNAL",
+   "url": "https://docs.hoppscotch.io/documentation/features/snippets#generate-code-snippets",
+   "via": [
+    "E-1e11fb0333cc"
+   ]
+  }
+ ],
+ "screens": [
+  {
+   "band": "Medium",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1088,
+      98,
+      336,
+      34
+     ],
+     "eid": "E-24db6a8594da",
+     "label": "Shell - cURL",
+     "risk": 0.4552
+    },
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-90409d5cef06",
+   "label": "Generate code view",
+   "path": [
+    "Generate Code"
+   ],
+   "risk": 0.4552,
+   "route": "/",
+   "screenshot": "crawl/screens/S-90409d5cef06.jpg"
+  },
+  {
+   "band": "Medium",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      1144,
+      143,
+      225,
+      32
+     ],
+     "eid": "E-c07290fa103e",
+     "label": "C - cURL",
+     "risk": 0.4552
+    },
+    {
+     "bbox": [
+      1144,
+      687,
+      225,
+      32
+     ],
+     "eid": "E-af7532249e2f",
+     "label": "PHP - cURL",
+     "risk": 0.4552
+    },
+    {
+     "bbox": [
+      1088,
+      98,
+      336,
+      34
+     ],
+     "eid": "E-24db6a8594da",
+     "label": "Shell - cURL",
+     "risk": 0.4552
+    },
+    {
+     "bbox": [
+      1144,
+      943,
+      225,
+      32
+     ],
+     "eid": "E-94e90e6d80d0",
+     "label": "Shell - cURL",
+     "risk": 0.4552
+    },
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-a410a9511aa5",
+   "label": "Code generation language selector",
+   "path": [
+    "Generate Code",
+    "Shell - cURL"
+   ],
+   "risk": 0.4552,
+   "route": "/",
+   "screenshot": "crawl/screens/S-a410a9511aa5.jpg"
+  },
+  {
+   "band": "Medium",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      498,
+      155,
+      30,
+      16
+     ],
+     "eid": "E-f3de0a5c23c2",
+     "label": "cURL",
+     "risk": 0.4552
+    },
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-ef610c256620",
+   "label": "Import cURL dialog",
+   "path": [
+    "Options",
+    "Import cURL C"
+   ],
+   "risk": 0.4552,
+   "route": "/",
+   "screenshot": "crawl/screens/S-ef610c256620.jpg"
+  },
+  {
+   "band": "Medium",
+   "depth": 4,
+   "elements": [
+    {
+     "bbox": [
+      1133,
+      143,
+      245,
+      32
+     ],
+     "eid": "E-c07290fa103e",
+     "label": "C - cURL",
+     "risk": 0.4552
+    },
+    {
+     "bbox": [
+      1133,
+      687,
+      245,
+      32
+     ],
+     "eid": "E-af7532249e2f",
+     "label": "PHP - cURL",
+     "risk": 0.4552
+    },
+    {
+     "bbox": [
+      1133,
+      943,
+      245,
+      32
+     ],
+     "eid": "E-94e90e6d80d0",
+     "label": "Shell - cURL",
+     "risk": 0.4552
+    },
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-4b9b4a036065",
+   "label": "Code language selector popover",
+   "path": [
+    "Generate Code",
+    "Shell - cURL",
+    "HTTP - HTTP 1.1 Request String",
+    "HTTP - HTTP 1.1 Request String"
+   ],
+   "risk": 0.4552,
+   "route": "/",
+   "screenshot": "crawl/screens/S-4b9b4a036065.jpg"
+  },
+  {
+   "band": "Medium",
+   "depth": 6,
+   "elements": [
+    {
+     "bbox": [
+      1144,
+      143,
+      225,
+      32
+     ],
+     "eid": "E-c07290fa103e",
+     "label": "C - cURL",
+     "risk": 0.4552
+    },
+    {
+     "bbox": [
+      1144,
+      687,
+      225,
+      32
+     ],
+     "eid": "E-af7532249e2f",
+     "label": "PHP - cURL",
+     "risk": 0.4552
+    },
+    {
+     "bbox": [
+      1144,
+      943,
+      225,
+      32
+     ],
+     "eid": "E-94e90e6d80d0",
+     "label": "Shell - cURL",
+     "risk": 0.4552
+    },
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-f086f04e3dbd",
+   "label": "Clojure language selector popover",
+   "path": [
+    "Generate Code",
+    "Shell - cURL",
+    "HTTP - HTTP 1.1 Request String",
+    "HTTP - HTTP 1.1 Request String",
+    "Clojure - clj-http",
+    "Clojure - clj-http"
+   ],
+   "risk": 0.4552,
+   "route": "/",
+   "screenshot": "crawl/screens/S-f086f04e3dbd.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 0,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-0284553ef7c6",
+   "label": "REST request - Main view",
+   "path": [],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-0284553ef7c6.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-0296bc8b440a",
+   "label": "Command palette",
+   "path": [
+    "Search and commands ⌘ K"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-0296bc8b440a.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-07c9e5eb461c",
+   "label": "Bulk edit parameters",
+   "path": [
+    "Bulk edit"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-07c9e5eb461c.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-087a903d2901",
+   "label": "Environments management view",
+   "path": [
+    "Environments"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-087a903d2901.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1039,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      92,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1039,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      198,
+      155,
+      568,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1039,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1039,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1039,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      775,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1039,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-1388743fdf33",
+   "label": "Expanded sidebar view",
+   "path": [
+    "Expand sidebar"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-1388743fdf33.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      1004,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1184,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-1a6c089bc908",
+   "label": "Collapsed sidebar view",
+   "path": [
+    "Collapse sidebar"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-1a6c089bc908.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-459ad424566a",
+   "label": "Environment selector",
+   "path": [
+    "Select environment"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-459ad424566a.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-62f6d3de984e",
+   "label": "Request variables view",
+   "path": [
+    "Variables"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-62f6d3de984e.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-63a374a090a0",
+   "label": "Protocol switcher",
+   "path": [
+    "Switch protocol"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-63a374a090a0.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      673,
+      83,
+      94,
+      28
+     ],
+     "eid": "E-003c0bc22897",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-70bed10e81de",
+   "label": "Collections dialog",
+   "path": [
+    "Import / Export"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-70bed10e81de.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      779,
+      71,
+      168,
+      32
+     ],
+     "eid": "E-a6734f8b2c32",
+     "label": "Show code S",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      779,
+      103,
+      168,
+      32
+     ],
+     "eid": "E-785fcb86ffa1",
+     "label": "Clear all ⌫",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      779,
+      39,
+      168,
+      32
+     ],
+     "eid": "E-64d58a24f78f",
+     "label": "Import cURL C",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-7d18b305e6b5",
+   "label": "Request options menu",
+   "path": [
+    "Options"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-7d18b305e6b5.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-81614033a6a8",
+   "label": "Hoppscotch account menu",
+   "path": [
+    "HOPPSCOTCH"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-81614033a6a8.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-86974e4266fa",
+   "label": "Save request dialog",
+   "path": [
+    "Save"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-86974e4266fa.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-92ad0c37a2e7",
+   "label": "Pre-request script editor",
+   "path": [
+    "Pre-request Script"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-92ad0c37a2e7.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-94e73c48a088",
+   "label": "Environment quick peek",
+   "path": [
+    "Environment Quick Peek"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-94e73c48a088.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-a8734b4124fb",
+   "label": "Interceptor settings",
+   "path": [
+    "Interceptor"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-a8734b4124fb.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-d348ec5c0aa4",
+   "label": "Request body configuration",
+   "path": [
+    "Body"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-d348ec5c0aa4.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-d4bd5c642c8c",
+   "label": "Authorization configuration",
+   "path": [
+    "Authorization"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-d4bd5c642c8c.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-d8e61970fe41",
+   "label": "Shared requests view",
+   "path": [
+    "Shared Requests"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-d8e61970fe41.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-e22a224f8643",
+   "label": "New request view",
+   "path": [
+    "New"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-e22a224f8643.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-e28a15c025a8",
+   "label": "REST response view",
+   "path": [
+    "Send"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-e28a15c025a8.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-ec56f727dbfc",
+   "label": "Post-request script editor",
+   "path": [
+    "Post-request Script"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-ec56f727dbfc.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-f04282a7f03d",
+   "label": "History view",
+   "path": [
+    "History"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-f04282a7f03d.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-006b1d0a6e79",
+   "label": "Edit environment dialog",
+   "path": [
+    "Environment Quick Peek",
+    "Edit"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-006b1d0a6e79.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-25df414f8adc",
+   "label": "Proxy settings",
+   "path": [
+    "Interceptor",
+    "Proxy"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-25df414f8adc.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      673,
+      83,
+      94,
+      28
+     ],
+     "eid": "E-003c0bc22897",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-3877f3e05898",
+   "label": "Postman collection import dialog",
+   "path": [
+    "Import / Export",
+    "Import from Postman"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-3877f3e05898.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      297,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      673,
+      238,
+      104,
+      32
+     ],
+     "eid": "E-65fda0dc5772",
+     "label": "Request",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      795,
+      154,
+      83,
+      34
+     ],
+     "eid": "E-fcd94245f618",
+     "label": "Connect",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-4db810b3f36f",
+     "label": "Schema",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      66,
+      155,
+      720,
+      32
+     ],
+     "eid": "E-7be0240d9481",
+     "label": "Enter a GraphQL endpoint URL",
+     "risk": 0.0686
+    }
+   ],
+   "fp": "S-417fc3bb0aff",
+   "label": "GraphQL request view",
+   "path": [
+    "Switch protocol",
+    "GraphQL"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-417fc3bb0aff.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      673,
+      83,
+      94,
+      28
+     ],
+     "eid": "E-003c0bc22897",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-683df56737ce",
+   "label": "Import from OpenAPI menu",
+   "path": [
+    "Import / Export",
+    "Import from OpenAPI"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-683df56737ce.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-6a6cc9a659f0",
+   "label": "Login prompt for AI naming",
+   "path": [
+    "Save",
+    "Generate Request Name Using AI"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-6a6cc9a659f0.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-7861398072d8",
+   "label": "History filter menu",
+   "path": [
+    "History",
+    "Filter"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-7861398072d8.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      673,
+      83,
+      94,
+      28
+     ],
+     "eid": "E-003c0bc22897",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-835ed690d288",
+   "label": "Import collections dialog",
+   "path": [
+    "Save",
+    "Import"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-835ed690d288.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-8cce01013157",
+   "label": "Header override settings",
+   "path": [
+    "Body",
+    "Override"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-8cce01013157.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-c4b598b70c2a",
+   "label": "Auth method selector",
+   "path": [
+    "Authorization",
+    "Inherit"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-c4b598b70c2a.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-d12526dafa7e",
+   "label": "Login for AI script modification",
+   "path": [
+    "Pre-request Script",
+    "Modify with AI"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-d12526dafa7e.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-d93e56b8bf75",
+   "label": "Response options menu",
+   "path": [
+    "Send",
+    "More"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-d93e56b8bf75.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      673,
+      83,
+      94,
+      28
+     ],
+     "eid": "E-003c0bc22897",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-f60d3f553cfa",
+   "label": "Export collections menu",
+   "path": [
+    "Import / Export",
+    "Export collections"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-f60d3f553cfa.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 3,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-246b92f07bda",
+   "label": "Add new environment variable",
+   "path": [
+    "Environment Quick Peek",
+    "Edit",
+    "Add new"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-246b92f07bda.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 3,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-2ee8b7a4881d",
+   "label": "Selected code language display",
+   "path": [
+    "Generate Code",
+    "Shell - cURL",
+    "HTTP - HTTP 1.1 Request String"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-2ee8b7a4881d.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 3,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-524de33b817c",
+   "label": "Data schema generator",
+   "path": [
+    "Send",
+    "More",
+    "Generate Data Schema"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-524de33b817c.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 3,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      673,
+      83,
+      94,
+      28
+     ],
+     "eid": "E-003c0bc22897",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-6ecfad4044ca",
+   "label": "Import Postman collection",
+   "path": [
+    "Save",
+    "Import",
+    "Import from Postman"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-6ecfad4044ca.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 3,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      297,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      673,
+      238,
+      104,
+      32
+     ],
+     "eid": "E-65fda0dc5772",
+     "label": "Request",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      795,
+      154,
+      83,
+      34
+     ],
+     "eid": "E-fcd94245f618",
+     "label": "Connect",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-4db810b3f36f",
+     "label": "Schema",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      66,
+      155,
+      720,
+      32
+     ],
+     "eid": "E-7be0240d9481",
+     "label": "Enter a GraphQL endpoint URL",
+     "risk": 0.0686
+    }
+   ],
+   "fp": "S-ad98d08dacb8",
+   "label": "GraphQL schema view",
+   "path": [
+    "Switch protocol",
+    "GraphQL",
+    "Schema"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-ad98d08dacb8.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 3,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-b245913e74bd",
+   "label": "Header toggle view",
+   "path": [
+    "Body",
+    "Override",
+    "Turn off"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-b245913e74bd.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 3,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      673,
+      83,
+      94,
+      28
+     ],
+     "eid": "E-003c0bc22897",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-eeda88b68746",
+   "label": "Import OpenAPI from file",
+   "path": [
+    "Import / Export",
+    "Import from OpenAPI",
+    "Import from File"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-eeda88b68746.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 3,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-fe6e630bc6aa",
+   "label": "AWS Signature configuration",
+   "path": [
+    "Authorization",
+    "Inherit",
+    "AWS Signature"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-fe6e630bc6aa.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 4,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-4b2e190bab01",
+   "label": "AWS Auth method selector",
+   "path": [
+    "Authorization",
+    "Inherit",
+    "AWS Signature",
+    "AWS Signature"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-4b2e190bab01.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 4,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      673,
+      83,
+      94,
+      28
+     ],
+     "eid": "E-003c0bc22897",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-53b33eb458f5",
+   "label": "Postman import confirmation",
+   "path": [
+    "Save",
+    "Import",
+    "Import from Postman",
+    ""
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-53b33eb458f5.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 4,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-cae778f35a1f",
+   "label": "Schema language selector",
+   "path": [
+    "Send",
+    "More",
+    "Generate Data Schema",
+    "TypeScript"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-cae778f35a1f.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 5,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-400559961e10",
+   "label": "Basic Auth configuration",
+   "path": [
+    "Authorization",
+    "Inherit",
+    "AWS Signature",
+    "AWS Signature",
+    "Basic Auth"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-400559961e10.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 5,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-437d0e0df05a",
+   "label": "C# schema view",
+   "path": [
+    "Send",
+    "More",
+    "Generate Data Schema",
+    "TypeScript",
+    "C#"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-437d0e0df05a.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 5,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-e04e2bc587af",
+   "label": "Clojure code snippet view",
+   "path": [
+    "Generate Code",
+    "Shell - cURL",
+    "HTTP - HTTP 1.1 Request String",
+    "HTTP - HTTP 1.1 Request String",
+    "Clojure - clj-http"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-e04e2bc587af.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 6,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-95bf4f5d7e6b",
+   "label": "Schema language selector popover",
+   "path": [
+    "Send",
+    "More",
+    "Generate Data Schema",
+    "TypeScript",
+    "C#",
+    "C#"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-95bf4f5d7e6b.jpg"
+  },
+  {
+   "band": "Low",
+   "depth": 6,
+   "elements": [
+    {
+     "bbox": [
+      1031,
+      257,
+      32,
+      32
+     ],
+     "eid": "E-5990c8647029",
+     "label": "Mock Servers",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      65,
+      105,
+      115,
+      24
+     ],
+     "eid": "E-583f79f4c78e",
+     "label": "Switch protocol",
+     "risk": 0.3186
+    },
+    {
+     "bbox": [
+      1031,
+      57,
+      32,
+      32
+     ],
+     "eid": "E-f2bb3bf0e1e5",
+     "label": "Collections",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      171,
+      155,
+      587,
+      32
+     ],
+     "eid": "E-240baa4d54af",
+     "label": "Enter a URL or paste a cURL command",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      97,
+      32,
+      32
+     ],
+     "eid": "E-5231e23ed8d7",
+     "label": "Environments",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      217,
+      32,
+      32
+     ],
+     "eid": "E-1e11fb0333cc",
+     "label": "Generate Code",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      137,
+      32,
+      32
+     ],
+     "eid": "E-e831bb43a4d2",
+     "label": "History",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      767,
+      154,
+      80,
+      34
+     ],
+     "eid": "E-f9d2c60eab5d",
+     "label": "Send",
+     "risk": 0.2168
+    },
+    {
+     "bbox": [
+      1031,
+      177,
+      32,
+      32
+     ],
+     "eid": "E-1950cad8abd3",
+     "label": "Shared Requests",
+     "risk": 0.2168
+    }
+   ],
+   "fp": "S-c765fb5f2986",
+   "label": "Basic Auth method selector",
+   "path": [
+    "Authorization",
+    "Inherit",
+    "AWS Signature",
+    "AWS Signature",
+    "Basic Auth",
+    "Basic Auth"
+   ],
+   "risk": 0.3186,
+   "route": "/",
+   "screenshot": "crawl/screens/S-c765fb5f2986.jpg"
+  }
+ ],
+ "summary": {
+  "elements_at_risk": 28,
+  "flows": 9,
+  "high": 0,
+  "medium": 5,
+  "needs_human": 8,
+  "overall_risk": "Medium",
+  "requirements": 11,
+  "requirements_losing_coverage": 0,
+  "screens": 57,
+  "unmapped_changes": 19
+ },
+ "unmapped": [
+  {
+   "file": "src/helpers/utils/EffectiveURL.ts",
+   "why": "Utils › Effective URL: shared logic that no screen we visited uses (within 3 steps)"
+  },
+  {
+   "file": "src/components/collections/documentation/RequestPreview.vue",
+   "why": "Collections › Documentation › Request Preview: can appear on the REST page, the GraphQL page, but the crawl never showed any of its controls"
+  },
+  {
+   "file": "src/components/embeds/GQLIndex.vue",
+   "why": "Embeds › GQLIndex: appears on the e :id page, which this crawl did not visit"
+  },
+  {
+   "file": "src/components/embeds/GQLRequest.vue",
+   "why": "Embeds › GQLRequest: appears on the e :id page, which this crawl did not visit"
+  },
+  {
+   "file": "src/components/embeds/Request.vue",
+   "why": "Embeds › Request: appears on the e :id page, which this crawl did not visit"
+  },
+  {
+   "file": "src/components/gql/DocExplorer.vue",
+   "why": "Gql › Doc Explorer: can appear on the REST page, but the crawl never showed any of its controls"
+  },
+  {
+   "file": "src/components/gql/Response.vue",
+   "why": "Gql › Response: can appear on the REST page, but the crawl never showed any of its controls"
+  },
+  {
+   "file": "src/components/gql/ResponseMeta.vue",
+   "why": "Gql › Response Meta: can appear on the REST page, but the crawl never showed any of its controls"
+  },
+  {
+   "file": "src/components/gql/Schema.vue",
+   "why": "Gql › Schema: can appear on the REST page, but the crawl never showed any of its controls"
+  },
+  {
+   "file": "src/components/gql/SchemaSearch.vue",
+   "why": "Gql › Schema Search: can appear on the REST page, but the crawl never showed any of its controls"
+  },
+  {
+   "file": "src/components/gql/SubscriptionLog.vue",
+   "why": "Gql › Subscription Log: can appear on the REST page, but the crawl never showed any of its controls"
+  },
+  {
+   "file": "src/pages/index.vue",
+   "why": "src/pages/index.vue: can appear on the REST page, but the crawl never showed any of its controls"
+  }
+ ]
+}

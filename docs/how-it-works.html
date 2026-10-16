@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Triangulate Works</title>
+<meta name="description" content="A plain-language guide to Triangulate: what it does, how each step works, and how we know the answers are right.">
+<style>
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --surface-2:#f1f3f6; --text:#1b1e24; --muted:#5a6272; --border:#e2e5ea;
+  --accent:#3657d6; --accent-soft:#e8edfc;
+  --det:#0f766e; --det-soft:#dcf5f0; --llm:#8b3fd9; --llm-soft:#f2e8fd; --human:#c2410c; --human-soft:#ffedd5;
+  --ok:#15803d; --ok-soft:#dcfce7; --warn:#b45309; --warn-soft:#fef3c7; --bad:#b91c1c; --bad-soft:#fee2e2;
+  --code-bg:#f3f4f7; --shadow:0 1px 2px rgba(16,24,40,.05),0 1px 3px rgba(16,24,40,.07);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1115; --surface:#171a20; --surface-2:#1e222a; --text:#e7e9ee; --muted:#a1a8b6; --border:#2a2f39;
+    --accent:#8aa0ff; --accent-soft:#1f2a4d;
+    --det:#2dd4bf; --det-soft:#0f2e2b; --llm:#c69cff; --llm-soft:#2a1d40; --human:#fb923c; --human-soft:#3a2312;
+    --ok:#4ade80; --ok-soft:#12301d; --warn:#fbbf24; --warn-soft:#352a0e; --bad:#f87171; --bad-soft:#3a1717;
+    --code-bg:#1c2028; --shadow:none; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1115; --surface:#171a20; --surface-2:#1e222a; --text:#e7e9ee; --muted:#a1a8b6; --border:#2a2f39;
+  --accent:#8aa0ff; --accent-soft:#1f2a4d;
+  --det:#2dd4bf; --det-soft:#0f2e2b; --llm:#c69cff; --llm-soft:#2a1d40; --human:#fb923c; --human-soft:#3a2312;
+  --ok:#4ade80; --ok-soft:#12301d; --warn:#fbbf24; --warn-soft:#352a0e; --bad:#f87171; --bad-soft:#3a1717;
+  --code-bg:#1c2028; --shadow:none; color-scheme: dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.62 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em}
+code{background:var(--code-bg);padding:.12em .38em;border-radius:5px;overflow-wrap:anywhere}
+pre.code{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:14px 16px;overflow-x:auto;line-height:1.55;margin:12px 0}
+pre.code code{background:none;padding:0}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px 80px}
+header.hero{padding:44px 0 18px}
+.kicker{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-size:2.1rem;line-height:1.2;margin:.25em 0 .35em}
+h2{font-size:1.45rem;margin:0 0 .5em;line-height:1.3}
+h3{font-size:1.08rem;margin:1.3em 0 .4em}
+p{margin:.55em 0}
+.lede{font-size:1.15rem;color:var(--muted);max-width:760px}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+nav.toc a{background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:5px 12px;font-size:.88rem;color:var(--text)}
+nav.toc a:hover{border-color:var(--accent);text-decoration:none}
+section.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:26px 28px;margin:22px 0;box-shadow:var(--shadow)}
+.num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:.9rem;margin-right:10px;vertical-align:2px}
+.grid{display:grid;gap:14px}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media (max-width:760px){.g3,.g4,.g2{grid-template-columns:1fr}}
+.tile{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.tile h4{margin:0 0 4px;font-size:1rem}
+.tile p{margin:0;color:var(--muted);font-size:.95rem}
+.tile.req{border-top:3px solid var(--accent)} .tile.ui{border-top:3px solid var(--det)} .tile.code{border-top:3px solid var(--llm)}
+.stat{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.stat b{display:block;font-size:1.6rem;line-height:1.15}
+.stat span{color:var(--muted);font-size:.9rem}
+.diagram{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:14px;margin:14px 0;overflow-x:auto;text-align:center}
+pre.mermaid{margin:0;background:none;font-size:14px;line-height:1.3;white-space:pre}
+pre.mermaid[data-processed="true"]{white-space:normal}
+.diagram .cluster rect{fill:var(--surface)!important;stroke:var(--border)!important}
+.diagram .cluster-label,.diagram .cluster span{color:var(--muted)!important}
+.diagram .edgeLabel,.diagram .edgeLabel p,.diagram .labelBkg{background-color:var(--surface-2)!important;color:var(--muted)!important}
+.diagram .edgeLabel rect{fill:var(--surface-2)!important;opacity:1!important}
+.caption{font-size:.9rem;color:var(--muted);margin-top:6px;text-align:left}
+.legend{display:flex;flex-wrap:wrap;gap:10px;font-size:.88rem;margin:8px 0 2px}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-weight:600;font-size:.82rem;border:1px solid transparent;white-space:nowrap}
+.pill.code{background:var(--det-soft);color:var(--det);border-color:color-mix(in srgb,var(--det) 35%,transparent)}
+.pill.llm{background:var(--llm-soft);color:var(--llm);border-color:color-mix(in srgb,var(--llm) 35%,transparent)}
+.pill.human{background:var(--human-soft);color:var(--human);border-color:color-mix(in srgb,var(--human) 35%,transparent)}
+.pill.ok{background:var(--ok-soft);color:var(--ok)} .pill.warn{background:var(--warn-soft);color:var(--warn)} .pill.bad{background:var(--bad-soft);color:var(--bad)}
+.tablewrap{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-size:.82rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+td:first-child{white-space:nowrap}
+.callout{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:12px 16px;margin:14px 0}
+.callout.warn{border-color:var(--warn);background:var(--warn-soft)}
+.callout.ok{border-color:var(--ok);background:var(--ok-soft)}
+.callout p{margin:.3em 0}
+.report{border:1px solid var(--border);border-radius:12px;background:var(--surface-2);padding:16px 18px;margin:12px 0}
+.report .head{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:6px}
+.report ul{margin:.3em 0 .6em;padding-left:1.2em}
+.report h4{margin:.8em 0 .2em;font-size:.95rem}
+.steps{counter-reset:s;list-style:none;padding:0;margin:10px 0}
+.steps li{counter-increment:s;position:relative;padding:4px 0 10px 40px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:3px;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center}
+dl.gloss{display:grid;grid-template-columns:180px 1fr;gap:8px 16px;margin:8px 0}
+dl.gloss dt{font-weight:600} dl.gloss dd{margin:0;color:var(--muted)}
+@media (max-width:640px){dl.gloss{grid-template-columns:1fr} dl.gloss dd{margin-bottom:8px}}
+footer{color:var(--muted);font-size:.88rem;text-align:center;margin-top:40px}
+.theme-btn{position:absolute;right:16px;top:14px;background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:999px;padding:6px 12px;font-size:.85rem;cursor:pointer;box-shadow:var(--shadow)}
+@media (max-width:640px){section.card{padding:20px 16px} h1{font-size:1.7rem}}
+</style>
+</head>
+<body>
+<button class="theme-btn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+<div class="wrap">
+
+<header class="hero">
+  <div class="kicker">Triangulate · plain-language guide</div>
+  <h1>What we built, and how it works</h1>
+  <p class="lede">When a developer changes the code, Triangulate tells the QA team <b>which screens, user journeys
+  and documented features to retest</b>, and why. It does this by joining three sources that are normally
+  kept apart: the product docs, the live app, and the source code.</p>
+  <nav class="toc" aria-label="Sections">
+    <a href="#problem">1 · The problem</a>
+    <a href="#picture">2 · Big picture</a>
+    <a href="#example">3 · Example output</a>
+    <a href="#build">4 · Build steps</a>
+    <a href="#bridge">5 · Button → code</a>
+    <a href="#graph">6 · The graph</a>
+    <a href="#absence">7 · Missing things</a>
+    <a href="#pr">8 · Reading a PR</a>
+    <a href="#trust">9 · Confidence &amp; humans</a>
+    <a href="#check">10 · How we know</a>
+    <a href="#results">11 · Results</a>
+    <a href="#run">12 · Run it</a>
+    <a href="#words">13 · Words</a>
+  </nav>
+</header>
+
+<section class="card" id="problem">
+  <h2><span class="num">1</span>The problem in one minute</h2>
+  <p>A pull request (PR) changes a few files. But one file can be used by many screens, and a small change can
+  break a feature far away from where the edit was made. A QA lead has to answer: <i>"What should I retest?"</i></p>
+  <p>Each source only knows part of the answer:</p>
+  <div class="grid g3">
+    <div class="tile req"><h4>Docs: what should exist</h4><p>"You can filter your history with the Filter button." The docs don't know about code.</p></div>
+    <div class="tile ui"><h4>Live app: what was built</h4><p>The real screens and buttons a user sees. The app doesn't know which file draws which button.</p></div>
+    <div class="tile code"><h4>Code: how it was built</h4><p>Files, components and imports. The code doesn't know which documented feature it serves.</p></div>
+  </div>
+  <p style="margin-top:12px">Triangulate connects all three, so a changed file can be followed to the buttons it draws, the
+  screens those buttons are on, the user journeys that pass through them, and the documented features they deliver.</p>
+  <p>The target app is <a href="https://hoppscotch.io">Hoppscotch</a>, an open-source API client. Its live app, its
+  code and its docs are all public, and the live version (2026.9.0) is matched to the exact same code release.</p>
+</section>
+
+<section class="card" id="picture">
+  <h2><span class="num">2</span>The big picture</h2>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TB
+  D["Product docs"] --> R["Requirements<br/>116 checked statements"]
+  A["Live app"] --> U["Screens and controls<br/>243 screens, 1,044 controls"]
+  C["Source code, same release"] --> K["Components<br/>335 building blocks"]
+  R --> G[("Knowledge graph<br/>in Neo4j")]
+  U --> G
+  K --> G
+  G --> Q["Follow the links outward<br/>from the changed code"]
+  P["A pull request"] --> Q
+  Q --> O["Risk report for a QA lead"]
+  class D,R req
+  class A,U ui
+  class C,K code2
+  class G,Q hub
+  class P,O out
+  classDef req fill:#3657d61f,stroke:#3657d6,stroke-width:1.5px
+  classDef ui fill:#0f766e1f,stroke:#0f766e,stroke-width:1.5px
+  classDef code2 fill:#8b3fd91f,stroke:#8b3fd9,stroke-width:1.5px
+  classDef hub fill:#64748b26,stroke:#64748b,stroke-width:1.5px
+  classDef out fill:#c2410c1f,stroke:#c2410c,stroke-width:1.5px
+</pre>
+  </div>
+  <p>There are two separate jobs:</p>
+  <ol class="steps">
+    <li><b>Build the graph</b> (once per app release, about 30 minutes): read the docs, read the code, explore the live
+    app with a browser robot, and link everything together. Command: <code>triangulate run</code>.</li>
+    <li><b>Analyse a PR</b> (seconds per PR): take the PR's changed lines, walk the graph outward, and write a plain-English
+    report. Command: <code>triangulate reason 6706</code>.</li>
+  </ol>
+</section>
+
+<section class="card" id="example">
+  <h2><span class="num">3</span>What you get: a real example</h2>
+  <p>Here is a shortened version of the report for <a href="https://github.com/hoppscotch/hoppscotch/pull/6706">hoppscotch/hoppscotch#6706</a>
+  ("support comments in saved response examples"). The full report is in <code>samples/pr-6706/report.html</code>, with screenshots.</p>
+  <div class="report">
+    <div class="head"><span class="pill warn">Medium risk</span><b>PR #6706: support comments in saved response examples</b></div>
+    <p>The app now accepts JSON with comments in saved response examples; this touches how response bodies are parsed and formatted.</p>
+    <h4>Retest these first</h4>
+    <ul><li><b>[Medium] Filter history items</b>: open the REST page → click <b>Send</b> → check <b>Filter</b></li></ul>
+    <h4>Screens affected (6)</h4>
+    <ul><li>REST response view: Filter, More, Wrap lines</li><li>Response options menu: Clear Response, Filter, Generate Data Schema, More, Wrap lines</li><li>… and 4 more response views</li></ul>
+    <h4>Product requirements</h4>
+    <ul><li><b>At risk</b>: "You can filter your history by clicking on the Filter button" (with a link to the doc page)</li></ul>
+    <h4>Needs a human (1)</h4>
+    <ul><li>The GraphQL example response area changed, but the crawl never showed that screen. Where is it, and does it need testing?</li></ul>
+    <h4>Changes we could not connect to a screen (2)</h4>
+    <ul><li>Listed honestly instead of being guessed.</li></ul>
+  </div>
+  <p>Every line in the report comes from the graph. The AI only writes the sentences, and a checker rejects any
+  text that mentions an id that is not in the computed result, skips a high-risk item, or uses code words such as
+  file names.</p>
+</section>
+
+<section class="card" id="build">
+  <h2><span class="num">4</span>How the graph is built, step by step</h2>
+  <div class="legend">
+    <span class="pill code">Code decides</span>
+    <span class="pill llm">AI suggests, code checks</span>
+    <span class="pill human">A person decides</span>
+  </div>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TD
+  subgraph S1["1 · Collect"]
+    PIN["Pin the version<br/>live app 2026.9.0 = code tag 2026.9.0"] --> ING["Read the docs<br/>AI proposes requirements,<br/>code checks every quote word for word"]
+    PIN --> COD["Read the code<br/>real Vue and TypeScript compilers"]
+    PIN --> CRW["Explore the live app<br/>browser robot, no AI"]
+  end
+  subgraph S2["2 · Connect"]
+    LAB["Name each screen<br/>AI, for readability only"] --> DC["Link each control to its code<br/>through the text it shows"]
+    DC --> JUD["Link each requirement to screens<br/>AI judge, citations verified"]
+    JUD --> PRB["Probe: an AI agent hunts<br/>for features the robot missed"]
+  end
+  subgraph S3["3 · Explain"]
+    GAP["Explain every uncovered<br/>requirement with a reason"] --> FLW["Record user journeys<br/>and replay each one to prove it"]
+    FLW --> REV["Open questions<br/>for a human"]
+  end
+  subgraph S4["4 · Save"]
+    LOAD["Load Neo4j from the files<br/>and fingerprint every stage"]
+  end
+  CRW --> LAB
+  ING --> JUD
+  COD --> DC
+  PRB --> GAP
+  REV --> LOAD
+  class PIN,COD,CRW,DC,GAP,FLW,LOAD c
+  class ING,LAB,JUD,PRB l
+  class REV h
+  classDef c fill:#0f766e1f,stroke:#0f766e,stroke-width:1.5px
+  classDef l fill:#8b3fd91f,stroke:#8b3fd9,stroke-width:1.5px
+  classDef h fill:#c2410c1f,stroke:#c2410c,stroke-width:1.5px
+</pre>
+  </div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Step</th><th>What happens, in plain words</th><th>Who decides</th></tr></thead>
+    <tbody>
+      <tr><td>Pin</td><td>Read the live app's version and download exactly that code release and the docs.</td><td><span class="pill code">code</span></td></tr>
+      <tr><td>Read the docs</td><td>Split 26 feature pages into short, testable statements. Each must quote the docs word for word, or it is thrown away (23 were).</td><td><span class="pill llm">AI + check</span></td></tr>
+      <tr><td>Read the code</td><td>Find every component, which component draws which, the imports, the URL routes, and which text each component shows.</td><td><span class="pill code">code</span></td></tr>
+      <tr><td>Explore the app</td><td>A robot opens the app in a clean browser and clicks every safe control once per page. It never signs in, deletes, or leaves the site.</td><td><span class="pill code">code</span></td></tr>
+      <tr><td>Name screens</td><td>Give each screen a human name such as "REST response view".</td><td><span class="pill llm">AI</span></td></tr>
+      <tr><td>Control → code</td><td>Match each button to the component that draws it (see section 5).</td><td><span class="pill code">code</span></td></tr>
+      <tr><td>Requirement → screens</td><td>For each requirement, search the graph for likely controls, then let the AI judge. Any control it cites must be one it was shown.</td><td><span class="pill llm">AI + check</span></td></tr>
+      <tr><td>Probe</td><td>For requirements still not seen, a small AI agent drives the browser to look for them, inside the same safety rules.</td><td><span class="pill llm">AI agent</span></td></tr>
+      <tr><td>Gaps</td><td>Every requirement that is not covered gets exactly one reason (section 7).</td><td><span class="pill code">code</span></td></tr>
+      <tr><td>Flows</td><td>Find the shortest click path to each covered feature, then replay it in a fresh browser to prove it works.</td><td><span class="pill code">code</span></td></tr>
+      <tr><td>Review</td><td>Collect anything uncertain into a queue for a person.</td><td><span class="pill human">human</span></td></tr>
+      <tr><td>Save</td><td>Rebuild the Neo4j graph from the saved files and record a fingerprint (hash) of each stage.</td><td><span class="pill code">code</span></td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout"><p><b>Rule:</b> anything that can be decided by plain code is decided by code. AI is used only where
+  language understanding is needed, and its output is always checked by code before it is used.</p></div>
+</section>
+
+<section class="card" id="bridge">
+  <h2><span class="num">5</span>The key trick: connecting a button to its code</h2>
+  <p>The browser shows the button "Wrap lines". How do we know which file draws it? Hoppscotch never writes screen text
+  directly in the code. Every label lives in a translation file, and components ask for it by key. So the visible text is a
+  fact we can look up:</p>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TB
+  B["Button seen in the app:<br/>'Wrap lines' on the REST page"] --> T["Translation file:<br/>'Wrap lines' is key state.linewrap"]
+  T --> M["29 components use that key"]
+  M --> RT["26 of them can appear<br/>on the REST page"]
+  RT --> TB{"Which one? Compare<br/>the neighbouring labels"}
+  TB --> W["JSON response viewer<br/>best match, confidence 0.63"]
+  class B ui
+  class T,M,RT,W cd
+  class TB d
+  classDef ui fill:#0f766e1f,stroke:#0f766e,stroke-width:1.5px
+  classDef cd fill:#8b3fd91f,stroke:#8b3fd9,stroke-width:1.5px
+  classDef d fill:#b453091f,stroke:#b45309,stroke-width:1.5px
+</pre>
+  </div>
+  <p>When only one component on the page uses the key, the link is certain. On the hand-checked test set those
+  links were <b>100% correct</b>. When several could, the one whose other labels best match the neighbouring buttons
+  wins, and its lower confidence is recorded. Controls whose text is not in the translation file (user data,
+  example values) are reported as "not linked" rather than guessed: 70% of controls are linked.</p>
+</section>
+
+<section class="card" id="graph">
+  <h2><span class="num">6</span>The graph: what is stored</h2>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TB
+  subgraph REQ["Intended: from the docs"]
+    R["Requirement"] --> GP["Gap: why it is<br/>not covered"]
+  end
+  subgraph UI["Built: from the live app"]
+    ST["Screen"] -->|contains| EL["Control"]
+    ST -->|click leads to| ST
+    FL["User journey"] -->|steps through| EL
+  end
+  subgraph CODE["How: from the code"]
+    CO["Component"] -->|draws| CO
+    CO -->|lives in| FI["File"]
+    FI -->|imports| FI
+  end
+  R -->|covered by| EL
+  FL -->|exercises| R
+  EL -->|drawn by| CO
+  EL -->|shows text| KEY["Text key"]
+  CO -->|uses text| KEY
+  GP -->|expected in| CO
+  PR["Pull request"] -->|changes| FI
+  class R,GP r
+  class ST,EL,FL u
+  class CO,FI cd
+  class KEY,PR k
+  classDef r fill:#3657d61f,stroke:#3657d6,stroke-width:1.5px
+  classDef u fill:#0f766e1f,stroke:#0f766e,stroke-width:1.5px
+  classDef cd fill:#8b3fd91f,stroke:#8b3fd9,stroke-width:1.5px
+  classDef k fill:#64748b26,stroke:#64748b,stroke-width:1.5px
+</pre>
+  </div>
+  <p>Every link between the three layers stores <b>how</b> it was made, <b>how sure</b> we are, and the <b>evidence</b>.
+  So the report can always say why it thinks a button is affected, and the eval can score each linking method on its own.</p>
+</section>
+
+<section class="card" id="absence">
+  <h2><span class="num">7</span>Handling things that are missing</h2>
+  <p>"We didn't see feature X" can mean very different things. It might be broken, behind a sign-in, or simply not reached.
+  Triangulate never leaves a requirement silently unlinked: each one is either covered, or carries exactly one
+  <b>Gap</b> with a reason.</p>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TD
+  R["A documented requirement"] --> Q1{"Is it something you<br/>can see in the web app?"}
+  Q1 -- no --> G1["Not testable in the web UI<br/>e.g. command line, self-hosting<br/>2 requirements"]
+  Q1 -- yes --> Q2{"Can a signed-out<br/>user reach it?"}
+  Q2 -- no --> G2["Outside what we crawl<br/>needs sign-in<br/>12 requirements"]
+  Q2 -- yes --> Q3{"Did the robot or<br/>the probe see it?"}
+  Q3 -- yes --> OK["Covered<br/>linked to controls and a journey<br/>83 requirements"]
+  Q3 -- no --> Q4{"Is it in the code?"}
+  Q4 -- yes --> G3["Built but not reached<br/>e.g. needs a saved collection<br/>19 requirements"]
+  Q4 -- no --> G4["Not found anywhere<br/>possible missing feature<br/>a person confirms"]
+  class OK ok
+  class G1,G2,G3 gap
+  class G4 human
+  classDef ok fill:#15803d1f,stroke:#15803d,stroke-width:1.5px
+  classDef gap fill:#b453091f,stroke:#b45309,stroke-width:1.5px
+  classDef human fill:#c2410c1f,stroke:#c2410c,stroke-width:1.5px
+</pre>
+  </div>
+  <p>Gaps take part in PR analysis too. If a PR touches the code behind a feature we could not see, the report still says so.</p>
+</section>
+
+<section class="card" id="pr">
+  <h2><span class="num">8</span>How a pull request is analysed</h2>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TD
+  P["Pull request from GitHub"] --> CL["Find the changed components<br/>layout, logic, style or text;<br/>imports and comments ignored"]
+  CL --> SP["Spread the risk: parents that<br/>draw them x0.6, files that<br/>import them x0.7 per step"]
+  CL --> UN["Changes with no screen:<br/>listed, never guessed"]
+  SP --> PRS{"Is the component really<br/>on that screen?"}
+  PRS -- confirmed --> SC["Affected controls<br/>and screens"]
+  PRS -- "not confirmed" --> LOW["Risk halved,<br/>screen dropped"]
+  SC --> FJ["Journeys to retest"]
+  SC --> RQ["Requirements at risk"]
+  FJ --> WR["AI writes plain sentences<br/>only from these results"]
+  RQ --> WR
+  UN --> WR
+  WR --> VAL{"Checker: right ids, nothing<br/>High left out, no code words"}
+  VAL -- pass --> REP["report.html, report.md,<br/>impact.json"]
+  VAL -- "fails twice" --> STOP["Stop with an error"]
+  class P,REP o
+  class CL,SP,PRS,SC,FJ,RQ,UN,LOW,VAL c
+  class WR l
+  class STOP x
+  classDef o fill:#3657d61f,stroke:#3657d6,stroke-width:1.5px
+  classDef c fill:#0f766e1f,stroke:#0f766e,stroke-width:1.5px
+  classDef l fill:#8b3fd91f,stroke:#8b3fd9,stroke-width:1.5px
+  classDef x fill:#b91c1c1f,stroke:#b91c1c,stroke-width:1.5px
+</pre>
+  </div>
+  <p><b>Risk is arithmetic, not opinion.</b> Each item's risk is its strongest chain:
+  <i>how much the change matters</i> × <i>how sure the button→code link is</i> × <i>how far away it is</i>.
+  High is 0.75 and above, Medium is 0.40 and above, and the rest is Low.</p>
+  <p>Two lessons from testing on real PRs shaped this:</p>
+  <ul>
+    <li><b>Imports are not behaviour.</b> A PR that only added an <code>import</code> line once flagged 18 controls; now it flags 0.</li>
+    <li><b>Presence must be confirmed.</b> One PR first listed 24 screens, most of them unrelated editors with their own "Wrap lines" button. With the presence rule it lists 6, all of them response views.</li>
+  </ul>
+</section>
+
+<section class="card" id="trust">
+  <h2><span class="num">9</span>Confidence, and when a person is asked</h2>
+  <div class="grid g2">
+    <div>
+      <h3 style="margin-top:0">Where confidence comes from</h3>
+      <p>Confidence is not guessed. Each linking method's precision is measured on hand-checked examples, and that
+      number becomes the confidence of every link the method makes. With 12 of 12 correct, the confidence becomes
+      0.93, not 1.0, because a small sample cannot prove perfection.</p>
+      <p>A person adopts a new measurement on purpose (<code>triangulate eval --update-calibration</code>). It never
+      changes silently between runs.</p>
+    </div>
+    <div>
+      <h3 style="margin-top:0">The system stops and asks when</h3>
+      <ul>
+        <li>the AI judge cites something it was not shown, or says "covered" without evidence;</li>
+        <li>a PR changes screen code that no seen control maps to;</li>
+        <li>a High-risk item rests on an uncertain link;</li>
+        <li>a feature is not found anywhere.</li>
+      </ul>
+      <p>Answers given in <code>triangulate review</code> are saved and reused on every later run.</p>
+    </div>
+  </div>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TB
+  RUN["A run"] --> Q["Uncertain items go<br/>to the review queue"]
+  RUN --> EV["triangulate eval<br/>measures accuracy"]
+  Q --> H["A person answers<br/>in triangulate review"]
+  H --> OV["Decisions saved in<br/>config/overrides.yaml"]
+  EV --> CAL["A person adopts the new<br/>confidence numbers"]
+  OV --> RUN2["Every later run reuses them"]
+  CAL --> RUN2
+  class RUN,RUN2,EV c
+  class Q,H,OV,CAL h
+  classDef c fill:#0f766e1f,stroke:#0f766e,stroke-width:1.5px
+  classDef h fill:#c2410c1f,stroke:#c2410c,stroke-width:1.5px
+</pre>
+  </div>
+</section>
+
+<section class="card" id="check">
+  <h2><span class="num">10</span>How we know it is right</h2>
+  <div class="grid g2">
+    <div class="tile"><h4>10 automatic checks on every run</h4><p>For example: every quote is word-for-word in the docs, every
+    requirement is covered or has exactly one gap, every journey was replayed successfully, every AI citation was a real candidate,
+    and the app version did not change during the crawl.</p></div>
+    <div class="tile"><h4>3 hand-checked answer sets</h4><p>42 buttons whose code was checked by reading the source; 24 requirements labelled
+    covered or not before looking at the AI's answers; 5 real PRs whose expected impact was written from the diff first.</p></div>
+    <div class="tile"><h4>A pass/fail verdict</h4><p>A run counts as <b>correct</b> when all checks pass and its scores meet
+    <code>eval/thresholds.yaml</code>. <code>triangulate eval</code> prints the verdict and fails loudly otherwise.</p></div>
+    <div class="tile"><h4>Exact repeat</h4><p>Every AI answer is saved by a fingerprint of the question, and every stage's output is fingerprinted.
+    Re-running offline reproduced the real run exactly, with zero AI calls.</p></div>
+  </div>
+  <div class="callout"><p><b>"If we ran it 100 times, which runs were correct?"</b> Correctness is judged against the hand-checked answers,
+  not against other runs. Agreement between runs measures stability, and the stage fingerprints show <i>where</i> two runs
+  differed. Getting the crawler to repeat exactly needed several real fixes. For example, it now waits until
+  "Connecting…" labels, page reloads and on-demand code downloads have finished before it records a screen.</p></div>
+</section>
+
+<section class="card" id="results">
+  <h2><span class="num">11</span>Results from the real run</h2>
+  <div class="grid g4">
+    <div class="stat"><b>116</b><span>requirements from 26 doc pages</span></div>
+    <div class="stat"><b>243</b><span>screens · 524 transitions</span></div>
+    <div class="stat"><b>70%</b><span>of 1,044 controls linked to code</span></div>
+    <div class="stat"><b>112</b><span>user journeys, all replayed OK</span></div>
+  </div>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Measure</th><th>Result</th><th>What it means</th></tr></thead>
+    <tbody>
+      <tr><td>Button → code, certain links</td><td><span class="pill ok">100%</span> correct (11 of 11)</td><td>When one component on the page uses the text, the link is right.</td></tr>
+      <tr><td>Button → code, all links</td><td>69% correct</td><td>Errors come from generic buttons ("More", "Search") that dozens of components draw.</td></tr>
+      <tr><td>Requirement → screen</td><td>84% precision, 76% recall</td><td>The 3 false "covered" answers are sign-in-only AI features; the 5 misses are screens the robot never reached.</td></tr>
+      <tr><td>Requirements covered by seen UI</td><td>81% (83 of 102)</td><td>The rest each carry a gap reason.</td></tr>
+      <tr><td>PR reports (5 real PRs)</td><td><span class="pill ok">no false alarms</span></td><td>For the one PR whose screens the robot reached, 3 of 5 expected controls were found.</td></tr>
+      <tr><td>Exact repeat</td><td><span class="pill ok">identical</span></td><td>A fresh copy installed from the README rebuilt the real run offline: every stage fingerprint and all 5 sample reports identical, 0 AI calls.</td></tr>
+      <tr><td>AI cost</td><td>about 15 calls</td><td>For a full run with an empty cache (Gemini free tier, 20 calls per model per day).</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout warn"><p><b>Known limits, stated honestly:</b> the robot stays signed out, so sign-in features are
+  not observed. Buttons with no translated text cannot be linked. The probe agent was capped by the daily AI quota.
+  The PR test set is small. The MQTT page shares a public server with every Hoppscotch user, so crawls must run one
+  at a time. Details are in <code>docs/DESIGN.md</code> §10.</p></div>
+</section>
+
+<section class="card" id="run">
+  <h2><span class="num">12</span>Run it yourself</h2>
+<pre class="code"><code># 1. install (Python 3.12 via uv, Node 20+, a local Neo4j)
+uv venv --python 3.12 .venv
+uv pip install --python .venv/bin/python -e ".[dev]"
+.venv/bin/python -m playwright install chromium
+npm install --prefix src/triangulate/code/node
+cp .env.example .env            # add the Gemini key and Neo4j login
+
+# 2. build the graph (offline = use only saved AI answers, no API calls)
+.venv/bin/triangulate run --offline
+
+# 3. analyse a pull request
+.venv/bin/triangulate reason 6706 --offline   # -> runs/latest/reason/pr-6706/report.html
+
+# 4. check it: 10 checks + scores -> "run is correct" or what failed
+.venv/bin/triangulate eval
+
+# 5. answer the open questions (saved for every later run)
+.venv/bin/triangulate review</code></pre>
+  <p>Each run writes everything to <code>runs/&lt;run id&gt;/</code>. Sample reports for five real PRs are in <code>samples/</code>,
+  and the full design reasoning is in <code>docs/DESIGN.md</code>.</p>
+</section>
+
+<section class="card" id="words">
+  <h2><span class="num">13</span>Words used here</h2>
+  <dl class="gloss">
+    <dt>Requirement</dt><dd>One short, testable statement from the docs, with its exact quote and a link to the page.</dd>
+    <dt>Screen (state)</dt><dd>One distinct view of the app, for example the REST page with a menu open.</dd>
+    <dt>Control (element)</dt><dd>A button, field, tab or link on a screen. The same "Send" button on many screens is one control.</dd>
+    <dt>Component</dt><dd>A reusable building block in the code (a <code>.vue</code> file) that draws part of a screen.</dd>
+    <dt>Text key</dt><dd>The id of a label in the translation file, for example <code>state.linewrap</code> = "Wrap lines". It is the bridge between screen and code.</dd>
+    <dt>User journey (flow)</dt><dd>A recorded click path from a starting page to a feature, replayed to prove it still works.</dd>
+    <dt>Gap</dt><dd>The recorded reason a requirement is not covered: needs sign-in, not reached, not web UI, or not found.</dd>
+    <dt>Blast radius</dt><dd>Everything a code change can affect: controls, screens, journeys and requirements.</dd>
+    <dt>Offline run</dt><dd>A run that reuses saved AI answers and makes no API calls; it reproduces a run exactly.</dd>
+    <dt>Knowledge graph</dt><dd>A database of things and the links between them (here: Neo4j), which can be walked from any starting point.</dd>
+  </dl>
+</section>
+
+<footer>Triangulate · Hoppscotch 2026.9.0 · real run 20261016T065647Z-default</footer>
+</div>
+
+<script>
+(function(){
+  var btn = document.getElementById('themeBtn'), root = document.documentElement, KEY = 'tri-theme';
+  function stored(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+  var t = stored(); if (t) root.setAttribute('data-theme', t);
+  btn.addEventListener('click', function(){
+    var dark = root.getAttribute('data-theme') ? root.getAttribute('data-theme') === 'dark'
+      : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(KEY, next); } catch(e){}
+    location.reload();
+  });
+})();
+</script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs';
+  const forced = document.documentElement.getAttribute('data-theme');
+  const dark = forced ? forced === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: dark ? 'dark' : 'neutral',
+    securityLevel: 'strict',
+    fontFamily: 'ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif',
+    flowchart: { curve: 'basis', htmlLabels: true, nodeSpacing: 34, rankSpacing: 44, wrappingWidth: 260 }
+  });
+  await mermaid.run({ querySelector: 'pre.mermaid' });
+</script>
+</body>
+</html>

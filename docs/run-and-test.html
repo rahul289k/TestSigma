@@ -1,0 +1,579 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run and Test Triangulate</title>
+<meta name="description" content="Hands-on guide: run Triangulate stage by stage, inspect each layer's output, explore the relations in Neo4j, analyse a PR and check the results yourself.">
+<style>
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --surface-2:#f1f3f6; --text:#1b1e24; --muted:#5a6272; --border:#e2e5ea;
+  --accent:#3657d6; --accent-soft:#e8edfc;
+  --det:#0f766e; --det-soft:#dcf5f0; --llm:#8b3fd9; --llm-soft:#f2e8fd; --human:#c2410c; --human-soft:#ffedd5;
+  --ok:#15803d; --ok-soft:#dcfce7; --warn:#b45309; --warn-soft:#fef3c7; --bad:#b91c1c; --bad-soft:#fee2e2;
+  --code-bg:#f3f4f7; --shadow:0 1px 2px rgba(16,24,40,.05),0 1px 3px rgba(16,24,40,.07);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1115; --surface:#171a20; --surface-2:#1e222a; --text:#e7e9ee; --muted:#a1a8b6; --border:#2a2f39;
+    --accent:#8aa0ff; --accent-soft:#1f2a4d;
+    --det:#2dd4bf; --det-soft:#0f2e2b; --llm:#c69cff; --llm-soft:#2a1d40; --human:#fb923c; --human-soft:#3a2312;
+    --ok:#4ade80; --ok-soft:#12301d; --warn:#fbbf24; --warn-soft:#352a0e; --bad:#f87171; --bad-soft:#3a1717;
+    --code-bg:#1c2028; --shadow:none; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1115; --surface:#171a20; --surface-2:#1e222a; --text:#e7e9ee; --muted:#a1a8b6; --border:#2a2f39;
+  --accent:#8aa0ff; --accent-soft:#1f2a4d;
+  --det:#2dd4bf; --det-soft:#0f2e2b; --llm:#c69cff; --llm-soft:#2a1d40; --human:#fb923c; --human-soft:#3a2312;
+  --ok:#4ade80; --ok-soft:#12301d; --warn:#fbbf24; --warn-soft:#352a0e; --bad:#f87171; --bad-soft:#3a1717;
+  --code-bg:#1c2028; --shadow:none; color-scheme: dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.62 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.86em}
+code{background:var(--code-bg);padding:.12em .38em;border-radius:5px;overflow-wrap:anywhere}
+.cmd{position:relative;margin:10px 0}
+.cmd pre{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;padding-right:64px;overflow-x:auto;line-height:1.55;margin:0}
+.cmd pre code{background:none;padding:0;overflow-wrap:normal}
+.cmd .copy{position:absolute;top:8px;right:8px;background:var(--surface);border:1px solid var(--border);color:var(--muted);border-radius:7px;font-size:.78rem;padding:3px 9px;cursor:pointer}
+.cmd .copy:hover{color:var(--accent);border-color:var(--accent)}
+.cmd .tag{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 16px 80px}
+header.hero{padding:44px 0 14px}
+.kicker{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+h1{font-size:2.05rem;line-height:1.2;margin:.25em 0 .35em}
+h2{font-size:1.4rem;margin:0 0 .5em;line-height:1.3}
+h3{font-size:1.05rem;margin:1.2em 0 .35em}
+p{margin:.55em 0}
+.lede{font-size:1.1rem;color:var(--muted);max-width:780px}
+nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 6px}
+nav.toc a{background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:5px 12px;font-size:.86rem;color:var(--text)}
+nav.toc a:hover{border-color:var(--accent);text-decoration:none}
+section.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:24px 26px;margin:20px 0;box-shadow:var(--shadow)}
+.num{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;padding:0 6px;border-radius:8px;background:var(--accent-soft);color:var(--accent);font-weight:700;font-size:.9rem;margin-right:10px;vertical-align:2px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:760px){.g2,.g3{grid-template-columns:1fr}}
+.tile{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
+.tile h4{margin:0 0 4px;font-size:.98rem}
+.tile p{margin:0;color:var(--muted);font-size:.93rem}
+.see{border-left:4px solid var(--ok);background:var(--ok-soft);border-radius:0 10px 10px 0;padding:10px 14px;margin:10px 0}
+.see b.lbl{display:block;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ok);margin-bottom:2px}
+.see ul{margin:.2em 0;padding-left:1.15em}
+.try{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:10px 14px;margin:10px 0}
+.try b.lbl{display:block;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.warn{border-left:4px solid var(--warn);background:var(--warn-soft);border-radius:0 10px 10px 0;padding:10px 14px;margin:10px 0}
+.warn b.lbl{display:block;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;color:var(--warn);margin-bottom:2px}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:2px 9px;font-weight:600;font-size:.8rem;white-space:nowrap}
+.pill.code{background:var(--det-soft);color:var(--det)} .pill.llm{background:var(--llm-soft);color:var(--llm)} .pill.human{background:var(--human-soft);color:var(--human)}
+.pill.time{background:var(--surface-2);color:var(--muted);border:1px solid var(--border)}
+.tablewrap{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+th{font-size:.78rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600}
+pre.tree{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;overflow-x:auto;line-height:1.5;margin:10px 0}
+.diagram{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:14px;margin:14px 0;overflow-x:auto;text-align:center}
+pre.mermaid{margin:0;background:none;font-size:14px;white-space:pre}
+.diagram .cluster rect{fill:var(--surface)!important;stroke:var(--border)!important}
+.diagram .edgeLabel,.diagram .edgeLabel p,.diagram .labelBkg{background-color:var(--surface-2)!important;color:var(--muted)!important}
+.route{display:flex;flex-wrap:wrap;align-items:center;gap:6px 6px;margin:12px 0 6px}
+.chip{display:inline-flex;flex-direction:column;border:1.5px solid var(--border);border-radius:10px;padding:6px 11px;color:var(--text);background:var(--surface-2);font-size:.92rem;line-height:1.25}
+.chip:hover{text-decoration:none;border-color:var(--accent)}
+.chip b{color:var(--accent);margin-right:4px} .chip small{color:var(--muted);font-size:.78rem}
+.chip.c{border-color:color-mix(in srgb,var(--det) 55%,transparent)} .chip.l{border-color:color-mix(in srgb,var(--llm) 55%,transparent)} .chip.n{border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+.arr{color:var(--muted)}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin:4px 0 8px}
+.stepmeta{display:flex;flex-wrap:wrap;gap:8px;margin:2px 0 10px}
+footer{color:var(--muted);font-size:.88rem;text-align:center;margin-top:36px}
+.theme-btn{position:absolute;right:16px;top:14px;background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:999px;padding:6px 12px;font-size:.85rem;cursor:pointer;box-shadow:var(--shadow)}
+@media (max-width:640px){section.card{padding:18px 14px} h1{font-size:1.65rem}}
+</style>
+</head>
+<body>
+<button class="theme-btn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+<div class="wrap">
+
+<header class="hero">
+  <div class="kicker">Triangulate · hands-on guide</div>
+  <h1>Run it, look inside, test it yourself</h1>
+  <p class="lede">This guide takes you through Triangulate one layer at a time. You run each stage, open what it
+  produced, and check it against the source (the docs, the code, the live app). Then you explore how the layers
+  connect in Neo4j, analyse a real pull request, and check the system's own scorecard. Every command here was run
+  while writing this guide, and the "you should see" numbers are the results it produced.</p>
+  <nav class="toc" aria-label="Steps">
+    <a href="#setup">0 · Setup</a>
+    <a href="#folder">1 · Run folder</a>
+    <a href="#ingest">2 · Ingestion</a>
+    <a href="#code">3 · Code</a>
+    <a href="#crawl">4 · Crawl</a>
+    <a href="#domcode">5 · Button → code</a>
+    <a href="#judge">6 · Requirements</a>
+    <a href="#neo4j">7 · Relations in Neo4j</a>
+    <a href="#pr">8 · Analyse a PR</a>
+    <a href="#eval">9 · Check it is right</a>
+    <a href="#repeat">10 · Repeatability</a>
+    <a href="#review">11 · Human review</a>
+    <a href="#live">12 · Live run</a>
+    <a href="#trouble">13 · Troubleshooting</a>
+    <a href="#cheat">Cheat sheet</a>
+  </nav>
+</header>
+
+<section class="card" id="overview">
+  <h2>The route through this guide</h2>
+  <div class="route">
+    <a class="chip n" href="#setup"><b>0</b> Setup</a><span class="arr">→</span>
+    <a class="chip l" href="#ingest"><b>2</b> Ingest docs<small>116 requirements</small></a><span class="arr">→</span>
+    <a class="chip c" href="#code"><b>3</b> Read code<small>335 components</small></a><span class="arr">→</span>
+    <a class="chip c" href="#crawl"><b>4</b> Crawl app<small>243 screens</small></a><span class="arr">→</span>
+    <a class="chip c" href="#domcode"><b>5</b> Button → code<small>70% linked</small></a><span class="arr">→</span>
+    <a class="chip l" href="#judge"><b>6</b> Requirement → screen<small>gaps, journeys</small></a><span class="arr">→</span>
+    <a class="chip n" href="#neo4j"><b>7</b> Explore in Neo4j</a><span class="arr">→</span>
+    <a class="chip c" href="#pr"><b>8</b> Analyse a PR</a><span class="arr">→</span>
+    <a class="chip n" href="#eval"><b>9</b> Scorecard</a>
+  </div>
+  <div class="legend"><span class="pill code">code decides</span><span class="pill llm">AI suggests, code checks</span></div>
+  <p>Everything below runs <b>offline</b>: AI answers come from the saved cache in <code>cache/llm/</code>, so you make
+  no Gemini calls and use no quota. The live app (hoppscotch.io), GitHub and your local Neo4j are still contacted.
+  A full pass takes about <b>30 minutes</b>, most of it the crawl (about 20 minutes) and replaying user journeys
+  (about 9 minutes). The other stages take seconds.</p>
+  <p>All commands are run from the project folder. They use <code>jq</code> to read the JSON files (preinstalled on macOS 15+, otherwise <code>brew install jq</code>).</p>
+</section>
+
+<section class="card" id="setup">
+  <h2><span class="num">0</span>Setup (once)</h2>
+  <div class="cmd"><span class="tag">install</span><pre><code>cd ~/Desktop/triangulate
+uv venv --python 3.12 .venv
+uv pip install --python .venv/bin/python -e ".[dev]"
+.venv/bin/python -m playwright install chromium
+npm install --prefix src/triangulate/code/node
+cp .env.example .env     # then fill in GEMINI_API_KEY and the Neo4j user/password</code></pre></div>
+  <p>Neo4j must be running locally (Neo4j Desktop or a server, version 5+). Triangulate only ever deletes its own node
+  types in that database.</p>
+  <div class="cmd"><span class="tag">check the install</span><pre><code>.venv/bin/triangulate --help
+.venv/bin/python -m pytest -q</code></pre></div>
+  <div class="see"><b class="lbl">You should see</b>
+    <ul><li>Six commands: <code>run</code>, <code>reason</code>, <code>eval</code>, <code>load</code>, <code>export</code>, <code>review</code>.</li>
+    <li><code>38 passed</code>. The Neo4j integration tests use a separate database called <code>triangulate-test</code>.</li></ul>
+  </div>
+</section>
+
+<section class="card" id="folder">
+  <h2><span class="num">1</span>Where results go: the run folder</h2>
+  <p>Every run gets a folder <code>runs/&lt;run id&gt;/</code>, and <code>runs/latest</code> always points at the newest
+  one. Each stage writes only its own files there, and Neo4j is rebuilt from these files. So you can open any stage's
+  output in an editor, or with <code>jq</code> as below.</p>
+<pre class="tree">runs/latest/
+├── manifest.json          versions pinned, stage fingerprints, confidences used
+├── llm_calls.jsonl        every AI call: task, model, cached or live, tokens
+├── ingest/                docs → requirements
+│   ├── sections.jsonl         315 doc sections
+│   ├── requirements.jsonl     116 kept requirements (each with a verbatim quote)
+│   └── rejected.jsonl         23 rejected, with the reason
+├── code/code_graph.json   components, routes, imports, text keys
+├── crawl/                 the live app
+│   ├── states.jsonl           243 screens, each with its controls
+│   ├── transitions.jsonl      524 clicks: from screen → to screen
+│   ├── labels.json            human names for screens (AI)
+│   ├── screens/*.jpg          a screenshot per screen
+│   └── meta.json              time taken, why each route stopped
+├── link/                  joining the layers
+│   ├── dom_code.jsonl         control → component, with method and evidence
+│   ├── dom_code_unmapped.jsonl  controls not linked, and why
+│   ├── req_links.jsonl        requirement → controls (AI judge, verified)
+│   ├── gaps.jsonl             why each uncovered requirement is uncovered
+│   ├── flows.jsonl            user journeys, replayed in a fresh browser
+│   └── review_items.jsonl     questions for a person
+├── probe/                 the AI agent's search for missed features
+├── reason/pr-6706/        report.html, report.md, impact.json
+└── eval/results.json      the scorecard</pre>
+  <p>Set a shell variable for the run you are working on (used by the step-by-step commands):</p>
+  <div class="cmd"><pre><code>R=$(readlink runs/latest); echo $R</code></pre></div>
+</section>
+
+<section class="card" id="ingest">
+  <h2><span class="num">2</span>Ingestion layer: docs → requirements</h2>
+  <div class="stepmeta"><span class="pill code">pin: code</span><span class="pill llm">ingest: AI proposes, code verifies</span><span class="pill time">about 10 s (first time: a few minutes to download the repos)</span></div>
+  <p><b>Pin</b> reads the live app's version (2026.9.0) and downloads exactly that code release and the docs. <b>Ingest</b>
+  splits 26 feature pages into sections, asks the AI for short testable statements, and keeps one only if its quote
+  appears word for word in the section.</p>
+  <div class="cmd"><span class="tag">run (creates a new run)</span><pre><code>.venv/bin/triangulate run --offline --until ingest
+R=$(readlink runs/latest)</code></pre></div>
+  <div class="cmd"><span class="tag">look at it</span><pre><code>jq -c '{app, code: .code.tag, docs: .docs.sha[0:8]}' runs/latest/manifest.json
+wc -l runs/latest/ingest/*.jsonl
+jq -r .testability runs/latest/ingest/requirements.jsonl | sort | uniq -c
+head -1 runs/latest/ingest/requirements.jsonl | jq .
+jq -c '{reason, statement}' runs/latest/ingest/rejected.jsonl | head -3</code></pre></div>
+  <div class="see"><b class="lbl">You should see</b>
+    <ul><li>Version <code>2026.9.0</code>, code tag <code>2026.9.0</code>, docs <code>55a3ac54</code>.</li>
+    <li>315 sections, 116 requirements, 23 rejected (reason: <i>quote not found verbatim in section</i>).</li>
+    <li>102 <code>UI_OBSERVABLE</code>, 12 <code>NEEDS_LOGIN</code>, 2 <code>NOT_WEB_UI</code>.</li>
+    <li>Each requirement has a <code>statement</code>, the exact <code>quote</code>, the doc <code>url</code> and
+    <code>ui_cues</code> (words to look for on screen).</li></ul>
+  </div>
+  <div class="try"><b class="lbl">Test it yourself</b>
+    Pick a requirement and check that its quote is really in the docs:
+    <div class="cmd"><pre><code>jq -r 'select(.id=="REQ-history-e416accb") | .statement, .quote' runs/latest/ingest/requirements.jsonl
+grep -n "filter your history" data/repos/docs-*/documentation/features/history.mdx</code></pre></div>
+    The grep finds the sentence in the docs source. Try any other id the same way: no kept requirement can have a quote that is missing.
+  </div>
+</section>
+
+<section class="card" id="code">
+  <h2><span class="num">3</span>Code layer: components, routes, text keys</h2>
+  <div class="stepmeta"><span class="pill code">code</span><span class="pill time">about 5 s</span></div>
+  <p>The real Vue and TypeScript compilers read the pinned code: every component, which component draws which,
+  imports, the URL routes, and which text keys each component uses.</p>
+  <div class="cmd"><span class="tag">run</span><pre><code>.venv/bin/triangulate run --offline --run $R --start code --until code</code></pre></div>
+  <div class="cmd"><span class="tag">look at it</span><pre><code>jq '{components: (.components | length), routes: (.routes | length), text_keys: (.i18n | length)}' runs/latest/code/code_graph.json
+jq -r '.routes[].path' runs/latest/code/code_graph.json | tr '\n' ' '
+jq -r '.i18n["state.linewrap"]' runs/latest/code/code_graph.json
+jq -r '.components[] | select(.keys | index("state.linewrap")) | .id' runs/latest/code/code_graph.json | head -5
+jq -r '[.components[] | select(.keys | index("state.linewrap"))] | length' runs/latest/code/code_graph.json</code></pre></div>
+  <div class="see"><b class="lbl">You should see</b>
+    <ul><li>335 components, 18 routes, 2,198 text keys.</li>
+    <li>The key <code>state.linewrap</code> is the label "Wrap lines", and <b>29</b> components use it. That is the
+    puzzle step 5 solves: which of them drew a given "Wrap lines" button?</li></ul>
+  </div>
+  <div class="try"><b class="lbl">Test it yourself</b>
+    Open one listed file, for example <code>data/repos/hoppscotch-2026.9.0/packages/hoppscotch-common/src/components/lenses/renderers/JSONLensRenderer.vue</code>,
+    and search for <code>state.linewrap</code>. The component really asks for that text.
+  </div>
+</section>
+
+<section class="card" id="crawl">
+  <h2><span class="num">4</span>Crawl layer: exploring the live app</h2>
+  <div class="stepmeta"><span class="pill code">code, no AI</span><span class="pill time">about 20 min</span></div>
+  <p>A browser robot opens hoppscotch.io signed out, starts from 7 pages, and clicks every safe control once per page.
+  It never signs in, deletes or leaves the site. A <b>screen</b> is identified by its route plus its visible controls,
+  so the same screen reached twice is stored once.</p>
+  <div class="cmd"><span class="tag">run</span><pre><code>.venv/bin/triangulate run --offline --run $R --start crawl --until crawl</code></pre></div>
+  <div class="warn"><b class="lbl">Run one crawl at a time</b>
+    Hoppscotch's MQTT page connects to a public server with a client id every Hoppscotch user shares, so two crawls
+    at once disconnect each other and the results differ.
+  </div>
+  <div class="cmd"><span class="tag">look at it</span><pre><code>jq '{states, transitions, minutes}' runs/latest/crawl/meta.json
+jq -c '.per_seed | to_entries[] | {route: .key, screens: .value.states, stopped: .value.stopped}' runs/latest/crawl/meta.json
+jq -c '{order, route, path: [.path[].name], controls: (.elements | length)}' runs/latest/crawl/states.jsonl | head -5
+jq -c '{from, click: .action.name, to}' runs/latest/crawl/transitions.jsonl | head -5
+open runs/latest/crawl/screens/S-0284553ef7c6.jpg</code></pre></div>
+  <div class="see"><b class="lbl">You should see</b>
+    <ul><li>243 screens and 524 transitions, crawled in about 20 minutes.</li>
+    <li><code>/</code> and <code>/graphql</code> stopped at <code>route_cap</code> (60 screens each). The other five routes
+    stopped as <code>explored</code>: nothing new left to click. No route should say <code>time</code>.</li>
+    <li>Each screen lists the click path that first reached it, for example <code>["Import / Export"]</code>.</li>
+    <li>The screenshot is the REST page, the first screen.</li></ul>
+  </div>
+  <div class="try"><b class="lbl">Test it yourself</b>
+    Open <a href="https://hoppscotch.io">hoppscotch.io</a> in a private window, follow the <code>path</code> of any screen
+    (for example screen 41 is <code>/settings</code> with no clicks), and compare what you see with its screenshot and its
+    <code>elements</code> list:
+    <div class="cmd"><pre><code>jq -r 'select(.order==41) | .route, .screenshot, (.elements[] | "\(.role)\t\(.name)")' runs/latest/crawl/states.jsonl | head -15</code></pre></div>
+  </div>
+</section>
+
+<section class="card" id="domcode">
+  <h2><span class="num">5</span>Connecting a button to its code</h2>
+  <div class="stepmeta"><span class="pill llm">label: AI (names only)</span><span class="pill code">load + DOM→code: code</span><span class="pill time">about 10 s</span></div>
+  <p><b>Label</b> names each screen for humans. <b>Load</b> puts everything into Neo4j so the next steps can search it.
+  <b>DOM→code</b> links each control to the component that draws it: visible text → text key → components that use the
+  key → only those that can appear on this page → the best match by neighbouring labels.</p>
+  <div class="cmd"><span class="tag">run</span><pre><code>.venv/bin/triangulate run --offline --run $R --start label --until domcode</code></pre></div>
+  <div class="cmd"><span class="tag">look at it</span><pre><code>jq -r 'to_entries[0:5][] | "\(.key)  \(.value.label)"' runs/latest/crawl/labels.json
+jq -r .method runs/latest/link/dom_code.jsonl | sort | uniq -c
+jq -c 'select(.name=="Wrap lines" and .route=="/") | {area: .context, component: .components[0].component, method, evidence}' runs/latest/link/dom_code.jsonl
+jq -r .reason runs/latest/link/dom_code_unmapped.jsonl | sort | uniq -c | sort -rn | head -3</code></pre></div>
+  <div class="see"><b class="lbl">You should see</b>
+    <ul><li>Link methods: 298 <code>i18n_route_unique</code> (one candidate on the page: certain), 331 <code>i18n_route_tiebreak</code>,
+    65 <code>i18n_route_ambiguous</code>, 17 + 22 global. That is 733 of 1,044 controls (70%).</li>
+    <li>"Wrap lines" on the REST page appears in three places, each linked to a different component:
+    <code>JSONLensRenderer.vue</code> in the main area, <code>ResponseInterface.vue</code> in the side panel and
+    <code>ImportCurl.vue</code> in the Import cURL dialog. The <code>evidence</code> field explains each one: <i>used by 29 component(s), 26 on route /; tie-break scores …</i></li>
+    <li>180 controls are not linked because their text is not a translated string (user data, examples).</li></ul>
+  </div>
+</section>
+
+<section class="card" id="judge">
+  <h2><span class="num">6</span>Requirements → screens, gaps and user journeys</h2>
+  <div class="stepmeta"><span class="pill llm">judge + probe: AI, checked by code</span><span class="pill code">gaps + flows: code</span><span class="pill time">about 9 min (journey replays)</span></div>
+  <p>For each requirement, the graph is searched for likely controls, and the AI judge says whether they implement it.
+  It may only cite controls it was shown. The probe agent then hunts in the live app for features still missing.
+  Every uncovered requirement gets one <b>gap</b> reason, and every covered one gets a <b>user journey</b> that is replayed in a
+  fresh browser to prove it.</p>
+  <div class="cmd"><span class="tag">run (to the end)</span><pre><code>.venv/bin/triangulate run --offline --run $R --start judge</code></pre></div>
+  <div class="cmd"><span class="tag">look at it</span><pre><code>jq -r .ui_verdict runs/latest/link/req_links.jsonl | sort | uniq -c
+jq -c 'select(.req_id=="REQ-history-e416accb") | {ui_verdict, ui_elements, ui_rationale}' runs/latest/link/req_links.jsonl
+jq -r .kind runs/latest/link/gaps.jsonl | sort | uniq -c
+jq -c 'select(.name | startswith("Filter history")) | {name, start_route, clicks: [.steps[].name], target: .target_name, replay_verified}' runs/latest/link/flows.jsonl
+jq -c '{req_id, outcome, decisions: (.steps | length)}' runs/latest/probe/episodes.jsonl
+jq -c '{trigger, question}' runs/latest/link/review_items.jsonl</code></pre></div>
+  <div class="see"><b class="lbl">You should see</b>
+    <ul><li>Judge verdicts: 51 <code>COVERED</code>, 32 <code>PARTIAL</code>, 19 <code>NOT_FOUND</code>, 12 <code>NOT_APPLICABLE</code> (need sign-in).</li>
+    <li>The history-filter requirement is linked to two "Filter" controls.</li>
+    <li>Gaps: 19 <code>UNOBSERVED_IN_UI</code> (built, not reached), 12 <code>OUTSIDE_CRAWL_BOUNDARY</code> (sign-in), 2 <code>NOT_UI_TESTABLE</code>.</li>
+    <li>The journey "Filter history items in the history section" starts on <code>/</code>, clicks <b>Send</b>, and reaches the target control <b>Filter</b>, with <code>replay_verified: true</code>.</li>
+    <li>5 open questions for a person.</li></ul>
+  </div>
+  <div class="try"><b class="lbl">Test it yourself</b>
+    Replay a journey by hand: open hoppscotch.io, click <b>Send</b>, then find <b>Filter</b>. Then pick a requirement with
+    a gap and check that the screen really was not reached (for example, collection actions need a saved collection,
+    which a signed-out visitor does not have).
+  </div>
+</section>
+
+<section class="card" id="neo4j">
+  <h2><span class="num">7</span>See the relations in Neo4j</h2>
+  <p>Open <a href="http://localhost:7474">http://localhost:7474</a> (Neo4j Browser), sign in with the user and password from
+  <code>.env</code>, and paste a query into the top bar. Queries that return <code>p</code> (a path) are drawn as a graph,
+  and the others as a table.</p>
+  <div class="warn"><b class="lbl">One run at a time</b>
+    Neo4j holds the graph of the last run that was loaded. <code>run</code>, <code>reason</code>, <code>eval</code> and
+    <code>load</code> each replace it. To look at a specific run: <code>.venv/bin/triangulate load --run &lt;run id&gt;</code>.
+  </div>
+  <div class="diagram">
+<pre class="mermaid">
+flowchart TB
+  R["Requirement"] -->|COVERED_BY| E["Element (control)"]
+  R -->|HAS_GAP| G["Gap"]
+  FL["Flow"] -->|EXERCISES| R
+  FL -->|STEP| E
+  S["State (screen)"] -->|CONTAINS| E
+  S -->|TRANSITION| S
+  E -->|DISPLAYS| K["I18nKey"]
+  E -->|IMPLEMENTED_BY| C["Component"]
+  C -->|USES_KEY| K
+  G -->|EXPECTED_IN| C
+  C -->|DEFINED_IN| F["File"]
+  F -->|IMPORTS| F
+  PR["PullRequest"] -->|CHANGES| F
+  class R,G,FL r
+  class S,E u
+  class C,F,K c
+  class PR p
+  classDef r fill:#3657d61f,stroke:#3657d6,stroke-width:1.5px
+  classDef u fill:#0f766e1f,stroke:#0f766e,stroke-width:1.5px
+  classDef c fill:#8b3fd91f,stroke:#8b3fd9,stroke-width:1.5px
+  classDef p fill:#c2410c1f,stroke:#c2410c,stroke-width:1.5px
+</pre>
+  </div>
+
+  <h3>a · What is in the graph</h3>
+  <div class="cmd"><pre><code>MATCH (n) RETURN labels(n)[0] AS kind, count(*) AS n ORDER BY n DESC</code></pre></div>
+  <p class="see" style="display:block"><b class="lbl">You should see</b>3,739 Symbol, 2,198 I18nKey, 1,044 Element, 756 File, 335 Component, 315 Section, 243 State, 116 Requirement, 112 Flow, 33 Gap and a few more.</p>
+
+  <h3>b · One requirement, end to end</h3>
+  <div class="cmd"><pre><code>MATCH (r:Requirement {id: 'REQ-history-e416accb'})-[c:COVERED_BY]-&gt;(e:Element)&lt;-[:CONTAINS]-(s:State)
+RETURN r.statement AS requirement, e.label AS control, c.confidence AS confidence,
+       collect(DISTINCT s.label)[0..3] AS screens</code></pre></div>
+  <div class="cmd"><span class="tag">as a picture: requirement → control → code</span><pre><code>MATCH p = (r:Requirement {id: 'REQ-history-e416accb'})-[:COVERED_BY]-&gt;(:Element)-[:IMPLEMENTED_BY]-&gt;(:Component)
+RETURN p</code></pre></div>
+
+  <h3>c · A button and the code that draws it, with the evidence</h3>
+  <div class="cmd"><pre><code>MATCH (e:Element {label: 'Wrap lines'})-[i:IMPLEMENTED_BY]-&gt;(c:Component)
+RETURN e.route AS route, e.context AS area, c.id AS component, i.method AS method,
+       i.confidence AS confidence, i.evidence AS evidence ORDER BY route LIMIT 10</code></pre></div>
+  <div class="cmd"><span class="tag">as a picture: the text-key bridge</span><pre><code>MATCH p = (e:Element {label: 'Wrap lines', route: '/'})-[:DISPLAYS]-&gt;(k:I18nKey)&lt;-[:USES_KEY]-(c:Component)
+RETURN p LIMIT 30</code></pre></div>
+
+  <h3>d · Absence: what is missing, and why</h3>
+  <div class="cmd"><pre><code>MATCH (r:Requirement)-[:HAS_GAP]-&gt;(g:Gap)
+OPTIONAL MATCH (g)-[:EXPECTED_IN]-&gt;(c:Component)
+RETURN g.kind AS gap, r.statement AS requirement, collect(c.id)[0..2] AS expected_in ORDER BY gap</code></pre></div>
+  <div class="cmd"><span class="tag">the honesty check: must return no rows</span><pre><code>MATCH (r:Requirement)
+WITH r, EXISTS { (r)-[:COVERED_BY]-&gt;() } AS covered, EXISTS { (r)-[:HAS_GAP]-&gt;() } AS gap
+WHERE covered = gap RETURN r.id</code></pre></div>
+  <p>Every requirement is either covered or has exactly one gap. Zero rows means none is silently unlinked.</p>
+
+  <h3>e · A user journey, step by step</h3>
+  <div class="cmd"><pre><code>MATCH (f:Flow)-[s:STEP]-&gt;(e:Element) WHERE f.name STARTS WITH 'Filter history'
+RETURN f.name AS journey, s.order AS step, e.label AS control ORDER BY step</code></pre></div>
+
+  <h3>f · How screens connect (the crawl as a graph)</h3>
+  <div class="cmd"><pre><code>MATCH p = (:State {route: '/settings'})-[:TRANSITION]-&gt;(:State) RETURN p LIMIT 50</code></pre></div>
+
+  <h3>g · The code side: who draws a component, who imports a file</h3>
+  <div class="cmd"><pre><code>MATCH (p:Component)-[:RENDERS]-&gt;(c:Component) WHERE c.id ENDS WITH 'JSONLensRenderer.vue'
+RETURN p.id AS drawn_by</code></pre></div>
+  <div class="cmd"><pre><code>MATCH (f:File {path: 'src/helpers/editor/linting/jsoncPretty.ts'})&lt;-[:IMPORTS*1..2]-(g:File)
+RETURN DISTINCT g.path AS importer</code></pre></div>
+</section>
+
+<section class="card" id="pr">
+  <h2><span class="num">8</span>Analyse a pull request</h2>
+  <div class="stepmeta"><span class="pill code">impact: code</span><span class="pill llm">report text: AI, checked by code</span><span class="pill time">about 10 s</span></div>
+  <p><code>reason</code> fetches the PR from GitHub, maps its changed lines to components, walks the graph outward
+  (controls → screens → journeys → requirements), and writes a report. It also stores the PR in Neo4j, so you can
+  query its blast radius directly.</p>
+  <div class="cmd"><span class="tag">run</span><pre><code>.venv/bin/triangulate reason 6706 --offline
+open runs/latest/reason/pr-6706/report.html</code></pre></div>
+  <div class="cmd"><span class="tag">look at it</span><pre><code>jq '.summary' runs/latest/reason/pr-6706/impact.json
+jq -c '.changes[] | {file, kinds}' runs/latest/reason/pr-6706/impact.json
+jq -c '.elements[] | {label, band, risk}' runs/latest/reason/pr-6706/impact.json | head -6
+jq -r '.flows[].name' runs/latest/reason/pr-6706/impact.json</code></pre></div>
+  <div class="see"><b class="lbl">You should see</b>
+    <ul><li>Overall risk <b>Medium</b>: 6 screens, 1 journey to retest, 1 requirement at risk, 1 question, 2 changes not connected to a screen.</li>
+    <li>Changed files include <code>JSONLensRenderer.vue</code> (template and script) and <code>jsoncPretty.ts</code>.</li>
+    <li>Five Medium controls (Filter, More, Wrap lines, …) with risk 0.63, and the journey "Filter history items in the history section".</li></ul>
+  </div>
+  <h3>The same blast radius as a graph query</h3>
+  <div class="cmd"><pre><code>MATCH (pr:PullRequest {number: 6706})-[ch:CHANGES]-&gt;(f:File)
+MATCH p = (f)&lt;-[:IMPORTS*0..3]-(g:File)&lt;-[:DEFINED_IN]-(c:Component)
+MATCH (e:Element)-[impl:IMPLEMENTED_BY]-&gt;(c)
+WITH e, impl.confidence * ch.weight * (0.7 ^ (length(p) - 1)) AS risk
+MATCH (st:State)-[:CONTAINS]-&gt;(e)
+OPTIONAL MATCH (fl:Flow)-[:STEP]-&gt;(e)
+OPTIONAL MATCH (r:Requirement)-[:COVERED_BY]-&gt;(e)
+RETURN e.label AS control, max(risk) AS risk, collect(DISTINCT st.label)[0..3] AS screens,
+       collect(DISTINCT fl.name) AS journeys, collect(DISTINCT r.id) AS requirements
+ORDER BY risk DESC</code></pre></div>
+  <p>This raw query lists 8 controls. The report applies one more rule, <b>presence</b>: a component only counts as being on
+  a screen if a control there is uniquely linked to it, or at least two of its controls are. That is why "Wrap lines" on
+  the code-generation screen appears here but not in the report.</p>
+  <div class="try"><b class="lbl">Test it yourself</b>
+    Open <a href="https://github.com/hoppscotch/hoppscotch/pull/6706/files">the PR's diff on GitHub</a>, find the change to
+    <code>JSONLensRenderer.vue</code>, and check that the report's screens are the ones that show the JSON response
+    viewer. The other samples: <code>6584</code> (desktop-only, so Low), <code>6707</code> and <code>6708</code>
+    (code the crawl never displayed, so Low with a question), and <code>6721</code> (Medium, cURL code generation).
+  </div>
+</section>
+
+<section class="card" id="eval">
+  <h2><span class="num">9</span>Check it is right: the scorecard</h2>
+  <p>The eval runs 10 automatic checks and compares the run against three hand-checked answer sets in
+  <code>eval/gold/</code>. The verdict is "correct" only if every check passes and every score meets
+  <code>eval/thresholds.yaml</code>. It needs the five PR reports, so run <code>reason</code> for each one first.</p>
+  <div class="cmd"><span class="tag">run</span><pre><code>for pr in 6584 6706 6707 6708 6721; do .venv/bin/triangulate reason $pr --offline &gt; /dev/null; done
+.venv/bin/triangulate eval</code></pre></div>
+  <div class="cmd"><span class="tag">look at it</span><pre><code>jq '.verdict' runs/latest/eval/results.json
+jq -c '.invariants[] | {invariant, ok}' runs/latest/eval/results.json
+jq '.dom_code.precision_by_method, .req_ui' runs/latest/eval/results.json
+jq -c '.prs[] | {pr, overall_risk, false_alarms, recall}' runs/latest/eval/results.json</code></pre></div>
+  <div class="see"><b class="lbl">You should see</b>
+    <ul><li>The last line printed is <code>run is correct (invariants + eval/thresholds.yaml)</code>, and the exit code is 0.</li>
+    <li>Button → code: certain links 1.00 precision, all links 0.69. Requirement → screen: precision 0.84, recall 0.76.</li>
+    <li>PRs: no false alarms. PR 6706 finds 3 of 5 expected controls (misses Copy and Download file).</li></ul>
+  </div>
+  <div class="try"><b class="lbl">Test it yourself</b>
+    Open <code>eval/gold/dom_code.yaml</code>, pick an item, find the element in <code>runs/latest/link/dom_code.jsonl</code>,
+    and read the component's template to judge the link yourself. Or raise a threshold in <code>eval/thresholds.yaml</code>
+    above the measured score and run <code>eval</code> again: the verdict names the failing score and the command exits with 1.
+  </div>
+</section>
+
+<section class="card" id="repeat">
+  <h2><span class="num">10</span>Repeatability: same input, same output</h2>
+  <p>Every stage's output gets a fingerprint (hash), and every AI answer is saved by a fingerprint of its question. So two
+  offline runs of the same release should match stage by stage. Run the pipeline a second time, then compare:</p>
+  <div class="cmd"><pre><code>FIRST=$R
+.venv/bin/triangulate run --offline
+SECOND=$(readlink runs/latest)
+.venv/bin/triangulate eval --run $SECOND --compare $FIRST
+jq '.repeatability.matches, .repeatability.llm_calls' runs/$SECOND/eval/results.json</code></pre></div>
+  <div class="see"><b class="lbl">You should see</b>
+    <code>true</code> for ingest, code, crawl, link and probe, and <code>"live": 0</code> AI calls. Screenshots and on-screen
+    pixel positions are not part of the fingerprint, because a banner such as Hoppscotch's "offline" notice can move the
+    page without changing any control.
+  </div>
+</section>
+
+<section class="card" id="review">
+  <h2><span class="num">11</span>Human review (optional)</h2>
+  <p>Open questions from step 6 can be answered by a person. Answers are saved in <code>config/overrides.yaml</code> and
+  reused by every later run (with method <code>human</code> and confidence 1.0).</p>
+  <div class="cmd"><pre><code>.venv/bin/triangulate review
+.venv/bin/triangulate run --offline --run $R --start domcode</code></pre></div>
+  <div class="warn"><b class="lbl">This changes later runs</b>
+    An override changes the links, so later runs no longer match the shipped results exactly, and the offline cache may
+    miss. To undo it, empty <code>config/overrides.yaml</code> again.
+  </div>
+</section>
+
+<section class="card" id="live">
+  <h2><span class="num">12</span>A live run with your own Gemini key (optional)</h2>
+  <p>Without <code>--offline</code>, any AI question not in the cache goes to Gemini. With unchanged inputs everything is
+  still served from the cache. A run from an empty cache needs about 15 calls; the Gemini free tier allows about 20 per
+  model per day.</p>
+  <div class="cmd"><pre><code>.venv/bin/triangulate run                      # full run, live where needed
+.venv/bin/triangulate run --profile smoke      # small run: 3 doc pages, 2 routes, about 10 calls
+jq -c '{task, model, cached}' runs/latest/llm_calls.jsonl</code></pre></div>
+  <p>If Google reports the daily quota as used up, the run stops with a clear message and keeps everything cached. Resume after the
+  reset with <code>--run &lt;run id&gt; --start &lt;stage&gt;</code>.</p>
+</section>
+
+<section class="card" id="trouble">
+  <h2><span class="num">13</span>Troubleshooting</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>You see</th><th>Meaning</th><th>Do this</th></tr></thead>
+    <tbody>
+      <tr><td><code>CacheMiss</code> in an offline run</td><td>An AI question differs from the recorded ones: the code, config or live app changed.</td><td>Find the cause with <code>eval --compare</code>, or run once live to record new answers.</td></tr>
+      <tr><td>Neo4j connection refused</td><td>Neo4j is not running, or <code>.env</code> has the wrong address or password.</td><td>Start Neo4j and check <code>NEO4J_URI</code>, <code>NEO4J_USER</code> and <code>NEO4J_PASSWORD</code>.</td></tr>
+      <tr><td>App version changed during the crawl</td><td>Hoppscotch deployed a new release mid-run, so the run is invalid by design.</td><td>Run again: it pins the new version (AI answers for new content are live).</td></tr>
+      <tr><td>Crawl results differ between runs</td><td>Two crawls ran at the same time (the MQTT page), or the live site changed.</td><td>Run crawls one at a time. <code>eval --compare</code> shows which stage differs.</td></tr>
+      <tr><td><code>Executable doesn't exist</code> (Playwright)</td><td>The Chromium browser is not installed.</td><td><code>.venv/bin/python -m playwright install chromium</code></td></tr>
+      <tr><td><code>run is NOT correct: PR … has no report</code></td><td>The eval needs the five PR reports.</td><td>Run <code>reason</code> for 6584, 6706, 6707, 6708 and 6721 first (step 9).</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section class="card" id="cheat">
+  <h2><span class="num">★</span>Cheat sheet</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Stage</th><th>Command</th><th>Main output</th><th>Time</th></tr></thead>
+    <tbody>
+      <tr><td>Pin + ingest</td><td><code>run --offline --until ingest</code></td><td><code>ingest/requirements.jsonl</code></td><td>~10 s</td></tr>
+      <tr><td>Code</td><td><code>run --offline --run $R --start code --until code</code></td><td><code>code/code_graph.json</code></td><td>~5 s</td></tr>
+      <tr><td>Crawl</td><td><code>run --offline --run $R --start crawl --until crawl</code></td><td><code>crawl/states.jsonl</code>, <code>screens/</code></td><td>~20 min</td></tr>
+      <tr><td>Label, load, button → code</td><td><code>run --offline --run $R --start label --until domcode</code></td><td><code>link/dom_code.jsonl</code></td><td>~10 s</td></tr>
+      <tr><td>Judge → final load</td><td><code>run --offline --run $R --start judge</code></td><td><code>link/req_links.jsonl</code>, <code>gaps</code>, <code>flows</code></td><td>~9 min</td></tr>
+      <tr><td>Everything at once</td><td><code>run --offline</code></td><td>the whole run folder</td><td>~35 min</td></tr>
+      <tr><td>Analyse a PR</td><td><code>reason 6706 --offline</code></td><td><code>reason/pr-6706/report.html</code></td><td>~10 s</td></tr>
+      <tr><td>Scorecard</td><td><code>eval</code></td><td><code>eval/results.json</code></td><td>~10 s</td></tr>
+      <tr><td>Switch Neo4j to a run</td><td><code>load --run &lt;id&gt;</code></td><td>the graph</td><td>~5 s</td></tr>
+    </tbody>
+  </table></div>
+  <p>All commands start with <code>.venv/bin/triangulate</code>. Stage names in order: <code>pin ingest code crawl label load domcode judge probe probe_post gaps flows review final_load</code>.</p>
+</section>
+
+<footer>Triangulate · hands-on guide · numbers from run 20261016T065647Z-default (Hoppscotch 2026.9.0)</footer>
+</div>
+
+<script>
+(function(){
+  var btn = document.getElementById('themeBtn'), root = document.documentElement, KEY = 'tri-theme';
+  function stored(){ try { return localStorage.getItem(KEY); } catch(e){ return null; } }
+  var t = stored(); if (t) root.setAttribute('data-theme', t);
+  btn.addEventListener('click', function(){
+    var dark = root.getAttribute('data-theme') ? root.getAttribute('data-theme') === 'dark'
+      : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = dark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(KEY, next); } catch(e){}
+    location.reload();
+  });
+  document.querySelectorAll('.cmd').forEach(function(box){
+    var b = document.createElement('button'); b.className = 'copy'; b.type = 'button'; b.textContent = 'Copy';
+    b.addEventListener('click', function(){
+      var text = box.querySelector('code').innerText;
+      var done = function(){ b.textContent = 'Copied'; setTimeout(function(){ b.textContent = 'Copy'; }, 1200); };
+      if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function(){ b.textContent = 'Select and copy'; });
+    });
+    box.appendChild(b);
+  });
+})();
+</script>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.esm.min.mjs';
+  const forced = document.documentElement.getAttribute('data-theme');
+  const dark = forced ? forced === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  mermaid.initialize({ startOnLoad: false, theme: dark ? 'dark' : 'neutral', securityLevel: 'strict',
+    fontFamily: 'ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, sans-serif',
+    flowchart: { curve: 'basis', htmlLabels: true, nodeSpacing: 30, rankSpacing: 40, wrappingWidth: 220 } });
+  await mermaid.run({ querySelector: 'pre.mermaid' });
+</script>
+</body>
+</html>

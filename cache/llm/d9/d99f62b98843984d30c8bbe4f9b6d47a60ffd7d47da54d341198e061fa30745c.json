@@ -1,0 +1,75 @@
+{
+ "meta": {
+  "model_version": "gemini-3.1-flash-lite",
+  "usage": {
+   "candidatesTokenCount": 187,
+   "promptTokenCount": 722,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 722
+    }
+   ],
+   "serviceTier": "standard",
+   "totalTokenCount": 909
+  }
+ },
+ "model": "gemini-3.1-flash-lite",
+ "prompt": "PULL REQUEST: fix(common): keep HTML response preview readable in dark theme\nDESCRIPTION (author's words, may be technical):\nCloses #6665 — light color-scheme on HTML preview iframe/srcdoc; includes tests.\n\n<!-- This is an auto-generated description by cubic. -->\n---\n## Summary by cubic\nFixes the HTML response preview being unreadable in dark themes. The preview iframe inherited the app's dark `color-scheme`, which made unstyled HTML text invisible (light text on a light background). The preview now forces a light color-scheme unless the response HTML already declares its own.\n\n- Extracts srcdoc building (base href injection and color-scheme handling) into a `buildHtmlPreviewSrcdoc` helper.\n- Adds tests covering base href injection, color-scheme forcing, and case-insensitive meta name detection.\n\n<sup>Written for commit 600aba00d49b04f2944780ba5b3897c0e51577d0. Summary will update on new commits.</sup>\n\n<a href=\"https://cubic.dev/pr/hoppscotch/hoppscotch/pull/6707?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n\n<!-- End of auto-generated description by cubic. -->\n\n\n\nCHANGE AREAS (plain): automated tests (no user impact); shared logic behind the screens listed; the lenses renderers htmllens renderer area\nOVERALL RISK (already computed): Low\n\nFLOWS TO RETEST (id | risk | name | steps): none\n\nSCREENS AT RISK (id | risk | screen | controls at risk): none\n\nREQUIREMENTS (id | status | statement): none\n\nCHANGES WE COULD NOT CONNECT TO A SCREEN (plain reason):\n  - Lenses › Renderers › HTMLLens Renderer: can appear on the REST page, but the crawl never showed any of its controls\n\nOPEN QUESTIONS FOR A HUMAN (id | question):\n  RV-a8c71d3b17 | This change touches 'Lenses › Renderers › HTMLLens Renderer', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n\nWrite the brief. Include every High flow in retest. Add a requirement note for every requirement listed. Turn each open question into a plain question (cite its id in 'about').",
+ "response_text": "{\n  \"headline\": \"This change modifies how HTML responses are displayed in the preview pane to ensure text remains visible when using the dark theme.\",\n  \"what_changed\": \"The HTML response preview now forces a light background color scheme by default, preventing text from becoming invisible when the app is set to dark mode. This ensures that unstyled HTML content remains readable regardless of the user's theme settings. The update also includes internal improvements to how these previews are constructed.\",\n  \"questions\": [\n    {\n      \"about\": [\"RV-a8c71d3b17\"],\n      \"question\": \"The HTML preview renderer is used within the REST request response tab, but we have not verified its behavior on screen. Could you confirm which specific screen displays this preview and if we should perform a manual check to ensure the text contrast is correct?\"\n    }\n  ]\n}",
+ "schema": {
+  "properties": {
+   "headline": {
+    "description": "One sentence summary of what this change puts at risk",
+    "type": "STRING"
+   },
+   "questions": {
+    "items": {
+     "properties": {
+      "about": {
+       "items": {
+        "enum": [
+         "RV-a8c71d3b17"
+        ],
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      },
+      "question": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "about",
+      "question"
+     ],
+     "required": [
+      "about",
+      "question"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "what_changed": {
+    "description": "2-4 sentences in product language describing the change",
+    "type": "STRING"
+   }
+  },
+  "propertyOrdering": [
+   "headline",
+   "what_changed",
+   "questions"
+  ],
+  "required": [
+   "headline",
+   "what_changed",
+   "questions"
+  ],
+  "type": "OBJECT"
+ },
+ "seed": 7,
+ "system": "You write pull-request risk briefs for a QA lead who knows the product (Hoppscotch, an API client)\nbut not its code. Use plain product language: screens, buttons, tabs, what a user does.\nNever mention file names, code identifiers, components, functions, keys, or programming terms.\nOnly talk about items given to you, and cite them by their ids exactly as given.",
+ "task": "report:pr6707",
+ "temperature": 0.0
+}

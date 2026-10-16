@@ -1,0 +1,99 @@
+{
+ "meta": {
+  "model_version": "gemini-3.5-flash-lite",
+  "usage": {
+   "candidatesTokenCount": 156,
+   "promptTokenCount": 1148,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 1148
+    }
+   ],
+   "serviceTier": "standard",
+   "totalTokenCount": 1304
+  }
+ },
+ "model": "gemini-3.5-flash-lite",
+ "prompt": "Judge each requirement.\n\n<requirement id=\"REQ-collections-15c0aafe\">\nstatement: User can duplicate a collection using the Duplicate option in its menu.\ndoc quote: \"To duplicate a collection, click on the \"Duplicate\" button on the collection's options.\"\ntestable in web UI without login: yes\nUI candidates:\n  U1: [heading] 'New Collection' on /graphql; screens: New GraphQL collection dialog, New GraphQL collection modal\n  U2: [button] 'Import' on /graphql; screens: GraphQL collections view, GraphQL import/export menu, New GraphQL collection modal\n  U3: [textbox] 'Label' on /graphql; screens: New GraphQL collection dialog, New GraphQL collection modal\n  U4: [button] 'Cancel' on /graphql; screens: New GraphQL collection dialog, New GraphQL collection modal\n  U5: [label] 'Label' on /graphql; screens: New GraphQL collection dialog, New GraphQL collection modal\n  U6: [button] 'Save' on /graphql; screens: New GraphQL collection dialog, New GraphQL collection modal\n  U7: [button] 'Close' on /graphql; screens: New GraphQL collection dialog, New GraphQL collection modal\n  U8: [checkbox] '' on /; screens: Import Postman collection, Postman import confirmation, Postman collection import dialog\n  U9: [button] 'Add new' on /graphql; screens: GraphQL collections view, GraphQL import/export menu, New GraphQL collection modal\n  U10: [label] 'Import scripts (Experimental) Supports Postman Collection v2.0/v2.1.' on /; screens: Import Postman collection, Postman import confirmation, Postman collection import dialog\n  U11: [button] 'Import / Export' on /graphql; screens: GraphQL collections view, GraphQL import/export menu, New GraphQL collection modal\n  U12: [button] '' on /; screens: Import OpenAPI from file, Import Postman collection, Postman import confirmation\n  U13: [button] 'Import' on /; screens: Import OpenAPI from file, Import Postman collection, Postman import confirmation\n  U14: [button] 'Save' on /graphql; screens: Save GraphQL request dialog, Login for AI GraphQL naming, New GraphQL collection dialog\n  U15: [button] 'New' on /graphql; screens: Save GraphQL request dialog, Login for AI GraphQL naming, New GraphQL collection dialog\nCode candidates:\n  C1: Collections (src/components/collections/index.vue); shows: 'Duplicate', 'Collection created', 'Collection duplicated', 'New Collection'\n  C2: CollectionsCollection (src/components/collections/Collection.vue); shows: 'Duplicate', 'Run collection', 'Export collection'\n  C3: CollectionsGraphql (src/components/collections/graphql/index.vue); shows: 'Duplicate', 'New Collection'\n  C4: CollectionsExampleResponse (src/components/collections/ExampleResponse.vue); shows: 'Duplicate'\n  C5: CollectionsRequest (src/components/collections/Request.vue); shows: 'Duplicate'\n  C6: CollectionsGraphqlCollection (src/components/collections/graphql/Collection.vue); shows: 'Duplicate'\n  C7: CollectionsGraphqlFolder (src/components/collections/graphql/Folder.vue); shows: 'Duplicate'\n  C8: CollectionsGraphqlRequest (src/components/collections/graphql/Request.vue); shows: 'Duplicate'\n  C9: Environments (src/components/environments/index.vue); shows: 'Duplicate'\n  C10: EnvironmentsMyEnvironment (src/components/environments/my/Environment.vue); shows: 'Duplicate'\n  C11: EnvironmentsTeamsEnvironment (src/components/environments/teams/Environment.vue); shows: 'Duplicate'\n  C12: AppShortcutsPrompt (src/components/app/ShortcutsPrompt.vue); shows: 'Search & command menu', 'Help menu'\n  C13: GqlTabHead (src/components/gql/TabHead.vue); shows: 'Duplicate Tab'\n  C14: GraphqlTabHead (src/components/graphql/TabHead.vue); shows: 'Duplicate Tab'\n  C15: HttpTabHead (src/components/http/TabHead.vue); shows: 'Duplicate Tab'\n</requirement>\n",
+ "response_text": "{\n  \"judgements\": [\n    {\n      \"req_id\": \"REQ-collections-15c0aafe\",\n      \"ui_verdict\": \"NOT_FOUND\",\n      \"ui_ids\": [],\n      \"ui_rationale\": \"None of the listed UI elements represent a collection duplicate option or button.\",\n      \"code_verdict\": \"PRESENT\",\n      \"code_ids\": [\"C1\", \"C2\", \"C3\", \"C6\"],\n      \"code_rationale\": \"Components like Collections (src/components/collections/index.vue), CollectionsCollection, and CollectionsGraphqlCollection clearly implement collection duplication logic and references.\"\n    }\n  ]\n}",
+ "schema": {
+  "properties": {
+   "judgements": {
+    "items": {
+     "properties": {
+      "code_ids": {
+       "description": "Ids like C2 from this requirement's code candidates",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      },
+      "code_rationale": {
+       "type": "STRING"
+      },
+      "code_verdict": {
+       "enum": [
+        "PRESENT",
+        "ABSENT"
+       ],
+       "type": "STRING"
+      },
+      "req_id": {
+       "type": "STRING"
+      },
+      "ui_ids": {
+       "description": "Ids like U3 from this requirement's UI candidates",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      },
+      "ui_rationale": {
+       "type": "STRING"
+      },
+      "ui_verdict": {
+       "enum": [
+        "COVERED",
+        "PARTIAL",
+        "NOT_FOUND"
+       ],
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "req_id",
+      "ui_verdict",
+      "ui_ids",
+      "ui_rationale",
+      "code_verdict",
+      "code_ids",
+      "code_rationale"
+     ],
+     "required": [
+      "req_id",
+      "ui_verdict",
+      "ui_ids",
+      "ui_rationale",
+      "code_verdict",
+      "code_ids",
+      "code_rationale"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   }
+  },
+  "propertyOrdering": [
+   "judgements"
+  ],
+  "required": [
+   "judgements"
+  ],
+  "type": "OBJECT"
+ },
+ "seed": 7,
+ "system": "You verify whether documented product requirements are implemented, for a QA team.\nFor each requirement you get candidate UI elements observed in the live web app (ids U1, U2, ...) and candidate\ncode components from its repository (ids C1, C2, ...).\nUI verdict:\n- COVERED: one or more listed UI elements clearly let a user perform or see this capability.\n- PARTIAL: listed elements show part of it (e.g. the entry point exists but not the full behaviour).\n- NOT_FOUND: none of the listed elements implement it. Do not stretch: a generic button is not evidence.\nCode verdict:\n- PRESENT: a listed component clearly implements this capability; ABSENT otherwise.\nCite only ids from that requirement's own lists. If a list is marked \"not applicable\", answer NOT_FOUND / ABSENT\nfor that part and cite nothing.",
+ "task": "rejudge:0:v0",
+ "temperature": 0.0
+}

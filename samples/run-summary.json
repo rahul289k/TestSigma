@@ -1,0 +1,520 @@
+{
+ "app": {
+  "url": "https://hoppscotch.io",
+  "version": "2026.9.0"
+ },
+ "code": {
+  "repo": "hoppscotch/hoppscotch",
+  "sha": "63273f8e599e73f0fb38c0739314e8d46b6bc83d",
+  "tag": "2026.9.0"
+ },
+ "docs": {
+  "repo": "hoppscotch/docs",
+  "sha": "55a3ac541ff18064b00d102bb99845d406da3b5e"
+ },
+ "eval": {
+  "calibration_measured": {
+   "i18n_route_ambiguous": 0.312,
+   "i18n_route_tiebreak": 0.588,
+   "i18n_route_unique": 0.923
+  },
+  "dom_code": {
+   "credit_by_method": {
+    "i18n_global_unique": 2.0,
+    "i18n_route_ambiguous": 1.5,
+    "i18n_route_tiebreak": 9.0,
+    "i18n_route_unique": 11.0
+   },
+   "found_in_run": 34,
+   "items": 42,
+   "n_by_method": {
+    "i18n_global_unique": 2,
+    "i18n_route_ambiguous": 6,
+    "i18n_route_tiebreak": 15,
+    "i18n_route_unique": 11
+   },
+   "precision_by_method": {
+    "i18n_global_unique": 1.0,
+    "i18n_route_ambiguous": 0.25,
+    "i18n_route_tiebreak": 0.6,
+    "i18n_route_unique": 1.0
+   },
+   "precision_overall": 0.691
+  },
+  "invariants": [
+   {
+    "detail": "0 bad",
+    "invariant": "every requirement quote is verbatim in its docs section",
+    "ok": true
+   },
+   {
+    "detail": "0 violations",
+    "invariant": "every requirement is covered XOR has exactly one explained gap",
+    "ok": true
+   },
+   {
+    "detail": "0 violations",
+    "invariant": "no requirement has more than one gap",
+    "ok": true
+   },
+   {
+    "detail": "0 missing",
+    "invariant": "every cross-layer edge carries method and confidence",
+    "ok": true
+   },
+   {
+    "detail": "0 missing",
+    "invariant": "every DOM->code edge carries its evidence",
+    "ok": true
+   },
+   {
+    "detail": "0 unverified",
+    "invariant": "every flow in the graph was replayed successfully",
+    "ok": true
+   },
+   {
+    "detail": "0 orphans",
+    "invariant": "no orphan elements",
+    "ok": true
+   },
+   {
+    "detail": "0 violations",
+    "invariant": "every judged UI citation was among the retrieved candidates",
+    "ok": true
+   },
+   {
+    "detail": "0 untied",
+    "invariant": "every gap is tied to the crawl run that asserts it",
+    "ok": true
+   },
+   {
+    "detail": "2026.9.0 -> 2026.9.0",
+    "invariant": "app version unchanged during the crawl",
+    "ok": true
+   }
+  ],
+  "invariants_ok": true,
+  "prs": [
+   {
+    "expected_controls": 5,
+    "expected_overall": null,
+    "false_alarms": [],
+    "flagged_high_medium": 5,
+    "missed": [
+     "copy",
+     "download file"
+    ],
+    "overall_ok": null,
+    "overall_risk": "Medium",
+    "pr": 6706,
+    "ran": true,
+    "recall": 0.6,
+    "unmapped_as_expected": true
+   },
+   {
+    "expected_controls": 0,
+    "expected_overall": null,
+    "false_alarms": [],
+    "flagged_high_medium": 0,
+    "missed": [],
+    "overall_ok": null,
+    "overall_risk": "Low",
+    "pr": 6707,
+    "ran": true,
+    "recall": null,
+    "unmapped_as_expected": true
+   },
+   {
+    "expected_controls": 0,
+    "expected_overall": null,
+    "false_alarms": [],
+    "flagged_high_medium": 0,
+    "missed": [],
+    "overall_ok": null,
+    "overall_risk": "Low",
+    "pr": 6708,
+    "ran": true,
+    "recall": null,
+    "unmapped_as_expected": true
+   },
+   {
+    "expected_controls": 0,
+    "expected_overall": "Low",
+    "false_alarms": [],
+    "flagged_high_medium": 0,
+    "missed": [],
+    "overall_ok": true,
+    "overall_risk": "Low",
+    "pr": 6584,
+    "ran": true,
+    "recall": null,
+    "unmapped_as_expected": true
+   },
+   {
+    "expected_controls": 0,
+    "expected_overall": null,
+    "false_alarms": [],
+    "flagged_high_medium": 4,
+    "missed": [],
+    "overall_ok": null,
+    "overall_risk": "Medium",
+    "pr": 6721,
+    "ran": true,
+    "recall": null,
+    "unmapped_as_expected": true
+   }
+  ],
+  "repeatability": {
+   "crawl_routes_cut_by_time": [],
+   "llm_calls": {
+    "cached": 9,
+    "live": 9
+   },
+   "matches": {
+    "20261016T073037Z-default": {
+     "code": true,
+     "crawl": true,
+     "ingest": true,
+     "link": true,
+     "probe": true
+    }
+   },
+   "stage_hashes": {
+    "code": "2dc0afb784dbd940",
+    "crawl": "417f99d470a6a5d6",
+    "ingest": "96021dc94e28d669",
+    "link": "4ebaa40e212a644a",
+    "probe": "1b370ffc45498a96"
+   }
+  },
+  "req_ui": {
+   "absence_precision": 0.0,
+   "fn": 5,
+   "fp": 3,
+   "items": 24,
+   "precision": 0.842,
+   "recall": 0.762,
+   "tn": 0,
+   "tp": 16
+  },
+  "run": "20261016T065647Z-default",
+  "verdict": {
+   "correct": true,
+   "failed": []
+  }
+ },
+ "link_priors": {
+  "human": 1.0,
+  "i18n_global_ambiguous": 0.25,
+  "i18n_global_unique": 0.5,
+  "i18n_route_ambiguous": 0.4,
+  "i18n_route_tiebreak": 0.632,
+  "i18n_route_unique": 0.929,
+  "llm_judge": 0.8,
+  "route_page": 0.95
+ },
+ "llm": {
+  "models": {
+   "default": "gemini-3.5-flash-lite",
+   "light": "gemini-3.1-flash-lite"
+  },
+  "provider": "gemini",
+  "task_tiers": {
+   "flownames": "light",
+   "ingest": "default",
+   "judge": "default",
+   "label": "light",
+   "probe": "default",
+   "rejudge": "default",
+   "report": "light"
+  }
+ },
+ "llm_usage": {
+  "cached_calls": 4,
+  "live_calls": 6
+ },
+ "run_id": "20261016T065647Z-default",
+ "stage_hashes": {
+  "code": "2dc0afb784dbd940",
+  "crawl": "9fd77c8d6d576dc6",
+  "ingest": "96021dc94e28d669",
+  "link": "4ebaa40e212a644a",
+  "probe": "1b370ffc45498a96"
+ },
+ "stage_stats": {
+  "code": {
+   "components": 335,
+   "components_using_keys": 267,
+   "dynamic_component_users": [
+    "src/components/TabsNav.vue",
+    "src/components/aichat/Assistant.vue",
+    "src/components/aichat/Message.vue",
+    "src/components/app/Banner.vue",
+    "src/components/app/ContextMenu.vue",
+    "src/components/app/Header.vue",
+    "src/components/app/KernelInterceptor.vue",
+    "src/components/app/Share.vue",
+    "src/components/app/Sidenav.vue",
+    "src/components/app/spotlight/Entry.vue",
+    "src/components/collections/Collection.vue",
+    "src/components/collections/Request.vue",
+    "src/components/collections/graphql/Collection.vue",
+    "src/components/collections/graphql/Folder.vue",
+    "src/components/collections/graphql/Request.vue",
+    "src/components/console/Item.vue",
+    "src/components/embeds/GQLIndex.vue",
+    "src/components/embeds/GQLRequest.vue",
+    "src/components/embeds/index.vue",
+    "src/components/firebase/Login.vue",
+    "src/components/gql/TabHead.vue",
+    "src/components/gql/TypeLink.vue",
+    "src/components/graphql/Response.vue",
+    "src/components/graphql/ResponseMeta.vue",
+    "src/components/graphql/TypeLink.vue",
+    "src/components/history/Personal.vue",
+    "src/components/history/graphql/MergedCard.vue",
+    "src/components/history/index.vue",
+    "src/components/http/ProtocolSwitcher.vue",
+    "src/components/http/ResponseMeta.vue",
+    "src/components/http/TestResult.vue",
+    "src/components/http/TestResultEntry.vue",
+    "src/components/http/TestResultEnv.vue",
+    "src/components/http/example/LenseBodyRenderer.vue",
+    "src/components/http/test/Folder.vue",
+    "src/components/http/test/ResultFolder.vue",
+    "src/components/http/test/ResultRequest.vue",
+    "src/components/http/test/RunnerRequestSelector.vue",
+    "src/components/http/test/TestResult.vue",
+    "src/components/importExport/Base.vue",
+    "src/components/instance/Switcher.vue",
+    "src/components/lenses/ResponseBodyRenderer.vue",
+    "src/components/mockServer/MockServerDashboard.vue",
+    "src/components/organization/Switcher.vue",
+    "src/components/profile/UserDelete.vue",
+    "src/components/profile/index.vue",
+    "src/components/realtime/LogEntry.vue",
+    "src/components/share/Request.vue",
+    "src/components/share/templates/EmbedsGQL.vue",
+    "src/components/tab/Primary.vue",
+    "src/components/tab/Secondary.vue",
+    "src/components/teams/Invite.vue",
+    "src/components/teams/View.vue",
+    "src/layouts/default.vue",
+    "src/layouts/empty.vue",
+    "src/pages/settings.vue"
+   ],
+   "dynamic_render_edges": 135,
+   "i18n_keys": 2198,
+   "import_edges": 2780,
+   "render_edges": 463,
+   "routes": 18,
+   "seconds": 1.6,
+   "ts_files": 421,
+   "unresolved_tags": {
+    "EnumValue": 1,
+    "ExplorerSection": 1,
+    "Folder": 1,
+    "GithubButton": 1,
+    "GraphqlMarkdown": 1,
+    "GraphqlPossibleTypes": 1,
+    "Toaster": 1,
+    "VueJsonPretty": 1,
+    "VueMonacoEditor": 1,
+    "VuePdfEmbed": 1
+   }
+  },
+  "crawl": {
+   "app_version": "2026.9.0",
+   "blocked_navigations": 0,
+   "failed_actions": 0,
+   "load_retries": 0,
+   "minutes": 20.3,
+   "per_seed": {
+    "/": {
+     "actions": 89,
+     "new_states": 60,
+     "seconds": 158.2,
+     "states": 60,
+     "stopped": "route_cap"
+    },
+    "/graphql": {
+     "actions": 107,
+     "new_states": 59,
+     "seconds": 288.5,
+     "states": 60,
+     "stopped": "route_cap"
+    },
+    "/realtime/mqtt": {
+     "actions": 58,
+     "new_states": 25,
+     "seconds": 153.5,
+     "states": 26,
+     "stopped": "explored"
+    },
+    "/realtime/socketio": {
+     "actions": 55,
+     "new_states": 24,
+     "seconds": 133.8,
+     "states": 25,
+     "stopped": "explored"
+    },
+    "/realtime/sse": {
+     "actions": 40,
+     "new_states": 16,
+     "seconds": 109.1,
+     "states": 17,
+     "stopped": "explored"
+    },
+    "/realtime/websocket": {
+     "actions": 52,
+     "new_states": 25,
+     "seconds": 120.9,
+     "states": 26,
+     "stopped": "explored"
+    },
+    "/settings": {
+     "actions": 77,
+     "new_states": 34,
+     "seconds": 251.2,
+     "states": 35,
+     "stopped": "explored"
+    }
+   },
+   "popups_closed": 0,
+   "replay_mismatches": 0,
+   "resets": 197,
+   "seconds": 1216.6,
+   "states": 243,
+   "transitions": 524
+  },
+  "domcode": {
+   "by_method": {
+    "i18n_global_ambiguous": 22,
+    "i18n_global_unique": 17,
+    "i18n_route_ambiguous": 65,
+    "i18n_route_tiebreak": 331,
+    "i18n_route_unique": 298
+   },
+   "elements": 1044,
+   "mapped": 733,
+   "mapped_share": 0.702,
+   "overrides_applied": 0,
+   "seconds": 0.4,
+   "unmapped": 311
+  },
+  "final_load": {
+   "components": 335,
+   "dom_code": 733,
+   "elements": 1044,
+   "flows": 112,
+   "gaps": 33,
+   "req_links": 114,
+   "requirements": 116,
+   "review_items": 5,
+   "seconds": 3.0,
+   "states": 243
+  },
+  "flows": {
+   "failed_replay": 0,
+   "planned": 112,
+   "seconds": 579.5,
+   "verified": 112
+  },
+  "gaps": {
+   "covered": 83,
+   "gaps": {
+    "NOT_UI_TESTABLE": 2,
+    "OUTSIDE_CRAWL_BOUNDARY": 12,
+    "UNOBSERVED_IN_UI": 19
+   },
+   "requirements": 116,
+   "seconds": 0.1,
+   "ui_coverage": 0.814,
+   "ui_testable": 102
+  },
+  "ingest": {
+   "by_testability": {
+    "NEEDS_LOGIN": 12,
+    "NOT_WEB_UI": 2,
+    "UI_OBSERVABLE": 102
+   },
+   "kept": 116,
+   "pages": 26,
+   "proposed": 139,
+   "rejected": 23,
+   "seconds": 0.1,
+   "sections": 315
+  },
+  "judge": {
+   "code_present": 114,
+   "judged": 114,
+   "overrides_applied": 0,
+   "review_items": 6,
+   "seconds": 59.7,
+   "ui_verdicts": {
+    "COVERED": 51,
+    "NOT_APPLICABLE": 12,
+    "NOT_FOUND": 19,
+    "PARTIAL": 32
+   }
+  },
+  "label": {
+   "labeled": 243,
+   "seconds": 19.0
+  },
+  "load": {
+   "components": 335,
+   "elements": 1044,
+   "requirements": 116,
+   "seconds": 2.2,
+   "states": 243
+  },
+  "pin": {
+   "app": {
+    "url": "https://hoppscotch.io",
+    "version": "2026.9.0"
+   },
+   "code": {
+    "path": "data/repos/hoppscotch-2026.9.0",
+    "repo": "hoppscotch/hoppscotch",
+    "sha": "63273f8e599e73f0fb38c0739314e8d46b6bc83d",
+    "tag": "2026.9.0"
+   },
+   "docs": {
+    "path": "data/repos/docs-55a3ac541ff1",
+    "ref": "main",
+    "repo": "hoppscotch/docs",
+    "sha": "55a3ac541ff18064b00d102bb99845d406da3b5e"
+   },
+   "seconds": 2.7
+  },
+  "probe": {
+   "decision_calls": 1,
+   "episodes": 1,
+   "found": 0,
+   "new_states": 0,
+   "seconds": 4.7,
+   "transitions": 0
+  },
+  "probe_post": {
+   "domcode_mapped": 733,
+   "probe_states_labeled": 0,
+   "rejudged": 1,
+   "seconds": 7.1,
+   "ui_verdicts": {
+    "COVERED": 51,
+    "NOT_APPLICABLE": 12,
+    "NOT_FOUND": 19,
+    "PARTIAL": 32
+   }
+  },
+  "review": {
+   "by_trigger": {
+    "judge_invalid_citation": 1,
+    "judge_no_evidence": 4
+   },
+   "open_items": 5,
+   "seconds": 0.0
+  }
+ }
+}

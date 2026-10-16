@@ -1,0 +1,957 @@
+{
+ "change_areas": [
+  {
+   "area": "the collections documentation sections response area",
+   "file": "src/components/collections/documentation/sections/Response.vue"
+  },
+  {
+   "area": "the gql example response area",
+   "file": "src/components/gql/example/Response.vue"
+  },
+  {
+   "area": "REST response view",
+   "file": "src/components/lenses/renderers/JSONLensRenderer.vue"
+  },
+  {
+   "area": "automated tests (no user impact)",
+   "file": "src/components/lenses/renderers/__tests__/response-comments.spec.ts"
+  },
+  {
+   "area": "automated tests (no user impact)",
+   "file": "src/helpers/editor/linting/__tests__/jsoncPretty.spec.ts"
+  },
+  {
+   "area": "shared logic behind the screens listed",
+   "file": "src/helpers/editor/linting/jsoncPretty.ts"
+  }
+ ],
+ "changes": [
+  {
+   "additions": 3,
+   "deletions": 3,
+   "drift": false,
+   "file": "src/components/collections/documentation/sections/Response.vue",
+   "keys_added": [],
+   "keys_removed": [],
+   "kinds": [
+    "script"
+   ],
+   "patch_missing": false,
+   "previous": null,
+   "spans": [
+    [
+     211,
+     211
+    ],
+    [
+     225,
+     226
+    ]
+   ],
+   "spans_all": [
+    [
+     137,
+     137
+    ],
+    [
+     211,
+     211
+    ],
+    [
+     225,
+     226
+    ]
+   ],
+   "status": "modified",
+   "type": "component"
+  },
+  {
+   "additions": 4,
+   "deletions": 3,
+   "drift": false,
+   "file": "src/components/gql/example/Response.vue",
+   "keys_added": [],
+   "keys_removed": [],
+   "kinds": [
+    "script"
+   ],
+   "patch_missing": false,
+   "previous": null,
+   "spans": [
+    [
+     123,
+     123
+    ],
+    [
+     150,
+     150
+    ]
+   ],
+   "spans_all": [
+    [
+     91,
+     91
+    ],
+    [
+     123,
+     123
+    ],
+    [
+     150,
+     150
+    ]
+   ],
+   "status": "modified",
+   "type": "component"
+  },
+  {
+   "additions": 70,
+   "deletions": 37,
+   "drift": false,
+   "file": "src/components/lenses/renderers/JSONLensRenderer.vue",
+   "keys_added": [
+    "action.prettify",
+    "error.json_prettify_invalid_body"
+   ],
+   "keys_removed": [],
+   "kinds": [
+    "script",
+    "template"
+   ],
+   "patch_missing": false,
+   "previous": null,
+   "spans": [
+    [
+     10,
+     10
+    ],
+    [
+     297,
+     297
+    ],
+    [
+     387,
+     387
+    ],
+    [
+     426,
+     429
+    ],
+    [
+     431,
+     434
+    ],
+    [
+     437,
+     439
+    ],
+    [
+     442,
+     442
+    ],
+    [
+     445,
+     445
+    ],
+    [
+     448,
+     449
+    ],
+    [
+     452,
+     452
+    ],
+    [
+     455,
+     460
+    ],
+    [
+     466,
+     466
+    ],
+    [
+     506,
+     506
+    ],
+    [
+     541,
+     541
+    ],
+    [
+     544,
+     549
+    ]
+   ],
+   "spans_all": [
+    [
+     10,
+     10
+    ],
+    [
+     269,
+     269
+    ],
+    [
+     275,
+     275
+    ],
+    [
+     278,
+     278
+    ],
+    [
+     284,
+     284
+    ],
+    [
+     297,
+     297
+    ],
+    [
+     387,
+     387
+    ],
+    [
+     426,
+     429
+    ],
+    [
+     431,
+     434
+    ],
+    [
+     436,
+     439
+    ],
+    [
+     441,
+     442
+    ],
+    [
+     444,
+     445
+    ],
+    [
+     448,
+     449
+    ],
+    [
+     452,
+     460
+    ],
+    [
+     466,
+     466
+    ],
+    [
+     506,
+     506
+    ],
+    [
+     541,
+     541
+    ],
+    [
+     544,
+     549
+    ]
+   ],
+   "status": "modified",
+   "type": "component"
+  },
+  {
+   "additions": 224,
+   "deletions": 0,
+   "drift": false,
+   "file": "src/components/lenses/renderers/__tests__/response-comments.spec.ts",
+   "kinds": [
+    "added"
+   ],
+   "patch_missing": false,
+   "previous": null,
+   "spans": [
+    [
+     1,
+     1
+    ]
+   ],
+   "spans_all": [
+    [
+     1,
+     1
+    ]
+   ],
+   "status": "added",
+   "symbols": [],
+   "type": "test"
+  },
+  {
+   "additions": 43,
+   "deletions": 0,
+   "drift": false,
+   "file": "src/helpers/editor/linting/__tests__/jsoncPretty.spec.ts",
+   "kinds": [
+    "added"
+   ],
+   "patch_missing": false,
+   "previous": null,
+   "spans": [
+    [
+     1,
+     1
+    ]
+   ],
+   "spans_all": [
+    [
+     1,
+     1
+    ]
+   ],
+   "status": "added",
+   "symbols": [],
+   "type": "test"
+  },
+  {
+   "additions": 16,
+   "deletions": 1,
+   "drift": false,
+   "file": "src/helpers/editor/linting/jsoncPretty.ts",
+   "kinds": [
+    "symbol",
+    "whole_file"
+   ],
+   "patch_missing": false,
+   "previous": null,
+   "spans": [
+    [
+     1,
+     1
+    ],
+    [
+     10,
+     10
+    ]
+   ],
+   "spans_all": [
+    [
+     1,
+     1
+    ],
+    [
+     10,
+     10
+    ]
+   ],
+   "status": "modified",
+   "symbols": [
+    "prettifyJSONC"
+   ],
+   "type": "ts"
+  }
+ ],
+ "elements": [
+  {
+   "ambiguous": false,
+   "band": "Medium",
+   "chain": [
+    "changed: LensesRenderersJSONLensRenderer (script, template)",
+    "draws 'Clear Response ⌘ Delete' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/lenses/renderers/JSONLensRenderer.vue",
+   "confirmed": true,
+   "eid": "E-d1dcb89ab1b7",
+   "kind": "script,template",
+   "label": "Clear Response ⌘ Delete",
+   "lost": false,
+   "risk": 0.632,
+   "role": "menuitem",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Medium",
+   "chain": [
+    "changed: LensesRenderersJSONLensRenderer (script, template)",
+    "draws 'Filter' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/lenses/renderers/JSONLensRenderer.vue",
+   "confirmed": true,
+   "eid": "E-fa80f66a2e1a",
+   "kind": "script,template",
+   "label": "Filter",
+   "lost": false,
+   "risk": 0.632,
+   "role": "button",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Medium",
+   "chain": [
+    "changed: LensesRenderersJSONLensRenderer (script, template)",
+    "draws 'Generate Data Schema' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/lenses/renderers/JSONLensRenderer.vue",
+   "confirmed": true,
+   "eid": "E-447428127882",
+   "kind": "script,template",
+   "label": "Generate Data Schema",
+   "lost": false,
+   "risk": 0.632,
+   "role": "menuitem",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Medium",
+   "chain": [
+    "changed: LensesRenderersJSONLensRenderer (script, template)",
+    "draws 'More' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/lenses/renderers/JSONLensRenderer.vue",
+   "confirmed": true,
+   "eid": "E-90d9454ef9f1",
+   "kind": "script,template",
+   "label": "More",
+   "lost": false,
+   "risk": 0.632,
+   "role": "button",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Medium",
+   "chain": [
+    "changed: LensesRenderersJSONLensRenderer (script, template)",
+    "draws 'Wrap lines' (i18n route tiebreak, 0.63)"
+   ],
+   "comp": "src/components/lenses/renderers/JSONLensRenderer.vue",
+   "confirmed": true,
+   "eid": "E-075a42c0d481",
+   "kind": "script,template",
+   "label": "Wrap lines",
+   "lost": false,
+   "risk": 0.632,
+   "role": "button",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": false,
+   "band": "Low",
+   "chain": [
+    "changed: CollectionsDocumentationSectionsResponse (script)",
+    "draws 'Response Body' (i18n route tiebreak, 0.63)",
+    "but no crawled screen shows this part of the code together with it (risk halved)"
+   ],
+   "comp": "src/components/collections/documentation/sections/Response.vue",
+   "confirmed": false,
+   "eid": "E-9342f31d8491",
+   "kind": "script",
+   "label": "Response Body",
+   "lost": false,
+   "risk": 0.316,
+   "role": "label",
+   "route": "/",
+   "unique": false
+  },
+  {
+   "ambiguous": true,
+   "band": "Low",
+   "chain": [
+    "changed: CollectionsDocumentationSectionsResponse (script)",
+    "draws 'Response Body' (i18n route ambiguous, 0.20)",
+    "but no crawled screen shows this part of the code together with it (risk halved)"
+   ],
+   "comp": "src/components/collections/documentation/sections/Response.vue",
+   "confirmed": false,
+   "eid": "E-297acfef0b14",
+   "kind": "script",
+   "label": "Response Body",
+   "lost": false,
+   "risk": 0.1,
+   "role": "label",
+   "route": "/realtime/mqtt",
+   "unique": false
+  },
+  {
+   "ambiguous": true,
+   "band": "Low",
+   "chain": [
+    "changed: CollectionsDocumentationSectionsResponse (script)",
+    "draws 'Response Body' (i18n route ambiguous, 0.20)",
+    "but no crawled screen shows this part of the code together with it (risk halved)"
+   ],
+   "comp": "src/components/collections/documentation/sections/Response.vue",
+   "confirmed": false,
+   "eid": "E-2ac0162fc3f4",
+   "kind": "script",
+   "label": "Response Body",
+   "lost": false,
+   "risk": 0.1,
+   "role": "label",
+   "route": "/realtime/socketio",
+   "unique": false
+  },
+  {
+   "ambiguous": true,
+   "band": "Low",
+   "chain": [
+    "changed: CollectionsDocumentationSectionsResponse (script)",
+    "draws 'Response Body' (i18n route ambiguous, 0.20)",
+    "but no crawled screen shows this part of the code together with it (risk halved)"
+   ],
+   "comp": "src/components/collections/documentation/sections/Response.vue",
+   "confirmed": false,
+   "eid": "E-2de9bde29a08",
+   "kind": "script",
+   "label": "Response Body",
+   "lost": false,
+   "risk": 0.1,
+   "role": "label",
+   "route": "/realtime/websocket",
+   "unique": false
+  },
+  {
+   "ambiguous": true,
+   "band": "Low",
+   "chain": [
+    "changed: jsoncPretty.ts (prettifyJSONC)",
+    "used by HttpRawBody (1 import hop(s))",
+    "draws 'Modify with AI' (i18n route ambiguous, 0.13)",
+    "but no crawled screen shows this part of the code together with it (risk halved)"
+   ],
+   "comp": "src/components/http/RawBody.vue",
+   "confirmed": false,
+   "eid": "E-db51e60e8b1a",
+   "kind": "behaviour-via-import",
+   "label": "Modify with AI",
+   "lost": false,
+   "risk": 0.0466,
+   "role": "button",
+   "route": "/",
+   "unique": false
+  }
+ ],
+ "flows": [
+  {
+   "band": "Medium",
+   "id": "FLOW-c701ca7af1",
+   "name": "Filter history items in the history section",
+   "requirements": [
+    "REQ-history-e416accb"
+   ],
+   "risk": 0.632,
+   "start_route": "/",
+   "steps": [
+    "Send"
+   ],
+   "target_state": "S-e28a15c025a8",
+   "touches": [
+    "E-fa80f66a2e1a"
+   ]
+  }
+ ],
+ "gaps_touched": [
+  {
+   "components": [
+    "CollectionsDocumentationSectionsResponse"
+   ],
+   "gap_id": "GAP-documentation-7df0b03e",
+   "kind": "UNOBSERVED_IN_UI",
+   "req_id": "REQ-documentation-7df0b03e",
+   "statement": "User can view multiple example responses for different API scenarios."
+  }
+ ],
+ "needs_human": [
+  {
+   "about": [
+    "src/components/gql/example/Response.vue"
+   ],
+   "id": "RV-c871eaca8d",
+   "question": "This change touches 'Gql › Example › Response', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?",
+   "trigger": "unmapped_ui_change"
+  }
+ ],
+ "outside": [
+  {
+   "file": "README.md",
+   "status": "modified",
+   "why": "outside the web app package"
+  }
+ ],
+ "pr": {
+  "base_ref": "main",
+  "base_sha": "63273f8e599e73f0fb38c0739314e8d46b6bc83d",
+  "body": "<!--\r\nThanks for creating this pull request 🤗\r\n\r\nPlease make sure that the pull request is limited to one type (docs, feature, etc.) and keep it as small as possible. You can open multiple prs instead of opening a huge one.\r\n-->\r\n\r\n<!-- If this pull request closes an issue, please mention the issue number below -->\r\nCloses # <!-- Issue # here -->\r\n\r\n<!-- Add an introduction into what this PR tries to solve in a couple of sentences -->\r\n\r\n### What's changed\r\n<!-- Describe point by point the different things you have changed in this PR -->\r\n\r\n<!-- You can also choose to add a list of changes and if they have been completed or not by using the markdown to-do list syntax\r\n- [ ] Not Completed\r\n- [x] Completed\r\n-->\r\n\r\n### Notes to reviewers\r\n<!-- Any information you feel the reviewer should know about when reviewing your PR -->\r\n\n\n<!-- This is an auto-generated description by cubic. -->\n---\n## Summary by cubic\nChanges saved REST and GraphQL example responses to accept JSON-with-comments (JSONC) annotations, such as `//` and `/* */` comments, preserving them through prettifying, saving, copying, and downloading. Live API responses remain read-only and keep lossless formatting.\n\n- Adds a prettify button to editable JSON response bodies.\n- Switches example editors to a JSONC linter so comments don't surface as errors.\n- `prettifyJSONCWithValidation` validates input before formatting, so malformed bodies are left untouched and reported as errors instead of being silently changed.\n\n<sup>Written for commit 581253a5ebd866cd94eb881da1ece7edfe93fbbd. Summary will update on new commits.</sup>\n\n<a href=\"https://cubic.dev/pr/hoppscotch/hoppscotch/pull/6706?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n\n<!-- End of auto-generated description by cubic. -->\n\n",
+  "head_sha": "581253a5ebd866cd94eb881da1ece7edfe93fbbd",
+  "html_url": "https://github.com/hoppscotch/hoppscotch/pull/6706",
+  "merged": false,
+  "number": 6706,
+  "state": "open",
+  "title": "feat(common): support comments in saved response examples",
+  "user": "Cantale08"
+ },
+ "requirements": [
+  {
+   "band": "Medium",
+   "evidence": [
+    "E-6a76bebbbd00",
+    "E-fa80f66a2e1a"
+   ],
+   "feature": "History",
+   "id": "REQ-history-e416accb",
+   "quote": "You can filter your history by clicking on the \"Filter\" button in the history section",
+   "risk": 0.5056,
+   "statement": "User can filter history items using the Filter button in the history section.",
+   "status": "AT_RISK",
+   "url": "https://docs.hoppscotch.io/documentation/features/history#filter-history",
+   "via": [
+    "E-fa80f66a2e1a"
+   ]
+  }
+ ],
+ "screens": [
+  {
+   "band": "Medium",
+   "depth": 1,
+   "elements": [
+    {
+     "bbox": [
+      861,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-fa80f66a2e1a",
+     "label": "Filter",
+     "risk": 0.632
+    },
+    {
+     "bbox": [
+      989,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-90d9454ef9f1",
+     "label": "More",
+     "risk": 0.632
+    },
+    {
+     "bbox": [
+      829,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-075a42c0d481",
+     "label": "Wrap lines",
+     "risk": 0.632
+    }
+   ],
+   "fp": "S-e28a15c025a8",
+   "label": "REST response view",
+   "path": [
+    "Send"
+   ],
+   "risk": 0.632,
+   "route": "/",
+   "screenshot": "crawl/screens/S-e28a15c025a8.jpg"
+  },
+  {
+   "band": "Medium",
+   "depth": 2,
+   "elements": [
+    {
+     "bbox": [
+      893,
+      424,
+      224,
+      32
+     ],
+     "eid": "E-d1dcb89ab1b7",
+     "label": "Clear Response ⌘ Delete",
+     "risk": 0.632
+    },
+    {
+     "bbox": [
+      861,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-fa80f66a2e1a",
+     "label": "Filter",
+     "risk": 0.632
+    },
+    {
+     "bbox": [
+      893,
+      392,
+      224,
+      32
+     ],
+     "eid": "E-447428127882",
+     "label": "Generate Data Schema",
+     "risk": 0.632
+    },
+    {
+     "bbox": [
+      989,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-90d9454ef9f1",
+     "label": "More",
+     "risk": 0.632
+    },
+    {
+     "bbox": [
+      829,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-075a42c0d481",
+     "label": "Wrap lines",
+     "risk": 0.632
+    }
+   ],
+   "fp": "S-d93e56b8bf75",
+   "label": "Response options menu",
+   "path": [
+    "Send",
+    "More"
+   ],
+   "risk": 0.632,
+   "route": "/",
+   "screenshot": "crawl/screens/S-d93e56b8bf75.jpg"
+  },
+  {
+   "band": "Medium",
+   "depth": 3,
+   "elements": [
+    {
+     "bbox": [
+      861,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-fa80f66a2e1a",
+     "label": "Filter",
+     "risk": 0.632
+    },
+    {
+     "bbox": [
+      989,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-90d9454ef9f1",
+     "label": "More",
+     "risk": 0.632
+    },
+    {
+     "bbox": [
+      829,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-075a42c0d481",
+     "label": "Wrap lines",
+     "risk": 0.632
+    }
+   ],
+   "fp": "S-524de33b817c",
+   "label": "Data schema generator",
+   "path": [
+    "Send",
+    "More",
+    "Generate Data Schema"
+   ],
+   "risk": 0.632,
+   "route": "/",
+   "screenshot": "crawl/screens/S-524de33b817c.jpg"
+  },
+  {
+   "band": "Medium",
+   "depth": 4,
+   "elements": [
+    {
+     "bbox": [
+      861,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-fa80f66a2e1a",
+     "label": "Filter",
+     "risk": 0.632
+    },
+    {
+     "bbox": [
+      989,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-90d9454ef9f1",
+     "label": "More",
+     "risk": 0.632
+    },
+    {
+     "bbox": [
+      829,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-075a42c0d481",
+     "label": "Wrap lines",
+     "risk": 0.632
+    }
+   ],
+   "fp": "S-cae778f35a1f",
+   "label": "Schema language selector",
+   "path": [
+    "Send",
+    "More",
+    "Generate Data Schema",
+    "TypeScript"
+   ],
+   "risk": 0.632,
+   "route": "/",
+   "screenshot": "crawl/screens/S-cae778f35a1f.jpg"
+  },
+  {
+   "band": "Medium",
+   "depth": 5,
+   "elements": [
+    {
+     "bbox": [
+      861,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-fa80f66a2e1a",
+     "label": "Filter",
+     "risk": 0.632
+    },
+    {
+     "bbox": [
+      989,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-90d9454ef9f1",
+     "label": "More",
+     "risk": 0.632
+    },
+    {
+     "bbox": [
+      829,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-075a42c0d481",
+     "label": "Wrap lines",
+     "risk": 0.632
+    }
+   ],
+   "fp": "S-437d0e0df05a",
+   "label": "C# schema view",
+   "path": [
+    "Send",
+    "More",
+    "Generate Data Schema",
+    "TypeScript",
+    "C#"
+   ],
+   "risk": 0.632,
+   "route": "/",
+   "screenshot": "crawl/screens/S-437d0e0df05a.jpg"
+  },
+  {
+   "band": "Medium",
+   "depth": 6,
+   "elements": [
+    {
+     "bbox": [
+      861,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-fa80f66a2e1a",
+     "label": "Filter",
+     "risk": 0.632
+    },
+    {
+     "bbox": [
+      989,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-90d9454ef9f1",
+     "label": "More",
+     "risk": 0.632
+    },
+    {
+     "bbox": [
+      829,
+      475,
+      32,
+      32
+     ],
+     "eid": "E-075a42c0d481",
+     "label": "Wrap lines",
+     "risk": 0.632
+    }
+   ],
+   "fp": "S-95bf4f5d7e6b",
+   "label": "Schema language selector popover",
+   "path": [
+    "Send",
+    "More",
+    "Generate Data Schema",
+    "TypeScript",
+    "C#",
+    "C#"
+   ],
+   "risk": 0.632,
+   "route": "/",
+   "screenshot": "crawl/screens/S-95bf4f5d7e6b.jpg"
+  }
+ ],
+ "summary": {
+  "elements_at_risk": 10,
+  "flows": 1,
+  "high": 0,
+  "medium": 5,
+  "needs_human": 1,
+  "overall_risk": "Medium",
+  "requirements": 1,
+  "requirements_losing_coverage": 0,
+  "screens": 6,
+  "unmapped_changes": 2
+ },
+ "unmapped": [
+  {
+   "file": "src/components/gql/example/Response.vue",
+   "why": "Gql › Example › Response: can appear on the REST page, but the crawl never showed any of its controls"
+  }
+ ]
+}

@@ -1,0 +1,75 @@
+{
+ "meta": {
+  "model_version": "gemini-3.1-flash-lite",
+  "usage": {
+   "candidatesTokenCount": 178,
+   "promptTokenCount": 734,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 734
+    }
+   ],
+   "serviceTier": "standard",
+   "totalTokenCount": 912
+  }
+ },
+ "model": "gemini-3.1-flash-lite",
+ "prompt": "PULL REQUEST: fix(common): preserve line breaks in documentation description editor\nDESCRIPTION (author's words, may be technical):\n## Summary\r\n- Fixes #6193: multiline descriptions in the API documentation editor lost visible line breaks after blur/re-edit (especially on macOS desktop).\r\n- Overrides the global `textarea { truncate }` styles (`white-space: nowrap`) in `MarkdownEditor.vue` with `whitespace-pre-wrap overflow-auto`, matching the pattern already used in `Assistant.vue`.\r\n\r\n## Test plan\r\n- [ ] Open request documentation, enter a multiline description, blur to save\r\n- [ ] Click the description again to re-enter edit mode — line breaks should remain visible\r\n- [ ] Confirm markdown preview still renders soft breaks correctly\r\n- [ ] Smoke-test on macOS desktop (WKWebView) if available\r\n\n\n<!-- This is an auto-generated description by cubic. -->\n---\n## Summary by cubic\nFixes multiline descriptions in the API documentation editor losing visible line breaks after blur/re-edit on macOS desktop.\n\nThe `textarea` class now uses `whitespace-pre-wrap overflow-auto` instead of `text-wrap`, overriding the global truncate styles that forced `white-space: nowrap` on the element.\n\n<sup>Written for commit 1ebdecefbf0a9900c36cdd131f7025b317a4cf48. Summary will update on new commits.</sup>\n\n<a href=\"https://cubic.dev/pr/hoppscotch/hoppscotch/pull/6708?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https:/\n\nCHANGE AREAS (plain): the collections documentation markdown editor area\nOVERALL RISK (already computed): Low\n\nFLOWS TO RETEST (id | risk | name | steps): none\n\nSCREENS AT RISK (id | risk | screen | controls at risk): none\n\nREQUIREMENTS (id | status | statement): none\n\nCHANGES WE COULD NOT CONNECT TO A SCREEN (plain reason):\n  - Collections › Documentation › Markdown Editor: can appear on the REST page, the GraphQL page, but the crawl never showed any of its controls\n\nOPEN QUESTIONS FOR A HUMAN (id | question):\n  RV-cbf98ec7c7 | This change touches 'Collections › Documentation › Markdown Editor', which can appear on the REST page, the GraphQL page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n\nWrite the brief. Include every High flow in retest. Add a requirement note for every requirement listed. Turn each open question into a plain question (cite its id in 'about').",
+ "response_text": "{\n  \"headline\": \"This change modifies how line breaks are handled within the API documentation editor, potentially affecting text formatting in saved descriptions.\",\n  \"what_changed\": \"The update ensures that multiline text entered into the API documentation editor preserves its line breaks after saving and re-opening the field. Previously, the editor would incorrectly collapse these lines into a single block of text. This change applies to the markdown editor used for documenting collections.\",\n  \"questions\": [\n    {\n      \"about\": [\"RV-cbf98ec7c7\"],\n      \"question\": \"This change affects the documentation markdown editor found within collections, but we have not verified its appearance on the REST or GraphQL pages. Could you confirm which specific screens display this editor and if we should perform a manual retest on those pages?\"\n    }\n  ]\n}",
+ "schema": {
+  "properties": {
+   "headline": {
+    "description": "One sentence summary of what this change puts at risk",
+    "type": "STRING"
+   },
+   "questions": {
+    "items": {
+     "properties": {
+      "about": {
+       "items": {
+        "enum": [
+         "RV-cbf98ec7c7"
+        ],
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      },
+      "question": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "about",
+      "question"
+     ],
+     "required": [
+      "about",
+      "question"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "what_changed": {
+    "description": "2-4 sentences in product language describing the change",
+    "type": "STRING"
+   }
+  },
+  "propertyOrdering": [
+   "headline",
+   "what_changed",
+   "questions"
+  ],
+  "required": [
+   "headline",
+   "what_changed",
+   "questions"
+  ],
+  "type": "OBJECT"
+ },
+ "seed": 7,
+ "system": "You write pull-request risk briefs for a QA lead who knows the product (Hoppscotch, an API client)\nbut not its code. Use plain product language: screens, buttons, tabs, what a user does.\nNever mention file names, code identifiers, components, functions, keys, or programming terms.\nOnly talk about items given to you, and cite them by their ids exactly as given.",
+ "task": "report:pr6708",
+ "temperature": 0.0
+}

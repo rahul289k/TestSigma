@@ -1,0 +1,14 @@
+# Small, fast profile used for the verification rounds: same code paths, a fraction of the budget.
+app:
+  seed_routes: ["/", "/settings"]
+docs:
+  include: ["documentation/features/history.mdx", "documentation/features/environments.mdx", "documentation/features/rest-api-testing.mdx"]
+crawl:
+  max_states: 40
+  max_states_per_route: 25
+  max_minutes: 6
+probe:
+  max_requirements: 1
+  max_steps: 2
+llm:
+  max_calls_per_run: 30

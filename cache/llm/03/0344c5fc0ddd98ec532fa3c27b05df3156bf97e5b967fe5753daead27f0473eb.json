@@ -1,0 +1,174 @@
+{
+ "meta": {
+  "model_version": "gemini-3.1-flash-lite",
+  "usage": {
+   "candidatesTokenCount": 1220,
+   "promptTokenCount": 1372,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 1372
+    }
+   ],
+   "serviceTier": "standard",
+   "totalTokenCount": 2592
+  }
+ },
+ "model": "gemini-3.1-flash-lite",
+ "prompt": "PULL REQUEST: feat(common): support comments in saved response examples\nDESCRIPTION (author's words, may be technical):\n<!--\r\nThanks for creating this pull request 🤗\r\n\r\nPlease make sure that the pull request is limited to one type (docs, feature, etc.) and keep it as small as possible. You can open multiple prs instead of opening a huge one.\r\n-->\r\n\r\n<!-- If this pull request closes an issue, please mention the issue number below -->\r\nCloses # <!-- Issue # here -->\r\n\r\n<!-- Add an introduction into what this PR tries to solve in a couple of sentences -->\r\n\r\n### What's changed\r\n<!-- Describe point by point the different things you have changed in this PR -->\r\n\r\n<!-- You can also choose to add a list of changes and if they have been completed or not by using the markdown to-do list syntax\r\n- [ ] Not Completed\r\n- [x] Completed\r\n-->\r\n\r\n### Notes to reviewers\r\n<!-- Any information you feel the reviewer should know about when reviewing your PR -->\r\n\n\n<!-- This is an auto-generated description by cubic. -->\n---\n## Summary by cubic\nChanges saved REST and GraphQL example responses to accept JSON-with-comments (JSONC) annotations, such as `//` and `/* */` comments, preserving them through prettifying, saving, copying, and downloading. Live API responses remain read-only and keep lossless formatting.\n\n- Adds a prettify button to editable JSON response bodies.\n- Switches example editors to a JSONC linter so comments don't surface as errors.\n- `prettifyJSONCWithValidation` validates input before formatting, so malformed bodies are left untouched and reported as errors instead of being silently changed.\n\n<sup\n\nCHANGE AREAS (plain): JSON response filter; automated tests (no user impact); shared logic behind the screens listed; the collections documentation sections response area; the gql example response area\nOVERALL RISK (already computed): High\n\nFLOWS TO RETEST (id | risk | name | steps):\n  FLOW-a1230dde27 | Medium | Copy a returned API response | Send\n  FLOW-19694e2c54 | Medium | Download a returned API response | Send\n  FLOW-763bea2f5b | Medium | Duplicate an environment from the dropdown menu | Environments > More\n  FLOW-55bb142925 | Medium | Duplicate an existing environment | Environments > More\n  FLOW-c701ca7af1 | Medium | Filter requests in the history section | Send\n  FLOW-4b5e57b067 | Medium | Open the environment duplicate menu | Environments\n\nSCREENS AT RISK (id | risk | screen | controls at risk):\n  S-f5e1e3006607 | High | JSON response filter | Filter JSON response body (uses jq syntax), Copy, Download file, Filter, More, Response Body\n  S-087a903d2901 | Medium | Environments management screen | More\n  S-92ad0c37a2e7 | Medium | Pre-request script editor | Wrap lines\n  S-e28a15c025a8 | Medium | REST request - Response view | Copy, Download file, Filter, More, Response Body, Save the request to create example\n  S-ec56f727dbfc | Medium | Post-request script editor | Wrap lines\n  S-f04282a7f03d | Medium | History screen | Filter\n  S-3a824986d391 | Medium | Environment options menu | More\n  S-4bb3f5a98d05 | Medium | AI script modification login | Wrap lines\n  S-1aaed4b626e5 | Medium | Environment duplication confirmation | More\n\nREQUIREMENTS (id | status | statement):\n  REQ-environments-8130d91f | AT_RISK | User can duplicate an existing environment from the More icon dropdown menu.\n  REQ-history-fa44629d | AT_RISK | User can favorite and filter requests in the history section.\n  REQ-rest-api-testing-39521967 | AT_RISK | User can download and copy the returned API responses.\n\nCHANGES WE COULD NOT CONNECT TO A SCREEN (plain reason):\n  - Collections › Documentation › Sections › Response: can appear on the REST page, the GraphQL page, but the crawl never showed any of its controls\n  - Gql › Example › Response: can appear on the REST page, but the crawl never showed any of its controls\n  - Http › Raw Body: can appear on the REST page, the GraphQL page, but the crawl never showed any of its controls\n  - outside the web app package\n\nOPEN QUESTIONS FOR A HUMAN (id | question):\n  RV-dda7401450 | This change touches 'Collections › Documentation › Sections › Response', which can appear on the REST page, the GraphQL page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-c871eaca8d | This change touches 'Gql › Example › Response', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-46496a1d8a | This change touches 'Http › Raw Body', which can appear on the REST page, the GraphQL page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n\nWrite the brief. Include every High flow in retest. Add a requirement note for every requirement listed. Turn each open question into a plain question (cite its id in 'about').",
+ "response_text": "{\n  \"headline\": \"This update introduces support for comments in saved API response examples, which impacts how response bodies are parsed, prettified, and handled across the application.\",\n  \"what_changed\": \"The application now supports JSON-with-comments (JSONC) in saved response examples, allowing users to include comments in their stored data. A new prettify button has been added to editable JSON response areas to format these bodies. Additionally, the system now validates JSON structure before applying formatting to prevent accidental corruption of malformed data.\",\n  \"retest\": [\n    {\n      \"flow_id\": \"FLOW-a1230dde27\",\n      \"why\": \"Copying a response may now behave differently if the response contains comments or if the new validation logic interferes with the copy action.\"\n    },\n    {\n      \"flow_id\": \"FLOW-19694e2c54\",\n      \"why\": \"Downloading a response could be affected by the new JSONC parsing logic, potentially altering the file content or format.\"\n    },\n    {\n      \"flow_id\": \"FLOW-763bea2f5b\",\n      \"why\": \"Changes to shared logic might inadvertently impact the environment duplication process triggered from the More menu.\"\n    },\n    {\n      \"flow_id\": \"FLOW-55bb142925\",\n      \"why\": \"The environment duplication flow relies on shared components that were modified, risking unexpected errors during the duplication process.\"\n    },\n    {\n      \"flow_id\": \"FLOW-c701ca7af1\",\n      \"why\": \"Filtering history might be impacted by the underlying changes to how JSON data is processed and validated.\"\n    },\n    {\n      \"flow_id\": \"FLOW-4b5e57b067\",\n      \"why\": \"Opening the environment menu could be affected by the broader changes to the application's shared logic and UI components.\"\n    }\n  ],\n  \"screen_notes\": [\n    {\n      \"id\": \"S-f5e1e3006607\",\n      \"note\": \"The JSON response filter is at high risk as it now handles JSONC and includes new validation logic for filtering and copying.\"\n    },\n    {\n      \"id\": \"S-e28a15c025a8\",\n      \"note\": \"The REST response view is a primary area for this change; verify that saving, copying, and downloading work correctly with the new comment support.\"\n    },\n    {\n      \"id\": \"S-087a903d2901\",\n      \"note\": \"Verify that the More menu in environment management remains functional after the shared logic updates.\"\n    },\n    {\n      \"id\": \"S-92ad0c37a2e7\",\n      \"note\": \"Ensure that script editors are not negatively impacted by the new JSONC linter implementation.\"\n    },\n    {\n      \"id\": \"S-ec56f727dbfc\",\n      \"note\": \"Ensure that script editors are not negatively impacted by the new JSONC linter implementation.\"\n    },\n    {\n      \"id\": \"S-f04282a7f03d\",\n      \"note\": \"Check that history filtering remains accurate following the changes to JSON processing.\"\n    },\n    {\n      \"id\": \"S-3a824986d391\",\n      \"note\": \"Confirm that environment options remain accessible and functional.\"\n    },\n    {\n      \"id\": \"S-4bb3f5a98d05\",\n      \"note\": \"Ensure that AI script modification remains stable despite the underlying changes.\"\n    },\n    {\n      \"id\": \"S-1aaed4b626e5\",\n      \"note\": \"Confirm that environment duplication confirmation works as expected.\"\n    }\n  ],\n  \"requirement_notes\": [\n    {\n      \"id\": \"REQ-environments-8130d91f\",\n      \"note\": \"Environment duplication is at risk due to shared logic changes; verify this flow remains fully operational.\"\n    },\n    {\n      \"id\": \"REQ-history-fa44629d\",\n      \"note\": \"History filtering is at risk; ensure that filtering requests still functions correctly.\"\n    },\n    {\n      \"id\": \"REQ-rest-api-testing-39521967\",\n      \"note\": \"Copying and downloading API responses are at high risk; verify these actions work with the new JSONC support.\"\n    }\n  ],\n  \"questions\": [\n    {\n      \"about\": [\"RV-dda7401450\"],\n      \"question\": \"Where exactly in the UI can users access the 'Collections Documentation Sections Response' area, and should we include it in our manual test plan?\"\n    },\n    {\n      \"about\": [\"RV-c871eaca8d\"],\n      \"question\": \"Where is the 'Gql Example Response' located in the interface, and does it require specific testing for this change?\"\n    },\n    {\n      \"about\": [\"RV-46496a1d8a\"],\n      \"question\": \"Where can a user interact with the 'Http Raw Body' in the current UI, and should we verify it for this release?\"\n    }\n  ]\n}",
+ "schema": {
+  "properties": {
+   "headline": {
+    "description": "One sentence summary of what this change puts at risk",
+    "type": "STRING"
+   },
+   "questions": {
+    "items": {
+     "properties": {
+      "about": {
+       "items": {
+        "enum": [
+         "RV-dda7401450",
+         "RV-c871eaca8d",
+         "RV-46496a1d8a"
+        ],
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      },
+      "question": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "about",
+      "question"
+     ],
+     "required": [
+      "about",
+      "question"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "requirement_notes": {
+    "items": {
+     "properties": {
+      "id": {
+       "enum": [
+        "REQ-environments-8130d91f",
+        "REQ-history-fa44629d",
+        "REQ-rest-api-testing-39521967"
+       ],
+       "type": "STRING"
+      },
+      "note": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "id",
+      "note"
+     ],
+     "required": [
+      "id",
+      "note"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "retest": {
+    "items": {
+     "properties": {
+      "flow_id": {
+       "enum": [
+        "FLOW-a1230dde27",
+        "FLOW-19694e2c54",
+        "FLOW-763bea2f5b",
+        "FLOW-55bb142925",
+        "FLOW-c701ca7af1",
+        "FLOW-4b5e57b067"
+       ],
+       "type": "STRING"
+      },
+      "why": {
+       "description": "One sentence: what could break for the user and why",
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "flow_id",
+      "why"
+     ],
+     "required": [
+      "flow_id",
+      "why"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "screen_notes": {
+    "items": {
+     "properties": {
+      "id": {
+       "enum": [
+        "S-f5e1e3006607",
+        "S-087a903d2901",
+        "S-92ad0c37a2e7",
+        "S-e28a15c025a8",
+        "S-ec56f727dbfc",
+        "S-f04282a7f03d",
+        "S-3a824986d391",
+        "S-4bb3f5a98d05",
+        "S-1aaed4b626e5"
+       ],
+       "type": "STRING"
+      },
+      "note": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "id",
+      "note"
+     ],
+     "required": [
+      "id",
+      "note"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "what_changed": {
+    "description": "2-4 sentences in product language describing the change",
+    "type": "STRING"
+   }
+  },
+  "propertyOrdering": [
+   "headline",
+   "what_changed",
+   "retest",
+   "screen_notes",
+   "requirement_notes",
+   "questions"
+  ],
+  "required": [
+   "headline",
+   "what_changed",
+   "retest",
+   "screen_notes",
+   "requirement_notes",
+   "questions"
+  ],
+  "type": "OBJECT"
+ },
+ "seed": 7,
+ "system": "You write pull-request risk briefs for a QA lead who knows the product (Hoppscotch, an API client)\nbut not its code. Use plain product language: screens, buttons, tabs, what a user does.\nNever mention file names, code identifiers, components, functions, keys, or programming terms.\nOnly talk about items given to you, and cite them by their ids exactly as given.",
+ "task": "report:pr6706",
+ "temperature": 0.0
+}

@@ -1,0 +1,174 @@
+{
+ "meta": {
+  "model_version": "gemini-3.1-flash-lite",
+  "usage": {
+   "candidatesTokenCount": 752,
+   "promptTokenCount": 1270,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 1270
+    }
+   ],
+   "serviceTier": "standard",
+   "totalTokenCount": 2022
+  }
+ },
+ "model": "gemini-3.1-flash-lite",
+ "prompt": "PULL REQUEST: feat(common): support comments in saved response examples\nDESCRIPTION (author's words, may be technical):\n<!--\r\nThanks for creating this pull request 🤗\r\n\r\nPlease make sure that the pull request is limited to one type (docs, feature, etc.) and keep it as small as possible. You can open multiple prs instead of opening a huge one.\r\n-->\r\n\r\n<!-- If this pull request closes an issue, please mention the issue number below -->\r\nCloses # <!-- Issue # here -->\r\n\r\n<!-- Add an introduction into what this PR tries to solve in a couple of sentences -->\r\n\r\n### What's changed\r\n<!-- Describe point by point the different things you have changed in this PR -->\r\n\r\n<!-- You can also choose to add a list of changes and if they have been completed or not by using the markdown to-do list syntax\r\n- [ ] Not Completed\r\n- [x] Completed\r\n-->\r\n\r\n### Notes to reviewers\r\n<!-- Any information you feel the reviewer should know about when reviewing your PR -->\r\n\n\n<!-- This is an auto-generated description by cubic. -->\n---\n## Summary by cubic\nChanges saved REST and GraphQL example responses to accept JSON-with-comments (JSONC) annotations, such as `//` and `/* */` comments, preserving them through prettifying, saving, copying, and downloading. Live API responses remain read-only and keep lossless formatting.\n\n- Adds a prettify button to editable JSON response bodies.\n- Switches example editors to a JSONC linter so comments don't surface as errors.\n- `prettifyJSONCWithValidation` validates input before formatting, so malformed bodies are left untouched and reported as errors instead of being silently changed.\n\n<sup\n\nCHANGE AREAS (plain): Bulk edit parameters; REST response view; automated tests (no user impact); shared logic behind the screens listed; the gql example response area\nOVERALL RISK (already computed): Medium\n\nFLOWS TO RETEST (id | risk | name | steps):\n  FLOW-529e4fed45 | Medium | Filter history to show starred entries | History > Filter\n  FLOW-c701ca7af1 | Medium | Filter request history items | Send\n  FLOW-aa0598b618 | Low | Modify pre-request scripts using AI | Pre-request Script\n\nSCREENS AT RISK (id | risk | screen | controls at risk):\n  S-07c9e5eb461c | Medium | Bulk edit parameters | Wrap lines\n  S-087a903d2901 | Medium | Environments management view | More\n  S-90409d5cef06 | Medium | Generate code view | Wrap lines\n  S-92ad0c37a2e7 | Medium | Pre-request script editor | Wrap lines, Modify with AI\n  S-e28a15c025a8 | Medium | REST response view | Filter, More, Response Body, Wrap lines\n  S-ec56f727dbfc | Medium | Post-request script editor | Wrap lines, Modify with AI\n  S-f04282a7f03d | Medium | History view | Filter\n  S-417fc3bb0aff | Medium | GraphQL request view | Wrap lines\n  S-7861398072d8 | Medium | History filter menu | Filter\n  S-a410a9511aa5 | Medium | Code generation language selector | Wrap lines\n  S-d12526dafa7e | Medium | Login for AI script modification | Wrap lines, Modify with AI\n  S-d93e56b8bf75 | Medium | Response options menu | Clear Response ⌘ Delete, Filter, Generate Data Schema, More, Response Body, Wrap lines\n\nREQUIREMENTS (id | status | statement):\n  REQ-history-e416accb | AT_RISK | User can filter history items using the Filter button in the history section.\n  REQ-ai-features-0c032c29 | WEAK_SIGNAL | User can develop test cases using AI and integrate them into the test editor.\n  REQ-ai-features-58bcf7c1 | WEAK_SIGNAL | User can dynamically generate request payloads using AI and accept the changes.\n  REQ-ai-features-80daf8db | WEAK_SIGNAL | User can generate pre-request scripts with AI and apply changes.\n  REQ-ai-features-a383b9e6 | WEAK_SIGNAL | User can rename requests using AI by clicking the Modify with AI icon.\n\nCHANGES WE COULD NOT CONNECT TO A SCREEN (plain reason):\n  - Gql › Example › Response: can appear on the REST page, but the crawl never showed any of its controls\n  - outside the web app package\n\nOPEN QUESTIONS FOR A HUMAN (id | question):\n  RV-c871eaca8d | This change touches 'Gql › Example › Response', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n\nWrite the brief. Include every High flow in retest. Add a requirement note for every requirement listed. Turn each open question into a plain question (cite its id in 'about').",
+ "response_text": "{\n  \"headline\": \"This update introduces support for comments in saved API response examples, which may impact how response bodies are parsed and formatted.\",\n  \"what_changed\": \"The application now supports JSON-with-comments (JSONC) in saved REST and GraphQL response examples, allowing users to include comments directly in their saved data. A new prettify button has been added to editable response bodies to handle this format. Additionally, the system now validates response bodies before formatting to prevent errors with malformed content.\",\n  \"retest\": [\n    {\n      \"flow_id\": \"FLOW-529e4fed45\",\n      \"why\": \"Changes to shared response handling logic could inadvertently affect how history entries are processed or displayed.\"\n    },\n    {\n      \"flow_id\": \"FLOW-c701ca7af1\",\n      \"why\": \"Modifications to the response parsing logic might impact the stability of request history items during retrieval.\"\n    },\n    {\n      \"flow_id\": \"FLOW-aa0598b618\",\n      \"why\": \"Updates to the underlying script editor logic could interfere with AI-driven modifications to pre-request scripts.\"\n    }\n  ],\n  \"screen_notes\": [\n    {\n      \"id\": \"S-e28a15c025a8\",\n      \"note\": \"The response body area now includes a new prettify button and updated parsing logic for saved examples.\"\n    },\n    {\n      \"id\": \"S-d93e56b8bf75\",\n      \"note\": \"Response options may behave differently when handling saved examples that contain comments.\"\n    },\n    {\n      \"id\": \"S-92ad0c37a2e7\",\n      \"note\": \"The script editor shares underlying logic with the updated response editors, requiring verification of AI features.\"\n    }\n  ],\n  \"requirement_notes\": [\n    {\n      \"id\": \"REQ-history-e416accb\",\n      \"note\": \"Verify that history filtering remains functional despite changes to how response data is handled.\"\n    },\n    {\n      \"id\": \"REQ-ai-features-0c032c29\",\n      \"note\": \"Ensure AI test case generation remains stable with the new response parsing logic.\"\n    },\n    {\n      \"id\": \"REQ-ai-features-58bcf7c1\",\n      \"note\": \"Confirm that AI-generated payloads are correctly accepted and formatted in the editor.\"\n    },\n    {\n      \"id\": \"REQ-ai-features-80daf8db\",\n      \"note\": \"Check that pre-request scripts generated by AI are not corrupted by the new JSONC parsing rules.\"\n    },\n    {\n      \"id\": \"REQ-ai-features-a383b9e6\",\n      \"note\": \"Ensure AI-based request renaming is unaffected by the changes to response body handling.\"\n    }\n  ],\n  \"questions\": [\n    {\n      \"about\": [\n        \"RV-c871eaca8d\"\n      ],\n      \"question\": \"The GraphQL example response area was modified, but we have not identified the specific screen where this is accessed; could you clarify where this is located and if it requires dedicated testing?\"\n    }\n  ]\n}",
+ "schema": {
+  "properties": {
+   "headline": {
+    "description": "One sentence summary of what this change puts at risk",
+    "type": "STRING"
+   },
+   "questions": {
+    "items": {
+     "properties": {
+      "about": {
+       "items": {
+        "enum": [
+         "RV-c871eaca8d"
+        ],
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      },
+      "question": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "about",
+      "question"
+     ],
+     "required": [
+      "about",
+      "question"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "requirement_notes": {
+    "items": {
+     "properties": {
+      "id": {
+       "enum": [
+        "REQ-history-e416accb",
+        "REQ-ai-features-0c032c29",
+        "REQ-ai-features-58bcf7c1",
+        "REQ-ai-features-80daf8db",
+        "REQ-ai-features-a383b9e6"
+       ],
+       "type": "STRING"
+      },
+      "note": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "id",
+      "note"
+     ],
+     "required": [
+      "id",
+      "note"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "retest": {
+    "items": {
+     "properties": {
+      "flow_id": {
+       "enum": [
+        "FLOW-529e4fed45",
+        "FLOW-c701ca7af1",
+        "FLOW-aa0598b618"
+       ],
+       "type": "STRING"
+      },
+      "why": {
+       "description": "One sentence: what could break for the user and why",
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "flow_id",
+      "why"
+     ],
+     "required": [
+      "flow_id",
+      "why"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "screen_notes": {
+    "items": {
+     "properties": {
+      "id": {
+       "enum": [
+        "S-07c9e5eb461c",
+        "S-087a903d2901",
+        "S-90409d5cef06",
+        "S-92ad0c37a2e7",
+        "S-e28a15c025a8",
+        "S-ec56f727dbfc",
+        "S-f04282a7f03d",
+        "S-417fc3bb0aff",
+        "S-7861398072d8",
+        "S-a410a9511aa5",
+        "S-d12526dafa7e",
+        "S-d93e56b8bf75"
+       ],
+       "type": "STRING"
+      },
+      "note": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "id",
+      "note"
+     ],
+     "required": [
+      "id",
+      "note"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "what_changed": {
+    "description": "2-4 sentences in product language describing the change",
+    "type": "STRING"
+   }
+  },
+  "propertyOrdering": [
+   "headline",
+   "what_changed",
+   "retest",
+   "screen_notes",
+   "requirement_notes",
+   "questions"
+  ],
+  "required": [
+   "headline",
+   "what_changed",
+   "retest",
+   "screen_notes",
+   "requirement_notes",
+   "questions"
+  ],
+  "type": "OBJECT"
+ },
+ "seed": 7,
+ "system": "You write pull-request risk briefs for a QA lead who knows the product (Hoppscotch, an API client)\nbut not its code. Use plain product language: screens, buttons, tabs, what a user does.\nNever mention file names, code identifiers, components, functions, keys, or programming terms.\nOnly talk about items given to you, and cite them by their ids exactly as given.",
+ "task": "report:pr6706",
+ "temperature": 0.0
+}

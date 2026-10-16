@@ -1,0 +1,99 @@
+{
+ "meta": {
+  "model_version": "gemini-3.5-flash-lite",
+  "usage": {
+   "candidatesTokenCount": 139,
+   "promptTokenCount": 1194,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 1194
+    }
+   ],
+   "serviceTier": "standard",
+   "totalTokenCount": 1333
+  }
+ },
+ "model": "gemini-3.5-flash-lite",
+ "prompt": "Judge each requirement.\n\n<requirement id=\"REQ-environments-a3f8abc1\">\nstatement: User can create and delete environment variables using scripts by using the pw object.\ndoc quote: \"You can also create and delete environment variables using scripts by using the pw object.\"\ntestable in web UI without login: yes\nUI candidates:\n  U1: [label] 'Request variables' on /; screens: Request variables tab\n  U2: [button] 'Variables' on /; screens: Edit environment dialog, Edit environment - More options, Edit environment - Add variable\n  U3: [button] 'Create an organization' on /settings; screens: Settings - Cloud menu\n  U4: [button] 'Create an organization' on /; screens: Hoppscotch cloud menu\n  U5: [button] 'Variables' on /graphql; screens: GraphQL request screen\n  U6: [textbox] 'Variable 1' on /; screens: Request variables tab\n  U7: [textbox] 'Value 1' on /; screens: Request variables tab\n  U8: [button] 'Save the request to create example' on /; screens: REST request - Response view, JSON response filter\n  U9: [button] 'Variables' on /; screens: REST request - Main screen, Environments management screen, Environment options menu\n  U10: [heading] 'Edit Environment' on /; screens: Edit environment dialog, Edit environment - More options, Edit environment - Add variable\n  U11: [menuitem] 'No environment' on /; screens: Environment selector menu\n  U12: [button] 'Save' on /; screens: Edit environment dialog, Edit environment - More options, Edit environment - Add variable\n  U13: [textbox] 'Label' on /; screens: Edit environment dialog, Edit environment - More options, Edit environment - Add variable\n  U14: [button] 'Cancel' on /; screens: Edit environment dialog, Edit environment - More options, Edit environment - Add variable\n  U15: [button] 'Secrets' on /; screens: Edit environment dialog, Edit environment - More options, Edit environment - Add variable\nCode candidates:\n  C1: ImportExportImportExportStepsImportSummary (src/components/importExport/ImportExportSteps/ImportSummary.vue); shows: 'Pre-request scripts', 'Post request scripts', 'scripts found but not imported'\n  C2: CollectionsProperties (src/components/collections/Properties.vue); shows: 'Scripts', 'These scripts will run for every request in this collection. Pre-request scripts run before the request, test scripts run after the response.', 'Variables'\n  C3: EnvironmentsSelector (src/components/environments/Selector.vue); shows: 'Environment variables', 'Global variables', 'No variables'\n  C4: GqlRequestOptions (src/components/gql/RequestOptions.vue); shows: 'Variables', 'Variables'\n  C5: GraphqlRequestOptions (src/components/graphql/RequestOptions.vue); shows: 'Variables', 'Variables'\n  C6: EnvironmentsMyDetails (src/components/environments/my/Details.vue); shows: 'Variables', 'Nested environment variables are limited to 10 levels'\n  C7: EnvironmentsTeamsDetails (src/components/environments/teams/Details.vue); shows: 'Variables', 'Nested environment variables are limited to 10 levels'\n  C8: ShareModal (src/components/share/Modal.vue); shows: 'Variables', 'Create'\n  C9: CollectionsDocumentationSectionsVariables (src/components/collections/documentation/sections/Variables.vue); shows: 'Variables', 'No variables defined'\n  C10: HttpInheritedScriptsModal (src/components/http/InheritedScriptsModal.vue); shows: 'Inherited Scripts'\n  C11: ImportExportImportExportStepsFileImport (src/components/importExport/ImportExportSteps/FileImport.vue); shows: 'Import scripts'\n  C12: CollectionsVariables (src/components/collections/Variables.vue); shows: 'Variables', 'Collection variables are empty'\n  C13: CookiesAllModal (src/components/cookies/AllModal.vue); shows: 'Not exposed to page scripts. Still sent on matching requests.', 'Delete'\n  C14: HttpPreRequestScript (src/components/http/PreRequestScript.vue); shows: 'View inherited scripts'\n  C15: HttpTests (src/components/http/Tests.vue); shows: 'View inherited scripts'\n</requirement>\n",
+ "response_text": "{\n  \"judgements\": [\n    {\n      \"req_id\": \"REQ-environments-a3f8abc1\",\n      \"ui_verdict\": \"NOT_FOUND\",\n      \"ui_ids\": [],\n      \"ui_rationale\": \"None of the UI candidates demonstrate creating or deleting environment variables programmatically using scripts via the pw object.\",\n      \"code_verdict\": \"ABSENT\",\n      \"code_ids\": [],\n      \"code_rationale\": \"None of the code components show the implementation of creating or deleting environment variables using scripts via the pw object.\"\n    }\n  ]\n}",
+ "schema": {
+  "properties": {
+   "judgements": {
+    "items": {
+     "properties": {
+      "code_ids": {
+       "description": "Ids like C2 from this requirement's code candidates",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      },
+      "code_rationale": {
+       "type": "STRING"
+      },
+      "code_verdict": {
+       "enum": [
+        "PRESENT",
+        "ABSENT"
+       ],
+       "type": "STRING"
+      },
+      "req_id": {
+       "type": "STRING"
+      },
+      "ui_ids": {
+       "description": "Ids like U3 from this requirement's UI candidates",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      },
+      "ui_rationale": {
+       "type": "STRING"
+      },
+      "ui_verdict": {
+       "enum": [
+        "COVERED",
+        "PARTIAL",
+        "NOT_FOUND"
+       ],
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "req_id",
+      "ui_verdict",
+      "ui_ids",
+      "ui_rationale",
+      "code_verdict",
+      "code_ids",
+      "code_rationale"
+     ],
+     "required": [
+      "req_id",
+      "ui_verdict",
+      "ui_ids",
+      "ui_rationale",
+      "code_verdict",
+      "code_ids",
+      "code_rationale"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   }
+  },
+  "propertyOrdering": [
+   "judgements"
+  ],
+  "required": [
+   "judgements"
+  ],
+  "type": "OBJECT"
+ },
+ "seed": 7,
+ "system": "You verify whether documented product requirements are implemented, for a QA team.\nFor each requirement you get candidate UI elements observed in the live web app (ids U1, U2, ...) and candidate\ncode components from its repository (ids C1, C2, ...).\nUI verdict:\n- COVERED: one or more listed UI elements clearly let a user perform or see this capability.\n- PARTIAL: listed elements show part of it (e.g. the entry point exists but not the full behaviour).\n- NOT_FOUND: none of the listed elements implement it. Do not stretch: a generic button is not evidence.\nCode verdict:\n- PRESENT: a listed component clearly implements this capability; ABSENT otherwise.\nCite only ids from that requirement's own lists. If a list is marked \"not applicable\", answer NOT_FOUND / ABSENT\nfor that part and cite nothing.",
+ "task": "rejudge:0:v0",
+ "temperature": 0.0
+}

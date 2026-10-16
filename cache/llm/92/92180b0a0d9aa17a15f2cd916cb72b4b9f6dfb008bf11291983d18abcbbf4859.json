@@ -1,0 +1,100 @@
+{
+ "meta": {
+  "model_version": "gemini-2.5-flash",
+  "usage": {
+   "candidatesTokenCount": 381,
+   "promptTokenCount": 2330,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 2330
+    }
+   ],
+   "serviceTier": "standard",
+   "thoughtsTokenCount": 1743,
+   "totalTokenCount": 4454
+  }
+ },
+ "model": "gemini-2.5-flash",
+ "prompt": "Judge each requirement.\n\n<requirement id=\"REQ-environments-1d65dd30\">\nstatement: The app masks all secret variable values using asterisks.\ndoc quote: \"All secret variable values in Hoppscotch will be masked using asterisks (***).\"\ntestable in web UI without login: yes\nUI candidates:\n  U1: [button] 'Show secret' on /; screens: New Environment Dialog - Add Secret Variable\n  U2: [textbox] 'Variable 1' on /; screens: New Environment Dialog - Add Secret Variable\n  U3: [button] 'Remove' on /; screens: New Environment Dialog - Add Secret Variable\n  U4: [button] 'Replace with initial' on /; screens: New Environment Dialog - Add Secret Variable\n  U5: [textbox] 'Current value 1' on /; screens: New Environment Dialog - Add Secret Variable\n  U6: [textbox] 'Initial value 1' on /; screens: New Environment Dialog - Add Secret Variable\n  U7: [button] 'Replace with current' on /; screens: New Environment Dialog - Add Secret Variable\n  U8: [button] 'Cancel' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\n  U9: [button] 'Save' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\n  U10: [button] 'Variables' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\n  U11: [button] 'Secrets' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\n  U12: [textbox] 'Label' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\n  U13: [label] 'Label' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\n  U14: [heading] 'New Environment' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\n  U15: [button] 'Close' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\nCode candidates:\n  C1: HttpAuthorizationJWT (src/components/http/authorization/JWT.vue); shows: 'Secret', 'Secret Base64 Encoded', 'Hoppscotch automatically assigns default values to certain fields if no explicit value is provided'\n  C2: EnvironmentsAdd (src/components/environments/Add.vue); shows: 'Variable', 'Replace with variable'\n  C3: CollectionsVariables (src/components/collections/Variables.vue); shows: 'Variable List', 'Variable {count}'\n  C4: CollectionsDocumentationSectionsAuth (src/components/collections/documentation/sections/Auth.vue); shows: 'Client Secret', 'Secret Key'\n  C5: SmartEnvInput (src/components/smart/EnvInput.vue); shows: 'Show secret', 'Hide secret'\n  C6: HttpTestRunnerModal (src/components/http/test/RunnerModal.vue); shows: 'Keep variable values'\n  C7: HttpAuthorizationAWSSign (src/components/http/authorization/AWSSign.vue); shows: 'Secret Key', 'Hoppscotch automatically assigns default values to certain fields if no explicit value is provided'\n  C8: HttpAuthorizationAkamaiEG (src/components/http/authorization/AkamaiEG.vue); shows: 'Client Secret', 'Hoppscotch automatically assigns default values to certain fields if no explicit value is provided'\n  C9: HttpRequestVariables (src/components/http/RequestVariables.vue); shows: 'Variable {count}', 'Entries are separated by newline\\nKeys and values are separated by :\\nPrepend # to any row you want to add but keep disabled'\n  C10: EnvironmentsMyDetails (src/components/environments/my/Details.vue); shows: 'Variable {count}'\n  C11: EnvironmentsTeamsDetails (src/components/environments/teams/Details.vue); shows: 'Variable {count}'\n  C12: GqlEnumValues (src/components/gql/EnumValues.vue); shows: 'Show deprecated values'\n  C13: GraphqlEnumValues (src/components/graphql/EnumValues.vue); shows: 'Show deprecated values'\n  C14: pages_oauth (src/pages/oauth.vue); shows: 'No Client Secret Defined'\n  C15: CollectionsImportExport (src/components/collections/ImportExport.vue); shows: 'Successfully exported as secret Gist'\n</requirement>\n\n<requirement id=\"REQ-environments-426aedf5\">\nstatement: The app allows global environment variables to be accessed from any workspace.\ndoc quote: \"Variables defined in a global environment can be accessed from any workspace anytime.\"\ntestable in web UI without login: yes\nUI candidates:\n  U1: [button] 'Variables' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\n  U2: [button] 'Workspace Environments' on /; screens: Environment Selector Popover\n  U3: [button] 'Custom' on /settings; screens: Global Defaults Case Style Selector\n  U4: [button] 'More' on /; screens: Environments List View, Environment Options Menu, New Environment Dialog - Variables Tab\n  U5: [heading] 'New Environment' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\n  U6: [button] 'Cancel' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\n  U7: [button] 'Save' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\n  U8: [button] 'Secrets' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\n  U9: [textbox] 'Label' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\n  U10: [label] 'Label' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\n  U11: [button] 'Camel Case ( camelCase )' on /settings; screens: Global Defaults Case Style Selector\n  U12: [button] 'Snake Case ( snake_case )' on /settings; screens: Global Defaults Case Style Selector\n  U13: [button] 'Pascal Case ( PascalCase )' on /settings; screens: Global Defaults Case Style Selector\n  U14: [button] 'Descriptive With Spaces' on /settings; screens: Global Defaults Case Style Selector\n  U15: [button] 'More' on /; screens: New Environment Dialog - Variables Tab, New Environment Dialog - Secrets Tab, New Environment Dialog - Add Secret Variable\nCode candidates:\n  C1: EnvironmentsSelector (src/components/environments/Selector.vue); shows: 'Global variables', 'Environment variables', 'Global', 'No variables'\n  C2: EnvironmentsMyDetails (src/components/environments/my/Details.vue); shows: 'Variables', 'Nested environment variables are limited to 10 levels', 'Environment created', 'Environment updated'\n  C3: EnvironmentsTeamsDetails (src/components/environments/teams/Details.vue); shows: 'Variables', 'Nested environment variables are limited to 10 levels', 'Environment created', 'Environment updated'\n  C4: CollectionsDocumentationSectionsVariables (src/components/collections/documentation/sections/Variables.vue); shows: 'Variables', 'No variables defined'\n  C5: CollectionsVariables (src/components/collections/Variables.vue); shows: 'Variables', 'Collection variables are empty'\n  C6: CollectionsDocumentationPublishDocForm (src/components/collections/documentation/PublishDocForm.vue); shows: 'Attach an environment to resolve variables in the published documentation', 'Environment'\n  C7: CollectionsDocumentationPublishDocSnapshotPreview (src/components/collections/documentation/PublishDocSnapshotPreview.vue); shows: 'Attach an environment to resolve variables in the published documentation', 'Environment'\n  C8: EnvironmentsProperties (src/components/environments/Properties.vue); shows: 'Environment Properties', 'Environment ID'\n  C9: Environments (src/components/environments/index.vue); shows: 'Environment duplicated', 'Environment Deleted'\n  C10: EnvironmentsTeamsEnvironment (src/components/environments/teams/Environment.vue); shows: 'Environment duplicated', 'Environment Deleted'\n  C11: SettingsAgent (src/components/settings/Agent.vue); shows: 'Global Defaults'\n  C12: SettingsNative (src/components/settings/Native.vue); shows: 'Global Defaults'\n  C13: CollectionsProperties (src/components/collections/Properties.vue); shows: 'Variables'\n  C14: CollectionsDocumentationSectionsGqlVariables (src/components/collections/documentation/sections/GqlVariables.vue); shows: 'Variables'\n  C15: GqlRequestOptions (src/components/gql/RequestOptions.vue); shows: 'Variables'\n</requirement>\n",
+ "response_text": "{\n  \"judgements\": [\n    {\n      \"req_id\": \"REQ-environments-1d65dd30\",\n      \"ui_verdict\": \"COVERED\",\n      \"ui_ids\": [\"U1\", \"U5\", \"U6\"],\n      \"ui_rationale\": \"The 'Show secret' button (U1) strongly implies that secret values are masked by default. The textboxes 'Current value 1' (U5) and 'Initial value 1' (U6) are the UI elements where these masked values would be displayed.\",\n      \"code_verdict\": \"PRESENT\",\n      \"code_ids\": [\"C5\"],\n      \"code_rationale\": \"The `SmartEnvInput` component (C5) explicitly contains text for 'Show secret' and 'Hide secret', indicating it handles the display and toggling of secret variable values, which includes masking them.\"\n    },\n    {\n      \"req_id\": \"REQ-environments-426aedf5\",\n      \"ui_verdict\": \"NOT_FOUND\",\n      \"ui_ids\": [],\n      \"ui_rationale\": \"None of the listed UI elements clearly demonstrate that global environment variables can be accessed from any workspace. While 'Workspace Environments' (U2) suggests different environment scopes, it doesn't explicitly show global access or selection.\",\n      \"code_verdict\": \"PRESENT\",\n      \"code_ids\": [\"C1\"],\n      \"code_rationale\": \"The `EnvironmentsSelector` component (C1) explicitly refers to 'Global variables' and 'Global', indicating its role in allowing users to select and access global environments, which implies their availability across workspaces.\"\n    }\n  ]\n}",
+ "schema": {
+  "properties": {
+   "judgements": {
+    "items": {
+     "properties": {
+      "code_ids": {
+       "description": "Ids like C2 from this requirement's code candidates",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      },
+      "code_rationale": {
+       "type": "STRING"
+      },
+      "code_verdict": {
+       "enum": [
+        "PRESENT",
+        "ABSENT"
+       ],
+       "type": "STRING"
+      },
+      "req_id": {
+       "type": "STRING"
+      },
+      "ui_ids": {
+       "description": "Ids like U3 from this requirement's UI candidates",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      },
+      "ui_rationale": {
+       "type": "STRING"
+      },
+      "ui_verdict": {
+       "enum": [
+        "COVERED",
+        "PARTIAL",
+        "NOT_FOUND"
+       ],
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "req_id",
+      "ui_verdict",
+      "ui_ids",
+      "ui_rationale",
+      "code_verdict",
+      "code_ids",
+      "code_rationale"
+     ],
+     "required": [
+      "req_id",
+      "ui_verdict",
+      "ui_ids",
+      "ui_rationale",
+      "code_verdict",
+      "code_ids",
+      "code_rationale"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   }
+  },
+  "propertyOrdering": [
+   "judgements"
+  ],
+  "required": [
+   "judgements"
+  ],
+  "type": "OBJECT"
+ },
+ "seed": 7,
+ "system": "You verify whether documented product requirements are implemented, for a QA team.\nFor each requirement you get candidate UI elements observed in the live web app (ids U1, U2, ...) and candidate\ncode components from its repository (ids C1, C2, ...).\nUI verdict:\n- COVERED: one or more listed UI elements clearly let a user perform or see this capability.\n- PARTIAL: listed elements show part of it (e.g. the entry point exists but not the full behaviour).\n- NOT_FOUND: none of the listed elements implement it. Do not stretch: a generic button is not evidence.\nCode verdict:\n- PRESENT: a listed component clearly implements this capability; ABSENT otherwise.\nCite only ids from that requirement's own lists. If a list is marked \"not applicable\", answer NOT_FOUND / ABSENT\nfor that part and cite nothing.",
+ "task": "rejudge:0:v0",
+ "temperature": 0.0
+}

@@ -1,0 +1,10 @@
+{
+  "name": "triangulate-vue-extractor",
+  "private": true,
+  "type": "module",
+  "description": "Extracts components, render edges, i18n usage, routes and symbols from a Vue 3 + TypeScript codebase using the real compilers.",
+  "dependencies": {
+    "@vue/compiler-sfc": "3.5.13",
+    "typescript": "5.6.3"
+  }
+}

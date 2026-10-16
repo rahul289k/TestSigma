@@ -1,0 +1,120 @@
+# Triangulate target configuration: Hoppscotch.
+# Every value the pipeline depends on lives here, so a run is fully described by
+# this file (+ an optional profile overlay) and the pinned versions in manifest.json.
+
+app:
+  url: https://hoppscotch.io
+  # Routes the crawler starts from. Each is explored with its own share of the budget.
+  seed_routes: ["/", "/graphql", "/realtime/websocket", "/realtime/sse", "/realtime/socketio", "/realtime/mqtt", "/settings"]
+  # Regex that extracts the release version string from the live JS bundle.
+  version_pattern: '"(\d{4}\.\d{1,2}\.\d{1,2})"'
+
+code:
+  repo: hoppscotch/hoppscotch
+  # Only these paths are checked out (sparse, shallow clone at the pinned tag).
+  sparse_paths: ["packages/hoppscotch-common", "packages/hoppscotch-selfhost-web/vite.config.ts"]
+  common_root: packages/hoppscotch-common
+  components_dir: src/components
+  pages_dir: src/pages
+  layouts_dir: src/layouts
+  locale_file: locales/en.json
+  # Import aliases, copied from packages/hoppscotch-selfhost-web/vite.config.ts at the pinned tag.
+  aliases: {"~": "src", "@composables": "src/composables", "@modules": "src/modules", "@services": "src/services",
+            "@components": "src/components", "@helpers": "src/helpers", "@platform": "src/platform",
+            "@functional": "src/helpers/functional", "@workers": "src/workers"}
+  # Tag prefixes rendered by external libraries (not in this repo) - treated as leaves.
+  external_tag_prefixes: ["Hopp", "Icon", "Router", "Transition", "KeepAlive", "Teleport", "Suspense", "Component", "Splitpanes", "Pane", "Tippy", "Draggable", "Lazy"]
+
+docs:
+  repo: hoppscotch/docs
+  ref: main
+  include: ["documentation/features/*.mdx"]
+  base_url: https://docs.hoppscotch.io
+  # Features observed to require sign-in when logged out (fed to extraction as facts, not guesses).
+  # Verified: clicking "Modify with AI" opens the "Login to Hoppscotch" dialog (crawl state S-d12526dafa7e).
+  login_hints: ["AI features such as 'Modify with AI' (they open the sign-in dialog)",
+                "teams, shared or workspace members and roles", "cloud sync and shared requests links",
+                "personal access tokens"]
+
+crawl:
+  max_states: 250
+  max_states_per_route: 60
+  max_depth: 6
+  max_minutes: 45   # safety net only: a full crawl ends on its state caps in ~20 min
+  viewport: {width: 1440, height: 900}
+  locale: en-US
+  timezone: UTC
+  settle_ms: 350
+  settle_timeout_ms: 8000
+  nav_timeout_ms: 30000
+  max_actions_per_state: 60
+  # Accessible names that are never clicked (case-insensitive substring match).
+  deny_names: ["login", "log in", "sign in", "sign up", "sign out", "logout", "log out", "continue with",
+               "delete", "remove", "clear all", "clear history", "close all", "install", "download",
+               "upgrade", "pricing", "save my workspace", "report an issue", "send feedback", "chat with us",
+               "english"]   # the language picker trigger shows the current language
+  # Third-party hosts blocked for a stable DOM (chat widget, analytics).
+  block_hosts: ["crisp.chat", "googletagmanager.com", "google-analytics.com", "plausible.io", "posthog.com", "sentry.io", "hotjar.com", "intercom.io"]
+  # Labels the app shows only while something is in progress (e.g. a WebSocket handshake). Observation waits
+  # until none is visible, so the state recorded does not depend on a live server's timing.
+  transient_labels: ["Connecting", "Disconnecting", "Starting", "Stopping"]
+  # Background calls not recorded in transition network logs (timing-dependent session/telemetry calls).
+  network_ignore_hosts: ["api.hoppscotch.io"]
+  # One service, several hosts: the docs-search client fails over between them on a slow answer, so the
+  # transition log names the service instead of whichever host replied.
+  network_host_aliases: {"algolia.net": "algolia", "algolianet.com": "algolia"}
+  # Deterministic inputs for text fields, matched by placeholder or accessible name (lower-case substring).
+  fixtures: {}
+
+probe:
+  enabled: true
+  # Each decision call returns up to 4 browser actions; calls per requirement = max_steps.
+  max_requirements: 1
+  max_steps: 2
+
+llm:
+  provider: gemini
+  # Each task family runs on one fixed model (no runtime switching). The free tier allows 20 requests per
+  # model per day (resets 00:00 UTC) and this key's quota is shared, so models were chosen by measuring
+  # what was actually available on 2026-10-16:
+  #   default (gemini-3.5-flash-lite): requirement extraction, judging and probe-agent decisions
+  #   light   (gemini-3.1-flash-lite): screen/flow names and report text
+  # Measured and not usable: gemini-2.5-flash and gemini-3.5-flash/3.6-flash (daily quota exhausted),
+  # gemini-3.7-flash, gemini-flash-latest, gemma-4-31b-it (HTTP 503), gemini-2.5-flash-lite and
+  # gemini-2.5-pro (closed to new users), gemini-3.1-pro-preview (no free quota).
+  models: {default: gemini-3.5-flash-lite, light: gemini-3.1-flash-lite}
+  task_tiers: {ingest: default, judge: default, rejudge: default, probe: default,
+               label: light, flownames: light, report: light}
+  temperature: 0.0
+  seed: 7
+  max_calls_per_run: 40
+  max_output_tokens: 32768
+  requests_per_minute: 8
+  timeout_s: 300
+  retries: 6
+  # Large batches: fewer calls under a small daily quota (all models have 1M-token context).
+  ingest_pages_per_call: 13
+  judge_requirements_per_call: 60
+  label_states_per_call: 125
+  flow_names_per_call: 80
+  judge_votes: 1
+
+link:
+  retrieval_top_k: 15
+  # Starting confidences per method; replaced by measured precision when eval/calibration.json exists.
+  method_priors:
+    route_page: 0.95
+    i18n_route_unique: 0.90
+    i18n_route_tiebreak: 0.70
+    i18n_route_ambiguous: 0.40
+    i18n_global_unique: 0.50
+    i18n_global_ambiguous: 0.25
+    llm_judge: 0.80
+    human: 1.0
+
+reason:
+  hop_decay: 0.7
+  max_import_hops: 3
+  child_factor: 0.6
+  change_weights: {template: 1.0, script: 1.0, style: 0.6, symbol: 1.0, key_changed: 1.0, key_removed: 1.0, whole_file: 0.8}
+  bands: {high: 0.75, medium: 0.40}

@@ -1,0 +1,64 @@
+{
+ "meta": {
+  "model_version": "gemini-2.5-flash",
+  "usage": {
+   "candidatesTokenCount": 151,
+   "promptTokenCount": 407,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 407
+    }
+   ],
+   "serviceTier": "standard",
+   "thoughtsTokenCount": 1047,
+   "totalTokenCount": 1605
+  }
+ },
+ "model": "gemini-2.5-flash",
+ "prompt": "Name these screens.\n\n<screen id=\"S-58f7b348000b\">route: /\nreached by: Environments > Add new > New\nopen overlays: dialog:New Environment\nselected: Environments, Parameters, REST, Untitled, Variables\nheadings: Label, New Environment, Query Parameters\nnew controls: HOPPSCOTCH, Search and commands ⌘ K, Downloads, Support, Save My Workspace, Login, REST, GraphQL, Realtime, Settings, Untitled, New, Select environment, Environment Quick Peek, Switch protocol, Untitled, Method, Enter a URL or paste a cURL command, Send, Options, Save, Options, Parameters, Body, Headers\n</screen>\n\n<screen id=\"S-3f926aa4e195\">route: /\nreached by: Environments > Add new > New > Secrets\nopen overlays: dialog:New Environment\nselected: Environments, Parameters, REST, Secrets, Untitled\nheadings: Label, New Environment, Query Parameters\nnew controls: none\n</screen>\n\n<screen id=\"S-3da117e5a2c2\">route: /\nreached by: Environments > Add new > New > Secrets > Add new\nopen overlays: dialog:New Environment\nselected: Environments, Parameters, REST, Secrets, Untitled\nheadings: Label, New Environment, Query Parameters\nnew controls: Variable 1, Initial value 1, Show secret, Replace with current, Current value 1, Show secret, Replace with initial, Remove\n</screen>",
+ "response_text": "{\"screens\": [{\"fp\": \"S-58f7b348000b\", \"label\": \"New Environment Dialog - Variables Tab\", \"purpose\": \"This screen allows users to create a new environment and define its associated variables.\"}, {\"fp\": \"S-3f926aa4e195\", \"label\": \"New Environment Dialog - Secrets Tab\", \"purpose\": \"This screen allows users to create a new environment and manage its secret variables.\"}, {\"fp\": \"S-3da117e5a2c2\", \"label\": \"New Environment Dialog - Add Secret Variable\", \"purpose\": \"This screen allows users to add and configure a new secret variable within an environment.\"}]}",
+ "schema": {
+  "properties": {
+   "screens": {
+    "items": {
+     "properties": {
+      "fp": {
+       "description": "The screen id exactly as given",
+       "type": "STRING"
+      },
+      "label": {
+       "type": "STRING"
+      },
+      "purpose": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "fp",
+      "label",
+      "purpose"
+     ],
+     "required": [
+      "fp",
+      "label",
+      "purpose"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   }
+  },
+  "propertyOrdering": [
+   "screens"
+  ],
+  "required": [
+   "screens"
+  ],
+  "type": "OBJECT"
+ },
+ "seed": 7,
+ "system": "You name screens of a web app (Hoppscotch, an API client) for a QA lead who knows the product but not the code.\nFor each screen give a short name (max 8 words, e.g. \"REST request - Headers tab\" or \"Environment selector menu\")\nand a one-sentence purpose. Use only what the summary shows. Keep names distinct when screens differ.",
+ "task": "label:probe:0",
+ "temperature": 0.0
+}

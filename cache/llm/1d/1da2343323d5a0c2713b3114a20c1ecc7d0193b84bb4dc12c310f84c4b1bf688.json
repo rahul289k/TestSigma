@@ -1,0 +1,189 @@
+{
+ "meta": {
+  "model_version": "gemini-3.1-flash-lite",
+  "usage": {
+   "candidatesTokenCount": 1522,
+   "promptTokenCount": 2282,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 2282
+    }
+   ],
+   "serviceTier": "standard",
+   "totalTokenCount": 3804
+  }
+ },
+ "model": "gemini-3.1-flash-lite",
+ "prompt": "PULL REQUEST: fix(common): keep HTML response preview readable in dark theme\nDESCRIPTION (author's words, may be technical):\nCloses #6665 — light color-scheme on HTML preview iframe/srcdoc; includes tests.\n\n<!-- This is an auto-generated description by cubic. -->\n---\n## Summary by cubic\nFixes the HTML response preview being unreadable in dark themes. The preview iframe inherited the app's dark `color-scheme`, which made unstyled HTML text invisible (light text on a light background). The preview now forces a light color-scheme unless the response HTML already declares its own.\n\n- Extracts srcdoc building (base href injection and color-scheme handling) into a `buildHtmlPreviewSrcdoc` helper.\n- Adds tests covering base href injection, color-scheme forcing, and case-insensitive meta name detection.\n\n<sup>Written for commit 600aba00d49b04f2944780ba5b3897c0e51577d0. Summary will update on new commits.</sup>\n\n<a href=\"https://cubic.dev/pr/hoppscotch/hoppscotch/pull/6707?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n\n<!-- End of auto-generated description by cubic. -->\n\n\n\nCHANGE AREAS (plain): automated tests (no user impact); shared logic behind the screens listed; the lenses renderers htmllens renderer area\nOVERALL RISK (already computed): Medium\n\nFLOWS TO RETEST (id | risk | name | steps):\n  FLOW-4a7d080776 | Medium | Explore GraphQL schema data structure | Request > More > Generate Data Schema\n  FLOW-093eb009b2 | Medium | View GraphQL response after sending request | Request\n  FLOW-8e38524656 | Medium | Copy generated code snippet to clipboard | Generate Code\n  FLOW-529e4fed45 | Medium | Filter history to show starred entries | History > Filter\n  FLOW-c701ca7af1 | Medium | Filter request history items | Send\n  FLOW-d1bb010a62 | Low | Save response as an example | Send\n  FLOW-c447783334 | Low | View generated API integration code | Generate Code\n\nSCREENS AT RISK (id | risk | screen | controls at risk):\n  S-4f7b87c21c75 | Medium | GraphQL response view | Response, More, Search\n  S-235f6ffbd5d3 | Medium | GraphQL response options | Generate Data Schema, Response, More, Search\n  S-bc65ec6061f1 | Medium | GraphQL connection status | Response, More\n  S-ef610c256620 | Medium | Import cURL dialog | Enter cURL command, Cancel, Clear all, Copy, Import, Import cURL\n  S-524de33b817c | Medium | Data schema generator | Data Schema, Copy, Copy, Download file, Download file, Filter\n  S-ee10dc94110d | Medium | GraphQL schema generator | Data Schema, Generated code, Response, Copy, Download file, More\n  S-596d1c194c7b | Medium | GraphQL schema language selector | Data Schema, Generated code, Response, Copy, Download file, More\n  S-cae778f35a1f | Medium | Schema language selector | Data Schema, Copy, Copy, Download file, Download file, Filter\n  S-437d0e0df05a | Medium | C# schema view | Data Schema, Copy, Copy, Download file, Download file, Filter\n  S-a0aa86d8c19e | Medium | C++ schema view | Data Schema, Generated code, Response, Copy, Download file, More\n  S-6fbcef518f2a | Medium | C++ schema language selector | Data Schema, Generated code, Response, Copy, Download file, More\n  S-95bf4f5d7e6b | Medium | Schema language selector popover | Data Schema, Copy, Copy, Download file, Download file, Filter\n\nREQUIREMENTS (id | status | statement):\n  REQ-graphql-api-testing-43518fde | AT_RISK | User can explore the data structure using the GraphQL schema explorer.\n  REQ-graphql-api-testing-d1a4452b | AT_RISK | Hoppscotch provides a dedicated GraphQL API testing platform with request and response sections.\n  REQ-documentation-6a18b7c4 | WEAK_SIGNAL | Generated code snippets help users integrate with API endpoints quickly.\n  REQ-history-e416accb | WEAK_SIGNAL | User can filter history items using the Filter button in the history section.\n  REQ-snippets-f0d87372 | WEAK_SIGNAL | User can copy the generated code snippet to the clipboard by clicking the Copy button.\n  REQ-documentation-7df0b03e | WEAK_SIGNAL | User can view multiple example responses for different API scenarios.\n  REQ-mock-0d33db6b | WEAK_SIGNAL | User can save a response as an example by clicking the save as example icon.\n\nCHANGES WE COULD NOT CONNECT TO A SCREEN (plain reason):\n  - Cookies › All Modal: can appear on the REST page, the GraphQL page, but the crawl never showed any of its controls\n  - Cookies › Edit Cookie: can appear on the REST page, the GraphQL page, but the crawl never showed any of its controls\n  - Gql › Response: can appear on the REST page, but the crawl never showed any of its controls\n  - Gql › Example › Response: can appear on the REST page, but the crawl never showed any of its controls\n  - Http › Response: can appear on the REST page, but the crawl never showed any of its controls\n  - Lenses › Renderers › Audio Lens Renderer: can appear on the REST page, but the crawl never showed any of its controls\n  - Lenses › Renderers › HTMLLens Renderer: can appear on the REST page, but the crawl never showed any of its controls\n  - Lenses › Renderers › Image Lens Renderer: can appear on the REST page, but the crawl never showed any of its controls\n  - Lenses › Renderers › PDFLens Renderer: can appear on the REST page, but the crawl never showed any of its controls\n  - Lenses › Renderers › Video Lens Renderer: can appear on the REST page, but the crawl never showed any of its controls\n\nOPEN QUESTIONS FOR A HUMAN (id | question):\n  RV-ea0a164171 | This change touches 'Cookies › All Modal', which can appear on the REST page, the GraphQL page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-875a9eced6 | This change touches 'Cookies › Edit Cookie', which can appear on the REST page, the GraphQL page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-289d2348cc | This change touches 'Gql › Response', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-c871eaca8d | This change touches 'Gql › Example › Response', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-5599ab9cab | This change touches 'Http › Response', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-105cf6db44 | This change touches 'Lenses › Renderers › Audio Lens Renderer', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-a8c71d3b17 | This change touches 'Lenses › Renderers › HTMLLens Renderer', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-e93f9dfc4c | This change touches 'Lenses › Renderers › Image Lens Renderer', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-1b12b49ddc | This change touches 'Lenses › Renderers › PDFLens Renderer', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-10bb1397ca | This change touches 'Lenses › Renderers › Video Lens Renderer', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n\nWrite the brief. Include every High flow in retest. Add a requirement note for every requirement listed. Turn each open question into a plain question (cite its id in 'about').",
+ "response_text": "{\n  \"headline\": \"This change updates how HTML responses are rendered to ensure they remain readable when using the dark theme.\",\n  \"what_changed\": \"The HTML response preview now forces a light color scheme by default to prevent text from becoming invisible against dark backgrounds. This logic has been centralized to ensure consistent behavior across the application, and new automated tests have been added to verify that the preview correctly handles color schemes and base links.\",\n  \"retest\": [\n    {\n      \"flow_id\": \"FLOW-4a7d080776\",\n      \"why\": \"Changes to response rendering logic could inadvertently affect how GraphQL schema data is displayed or parsed.\"\n    },\n    {\n      \"flow_id\": \"FLOW-093eb009b2\",\n      \"why\": \"The update modifies the core response preview mechanism, which is central to viewing GraphQL results.\"\n    },\n    {\n      \"flow_id\": \"FLOW-8e38524656\",\n      \"why\": \"Modifications to shared rendering logic might impact how code snippets are generated or displayed.\"\n    },\n    {\n      \"flow_id\": \"FLOW-529e4fed45\",\n      \"why\": \"While primarily a visual fix, changes to shared rendering components require verification that history filtering remains functional.\"\n    },\n    {\n      \"flow_id\": \"FLOW-c701ca7af1\",\n      \"why\": \"Ensuring that history items remain accessible and readable after the rendering update is critical.\"\n    },\n    {\n      \"flow_id\": \"FLOW-d1bb010a62\",\n      \"why\": \"Saving responses as examples relies on the underlying response view, which has been modified.\"\n    },\n    {\n      \"flow_id\": \"FLOW-c447783334\",\n      \"why\": \"The rendering update could impact the display of generated API integration code.\"\n    }\n  ],\n  \"screen_notes\": [\n    {\n      \"id\": \"S-4f7b87c21c75\",\n      \"note\": \"Verify that the response preview remains legible and functional in dark mode.\"\n    },\n    {\n      \"id\": \"S-235f6ffbd5d3\",\n      \"note\": \"Ensure that response options and search functionality are not impacted by the rendering changes.\"\n    },\n    {\n      \"id\": \"S-bc65ec6061f1\",\n      \"note\": \"Check that connection status indicators are still correctly displayed alongside the response view.\"\n    },\n    {\n      \"id\": \"S-ef610c256620\",\n      \"note\": \"Confirm that the cURL import dialog remains fully operational.\"\n    },\n    {\n      \"id\": \"S-524de33b817c\",\n      \"note\": \"Ensure that data schema generation and filtering tools are unaffected.\"\n    },\n    {\n      \"id\": \"S-ee10dc94110d\",\n      \"note\": \"Verify that generated code and schema displays are correctly rendered.\"\n    },\n    {\n      \"id\": \"S-596d1c194c7b\",\n      \"note\": \"Check that language selection for schemas still works as expected.\"\n    },\n    {\n      \"id\": \"S-cae778f35a1f\",\n      \"note\": \"Confirm that schema language selection remains functional.\"\n    },\n    {\n      \"id\": \"S-437d0e0df05a\",\n      \"note\": \"Verify that C# schema views are correctly displayed.\"\n    },\n    {\n      \"id\": \"S-a0aa86d8c19e\",\n      \"note\": \"Ensure that C++ schema views are correctly displayed.\"\n    },\n    {\n      \"id\": \"S-6fbcef518f2a\",\n      \"note\": \"Check that C++ schema language selection is functional.\"\n    },\n    {\n      \"id\": \"S-95bf4f5d7e6b\",\n      \"note\": \"Verify that the schema language selector popover functions correctly.\"\n    }\n  ],\n  \"requirement_notes\": [\n    {\n      \"id\": \"REQ-graphql-api-testing-43518fde\",\n      \"note\": \"The schema explorer must remain fully functional and readable following the rendering update.\"\n    },\n    {\n      \"id\": \"REQ-graphql-api-testing-d1a4452b\",\n      \"note\": \"The GraphQL response section must maintain its readability and core functionality.\"\n    },\n    {\n      \"id\": \"REQ-documentation-6a18b7c4\",\n      \"note\": \"Generated code snippets must remain accurate and easy to read.\"\n    },\n    {\n      \"id\": \"REQ-history-e416accb\",\n      \"note\": \"History filtering must remain accessible and functional.\"\n    },\n    {\n      \"id\": \"REQ-snippets-f0d87372\",\n      \"note\": \"The copy functionality for code snippets must remain reliable.\"\n    },\n    {\n      \"id\": \"REQ-documentation-7df0b03e\",\n      \"note\": \"Example responses must be clearly viewable across different scenarios.\"\n    },\n    {\n      \"id\": \"REQ-mock-0d33db6b\",\n      \"note\": \"Saving responses as examples must continue to work without issues.\"\n    }\n  ],\n  \"questions\": [\n    {\n      \"about\": [\"RV-ea0a164171\", \"RV-875a9eced6\"],\n      \"question\": \"Where can users access the cookie management modals, and should we include them in our retest plan?\"\n    },\n    {\n      \"about\": [\"RV-289d2348cc\", \"RV-c871eaca8d\", \"RV-5599ab9cab\"],\n      \"question\": \"Which specific screens display the GraphQL and HTTP response views, and do they require manual verification?\"\n    },\n    {\n      \"about\": [\"RV-105cf6db44\", \"RV-a8c71d3b17\", \"RV-e93f9dfc4c\", \"RV-1b12b49ddc\", \"RV-10bb1397ca\"],\n      \"question\": \"Where are the various media and document lens renderers located in the UI, and should we test them for rendering issues?\"\n    }\n  ]\n}",
+ "schema": {
+  "properties": {
+   "headline": {
+    "description": "One sentence summary of what this change puts at risk",
+    "type": "STRING"
+   },
+   "questions": {
+    "items": {
+     "properties": {
+      "about": {
+       "items": {
+        "enum": [
+         "RV-ea0a164171",
+         "RV-875a9eced6",
+         "RV-289d2348cc",
+         "RV-c871eaca8d",
+         "RV-5599ab9cab",
+         "RV-105cf6db44",
+         "RV-a8c71d3b17",
+         "RV-e93f9dfc4c",
+         "RV-1b12b49ddc",
+         "RV-10bb1397ca"
+        ],
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      },
+      "question": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "about",
+      "question"
+     ],
+     "required": [
+      "about",
+      "question"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "requirement_notes": {
+    "items": {
+     "properties": {
+      "id": {
+       "enum": [
+        "REQ-graphql-api-testing-43518fde",
+        "REQ-graphql-api-testing-d1a4452b",
+        "REQ-documentation-6a18b7c4",
+        "REQ-history-e416accb",
+        "REQ-snippets-f0d87372",
+        "REQ-documentation-7df0b03e",
+        "REQ-mock-0d33db6b"
+       ],
+       "type": "STRING"
+      },
+      "note": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "id",
+      "note"
+     ],
+     "required": [
+      "id",
+      "note"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "retest": {
+    "items": {
+     "properties": {
+      "flow_id": {
+       "enum": [
+        "FLOW-4a7d080776",
+        "FLOW-093eb009b2",
+        "FLOW-8e38524656",
+        "FLOW-529e4fed45",
+        "FLOW-c701ca7af1",
+        "FLOW-d1bb010a62",
+        "FLOW-c447783334"
+       ],
+       "type": "STRING"
+      },
+      "why": {
+       "description": "One sentence: what could break for the user and why",
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "flow_id",
+      "why"
+     ],
+     "required": [
+      "flow_id",
+      "why"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "screen_notes": {
+    "items": {
+     "properties": {
+      "id": {
+       "enum": [
+        "S-4f7b87c21c75",
+        "S-235f6ffbd5d3",
+        "S-bc65ec6061f1",
+        "S-ef610c256620",
+        "S-524de33b817c",
+        "S-ee10dc94110d",
+        "S-596d1c194c7b",
+        "S-cae778f35a1f",
+        "S-437d0e0df05a",
+        "S-a0aa86d8c19e",
+        "S-6fbcef518f2a",
+        "S-95bf4f5d7e6b"
+       ],
+       "type": "STRING"
+      },
+      "note": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "id",
+      "note"
+     ],
+     "required": [
+      "id",
+      "note"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "what_changed": {
+    "description": "2-4 sentences in product language describing the change",
+    "type": "STRING"
+   }
+  },
+  "propertyOrdering": [
+   "headline",
+   "what_changed",
+   "retest",
+   "screen_notes",
+   "requirement_notes",
+   "questions"
+  ],
+  "required": [
+   "headline",
+   "what_changed",
+   "retest",
+   "screen_notes",
+   "requirement_notes",
+   "questions"
+  ],
+  "type": "OBJECT"
+ },
+ "seed": 7,
+ "system": "You write pull-request risk briefs for a QA lead who knows the product (Hoppscotch, an API client)\nbut not its code. Use plain product language: screens, buttons, tabs, what a user does.\nNever mention file names, code identifiers, components, functions, keys, or programming terms.\nOnly talk about items given to you, and cite them by their ids exactly as given.",
+ "task": "report:pr6707",
+ "temperature": 0.0
+}

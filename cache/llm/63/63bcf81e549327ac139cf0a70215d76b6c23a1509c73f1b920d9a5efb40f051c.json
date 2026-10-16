@@ -1,0 +1,145 @@
+{
+ "meta": {
+  "model_version": "gemini-3.5-flash-lite",
+  "usage": {
+   "candidatesTokenCount": 421,
+   "promptTokenCount": 870,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 870
+    }
+   ],
+   "serviceTier": "standard",
+   "totalTokenCount": 1291
+  }
+ },
+ "model": "gemini-3.5-flash-lite",
+ "prompt": "PULL REQUEST: feat(common): support comments in saved response examples\nDESCRIPTION (author's words, may be technical):\n<!--\r\nThanks for creating this pull request 🤗\r\n\r\nPlease make sure that the pull request is limited to one type (docs, feature, etc.) and keep it as small as possible. You can open multiple prs instead of opening a huge one.\r\n-->\r\n\r\n<!-- If this pull request closes an issue, please mention the issue number below -->\r\nCloses # <!-- Issue # here -->\r\n\r\n<!-- Add an introduction into what this PR tries to solve in a couple of sentences -->\r\n\r\n### What's changed\r\n<!-- Describe point by point the different things you have changed in this PR -->\r\n\r\n<!-- You can also choose to add a list of changes and if they have been completed or not by using the markdown to-do list syntax\r\n- [ ] Not Completed\r\n- [x] Completed\r\n-->\r\n\r\n### Notes to reviewers\r\n<!-- Any information you feel the reviewer should know about when reviewing your PR -->\r\n\n\n<!-- This is an auto-generated description by cubic. -->\n---\n## Summary by cubic\nChanges saved REST and GraphQL example responses to accept JSON-with-comments (JSONC) annotations, such as `//` and `/* */` comments, preserving them through prettifying, saving, copying, and downloading. Live API responses remain read-only and keep lossless formatting.\n\n- Adds a prettify button to editable JSON response bodies.\n- Switches example editors to a JSONC linter so comments don't surface as errors.\n- `prettifyJSONCWithValidation` validates input before formatting, so malformed bodies are left untouched and reported as errors instead of being silently changed.\n\n<sup\n\nCHANGE AREAS (plain): automated tests (no user impact); shared logic behind the screens listed; the collections documentation sections response area; the gql example response area; the lenses renderers jsonlens renderer area\nOVERALL RISK (already computed): Low\n\nFLOWS TO RETEST (id | risk | name | steps):\n\nSCREENS AT RISK (id | risk | screen | controls at risk):\n  S-92ad0c37a2e7 | Low | REST Request - Pre-request Script Tab | Modify with AI\n  S-d12526dafa7e | Low | Login to Modify Pre-request Script with AI | Modify with AI\n  S-c55483a87aa4 | Low | Import Collections from Gist | Import\n\nREQUIREMENTS (id | status | statement):\n\nCHANGES WE COULD NOT CONNECT TO A SCREEN (plain reason):\n  - renders on /, but the crawl never showed any of its controls\n  - renders on /, but the crawl never showed any of its controls\n  - outside the crawled web app (no page renders it statically: login-only, desktop-only or dynamic)\n  - outside the web app package\n\nOPEN QUESTIONS FOR A HUMAN (id | question):\n  RV-dda7401450 | This change touches CollectionsDocumentationSectionsResponse, a part of a page we crawled, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-c871eaca8d | This change touches GqlExampleResponse, a part of a page we crawled, but we never saw it on screen. Which screen shows it, and does it need a retest?\n\nWrite the brief. Include every High flow in retest. Add a requirement note for every requirement listed. Turn each open question into a plain question (cite its id in 'about').",
+ "response_text": "{\n  \"headline\": \"Adding support for comments in saved response examples puts example response editing, formatting, and copying at risk.\",\n  \"what_changed\": \"Users can now include comments in saved response examples for both REST and GraphQL APIs. The editors for these examples now accept comments without showing validation errors, and users can prettify, save, copy, and download their response examples with the comments intact. Live API responses continue to be read-only with lossless formatting.\",\n  \"retest\": [],\n  \"screen_notes\": [\n    {\n      \"id\": \"S-92ad0c37a2e7\",\n      \"note\": \"Shared logic updates could impact the modify with AI feature on the REST request pre-request script tab.\"\n    },\n    {\n      \"id\": \"S-d12526dafa7e\",\n      \"note\": \"Shared logic updates could impact the login flow for modifying pre-request scripts with AI.\"\n    },\n    {\n      \"id\": \"S-c55483a87aa4\",\n      \"note\": \"Shared logic updates could impact importing collections from Gist.\"\n    }\n  ],\n  \"requirement_notes\": [],\n  \"questions\": [\n    {\n      \"about\": [\n        \"RV-dda7401450\"\n      ],\n      \"question\": \"This change touches CollectionsDocumentationSectionsResponse, a part of a page we crawled, but we never saw it on screen. Which screen shows it, and does it need a retest?\"\n    },\n    {\n      \"about\": [\n        \"RV-c871eaca8d\"\n      ],\n      \"question\": \"This change touches GqlExampleResponse, a part of a page we crawled, but we never saw it on screen. Which screen shows it, and does it need a retest?\"\n    }\n  ]\n}",
+ "schema": {
+  "properties": {
+   "headline": {
+    "description": "One sentence summary of what this change puts at risk",
+    "type": "STRING"
+   },
+   "questions": {
+    "items": {
+     "properties": {
+      "about": {
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      },
+      "question": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "about",
+      "question"
+     ],
+     "required": [
+      "about",
+      "question"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "requirement_notes": {
+    "items": {
+     "properties": {
+      "id": {
+       "type": "STRING"
+      },
+      "note": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "id",
+      "note"
+     ],
+     "required": [
+      "id",
+      "note"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "retest": {
+    "items": {
+     "properties": {
+      "flow_id": {
+       "type": "STRING"
+      },
+      "why": {
+       "description": "One sentence: what could break for the user and why we think so",
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "flow_id",
+      "why"
+     ],
+     "required": [
+      "flow_id",
+      "why"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "screen_notes": {
+    "items": {
+     "properties": {
+      "id": {
+       "type": "STRING"
+      },
+      "note": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "id",
+      "note"
+     ],
+     "required": [
+      "id",
+      "note"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "what_changed": {
+    "description": "2-4 sentences in product language describing the change",
+    "type": "STRING"
+   }
+  },
+  "propertyOrdering": [
+   "headline",
+   "what_changed",
+   "retest",
+   "screen_notes",
+   "requirement_notes",
+   "questions"
+  ],
+  "required": [
+   "headline",
+   "what_changed",
+   "retest",
+   "screen_notes",
+   "requirement_notes",
+   "questions"
+  ],
+  "type": "OBJECT"
+ },
+ "seed": 7,
+ "system": "You write pull-request risk briefs for a QA lead who knows the product (Hoppscotch, an API client)\nbut not its code. Use plain product language: screens, buttons, tabs, what a user does.\nNever mention file names, code identifiers, components, functions, keys, or programming terms.\nOnly talk about items given to you, and cite them by their ids exactly as given.",
+ "task": "report:pr6706",
+ "temperature": 0.0
+}

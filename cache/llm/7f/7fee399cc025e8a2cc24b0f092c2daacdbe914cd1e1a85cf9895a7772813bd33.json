@@ -1,0 +1,57 @@
+{
+ "meta": {
+  "model_version": "gemini-3.1-flash-lite",
+  "usage": {
+   "candidatesTokenCount": 640,
+   "promptTokenCount": 1027,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 1027
+    }
+   ],
+   "serviceTier": "standard",
+   "totalTokenCount": 1667
+  }
+ },
+ "model": "gemini-3.1-flash-lite",
+ "prompt": "Name these flows.\n\n<flow id=\"FLOW-02872ee540\">start: /\nsteps: (nothing, it is on the start screen)\nthen look at: Headers\ngoal: User can select various HTTP methods and add headers, parameters, and scripts to requests.\n</flow>\n<flow id=\"FLOW-03e029bd67\">start: /\nsteps: (nothing, it is on the start screen)\nthen look at: History\ngoal: User can access request history by clicking on the History icon on the side panel.\n</flow>\n<flow id=\"FLOW-19694e2c54\">start: /\nsteps: Send\nthen look at: Download file\ngoal: User can download and copy the returned API responses.\n</flow>\n<flow id=\"FLOW-1c73f71619\">start: /settings\nsteps: GraphQL\nthen look at: Clear all\ngoal: User can delete individual requests or clear all history using the clear history button.\n</flow>\n<flow id=\"FLOW-2aa6a5391a\">start: /\nsteps: Environment Quick Peek > Edit > Add new\nthen look at: Current value 1\ngoal: The app masks all secret variable values using asterisks.\n</flow>\n<flow id=\"FLOW-30cff07b69\">start: /\nsteps: (nothing, it is on the start screen)\nthen look at: Clear all\ngoal: User can delete individual requests or clear all history using the clear history button.\n</flow>\n<flow id=\"FLOW-37b7d3ba10\">start: /settings\nsteps: GraphQL\nthen look at: History\ngoal: User can access request history by clicking on the History icon on the side panel.\n</flow>\n<flow id=\"FLOW-4b5e57b067\">start: /\nsteps: Environments\nthen look at: More\ngoal: User can duplicate an existing environment from the More icon dropdown menu.\n</flow>\n<flow id=\"FLOW-55bb142925\">start: /\nsteps: Environments > More\nthen look at: Duplicate D\ngoal: User can duplicate an existing environment from the More icon dropdown menu.\n</flow>\n<flow id=\"FLOW-6700442642\">start: /\nsteps: (nothing, it is on the start screen)\nthen look at: Parameters\ngoal: User can select various HTTP methods and add headers, parameters, and scripts to requests.\n</flow>\n<flow id=\"FLOW-763bea2f5b\">start: /\nsteps: Environments > More\nthen look at: Duplicate\ngoal: User can duplicate an existing environment from the More icon dropdown menu.\n</flow>\n<flow id=\"FLOW-7d5cd27d8d\">start: /\nsteps: (nothing, it is on the start screen)\nthen look at: Query Parameters\ngoal: User can select various HTTP methods and add headers, parameters, and scripts to requests.\n</flow>\n<flow id=\"FLOW-938302668f\">start: /\nsteps: (nothing, it is on the start screen)\nthen look at: Send\ngoal: The app automatically saves requests to history when clicking the Send button.\n</flow>\n<flow id=\"FLOW-a1230dde27\">start: /\nsteps: Send\nthen look at: Copy\ngoal: User can download and copy the returned API responses.\n</flow>\n<flow id=\"FLOW-ba2650ebdc\">start: /\nsteps: Environment Quick Peek > Edit > Add new\nthen look at: Initial value 1\ngoal: The app masks all secret variable values using asterisks.\n</flow>\n<flow id=\"FLOW-c701ca7af1\">start: /\nsteps: Send\nthen look at: Filter\ngoal: User can favorite and filter requests in the history section.\n</flow>\n<flow id=\"FLOW-e187b592d2\">start: /\nsteps: (nothing, it is on the start screen)\nthen look at: Environments\ngoal: User can create environments by clicking on the Environments icon on the sidebar.\n</flow>",
+ "response_text": "{\n  \"flows\": [\n    {\n      \"id\": \"FLOW-02872ee540\",\n      \"name\": \"Add headers to an API request\"\n    },\n    {\n      \"id\": \"FLOW-03e029bd67\",\n      \"name\": \"Access request history from the side panel\"\n    },\n    {\n      \"id\": \"FLOW-19694e2c54\",\n      \"name\": \"Download a returned API response\"\n    },\n    {\n      \"id\": \"FLOW-1c73f71619\",\n      \"name\": \"Clear all history from the settings menu\"\n    },\n    {\n      \"id\": \"FLOW-2aa6a5391a\",\n      \"name\": \"Verify secret variable masking in current values\"\n    },\n    {\n      \"id\": \"FLOW-30cff07b69\",\n      \"name\": \"Clear all request history\"\n    },\n    {\n      \"id\": \"FLOW-37b7d3ba10\",\n      \"name\": \"Access request history from GraphQL settings\"\n    },\n    {\n      \"id\": \"FLOW-4b5e57b067\",\n      \"name\": \"Open the environment duplicate menu\"\n    },\n    {\n      \"id\": \"FLOW-55bb142925\",\n      \"name\": \"Duplicate an existing environment\"\n    },\n    {\n      \"id\": \"FLOW-6700442642\",\n      \"name\": \"Add parameters to an API request\"\n    },\n    {\n      \"id\": \"FLOW-763bea2f5b\",\n      \"name\": \"Duplicate an environment from the dropdown menu\"\n    },\n    {\n      \"id\": \"FLOW-7d5cd27d8d\",\n      \"name\": \"Add query parameters to an API request\"\n    },\n    {\n      \"id\": \"FLOW-938302668f\",\n      \"name\": \"Save a request to history by sending\"\n    },\n    {\n      \"id\": \"FLOW-a1230dde27\",\n      \"name\": \"Copy a returned API response\"\n    },\n    {\n      \"id\": \"FLOW-ba2650ebdc\",\n      \"name\": \"Verify secret variable masking in initial values\"\n    },\n    {\n      \"id\": \"FLOW-c701ca7af1\",\n      \"name\": \"Filter requests in the history section\"\n    },\n    {\n      \"id\": \"FLOW-e187b592d2\",\n      \"name\": \"Create a new environment\"\n    }\n  ]\n}",
+ "schema": {
+  "properties": {
+   "flows": {
+    "items": {
+     "properties": {
+      "id": {
+       "type": "STRING"
+      },
+      "name": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "id",
+      "name"
+     ],
+     "required": [
+      "id",
+      "name"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   }
+  },
+  "propertyOrdering": [
+   "flows"
+  ],
+  "required": [
+   "flows"
+  ],
+  "type": "OBJECT"
+ },
+ "seed": 7,
+ "system": "Name user journeys in a web app (Hoppscotch, an API client) for a QA lead.\nEach name is an imperative phrase of at most 9 words describing what the user does, e.g.\n\"Open the Headers tab of a REST request\". Use the steps and the goal; no code words.",
+ "task": "flownames:0",
+ "temperature": 0.0
+}

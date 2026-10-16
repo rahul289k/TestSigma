@@ -1,0 +1,201 @@
+{
+ "meta": {
+  "model_version": "gemini-3.1-flash-lite",
+  "usage": {
+   "candidatesTokenCount": 2082,
+   "promptTokenCount": 2736,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 2736
+    }
+   ],
+   "serviceTier": "standard",
+   "totalTokenCount": 4818
+  }
+ },
+ "model": "gemini-3.1-flash-lite",
+ "prompt": "PULL REQUEST: fix(common): do not add filename to text fields in multipart requests\nDESCRIPTION (author's words, may be technical):\nText fields with a manually set content type were serialized as file parts carrying filename=\"<field key>\". Keep them as text parts carrying only their content type across hoppscotch-common, the kernel relay adapter, the desktop Rust relay and the CLI, while preserving real file names and content types.\n\n<!--\nThanks for creating this pull request 🤗\n\nPlease make sure that the pull request is limited to one type (docs, feature, etc.) and keep it as small as possible. You can open multiple prs instead of opening a huge one.\n-->\n\n<!-- If this pull request closes an issue, please mention the issue number below -->\nCloses # <!-- Issue # here -->\n\n<!-- Add an introduction into what this PR tries to solve in a couple of sentences -->\n\n### What's changed\n<!-- Describe point by point the different things you have changed in this PR -->\n\n<!-- You can also choose to add a list of changes and if they have been completed or not by using the markdown to-do list syntax\n- [ ] Not Completed\n- [x] Completed\n-->\n\n### Notes to reviewers\n<!-- Any information you feel the reviewer should know about when reviewing your PR -->\n\n\n<!-- This is an auto-generated description by cubic. -->\n---\n## Summary by cubic\nFixes multipart serialization so text fields with a manually set content type are no longer sent as file parts carrying `filename=\"<field key>\"`. They now stay text parts carrying only their content type, across `hoppscotch-common`, the kernel relay adapter, the desktop Rust relay, and the CLI. R\n\nCHANGE AREAS (plain): automated tests (no user impact); shared logic behind the screens listed\nOVERALL RISK (already computed): Medium\n\nFLOWS TO RETEST (id | risk | name | steps):\n  FLOW-8d5cb93234 | Low | Explore GraphQL schema | Switch protocol > GraphQL\n  FLOW-7219c12e24 | Low | Access collections via the side panel | Import / Export\n  FLOW-03e029bd67 | Low | Access previous requests from the history panel | start screen\n  FLOW-8e38524656 | Low | Copy generated code snippet to clipboard | Generate Code\n  FLOW-529e4fed45 | Low | Filter history to show starred entries | History > Filter\n  FLOW-c701ca7af1 | Low | Filter request history items | Send\n  FLOW-169325b9ba | Low | Generate code snippets for API requests | start screen\n  FLOW-e187b592d2 | Low | Manage environment variables | start screen\n  FLOW-9548e6af2f | Low | Organize API requests using collections | start screen\n  FLOW-d1bb010a62 | Low | Save response as an example | Send\n  FLOW-938302668f | Low | Send request and save to history | start screen\n  FLOW-c447783334 | Low | View generated API integration code | Generate Code\n  FLOW-a7d69a5c25 | Low | Download a GraphQL request response file | Request\n  FLOW-4a7d080776 | Low | Explore GraphQL schema data structure | Request > More > Generate Data Schema\n  FLOW-3685cc7342 | Low | Open the GraphQL request interface | start screen\n  FLOW-093eb009b2 | Low | View GraphQL response after sending request | Request\n\nSCREENS AT RISK (id | risk | screen | controls at risk):\n  S-90409d5cef06 | Medium | Generate code view | Shell - cURL, Mock Servers, Switch protocol, Collections, Enter a URL or paste a cURL command, Environments\n  S-a410a9511aa5 | Medium | Code generation language selector | C - cURL, PHP - cURL, Shell - cURL, Shell - cURL, Mock Servers, Switch protocol\n  S-ef610c256620 | Medium | Import cURL dialog | cURL, Mock Servers, Switch protocol, Collections, Enter a URL or paste a cURL command, Environments\n  S-4b9b4a036065 | Medium | Code language selector popover | C - cURL, PHP - cURL, Shell - cURL, Mock Servers, Switch protocol, Collections\n  S-f086f04e3dbd | Medium | Clojure language selector popover | C - cURL, PHP - cURL, Shell - cURL, Mock Servers, Switch protocol, Collections\n  S-0284553ef7c6 | Low | REST request - Main view | Mock Servers, Switch protocol, Collections, Enter a URL or paste a cURL command, Environments, Generate Code\n  S-0296bc8b440a | Low | Command palette | Mock Servers, Switch protocol, Collections, Enter a URL or paste a cURL command, Environments, Generate Code\n  S-07c9e5eb461c | Low | Bulk edit parameters | Mock Servers, Switch protocol, Collections, Enter a URL or paste a cURL command, Environments, Generate Code\n  S-087a903d2901 | Low | Environments management view | Mock Servers, Switch protocol, Collections, Enter a URL or paste a cURL command, Environments, Generate Code\n  S-1388743fdf33 | Low | Expanded sidebar view | Mock Servers, Switch protocol, Collections, Enter a URL or paste a cURL command, Environments, Generate Code\n  S-1a6c089bc908 | Low | Collapsed sidebar view | Switch protocol, Enter a URL or paste a cURL command, Send\n  S-459ad424566a | Low | Environment selector | Mock Servers, Switch protocol, Collections, Enter a URL or paste a cURL command, Environments, Generate Code\n\nREQUIREMENTS (id | status | statement):\n  REQ-ai-features-ae7cdd42 | WEAK_SIGNAL | The AI Assistant is an experimental chat assistant that can act on requests and collections.\n  REQ-collections-35318232 | WEAK_SIGNAL | User can organize collections and create sub-collections via drag and drop.\n  REQ-collections-53fde610 | WEAK_SIGNAL | User can organize API requests using collections and access them via the side panel.\n  REQ-environments-1106d03b | WEAK_SIGNAL | User can create environments by clicking the Environments icon and reference variables using double angle brackets.\n  REQ-environments-8bafca57 | WEAK_SIGNAL | User can group variable data into environments to reference throughout requests and scripts.\n  REQ-graphql-api-testing-43518fde | WEAK_SIGNAL | User can explore the data structure using the GraphQL schema explorer.\n  REQ-history-932d6e68 | WEAK_SIGNAL | User can access previous requests by clicking on the desired entry in the history section.\n  REQ-history-a7cb01bd | WEAK_SIGNAL | Hoppscotch automatically saves requests to history when clicking the Send button.\n  REQ-history-e96a2b63 | WEAK_SIGNAL | User can access the request and response history by clicking the History icon on the side panel.\n  REQ-snippets-2fa655c1 | WEAK_SIGNAL | User can generate code snippets by clicking the Code Generate icon in the right sidebar.\n  REQ-graphql-api-testing-d1a4452b | WEAK_SIGNAL | Hoppscotch provides a dedicated GraphQL API testing platform with request and response sections.\n  REQ-documentation-6a18b7c4 | WEAK_SIGNAL | Generated code snippets help users integrate with API endpoints quickly.\n\nCHANGES WE COULD NOT CONNECT TO A SCREEN (plain reason):\n  - Utils › Effective URL: shared logic that no screen we visited uses (within 3 steps)\n  - Collections › Documentation › Request Preview: can appear on the REST page, the GraphQL page, but the crawl never showed any of its controls\n  - Embeds › GQLIndex: appears on the e :id page, which this crawl did not visit\n  - Embeds › GQLRequest: appears on the e :id page, which this crawl did not visit\n  - Embeds › Request: appears on the e :id page, which this crawl did not visit\n  - Gql › Doc Explorer: can appear on the REST page, but the crawl never showed any of its controls\n  - Gql › Response: can appear on the REST page, but the crawl never showed any of its controls\n  - Gql › Response Meta: can appear on the REST page, but the crawl never showed any of its controls\n  - Gql › Schema: can appear on the REST page, but the crawl never showed any of its controls\n  - Gql › Schema Search: can appear on the REST page, but the crawl never showed any of its controls\n  - Gql › Subscription Log: can appear on the REST page, but the crawl never showed any of its controls\n  - src/pages/index.vue: can appear on the REST page, but the crawl never showed any of its controls\n  - CLI (not part of the web UI)\n  - CLI (not part of the web UI)\n  - CLI (not part of the web UI)\n  - CLI (not part of the web UI)\n  - desktop app shell (not part of the web UI)\n  - desktop app shell (not part of the web UI)\n  - platform kernel library\n\nOPEN QUESTIONS FOR A HUMAN (id | question):\n  RV-1fcb29d753 | This change touches 'Collections › Documentation › Request Preview', which can appear on the REST page, the GraphQL page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-4b1dcba8d8 | This change touches 'Gql › Doc Explorer', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-289d2348cc | This change touches 'Gql › Response', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-b4018d2fe8 | This change touches 'Gql › Response Meta', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-d4d7832403 | This change touches 'Gql › Schema', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-ee0b118696 | This change touches 'Gql › Schema Search', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-03af5763e0 | This change touches 'Gql › Subscription Log', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n  RV-6a6ffc799c | This change touches 'src/pages/index.vue', which can appear on the REST page, but we never saw it on screen. Which screen shows it, and does it need a retest?\n\nWrite the brief. Include every High flow in retest. Add a requirement note for every requirement listed. Turn each open question into a plain question (cite its id in 'about').",
+ "response_text": "{\n  \"headline\": \"This change updates how multipart request fields are formatted, ensuring text fields with custom content types are no longer incorrectly labeled as files.\",\n  \"what_changed\": \"When sending multipart requests, text fields that have a manually specified content type were previously being incorrectly tagged with a filename. This update ensures these fields are treated as standard text parts rather than file uploads. This change applies consistently across the web interface, the CLI, and the desktop application.\",\n  \"retest\": [\n    {\n      \"flow_id\": \"FLOW-8d5cb93234\",\n      \"why\": \"Changes to request serialization could affect how GraphQL queries are structured and sent.\"\n    },\n    {\n      \"flow_id\": \"FLOW-7219c12e24\",\n      \"why\": \"Importing or exporting collections might involve multipart data structures that could be impacted by this change.\"\n    },\n    {\n      \"flow_id\": \"FLOW-03e029bd67\",\n      \"why\": \"History items rely on saved request structures; changes to serialization might affect how these are re-sent.\"\n    },\n    {\n      \"flow_id\": \"FLOW-8e38524656\",\n      \"why\": \"Generated code snippets must accurately reflect the request structure, including multipart fields.\"\n    },\n    {\n      \"flow_id\": \"FLOW-529e4fed45\",\n      \"why\": \"Filtering history is a core navigation flow that should remain stable.\"\n    },\n    {\n      \"flow_id\": \"FLOW-c701ca7af1\",\n      \"why\": \"Filtering history items is a core navigation flow that should remain stable.\"\n    },\n    {\n      \"flow_id\": \"FLOW-169325b9ba\",\n      \"why\": \"Code generation logic is directly impacted by how request fields are serialized.\"\n    },\n    {\n      \"flow_id\": \"FLOW-e187b592d2\",\n      \"why\": \"Environment variables are used within requests and should not be affected by serialization changes.\"\n    },\n    {\n      \"flow_id\": \"FLOW-9548e6af2f\",\n      \"why\": \"Organizing requests in collections should remain unaffected by the underlying serialization logic.\"\n    },\n    {\n      \"flow_id\": \"FLOW-d1bb010a62\",\n      \"why\": \"Saving responses as examples relies on the request structure being correctly captured.\"\n    },\n    {\n      \"flow_id\": \"FLOW-938302668f\",\n      \"why\": \"Sending requests and saving to history is the primary path for multipart requests.\"\n    },\n    {\n      \"flow_id\": \"FLOW-c447783334\",\n      \"why\": \"Generated integration code must correctly represent the multipart fields.\"\n    },\n    {\n      \"flow_id\": \"FLOW-a7d69a5c25\",\n      \"why\": \"Downloading GraphQL responses should remain stable.\"\n    },\n    {\n      \"flow_id\": \"FLOW-4a7d080776\",\n      \"why\": \"Exploring GraphQL schema data structure should remain stable.\"\n    },\n    {\n      \"flow_id\": \"FLOW-3685cc7342\",\n      \"why\": \"Opening the GraphQL interface is the entry point for testing.\"\n    },\n    {\n      \"flow_id\": \"FLOW-093eb009b2\",\n      \"why\": \"Viewing GraphQL responses is critical for verifying that requests were sent correctly.\"\n    }\n  ],\n  \"screen_notes\": [\n    {\n      \"id\": \"S-90409d5cef06\",\n      \"note\": \"Code generation views are at risk as they must accurately reflect the new multipart serialization format.\"\n    },\n    {\n      \"id\": \"S-a410a9511aa5\",\n      \"note\": \"Language selectors for code generation may need verification to ensure they output the correct multipart syntax.\"\n    },\n    {\n      \"id\": \"S-ef610c256620\",\n      \"note\": \"The import cURL dialog is at risk if it attempts to parse or generate multipart requests.\"\n    },\n    {\n      \"id\": \"S-4b9b4a036065\",\n      \"note\": \"Code language popovers should be checked to ensure they correctly handle the updated request format.\"\n    },\n    {\n      \"id\": \"S-f086f04e3dbd\",\n      \"note\": \"Clojure language selector should be verified for consistent request generation.\"\n    },\n    {\n      \"id\": \"S-0284553ef7c6\",\n      \"note\": \"The main REST request view is the primary area where multipart fields are configured.\"\n    },\n    {\n      \"id\": \"S-0296bc8b440a\",\n      \"note\": \"The command palette is a general navigation tool that should remain stable.\"\n    },\n    {\n      \"id\": \"S-07c9e5eb461c\",\n      \"note\": \"Bulk editing parameters should not be affected, but verify that multipart fields remain intact.\"\n    },\n    {\n      \"id\": \"S-087a903d2901\",\n      \"note\": \"Environment management is a global setting and should remain stable.\"\n    },\n    {\n      \"id\": \"S-1388743fdf33\",\n      \"note\": \"The sidebar view is a navigation element that should remain stable.\"\n    },\n    {\n      \"id\": \"S-1a6c089bc908\",\n      \"note\": \"The collapsed sidebar is a navigation element that should remain stable.\"\n    },\n    {\n      \"id\": \"S-459ad424566a\",\n      \"note\": \"The environment selector is a global setting and should remain stable.\"\n    }\n  ],\n  \"requirement_notes\": [\n    {\n      \"id\": \"REQ-ai-features-ae7cdd42\",\n      \"note\": \"AI features should be monitored to ensure they do not generate invalid multipart requests.\"\n    },\n    {\n      \"id\": \"REQ-collections-35318232\",\n      \"note\": \"Collection organization should remain unaffected by serialization changes.\"\n    },\n    {\n      \"id\": \"REQ-collections-53fde610\",\n      \"note\": \"Accessing requests via collections should remain stable.\"\n    },\n    {\n      \"id\": \"REQ-environments-1106d03b\",\n      \"note\": \"Environment creation and variable referencing should remain stable.\"\n    },\n    {\n      \"id\": \"REQ-environments-8bafca57\",\n      \"note\": \"Grouping variables into environments should remain stable.\"\n    },\n    {\n      \"id\": \"REQ-graphql-api-testing-43518fde\",\n      \"note\": \"GraphQL schema exploration should remain stable.\"\n    },\n    {\n      \"id\": \"REQ-history-932d6e68\",\n      \"note\": \"Accessing history items should remain stable.\"\n    },\n    {\n      \"id\": \"REQ-history-a7cb01bd\",\n      \"note\": \"Automatic history saving should be verified to ensure the request structure is preserved.\"\n    },\n    {\n      \"id\": \"REQ-history-e96a2b63\",\n      \"note\": \"Accessing history via the side panel should remain stable.\"\n    },\n    {\n      \"id\": \"REQ-snippets-2fa655c1\",\n      \"note\": \"Code snippet generation is directly impacted by the serialization fix.\"\n    },\n    {\n      \"id\": \"REQ-graphql-api-testing-d1a4452b\",\n      \"note\": \"GraphQL testing platform should remain stable.\"\n    },\n    {\n      \"id\": \"REQ-documentation-6a18b7c4\",\n      \"note\": \"Generated documentation must accurately reflect the corrected multipart request format.\"\n    }\n  ],\n  \"questions\": [\n    {\n      \"about\": [\"RV-1fcb29d753\", \"RV-4b1dcba8d8\", \"RV-289d2348cc\", \"RV-b4018d2fe8\", \"RV-d4d7832403\", \"RV-ee0b118696\", \"RV-03af5763e0\", \"RV-6a6ffc799c\"],\n      \"question\": \"Several components related to documentation, GraphQL explorers, and the main page were identified as touched by this change but were not visible during testing. Could you clarify which specific screens these components appear on and if they require dedicated retesting?\"\n    }\n  ]\n}",
+ "schema": {
+  "properties": {
+   "headline": {
+    "description": "One sentence summary of what this change puts at risk",
+    "type": "STRING"
+   },
+   "questions": {
+    "items": {
+     "properties": {
+      "about": {
+       "items": {
+        "enum": [
+         "RV-1fcb29d753",
+         "RV-4b1dcba8d8",
+         "RV-289d2348cc",
+         "RV-b4018d2fe8",
+         "RV-d4d7832403",
+         "RV-ee0b118696",
+         "RV-03af5763e0",
+         "RV-6a6ffc799c"
+        ],
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      },
+      "question": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "about",
+      "question"
+     ],
+     "required": [
+      "about",
+      "question"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "requirement_notes": {
+    "items": {
+     "properties": {
+      "id": {
+       "enum": [
+        "REQ-ai-features-ae7cdd42",
+        "REQ-collections-35318232",
+        "REQ-collections-53fde610",
+        "REQ-environments-1106d03b",
+        "REQ-environments-8bafca57",
+        "REQ-graphql-api-testing-43518fde",
+        "REQ-history-932d6e68",
+        "REQ-history-a7cb01bd",
+        "REQ-history-e96a2b63",
+        "REQ-snippets-2fa655c1",
+        "REQ-graphql-api-testing-d1a4452b",
+        "REQ-documentation-6a18b7c4"
+       ],
+       "type": "STRING"
+      },
+      "note": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "id",
+      "note"
+     ],
+     "required": [
+      "id",
+      "note"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "retest": {
+    "items": {
+     "properties": {
+      "flow_id": {
+       "enum": [
+        "FLOW-8d5cb93234",
+        "FLOW-7219c12e24",
+        "FLOW-03e029bd67",
+        "FLOW-8e38524656",
+        "FLOW-529e4fed45",
+        "FLOW-c701ca7af1",
+        "FLOW-169325b9ba",
+        "FLOW-e187b592d2",
+        "FLOW-9548e6af2f",
+        "FLOW-d1bb010a62",
+        "FLOW-938302668f",
+        "FLOW-c447783334",
+        "FLOW-a7d69a5c25",
+        "FLOW-4a7d080776",
+        "FLOW-3685cc7342",
+        "FLOW-093eb009b2"
+       ],
+       "type": "STRING"
+      },
+      "why": {
+       "description": "One sentence: what could break for the user and why",
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "flow_id",
+      "why"
+     ],
+     "required": [
+      "flow_id",
+      "why"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "screen_notes": {
+    "items": {
+     "properties": {
+      "id": {
+       "enum": [
+        "S-90409d5cef06",
+        "S-a410a9511aa5",
+        "S-ef610c256620",
+        "S-4b9b4a036065",
+        "S-f086f04e3dbd",
+        "S-0284553ef7c6",
+        "S-0296bc8b440a",
+        "S-07c9e5eb461c",
+        "S-087a903d2901",
+        "S-1388743fdf33",
+        "S-1a6c089bc908",
+        "S-459ad424566a"
+       ],
+       "type": "STRING"
+      },
+      "note": {
+       "type": "STRING"
+      }
+     },
+     "propertyOrdering": [
+      "id",
+      "note"
+     ],
+     "required": [
+      "id",
+      "note"
+     ],
+     "type": "OBJECT"
+    },
+    "type": "ARRAY"
+   },
+   "what_changed": {
+    "description": "2-4 sentences in product language describing the change",
+    "type": "STRING"
+   }
+  },
+  "propertyOrdering": [
+   "headline",
+   "what_changed",
+   "retest",
+   "screen_notes",
+   "requirement_notes",
+   "questions"
+  ],
+  "required": [
+   "headline",
+   "what_changed",
+   "retest",
+   "screen_notes",
+   "requirement_notes",
+   "questions"
+  ],
+  "type": "OBJECT"
+ },
+ "seed": 7,
+ "system": "You write pull-request risk briefs for a QA lead who knows the product (Hoppscotch, an API client)\nbut not its code. Use plain product language: screens, buttons, tabs, what a user does.\nNever mention file names, code identifiers, components, functions, keys, or programming terms.\nOnly talk about items given to you, and cite them by their ids exactly as given.",
+ "task": "report:pr6721",
+ "temperature": 0.0
+}

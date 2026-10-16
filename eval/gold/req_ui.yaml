@@ -1,0 +1,30 @@
+# G2: requirement -> UI coverage, hand-labelled BEFORE looking at the judge's verdicts.
+# Sample: the first 30 web-testable requirements of the real run in seeded (id-hash) order; 6 were skipped as
+# too ambiguous to label honestly (behavioural details or unclear availability). "expected" is ground truth for
+# the signed-out web app: COVERED = the capability (or its entry control) exists there; NOT_FOUND = it needs
+# sign-in. Truth is about the product, not about what the crawl reached, so a feature the crawl never got to
+# counts as a miss: this measures the whole system end to end. Keyed by a verbatim phrase from the docs quote.
+- {match: "Open Request in New Tab option", expected: COVERED}
+- {match: "To duplicate a collection", expected: COVERED, note: needs an existing collection}
+- {match: "In the response section, click the", expected: COVERED, note: "'Save as example' control after Send"}
+- {match: "set authorization at the collection level", expected: COVERED, note: collection properties}
+- {match: "Upon selecting PKCE", expected: COVERED}
+- {match: "Settings → Experiments", expected: COVERED}
+- {match: "callback URL is fixed to", expected: COVERED}
+- {match: "Client Authentication field", expected: COVERED}
+- {match: "position the side panel on the left or right", expected: COVERED}
+- {match: "Inspections panel provides an overview", expected: COVERED}
+- {match: "Go to REST page", expected: COVERED, note: listed in the Shortcuts dialog}
+- {match: "Code Generate", expected: COVERED, note: "'Generate Code' sidebar tab"}
+- {match: "you can reference it using the format", expected: COVERED}
+- {match: "button in the collections section and select the collection type", expected: COVERED}
+- {match: "four different protocols WebSocket, SSE, Socket.IO, and MQTT", expected: COVERED}
+- {match: "range of HTTP methods such as GET, POST, PUT", expected: COVERED}
+- {match: "create and delete environment variables using scripts", expected: COVERED, note: pre-request script editor}
+- {match: "download and copy the returned responses", expected: COVERED}
+- {match: "access the collections by clicking", expected: COVERED}
+- {match: "Import data from other tools into Hoppscotch", expected: COVERED}
+- {match: "dragging and dropping them to the desired location", expected: COVERED}
+- {match: "next to the request name field", expected: NOT_FOUND, note: "AI rename needs sign-in ('Modify with AI' opens the login dialog)"}
+- {match: "click Accept Change to apply it to the pre-request script section", expected: NOT_FOUND, note: AI needs sign-in}
+- {match: "The AI Assistant is an experimental chat assistant", expected: NOT_FOUND, note: experimental, needs sign-in}

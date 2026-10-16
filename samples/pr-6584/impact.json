@@ -1,0 +1,83 @@
+{
+ "change_areas": [
+  {
+   "area": "the settings desktop area",
+   "file": "src/components/settings/Desktop.vue"
+  }
+ ],
+ "changes": [
+  {
+   "additions": 1,
+   "deletions": 1,
+   "drift": true,
+   "file": "src/components/settings/Desktop.vue",
+   "keys_added": [],
+   "keys_removed": [],
+   "kinds": [
+    "template"
+   ],
+   "patch_missing": false,
+   "previous": null,
+   "spans": [
+    [
+     89,
+     89
+    ]
+   ],
+   "spans_all": [
+    [
+     89,
+     89
+    ]
+   ],
+   "status": "modified",
+   "type": "component"
+  }
+ ],
+ "elements": [],
+ "flows": [],
+ "gaps_touched": [],
+ "needs_human": [
+  {
+   "about": [
+    "src/components/settings/Desktop.vue"
+   ],
+   "id": "RV-1a8fad058a",
+   "question": "Some changed files were already different between the release we crawled and this PR's starting point. The risk shown for them may be out of date - please confirm.",
+   "trigger": "base_drift"
+  }
+ ],
+ "outside": [],
+ "pr": {
+  "base_ref": "next",
+  "base_sha": "1acb8a3a7581e4db32ba0d529170c4669a2e1053",
+  "body": "The connection timeout tippy in `settings/Desktop.vue` was in a full-width block, and both the vue-tippy reference span and `HoppSmartSelectWrapper`'s `.select-wrapper`, which is flex 110%, expand to the full width of their container.\r\n\r\nSo the reference measured the whole 613px settings row, the absolutely positioned chevron rendered at the far right, and the options popup centered on that full-width reference above the row rather than under the 15rem trigger. \r\n\r\nCapping the wrapping div at `w-[15rem]` bounds the reference to the trigger, so the chevron renders beside the label and the popup anchors under it. Confirmed in the running app that the reference measures 240px after the change, down from 613px.\r\n\r\nCloses FE-1323\r\n\n\n<!-- This is an auto-generated description by cubic. -->\n---\n## Summary by cubic\nCaps the connection timeout select container in `packages/hoppscotch-common/src/components/settings/Desktop.vue` to `w-[15rem]` so the tippy reference matches the trigger and the dropdown anchors correctly. Addresses FE-1323.\n\nOld behavior: the tippy reference spanned the full settings row (~613px), the chevron rendered at the far right, and the options popup centered above the row. New behavior: the reference is bounded (~240px), the chevron sits beside the label, and the popup opens under the 15rem trigger. No functional changes; only this field’s layout is width-capped.\n\n<sup>Written for commit 8f43b6186be43cf05a008e934fc5df1b161a4af7. Summary will update on new commits.</sup>\n\n<a href=\"https://cubic.dev/pr/hoppscotch/hoppscotch/pull/6584?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"Review in cubic\" src=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"></picture></a>\n\n<!-- End of auto-generated description by cubic. -->\n\n",
+  "head_sha": "8f43b6186be43cf05a008e934fc5df1b161a4af7",
+  "html_url": "https://github.com/hoppscotch/hoppscotch/pull/6584",
+  "merged": true,
+  "number": 6584,
+  "state": "closed",
+  "title": "fix(common): cap connection timeout dropdown width",
+  "user": "CuriousCorrelation"
+ },
+ "requirements": [],
+ "screens": [],
+ "summary": {
+  "elements_at_risk": 0,
+  "flows": 0,
+  "high": 0,
+  "medium": 0,
+  "needs_human": 1,
+  "overall_risk": "Low",
+  "requirements": 0,
+  "requirements_losing_coverage": 0,
+  "screens": 0,
+  "unmapped_changes": 1
+ },
+ "unmapped": [
+  {
+   "file": "src/components/settings/Desktop.vue",
+   "why": "Settings › Desktop: not part of any page a signed-out user can open (sign-in, desktop app or not linked)"
+  }
+ ]
+}

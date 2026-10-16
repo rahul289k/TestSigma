@@ -1,0 +1,56 @@
+# G1: DOM element -> Vue component, hand-labelled.
+# Sample: 42 elements from the deterministic smoke crawl (routes / and /settings), stratified by the
+# linker's method (seeded by element-id hash, so the sample is reproducible). Each label was decided by
+# reading the template that renders the element in that screen state (evidence printed by
+# `python -m triangulate.eval.gold_helper`), NOT by accepting the linker's answer. Keyed by route + label
+# (+ context where the label repeats), so the set is reusable across runs.
+- {route: /settings, label: Contact us, context: main, component: src/pages/settings.vue}
+- {route: /, label: Continue with Microsoft, context: "dialog:Login to Hoppscotch", component: src/components/firebase/Login.vue}
+- {route: /settings, label: Login to Hoppscotch, context: "dialog:Login to Hoppscotch", component: src/components/firebase/Login.vue}
+- {route: /, label: Filter JSON response body (uses jq syntax), context: main, component: src/components/lenses/renderers/JSONLensRenderer.vue}
+- {route: /, label: GraphQL, context: complementary>navigation, component: src/components/app/Sidenav.vue,
+   note: "nav items are literals rendered with t(navigation.title)"}
+- {route: /settings, label: English, context: main, component: src/components/smart/ChangeLanguage.vue}
+- {route: /, label: Continue with Email, context: "dialog:Login to Hoppscotch", component: src/components/firebase/Login.vue}
+- {route: /, label: Select environment, context: main, component: src/components/environments/Selector.vue}
+- {route: /, label: Horizontal layout, context: "", component: src/components/app/Footer.vue}
+- {route: /settings, label: Save My Workspace, context: banner, component: src/components/app/Header.vue}
+- {route: /, label: Switch protocol, context: main, component: src/components/http/ProtocolSwitcher.vue}
+- {route: /settings, label: Continue with Microsoft, context: "dialog:Login to Hoppscotch", component: src/components/firebase/Login.vue}
+- {route: /, label: Shared Requests, context: main, component: src/components/http/Sidebar.vue}
+- {route: /, label: Method, context: main, component: src/components/http/Request.vue,
+   note: "REST request bar; example/ResponseRequest.vue uses the same key but only inside saved examples"}
+- {route: /, label: Save the request to create example, context: main, component: src/components/lenses/renderers/JSONLensRenderer.vue}
+- {route: /, label: Duplicate D, context: popover>menu, component: src/components/environments/my/Environment.vue}
+- {route: /, label: Header List, context: main, component: src/components/http/Headers.vue}
+- {route: /settings, label: HOPPSCOTCH, context: banner, component: src/components/app/Header.vue}
+- {route: /, label: "Environment: Set an environment variable", context: main, component: src/components/http/PreRequestScript.vue,
+   note: "snippet names are TypeScript literals (helpers/preRequestScriptSnippets.ts), not i18n"}
+- {route: /, label: Support, context: banner, component: src/components/app/Header.vue}
+- {route: /, label: Expand sidebar, context: "", component: src/components/app/Footer.vue}
+- {route: /, label: Duplicate, context: main, component: src/components/environments/my/Environment.vue}
+- {route: /settings, label: Expand sidebar, context: "", component: src/components/app/Footer.vue}
+- {route: /settings, label: Shortcuts, context: "", component: src/components/app/Footer.vue}
+- {route: /, label: Interceptor, context: "", component: src/components/app/Footer.vue}
+- {route: /, label: Search, context: main, component: src/components/collections/index.vue,
+   note: "the sidebar opens on the Collections tab"}
+- {route: /, label: More, context: main, component: src/components/environments/my/Environment.vue}
+- {route: /, label: HOPPSCOTCH, context: banner, component: src/components/app/Header.vue}
+- {route: /, label: Snippets, context: main, component: src/components/http/PreRequestScript.vue}
+- {route: /, label: "Entries are separated by newline Keys and values are separated by : Prepend # to any row you want to add but keep disabled",
+   context: main, component: src/components/http/Headers.vue}
+- {route: /, label: Add new, context: main, component: src/components/http/Parameters.vue,
+   note: "start screen shows the Parameters tab"}
+- {route: /, label: Inherit, context: popover, component: src/components/http/Authorization.vue}
+- {route: /, label: Close, context: "dialog:Login to Hoppscotch", component: src/components/firebase/Login.vue,
+   note: "the close button comes from the library modal that Login.vue renders"}
+- {route: /, label: Turn off, context: main, component: src/components/http/KeyValue.vue}
+- {route: /, label: Enabled, context: main, component: src/components/http/Authorization.vue}
+- {route: /settings, label: Proxy privacy policy, context: main, component: src/components/settings/Proxy.vue}
+- {route: /settings, label: Use Default Proxy, context: main, component: src/components/settings/Proxy.vue}
+- {route: /, label: Import from URL, context: "dialog:Collections", component: src/components/importExport/ImportExportSteps/UrlImport.vue}
+- {route: /settings, label: Indigo, context: main, component: src/components/smart/AccentModePicker.vue,
+   note: "colour names are computed from literals, not i18n"}
+- {route: /settings, label: Blue, context: main, component: src/components/smart/AccentModePicker.vue}
+- {route: /settings, label: GraphQL, context: complementary>navigation, component: src/components/app/Sidenav.vue}
+- {route: /settings, label: "Chat with us Questions? Chat with us!", context: "dialog:Support", component: src/components/app/Support.vue}

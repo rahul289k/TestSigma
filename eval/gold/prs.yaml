@@ -1,0 +1,34 @@
+# G3: expected blast radius for real Hoppscotch PRs, written from reading each diff BEFORE looking at the
+# system's output for the real run. expected_controls = visible labels that the change can affect and that a
+# logged-out crawl of the default routes can reach; must_not_flag = controls that are clearly unaffected.
+- pr: 6706
+  title: "support comments in saved response examples"
+  why: "JSONLensRenderer.vue template+script change: the JSON response viewer shown after Send"
+  expected_controls: [Wrap lines, Filter, Download file, Copy, More]
+  must_not_flag: [Send, Save My Workspace, Select environment, Login]
+  expect_unmapped: true            # docs-example and GraphQL-example components are not on crawled screens
+- pr: 6707
+  title: "keep HTML response preview readable in dark theme"
+  why: "HTML lens + preview helper: only visible for HTML responses; the crawl sends to a JSON echo endpoint"
+  expected_controls: []
+  must_not_flag: [Send, Wrap lines, Filter, Copy]
+  expect_unmapped: true
+- pr: 6708
+  title: "preserve line breaks in documentation description editor"
+  why: "collection documentation editor, reachable only with a saved collection"
+  expected_controls: []
+  must_not_flag: [Send, Wrap lines]
+  expect_unmapped: true
+- pr: 6584
+  title: "cap connection timeout dropdown width"
+  why: "desktop-only settings component"
+  expected_controls: []
+  must_not_flag: [Send, English, Contact us]
+  expect_unmapped: true
+  expected_overall: Low
+- pr: 6721
+  title: "do not add filename to text fields in multipart requests"
+  why: "request-building helpers + CLI/desktop/kernel packages; UI impact only through shared logic"
+  expected_controls: []
+  must_not_flag: [Save My Workspace, English]
+  expect_unmapped: true

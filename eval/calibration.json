@@ -1,0 +1,13 @@
+{
+ "dom_code": {
+  "i18n_route_tiebreak": 0.632,
+  "i18n_route_unique": 0.929
+ },
+ "n": {
+  "i18n_global_unique": 2,
+  "i18n_route_ambiguous": 3,
+  "i18n_route_tiebreak": 17,
+  "i18n_route_unique": 12
+ },
+ "source_run": "20261016T030224Z-smoke"
+}

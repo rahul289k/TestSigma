@@ -1,0 +1,93 @@
+{
+ "change_areas": [
+  {
+   "area": "the collections documentation markdown editor area",
+   "file": "src/components/collections/documentation/MarkdownEditor.vue"
+  }
+ ],
+ "changes": [
+  {
+   "additions": 1,
+   "deletions": 1,
+   "drift": false,
+   "file": "src/components/collections/documentation/MarkdownEditor.vue",
+   "keys_added": [],
+   "keys_removed": [],
+   "kinds": [
+    "template"
+   ],
+   "patch_missing": false,
+   "previous": null,
+   "spans": [
+    [
+     12,
+     12
+    ]
+   ],
+   "spans_all": [
+    [
+     12,
+     12
+    ]
+   ],
+   "status": "modified",
+   "type": "component"
+  }
+ ],
+ "elements": [],
+ "flows": [],
+ "gaps_touched": [
+  {
+   "components": [
+    "CollectionsDocumentationMarkdownEditor"
+   ],
+   "gap_id": "GAP-documentation-d17605f3",
+   "kind": "UNOBSERVED_IN_UI",
+   "req_id": "REQ-documentation-d17605f3",
+   "statement": "Documentation supports rich text, images, and links via Markdown."
+  }
+ ],
+ "needs_human": [
+  {
+   "about": [
+    "src/components/collections/documentation/MarkdownEditor.vue"
+   ],
+   "id": "RV-cbf98ec7c7",
+   "question": "This change touches 'Collections › Documentation › Markdown Editor', which can appear on the REST page, the GraphQL page, but we never saw it on screen. Which screen shows it, and does it need a retest?",
+   "trigger": "unmapped_ui_change"
+  }
+ ],
+ "outside": [],
+ "pr": {
+  "base_ref": "main",
+  "base_sha": "63273f8e599e73f0fb38c0739314e8d46b6bc83d",
+  "body": "## Summary\r\n- Fixes #6193: multiline descriptions in the API documentation editor lost visible line breaks after blur/re-edit (especially on macOS desktop).\r\n- Overrides the global `textarea { truncate }` styles (`white-space: nowrap`) in `MarkdownEditor.vue` with `whitespace-pre-wrap overflow-auto`, matching the pattern already used in `Assistant.vue`.\r\n\r\n## Test plan\r\n- [ ] Open request documentation, enter a multiline description, blur to save\r\n- [ ] Click the description again to re-enter edit mode — line breaks should remain visible\r\n- [ ] Confirm markdown preview still renders soft breaks correctly\r\n- [ ] Smoke-test on macOS desktop (WKWebView) if available\r\n\n\n<!-- This is an auto-generated description by cubic. -->\n---\n## Summary by cubic\nFixes multiline descriptions in the API documentation editor losing visible line breaks after blur/re-edit on macOS desktop.\n\nThe `textarea` class now uses `whitespace-pre-wrap overflow-auto` instead of `text-wrap`, overriding the global truncate styles that forced `white-space: nowrap` on the element.\n\n<sup>Written for commit 1ebdecefbf0a9900c36cdd131f7025b317a4cf48. Summary will update on new commits.</sup>\n\n<a href=\"https://cubic.dev/pr/hoppscotch/hoppscotch/pull/6708?utm_source=github\" target=\"_blank\" rel=\"noopener noreferrer\" data-no-image-dialog=\"true\"><picture><source media=\"(prefers-color-scheme: dark)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-dark.svg\"><source media=\"(prefers-color-scheme: light)\" srcset=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"><img alt=\"View guided diff\" src=\"https://www.cubic.dev/buttons/review-in-cubic-light.svg\"></picture></a>\n\n<!-- End of auto-generated description by cubic. -->\n\n",
+  "head_sha": "1ebdecefbf0a9900c36cdd131f7025b317a4cf48",
+  "html_url": "https://github.com/hoppscotch/hoppscotch/pull/6708",
+  "merged": false,
+  "number": 6708,
+  "state": "open",
+  "title": "fix(common): preserve line breaks in documentation description editor",
+  "user": "RubenPari"
+ },
+ "requirements": [],
+ "screens": [],
+ "summary": {
+  "elements_at_risk": 0,
+  "flows": 0,
+  "high": 0,
+  "medium": 0,
+  "needs_human": 1,
+  "overall_risk": "Low",
+  "requirements": 0,
+  "requirements_losing_coverage": 0,
+  "screens": 0,
+  "unmapped_changes": 1
+ },
+ "unmapped": [
+  {
+   "file": "src/components/collections/documentation/MarkdownEditor.vue",
+   "why": "Collections › Documentation › Markdown Editor: can appear on the REST page, the GraphQL page, but the crawl never showed any of its controls"
+  }
+ ]
+}

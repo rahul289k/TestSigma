@@ -1,0 +1,1013 @@
+{
+ "meta": {
+  "model_version": "gemini-3.5-flash-lite",
+  "usage": {
+   "candidatesTokenCount": 2877,
+   "promptTokenCount": 24149,
+   "promptTokensDetails": [
+    {
+     "modality": "TEXT",
+     "tokenCount": 24149
+    }
+   ],
+   "serviceTier": "standard",
+   "totalTokenCount": 27026
+  }
+ },
+ "model": "gemini-3.5-flash-lite",
+ "prompt": "Extract requirements from these documentation sections. Cite each by its section id.\nEvery page must get its own list of requirements.\n\n<section id=\"interceptor#intro\" title=\"Interceptor\">\nYou can access APIs blocked by `Cross-Origin Resource Sharing (CORS)` restriction by using either Hoppscotch Agent, Proxyscotch or custom middleware. You can also use the Hoppscotch web extension to intercept requests and responses.\n</section>\n\n<section id=\"interceptor#hoppscotch-agent\" title=\"Interceptor > Hoppscotch Agent\">\nThe Hoppscotch Agent is a micro application designed to mitigate the challenges posed by `CORS` in modern web browsers. Acting as a local intermediary, it intercepts API requests made through the Hoppscotch web app and reroutes them through your local machine. This means that the Hoppscotch Agent handles requests using your local network configuration.\n\n1. Download the Hoppscotch Agent for your operating system:\n\nDownload for Apple Silicon-based Mac.\n\nDownload for Intel-based Mac.\n\nDownload the installer for Windows (64-bit).\n\nDownload the portable version for Windows (64-bit).\n\nDownload the Debian package for Debian-based Linux distributions.\n\nDownload the AppImage for Linux.\n\n2. Open Hoppscotch app and navigate to the \"**Interceptors**\" section in the **\"Settings\"** page.\n3. Locate the \"**Agent**\" option within the Interceptors section to initiate a connection to your local agent.\n4. The application will prompt you for a \"**One-Time Verification Code**\". This verification code will be generated within the Hoppscotch Agent.\n5. Enter the verification code into the application to establish a secure connection.\n\nOnce connected, all API requests made through the Hoppscotch web app will be routed through Hoppscotch agent, effectively eliminating CORS-related issues.\n\nRecommended interceptor for most users as it is compatible with all platforms.\n</section>\n\n<section id=\"interceptor#proxy\" title=\"Interceptor > Proxy\">\nA proxy server acts as an intermediary between your device and the internet, forwarding requests and responses to and from the desired API. By routing requests through a proxy, you can bypass CORS restrictions and access APIs that would otherwise be blocked by the browser.\n\n- Enable proxy interceptor from \"**Settings page**\" under the **Interceptors** section.\n- You can replace the default Proxy URL with your own proxy middleware if you wish or use Proxyscotch, which acts as a remote proxy server for routing API requests.\n</section>\n\n<section id=\"interceptor#proxyscotch\" title=\"Interceptor > Proxyscotch\">\nProxyscotch is our official proxy server. It is an MIT licensed open-source project that can bypass Cross-Origin Resource Sharing (CORS) restrictions by routing API requests through a remotely hosted proxy, ensuring that requests originate from a trusted environment.\n</section>\n\n<section id=\"interceptor#self-hosted-proxyscotch\" title=\"Interceptor > Proxyscotch > Self-Hosted Proxyscotch\">\nTo use Proxyscotch with a minimal setup, you can pull and run the official pre-built Docker image. This provides an instant proxy environment without requiring manual compilation or installation.\nYou can host Proxyscotch on your own server by following the instructions below:\n\n```bash\n# Pull the latest Proxyscotch image from Docker Hub\ndocker pull hoppscotch/proxyscotch\n\n# Run the container in detached mode, exposing port 9159\ndocker run -d -p 9159:9159 --name proxyscotch hoppscotch/proxyscotch\n```\n</section>\n\n<section id=\"interceptor#proxyscotch-installer\" title=\"Interceptor > Proxyscotch > Proxyscotch Installer\">\nIf you prefer a native installation, download and install both the Desktop and Server binaries for your operating system.\n\nDownload proxyscotch for macOS desktops. This will install the tray application for seamless proxy management.\n\nDownload the proxy server binary for Intel-based (x86-64) Macs.\n\nDownload the proxy server binary for Apple Silicon-based (ARM64) Macs.\n\nDownload proxyscotch for AMD-based Windows desktops. This will install the tray application for easy proxy management.\n\nDownload the proxy server binary for AMD-based Windows machines.\n\nDownload proxyscotch for ARM-based Windows desktops. This will install the tray application for easy proxy management.\n\nDownload the proxy server binary for ARM-based Windows machines.\n\nDownload proxyscotch for AMD-based Linux desktops. This will install the tray application for seamless proxy management.\n\nDownload the proxy server binary for AMD-based Linux machines.\n\nThe proxy will add a **desktop application to your system tray**, providing quick access to various proxy settings such as setting the access token. After launching the application, a dialog will prompt you to complete the **certificate installation** process. For more details on how to install the certificate, visit this wiki.\n\nUpon activation, the **server** will run in the background and interact with the proxy to route and manage requests.\n</section>\n\n<section id=\"interceptor#building-proxyscotch-from-source\" title=\"Interceptor > Proxyscotch > Building Proxyscotch from Source\">\nIf you prefer to build and run Proxyscotch manually from source, you can clone the repository and compile the binaries for your platform.\n\n```bash\ngit clone https://github.com/hoppscotch/proxyscotch.git\n```\n\nFollow the platform-specific instructions below to build the proxy and server from source for your operating system:\n\n```bash\n# Build the desktop tray application\n./build.sh darwin\n\n# Build the standalone server application\n./build.sh darwin server\n```\n\nYou can use Git Bash to run the following commands:\n\n```bash\n# Build the desktop tray application\n./build.sh windows\n\n# Build the standalone server application\n./build.sh windows server\n```\n\n```bash\n# Build the desktop tray application\n./build.sh linux\n\n# Build the standalone server application\n./build.sh linux server\n```\n\nAfter building, the compiled binaries will be available in the `out/` directory.\n</section>\n\n<section id=\"interceptor#running-the-proxyscotch-server\" title=\"Interceptor > Proxyscotch > Building Proxyscotch from Source > Running the Proxyscotch Server\">\nAfter building the server, use the following command to start the proxy server:\n```bash\n$ ./out/-server/server --host=\":\" --token=\"<token_or_blank>\"\n\n# e.g. on Linux\n$ ./out/linux-server/server --host=\"localhost:9159\" --token=\"\"\n\n# or on Windows\n$ ./out/windows-server/server.exe --host=\"localhost:9159\" --token=\"\"\n```\n\nWhen the **token is left blank**, it grants unrestricted access to your proxy server. While this might be convenient, please be aware of the potential security risks and consider whether this level of open access is appropriate for your use case.\n</section>\n\n<section id=\"interceptor#available-server-options\" title=\"Interceptor > Proxyscotch > Building Proxyscotch from Source > Available Server Options\">\nAfter running the Proxyscotch server, you can customize its behavior using various command-line options.\n\n| **Option**                    | **Description**                                                            |\n| ----------------------------- | -------------------------------------------------------------------------- |\n| `--host=\":\"`  | Define the host and port (default: `localhost:9159`).                      |\n| `--token=\"\"`           | Set an access token to restrict proxy usage (leave blank for open access). |\n| `--allowed-origins=\"*\"`       | Comma-separated list of allowed origins for CORS.                          |\n| `--banned-outputs=\"\"` | Comma-separated list of response values to redact.                         |\n| `--banned-dests=\"\"`    | Comma-separated list of blocked destination hosts.                         |\n</section>\n\n<section id=\"interceptor#configure-proxyscotch-in-hoppscotch\" title=\"Interceptor > Proxyscotch > Configure Proxyscotch in Hoppscotch\">\nOnce the container is running or the server is active, configure Hoppscotch to use `http://localhost:9159` as the Proxy URL in the \"**Settings**\" page.\n\nThis setup will route all API requests through Proxyscotch, facilitating communication with APIs that enforce strict CORS policies.\n</section>\n\n<section id=\"interceptor#browser-extension\" title=\"Interceptor > Browser Extension\">\nSince `CORS` is as simple as adding some HTTP headers, it's only blocked by the browser. You can build some proxy-like component that will make a call for you and get the response from the desired API. You add it to the headers and then send it back to Hoppscotch.\n</section>\n\n<section id=\"interceptor#how-to-use-the-browser-extension\" title=\"Interceptor > Browser Extension > How to use the Browser Extension\">\n1. Install the browser extension from the below links:\n\n- &nbsp; Chrome\n- &nbsp; Firefox\n\n2. Click on the Hoppscotch Browser Extension icon from the browser toolbar and ensure that `hoppscotch.io` is in your active origins. If you are using Hoppscotch Self-Host, add your own domain as a new origin\n\n3. Refresh the Hoppscotch web app.\n4. Open the interceptor and change the middleware to the browser extension\n\nYou can either go to the settings and enable the use of the browser extension as shown below:\n\nOr you can open the interceptor menu and change the middleware as shown below:\n</section>\n\n<section id=\"interceptor#origins\" title=\"Interceptor > Browser Extension > Origins\">\nThe origin list defines the URLs that the extension can connect to. If you're using hoppscotch.io, then you do not need to add any other origins. However, if you are using a self-hosted instance, you should add the domain of your self-hosted instance as an active origin.\n</section>\n\n<section id=\"mock#intro\" title=\"API Mocking\">\nHoppscotch API Mocking lets you stand up mock servers that return predictable responses to HTTP requests. It's ideal for prototyping, front‑end development, contract-first API design, demos, and testing failure/latency scenarios, now built right into Hoppscotch.\n</section>\n\n<section id=\"mock#what-you-can-do\" title=\"API Mocking > What you can do\">\n- Spin up mock servers without writing code\n- Define routes by method and path (with path params and queries)\n- Return custom status codes, headers, and bodies\n- Choose between static and dynamic responses (with Variables)\n- Simulate latency and flaky behaviors for realism\n- Organize and reuse mocks with Collections and Environments\n- Collaborate via Workspaces\n</section>\n\n<section id=\"mock#create-a-mock-server\" title=\"API Mocking > Create a mock server\">\nYou can create a mock server from scratch or from an existing Collection.\n\n1) New mock server\n- Click \"New\"\n- Select source collection\n- Provide a mock server name\n- Choose a response delay\n\n2) From a Collection\n- Select a Collection menu, then click \"Configure Mock Server\"\n- Provide a mock server name\n- Choose a response delay\n- Each request/example becomes an initial mock route you can refine\n\nOnce created, you'll get a mock server URL you can call from your app or your Hoppscotch requests.\n\nKeep the mock server URL in an Environment variable, for example `{{MOCK_BASE_URL}}`, so you can swap between mock and real servers easily.\n</section>\n\n<section id=\"mock#define-routes-and-responses\" title=\"API Mocking > Define routes and responses\">\nA mock server is made of one or more routes. Each route matches an incoming request and returns a configured response.\n\nRoute fields:\n- Method: `GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `HEAD`, `OPTIONS`\n- Path: Supports path params and query strings\n- Matching: Optional header and query matchers to choose the correct example\n- Response: Status code, headers, body, and artificial latency\n</section>\n\n<section id=\"mock#example-route\" title=\"API Mocking > Define routes and responses > Example route\">\nRequest\n\nResponse\n</section>\n\n<section id=\"mock#dynamic-responses-with-variables\" title=\"API Mocking > Define routes and responses > Dynamic responses with variables\">\nUse Hoppscotch variables to make responses dynamic and realistic.\n\n- Timestamps: `{{timestamp}}`\n- UUIDs: `{{uuid}}`\n- Environment values: `{{ENV_NAME}}`\n\nExample dynamic body:\n\nYou can also reference variables in headers, for example `X-Request-ID: {{uuid}}`.\n</section>\n\n<section id=\"mock#save-a-response-as-an-example\" title=\"API Mocking > Save a response as an Example\">\nIn Hoppscotch, you can save responses as examples to quickly populate mock routes with realistic data. Examples capture both the request configuration and its actual response, making it easy to convert real API behavior into mock endpoints.\n\n**To save a response as an example:**\n\n1. Navigate to the right-sidebar and select the collection with your request\n2. Choose the request and click **\"Send\"**\n3. In the response section, click the **\"Save as Example\"** icon\n4. The example will be stored in the request's history within the collection\n\n**Using examples in mock servers:**\n\n- When creating a mock server from a Collection, each saved example automatically becomes a mock route\n- Examples preserve the exact response status, headers, and body you received\n- You can edit examples to adjust the mock response (modify status codes, add headers, introduce delays)\n- Multiple examples for the same request let you simulate different scenarios (success, errors, edge cases)\n\n**Example workflow:**\n\n1. Call your API endpoint and receive a response\n2. Save that response as an example\n3. Create a mock server from the collection\n4. The mock route now returns the exact response you captured\n5. Edit the example to add delays or modify data for testing\n\nUse examples to quickly bootstrap realistic mock data from your actual API, then refine them to test edge cases and failure scenarios.\n</section>\n\n<section id=\"mock#latency-errors-and-headers\" title=\"API Mocking > Latency, errors, and headers\">\nControl the realism of your mocks by tuning:\n- Status: 2xx, 3xx, 4xx, 5xx\n- Headers: `Content-Type`, `Cache-Control`, custom headers\n- Delay: Add fixed or ranged latency (for example, 250–1500 ms)\n\nSimulate network timeouts by setting a delay higher than your client's timeout to test retry logic.\n</section>\n\n<section id=\"mock#using-mocks-with-collections-and-environments\" title=\"API Mocking > Using mocks with Collections and Environments\">\n- Save your mock routes alongside requests in a Collection for easy reuse\n- Store the mock server base URL in an Environment, for example `{{MOCK_BASE_URL}}`\n- Switch between mock and real backends by toggling the Environment variable\n\nExample request target:\n</section>\n\n<section id=\"mock#collaboration-and-sharing\" title=\"API Mocking > Collaboration and sharing\">\nMocks live in your workspace, so teammates can:\n- View and edit routes and examples\n- Fork Collections and iterate on contracts\n- Use the same Environments to keep URLs and tokens in sync\n</section>\n\n<section id=\"mock#best-practices\" title=\"API Mocking > Best practices\">\n- Keep contracts first: define mocks before building the backend\n- Add negative cases early (400/401/403/409/429/500) to harden clients\n- Use example names that describe intent (for example, “empty list”, “invalid token”)\n- Centralize variables (for example, `{{MOCK_BASE_URL}}`, `{{REGION}}`) in Environments\n- Review and version mocks with your Collection changes\n</section>\n\n<section id=\"mock#troubleshooting\" title=\"API Mocking > Troubleshooting\">\n- 404 from mock: Ensure the method and path match exactly (including base path), and check example matching rules\n- Wrong example returned: Inspect header/query matchers and example priorities\n- CORS errors in the browser: Add `Access-Control-Allow-Origin: *` (or your origin) to the response headers\n- Timeouts: Reduce mock delay or increase your client timeout\n</section>\n\n<section id=\"mock#how-do-mocks-differ-from-live-endpoints\" title=\"API Mocking > FAQs > How do mocks differ from live endpoints?\">\nMocks return predefined responses based on your rules. They don't execute business logic or touch data stores.\n</section>\n\n<section id=\"mock#can-i-generate-mocks-from-my-existing-requests\" title=\"API Mocking > FAQs > Can I generate mocks from my existing requests?\">\nYes. You can bootstrap routes from saved requests or examples in a Collection and refine them.\n</section>\n\n<section id=\"mock#can-i-parametrize-responses-without-code\" title=\"API Mocking > FAQs > Can I parametrize responses without code?\">\nYes. Use Hoppscotch variables (UUID, timestamp, and Environment values) directly in response bodies and headers.\n</section>\n\n<section id=\"mock#can-i-selfhost-mock-servers\" title=\"API Mocking > FAQs > Can I self‑host mock servers?\">\nYes. See Self‑host for details on deploying Hoppscotch in your own infrastructure.\n</section>\n\n<section id=\"mock#related\" title=\"API Mocking > Related\">\n- Collections\n- Environments\n- Variables\n- Scripts\n- Workspaces\n</section>\n\n<section id=\"pat#intro\" title=\"Personal Access Token\">\nA Personal Access Token (PAT) in Hoppscotch acts as a secure authentication method,\nallowing you to smoothly link your Hoppscotch API client, on Hoppscotch cloud or self-host, with the Hoppscotch CLI.\n</section>\n\n<section id=\"pat#generating-personal-access-token\" title=\"Personal Access Token > Generating Personal Access Token\">\nFollow these steps to create a new token and manage its settings. Personal access tokens cannot be used to access data in your personal workspace.\n\n1. Login to the Hoppscotch API client using your credentials.\n\n2. Once logged in, navigate to your profile settings by clicking on your profile icon, located in the top right corner of the screen.\n\n3. In the profile settings menu, locate and click on `Personal Access Tokens`.\n\n4. Within the Personal Access Tokens section, find the option to \"Generate New Token\" and click on it.\n\n5. Provide a brief description under **Label** to remind yourself of the token's purpose and select an expiration date for the token. Options typically include 7 days, 30 days, 60 days, 90 days, or set it to never expire.\n\nOnce a Personal Access Token (PAT) is generated with **read-only access** permissions, it cannot be modified. Please review the token settings carefully before generating it to ensure it meets your access requirements.\n\n6. After generating the token, it will be securely displayed. Use the **copy icon** to copy the token to your clipboard for immediate use.\n\n7. If you decide that you no longer need the token, you can delete it by navigating back to your profile page.\n\nRemember, deleted tokens cannot be recovered.\n\n8. Once you've copied or saved your PAT, you can use it to authenticate API requests across different Hoppscotch services.\n</section>\n\n<section id=\"pat#enterprise-token-management\" title=\"Personal Access Token > Enterprise Token Management\">\nIn Self-Hosted Enterprise settings, users with Admin privileges have additional capabilities for managing Personal Access Tokens (PATs).\n1. Admin can **oversee and manage** tokens generated by all users within the enterprise environment.\n2. An Admin also possesses the **authority to delete** tokens under their purview. This capability ensures compliance with security protocols and allows for the removal of tokens that are no longer necessary or have expired.\n</section>\n\n<section id=\"realtime-api-testing#intro\" title=\"Realtime API Testing\">\nHoppscotch's Realtime API platform helps you test your real-time APIs easily.\n\nIt's primarily divided into two sections: the request section and the response section.\n</section>\n\n<section id=\"realtime-api-testing#request\" title=\"Realtime API Testing > Request\">\nThe request section houses the feature to enter your server endpoint and initiate a connection. You also get the option to choose from four different protocols `WebSocket`, `SSE`, `Socket.IO`, and `MQTT`.\n</section>\n\n<section id=\"realtime-api-testing#response\" title=\"Realtime API Testing > Response\">\nOnce the connection is established, you can view the responses and logs in the response section.\n\nRead our step-by-step tutorial on working with Realtime protocols.\n</section>\n\n<section id=\"rest-api-testing#intro\" title=\"RESTful API Testing\">\nHoppscotch's REST API platform provides you with a fast and seamless experience to test and debug your API endpoints.\n\nIt's primarily divided into two sections along with other features to help you build better APIs.\n</section>\n\n<section id=\"rest-api-testing#request\" title=\"RESTful API Testing > Request\">\nThe request section provides you the capability to define your API endpoint and initiate the communication.\n\nYou can select from a range of HTTP methods such as `GET`, `POST`, `PUT` etc. You can read more about HTTP methods in RESTful protocol.\n\nYou can also add dynamic behaviors to your requests by specifying `Headers`, `Request Body`, `Authorization Headers`, `Parameters`, and `Pre-request scripts`.\n\nHoppscotch also provides the capability to run `Tests` on the responses you receive.\n</section>\n\n<section id=\"rest-api-testing#response\" title=\"RESTful API Testing > Response\">\nThis is where you see the responses to your API endpoints. You can download and copy the returned responses for further use.\n</section>\n\n<section id=\"rest-api-testing#other-features\" title=\"RESTful API Testing > Other features\">\nThe REST API platform also houses other features like:\n\n- Environments\n- Collections\n- History\n</section>\n\n<section id=\"runner#intro\" title=\"Runner\">\nThe Runner is a powerful tool that allows you to run a collection of requests sequentially. You can also configure the run settings to suit your needs.\n</section>\n\n<section id=\"runner#running-a-collection\" title=\"Runner > Running a Collection\">\nTo run a collection:\n\n- Right-click on the collection and select the \"**Run Collection**\" option.\n- Alternatively, hover over the collection name and click on the \"**Run Collection**\" icon.\n\nYou can choose to run the collection from the CLI or through the web interface based on your preference. A new tab will open where you can configure the run settings as described below.\n</section>\n\n<section id=\"runner#run-settings\" title=\"Runner > Run Settings\">\n1. **Delay**: Set an interval delay (in milliseconds) between running each request.\n2. **Stop Run if Error Occurs**: The collection run stops if an error is encountered within a script or if there's a problem sending a request.\n3. **Persist Responses**: Log response headers and bodies for review after running the collection. Note that persisting responses may impact performance for large collections.\n4. **Keep Variable Values**: Persist the variables used in the run, so any updates made to the variables during the run will retain their changes after completion.\n</section>\n\n<section id=\"runner#executing-the-run\" title=\"Runner > Executing the Run\">\nAfter setting up your preferences, start the collection runner. A new tab will display, showing real-time execution details, including:\n\n- **Collection**: The name of the collection being executed.\n- **Environment**: The active environment at runtime.\n- **Duration**: Total time taken to complete the run.\n- **Average Response Time**: The mean response time across all requests.\n</section>\n\n<section id=\"runner#running-and-post-run-actions\" title=\"Runner > Executing the Run > Running and Post-Run Actions\">\n- **Stop**: Stop the current run at any time.\n- **Run Again**: When a run completes, you can restart with the same configurations as needed.\n- **New Run**: Stop the current run and restart with new settings.\n</section>\n\n<section id=\"runner#runner-results\" title=\"Runner > Runner Results\">\nThe results view provides a comprehensive summary of your collection run, including:\n\n- **Request Status**: Success or failure of each request, along with HTTP status codes.\n- **Tests**: Detailed views of tests that passed or failed.\n- **Persisted Responses**: If enabled, view headers and bodies by selecting each request; otherwise, this section remains hidden.\n</section>\n\n<section id=\"scripts#intro\" title=\"Scripts\">\nIt is not recommended to migrate or reformat your existing scripts to the new scripting APIs at this time. Upcoming updates are expected to introduce breaking changes as we continue to refine and improve the scripting experience.\n\nThe current rollout is intentionally gradual, allowing us to gather user feedback and iterate based on real-world usage.\n\nAll further updates to scripting will be scoped to the experimental scripting sandbox, which is the default, and the preference can be updated from `Settings → Experiments`.\n\nYour feedback will be invaluable as we shape the next generation of Hoppscotch scripting.\n\nThis new experimental implementation provides a robust foundation for API scripting with enhanced capabilities for environment management, request manipulation, response processing, cookie handling, and comprehensive testing. The new system maintains backwards compatibility while introducing powerful new features for modern API testing workflows.\n</section>\n\n<section id=\"scripts#hoppenv-namespace\" title=\"Scripts > `hopp.env` Namespace\">\nEnvironment variable management with scope-specific operations and enhanced functionality.\n</section>\n\n<section id=\"scripts#hoppenvgetkey-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.get(key: string)`\">\nRetrieves the value of the selected environment's variable. Accepts an environment variable as an argument.\n\n```javascript\nhopp.env.get(\"variable\");\nhopp.env.get(\"baseURL\");\n```\n</section>\n\n<section id=\"scripts#hoppenvgetrawkey-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.getRaw(key: string)`\">\nRetrieves the raw value of the selected environment's variable without variable resolution.\n\n```javascript\nhopp.env.getRaw(\"variable\");\n```\n</section>\n\n<section id=\"scripts#hoppenvsetkey-string-value-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.set(key: string, value: string)`\">\nSets the value of an environment variable in the selected environment.\n\n```javascript\nhopp.env.set(\"baseURL\", \"https://httpbin.org\");\n```\n</section>\n\n<section id=\"scripts#hoppenvdeletekey-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.delete(key: string)`\">\nDeletes an environment variable from the selected environment.\n\n```javascript\nhopp.env.delete(\"baseURL\");\n```\n</section>\n\n<section id=\"scripts#hoppenvresetkey-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.reset(key: string)`\">\nResets an environment variable to its initial value in the selected environment.\n\n```javascript\nhopp.env.reset(\"baseURL\");\n```\n</section>\n\n<section id=\"scripts#hoppenvgetinitialrawkey-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.getInitialRaw(key: string)`\">\nRetrieves the initial raw value of an environment variable.\n\n```javascript\nhopp.env.getInitialRaw(\"baseURL\");\n```\n</section>\n\n<section id=\"scripts#hoppenvsetinitialkey-string-value-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.setInitial(key: string, value: string)`\">\nSets the initial value of an environment variable.\n\n```javascript\nhopp.env.setInitial(\"baseURL\", \"https://httpbin.org\");\n```\n</section>\n\n<section id=\"scripts#active-environment-scope\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.setInitial(key: string, value: string)` > Active Environment Scope\">\nOperations specific to the currently active environment.\n</section>\n\n<section id=\"scripts#hoppenvactivegetkey-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.active.get(key: string)`\">\nRetrieves the value of the active environment's variable.\n\n```javascript\nhopp.env.active.get(\"variable\");\n```\n</section>\n\n<section id=\"scripts#hoppenvactivegetrawkey-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.active.getRaw(key: string)`\">\nRetrieves the raw value of the active environment's variable.\n\n```javascript\nhopp.env.active.getRaw(\"variable\");\n```\n</section>\n\n<section id=\"scripts#hoppenvactivesetkey-string-value-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.active.set(key: string, value: string)`\">\nSets the value of an active environment variable.\n\n```javascript\nhopp.env.active.set(\"baseURL\", \"https://httpbin.org\");\n```\n</section>\n\n<section id=\"scripts#hoppenvactivedeletekey-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.active.delete(key: string)`\">\nDeletes a variable from the active environment.\n\n```javascript\nhopp.env.active.delete(\"baseURL\");\n```\n</section>\n\n<section id=\"scripts#hoppenvactiveresetkey-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.active.reset(key: string)`\">\nResets a variable in the active environment to its initial value.\n\n```javascript\nhopp.env.active.reset(\"baseURL\");\n```\n</section>\n\n<section id=\"scripts#hoppenvactivegetinitialrawkey-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.active.getInitialRaw(key: string)`\">\nRetrieves the initial raw value of an active environment variable.\n\n```javascript\nhopp.env.active.getInitialRaw(\"baseURL\");\n```\n</section>\n\n<section id=\"scripts#hoppenvactivesetinitialkey-string-value-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.active.setInitial(key: string, value: string)`\">\nSets the initial value of an active environment variable.\n\n```javascript\nhopp.env.active.setInitial(\"baseURL\", \"https://httpbin.org\");\n```\n</section>\n\n<section id=\"scripts#global-environment-scope\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.active.setInitial(key: string, value: string)` > Global Environment Scope\">\nOperations specific to the global environment.\n</section>\n\n<section id=\"scripts#hoppenvglobalgetkey-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.global.get(key: string)`\">\nRetrieves the value of the global environment's variable.\n\n```javascript\nhopp.env.global.get(\"variable\");\n```\n</section>\n\n<section id=\"scripts#hoppenvglobalgetrawkey-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.global.getRaw(key: string)`\">\nRetrieves the raw value of the global environment's variable.\n\n```javascript\nhopp.env.global.getRaw(\"variable\");\n```\n</section>\n\n<section id=\"scripts#hoppenvglobalsetkey-string-value-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.global.set(key: string, value: string)`\">\nSets the value of a global environment variable.\n\n```javascript\nhopp.env.global.set(\"baseURL\", \"https://httpbin.org\");\n```\n</section>\n\n<section id=\"scripts#hoppenvglobaldeletekey-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.global.delete(key: string)`\">\nDeletes a variable from the global environment.\n\n```javascript\nhopp.env.global.delete(\"baseURL\");\n```\n</section>\n\n<section id=\"scripts#hoppenvglobalresetkey-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.global.reset(key: string)`\">\nResets a variable in the global environment to its initial value.\n\n```javascript\nhopp.env.global.reset(\"baseURL\");\n```\n</section>\n\n<section id=\"scripts#hoppenvglobalgetinitialrawkey-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.global.getInitialRaw(key: string)`\">\nRetrieves the initial raw value of a global environment variable.\n\n```javascript\nhopp.env.global.getInitialRaw(\"baseURL\");\n```\n</section>\n\n<section id=\"scripts#hoppenvglobalsetinitialkey-string-value-string\" title=\"Scripts > `hopp.env` Namespace > `hopp.env.global.setInitial(key: string, value: string)`\">\nSets the initial value of a global environment variable.\n\n```javascript\nhopp.env.global.setInitial(\"baseURL\", \"https://httpbin.org\");\n```\n</section>\n\n<section id=\"scripts#hopprequest-namespace\" title=\"Scripts > `hopp.request` Namespace\">\nRequest manipulation with immutable properties and dedicated mutation functions.\n</section>\n\n<section id=\"scripts#hopprequesturl\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.url`\">\nThe request URL as a string.\n\n```javascript\nconst url = hopp.request.url;\n```\n</section>\n\n<section id=\"scripts#hopprequestmethod\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.method`\">\nThe HTTP method of the request.\n\n```javascript\nconst method = hopp.request.method;\n```\n</section>\n\n<section id=\"scripts#hopprequestparams\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.params`\">\nThe query parameters of the request.\n\n```javascript\nconst params = hopp.request.params;\n```\n</section>\n\n<section id=\"scripts#hopprequestheaders\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.headers`\">\nThe headers of the request.\n\n```javascript\nconst headers = hopp.request.headers;\n```\n</section>\n\n<section id=\"scripts#hopprequestbody\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.body`\">\nThe body of the request.\n\n```javascript\nconst body = hopp.request.body;\n```\n</section>\n\n<section id=\"scripts#hopprequestauth\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.auth`\">\nThe authentication configuration of the request.\n\n```javascript\nconst auth = hopp.request.auth;\n```\n</section>\n\n<section id=\"scripts#hopprequestseturlurl-string\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.setUrl(url: string)`\">\nSets the request URL.\n\n```javascript\nhopp.request.setUrl(\"https://api.example.com/users\");\n```\n</section>\n\n<section id=\"scripts#hopprequestsetmethodmethod-string\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.setMethod(method: string)`\">\nSets the HTTP method of the request.\n\n```javascript\nhopp.request.setMethod(\"POST\");\n```\n</section>\n\n<section id=\"scripts#hopprequestsetheadername-string-value-string\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.setHeader(name: string, value: string)`\">\nSets a header on the request.\n\n```javascript\nhopp.request.setHeader(\"Authorization\", \"Bearer token\");\n```\n</section>\n\n<section id=\"scripts#hopprequestsetheadersheaders-hopprestheader\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.setHeaders(headers: HoppRESTHeader[])`\">\nSets multiple headers on the request.\n\n```javascript\nhopp.request.setHeaders([{ key: \"Content-Type\", value: \"application/json\" }]);\n```\n</section>\n\n<section id=\"scripts#hopprequestremoveheadername-string\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.removeHeader(name: string)`\">\nRemoves a header from the request.\n\n```javascript\nhopp.request.removeHeader(\"Authorization\");\n```\n</section>\n\n<section id=\"scripts#hopprequestsetparamname-string-value-string\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.setParam(name: string, value: string)`\">\nSets a query parameter on the request.\n\n```javascript\nhopp.request.setParam(\"userId\", \"123\");\n```\n</section>\n\n<section id=\"scripts#hopprequestsetparamsparams-hopprestparam\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.setParams(params: HoppRESTParam[])`\">\nSets multiple query parameters on the request.\n\n```javascript\nhopp.request.setParams([{ key: \"userId\", value: \"123\" }]);\n```\n</section>\n\n<section id=\"scripts#hopprequestremoveparamname-string\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.removeParam(name: string)`\">\nRemoves a query parameter from the request.\n\n```javascript\nhopp.request.removeParam(\"userId\");\n```\n</section>\n\n<section id=\"scripts#hopprequestsetbodybody-partial\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.setBody(body: Partial)`\">\nSets the body of the request.\n\n```javascript\nhopp.request.setBody({ body: '{\"key\": \"value\"}' });\n```\n</section>\n\n<section id=\"scripts#hopprequestsetauthauth-partial\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.setAuth(auth: Partial)`\">\nSets the authentication for the request.\n\n```javascript\nhopp.request.setAuth({ authType: \"bearer\", token: \"token\" });\n```\n</section>\n\n<section id=\"scripts#hopprequestvariablesgetkey-string\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.variables.get(key: string)`\">\nRetrieves the value of a request variable.\n\n```javascript\nconst value = hopp.request.variables.get(\"varName\");\n```\n</section>\n\n<section id=\"scripts#hopprequestvariablessetkey-string-value-string\" title=\"Scripts > `hopp.request` Namespace > `hopp.request.variables.set(key: string, value: string)`\">\nSets the value of a request variable.\n\n```javascript\nhopp.request.variables.set(\"varName\", \"value\");\n```\n\n> Please note that only updates to request variables get persisted and reflected in the UI while the remaining are specific to the session.\n</section>\n\n<section id=\"scripts#hoppresponse-namespace\" title=\"Scripts > `hopp.response` Namespace\">\nResponse access with multiple data formats and comprehensive metadata.\n</section>\n\n<section id=\"scripts#hoppresponsestatuscode\" title=\"Scripts > `hopp.response` Namespace > `hopp.response.statusCode`\">\nThe HTTP status code of the response.\n\n```javascript\nconst status = hopp.response.statusCode;\n```\n</section>\n\n<section id=\"scripts#hoppresponsestatustext\" title=\"Scripts > `hopp.response` Namespace > `hopp.response.statusText`\">\nThe status text of the response.\n\n```javascript\nconst statusText = hopp.response.statusText;\n```\n</section>\n\n<section id=\"scripts#hoppresponseheaders\" title=\"Scripts > `hopp.response` Namespace > `hopp.response.headers`\">\nThe headers of the response.\n\n```javascript\nconst headers = hopp.response.headers;\n```\n</section>\n\n<section id=\"scripts#hoppresponseresponsetime\" title=\"Scripts > `hopp.response` Namespace > `hopp.response.responseTime`\">\nThe response time in milliseconds.\n\n```javascript\nconst time = hopp.response.responseTime;\n```\n</section>\n\n<section id=\"scripts#hoppresponsebodyasjson\" title=\"Scripts > `hopp.response` Namespace > `hopp.response.body.asJSON()`\">\nParses the response body as JSON.\n\n```javascript\nconst data = hopp.response.body.asJSON();\n```\n</section>\n\n<section id=\"scripts#hoppresponsebodyastext\" title=\"Scripts > `hopp.response` Namespace > `hopp.response.body.asText()`\">\nReturns the response body as text.\n\n```javascript\nconst text = hopp.response.body.asText();\n```\n</section>\n\n<section id=\"scripts#hoppresponsebodybytes\" title=\"Scripts > `hopp.response` Namespace > `hopp.response.body.bytes()`\">\nReturns the response body as a Uint8Array.\n\n```javascript\nconst bytes = hopp.response.body.bytes();\n```\n</section>\n\n<section id=\"scripts#hoppcookies-namespace\" title=\"Scripts > `hopp.cookies` Namespace\">\nDomain-aware cookie management with comprehensive CRUD operations.\n</section>\n\n<section id=\"scripts#hoppcookiesgetdomain-string-cookiename-string\" title=\"Scripts > `hopp.cookies` Namespace > `hopp.cookies.get(domain: string, cookieName: string)`\">\nRetrieves a cookie by domain and name.\n\n```javascript\nconst cookie = hopp.cookies.get(\"example.com\", \"sessionId\");\n```\n</section>\n\n<section id=\"scripts#hoppcookiessetdomain-string-cookie-cookie\" title=\"Scripts > `hopp.cookies` Namespace > `hopp.cookies.set(domain: string, cookie: Cookie)`\">\nSets a cookie for a domain.\n\n```javascript\nhopp.cookies.set(\"example.com\", {\nname: \"session_id\",\nvalue: \"abc123\",\ndomain: \"api.example.com\",\npath: \"/api\",\nexpires: new Date(Date.now() + 86400000).toISOString(), // 24 hours from now\nmaxAge: 86400, // 24 hours in seconds\nhttpOnly: true,\nsecure: true,\nsameSite: \"Lax\",\n});\n```\n</section>\n\n<section id=\"scripts#hoppcookieshasdomain-string-cookiename-string\" title=\"Scripts > `hopp.cookies` Namespace > `hopp.cookies.has(domain: string, cookieName: string)`\">\nChecks if a cookie exists for a domain.\n\n```javascript\nconst exists = hopp.cookies.has(\"example.com\", \"sessionId\");\n```\n</section>\n\n<section id=\"scripts#hoppcookiesgetalldomain-string\" title=\"Scripts > `hopp.cookies` Namespace > `hopp.cookies.getAll(domain: string)`\">\nRetrieves all cookies for a domain.\n\n```javascript\nconst cookies = hopp.cookies.getAll(\"example.com\");\n```\n</section>\n\n<section id=\"scripts#hoppcookiesdeletedomain-string-cookiename-string\" title=\"Scripts > `hopp.cookies` Namespace > `hopp.cookies.delete(domain: string, cookieName: string)`\">\nDeletes a cookie for a domain.\n\n```javascript\nhopp.cookies.delete(\"example.com\", \"sessionId\");\n```\n</section>\n\n<section id=\"scripts#hoppcookiescleardomain-string\" title=\"Scripts > `hopp.cookies` Namespace > `hopp.cookies.clear(domain: string)`\">\nClears all cookies for a domain.\n\n```javascript\nhopp.cookies.clear(\"example.com\");\n```\n</section>\n\n<section id=\"scripts#hopptest-and-hoppexpect-testing-framework\" title=\"Scripts > `hopp.test` and `hopp.expect` Testing Framework\">\nComprehensive testing API with custom assertions and Chai.js-powered BDD assertions for advanced API testing.\n</section>\n\n<section id=\"scripts#hopptesttestname-string-testfunction-void\" title=\"Scripts > `hopp.test` and `hopp.expect` Testing Framework > `hopp.test(testName: string, testFunction: () => void)`\">\nCreates a group of tests with a name.\n\n```javascript\nhopp.test(\"API Tests\", () => {\nhopp.expect(1).toBe(1);\n});\n```\n</section>\n\n<section id=\"scripts#hoppexpectactual-any\" title=\"Scripts > `hopp.test` and `hopp.expect` Testing Framework > `hopp.expect(actual: any)`\">\nReturns an expectation object for assertions. Hoppscotch extends the testing framework with comprehensive Chai.js BDD assertion support, enabling advanced testing patterns with 50+ assertion methods.\n\n```javascript\nhopp.expect(value).toBe(expected);\n```\n</section>\n\n<section id=\"scripts#hoppexpectvaluetobeexpected-any\" title=\"Scripts > `hopp.test` and `hopp.expect` Testing Framework > `hopp.expect(value).toBe(expected: any)`\">\nTests for exact equality.\n\n```javascript\nhopp.expect(1).toBe(1);\n```\n</section>\n\n<section id=\"scripts#hoppexpectvaluetobetypetype-string\" title=\"Scripts > `hopp.test` and `hopp.expect` Testing Framework > `hopp.expect(value).toBeType(type: string)`\">\nTests for type equality.\n\n```javascript\nhopp.expect(\"hello\").toBeType(\"string\");\n```\n</section>\n\n<section id=\"scripts#hoppexpectvaluetohavelengthnumber-number\" title=\"Scripts > `hopp.test` and `hopp.expect` Testing Framework > `hopp.expect(value).toHaveLength(number: number)`\">\nTests that a value has a specific length.\n\n```javascript\nhopp.expect([1,2,3]).toHaveLength(3);\n```\n</section>\n\n<section id=\"scripts#hoppexpectvaluetoincludeitem-any\" title=\"Scripts > `hopp.test` and `hopp.expect` Testing Framework > `hopp.expect(value).toInclude(item: any)`\">\nTests that a value includes an item.\n\n```javascript\nhopp.expect([1,2,3]).toInclude(2);\n```\n</section>\n\n<section id=\"scripts#hoppexpectstatuscodetobelevel2xx\" title=\"Scripts > `hopp.test` and `hopp.expect` Testing Framework > `hopp.expect(statusCode).toBeLevel2xx()`\">\nTests that the status code is in the 2xx range.\n\n```javascript\nhopp.expect(200).toBeLevel2xx();\n```\n</section>\n\n<section id=\"scripts#hoppexpectstatuscodetobelevel3xx\" title=\"Scripts > `hopp.test` and `hopp.expect` Testing Framework > `hopp.expect(statusCode).toBeLevel3xx()`\">\nTests that the status code is in the 3xx range.\n\n```javascript\nhopp.expect(302).toBeLevel3xx();\n```\n</section>\n\n<section id=\"scripts#hoppexpectstatuscodetobelevel4xx\" title=\"Scripts > `hopp.test` and `hopp.expect` Testing Framework > `hopp.expect(statusCode).toBeLevel4xx()`\">\nTests that the status code is in the 4xx range.\n\n```javascript\nhopp.expect(404).toBeLevel4xx();\n```\n</section>\n\n<section id=\"scripts#hoppexpectstatuscodetobelevel5xx\" title=\"Scripts > `hopp.test` and `hopp.expect` Testing Framework > `hopp.expect(statusCode).toBeLevel5xx()`\">\nTests that the status code is in the 5xx range.\n\n```javascript\nhopp.expect(500).toBeLevel5xx();\n```\n</section>\n\n<section id=\"scripts#negation-support\" title=\"Scripts > `hopp.test` and `hopp.expect` Testing Framework > `hopp.expect(statusCode).toBeLevel5xx()` > Negation Support\">\nAll assertions support `.not` for negation.\n\n```javascript\nhopp.expect(1).not.toBe(2);\nhopp.expect(\"hello\").not.toBeType(\"number\");\nhopp.expect([1,2]).not.toHaveLength(3);\nhopp.expect([1,2]).not.toInclude(3);\nhopp.expect(200).not.toBeLevel4xx();\n```\n</section>\n\n<section id=\"scripts#chaijs-assertion-support\" title=\"Scripts > Chai.js Assertion Support\">\nHoppscotch includes comprehensive Chai.js BDD assertion support through `hopp.expect()` for native scripts and `pm.expect()` for Postman compatibility, enabling advanced testing patterns with 50+ assertion methods.\n</section>\n\n<section id=\"scripts#type-assertions\" title=\"Scripts > Chai.js Assertion Support > Type Assertions\">\nCheck value types and instances:\n\n```javascript\n// Basic type checking\nhopp.test(\"Type validation\", () => {\nhopp.expect(hopp.response.statusCode).to.be.a('number')\nhopp.expect(hopp.response.body.asJSON()).to.be.an('object')\nhopp.expect([1, 2, 3]).to.be.an.instanceOf(Array)\nhopp.expect(new Date()).to.be.an.instanceOf(Date)\n})\n```\n</section>\n\n<section id=\"scripts#equality-assertions\" title=\"Scripts > Chai.js Assertion Support > Equality Assertions\">\nTest for strict and deep equality:\n\n```javascript\nhopp.test(\"Equality checks\", () => {\nhopp.expect(hopp.response.statusCode).to.equal(200)\nhopp.expect(hopp.response.body.asJSON()).to.eql({ userId: 1, name: 'John' })\nhopp.expect(hopp.response.statusCode).to.deep.equal(200)\n})\n```\n</section>\n\n<section id=\"scripts#property-assertions\" title=\"Scripts > Chai.js Assertion Support > Property Assertions\">\nValidate object properties and nested structures:\n\n```javascript\nhopp.test(\"Response structure\", () => {\nconst data = hopp.response.body.asJSON()\nhopp.expect(data).to.have.property('userId')\nhopp.expect(data).to.have.own.property('email')\nhopp.expect(data).to.have.nested.property('profile.name')\nhopp.expect(data).to.have.all.keys('id', 'name', 'email')\nhopp.expect(data).to.have.any.keys('id', 'name')\n})\n```\n</section>\n\n<section id=\"scripts#collection-and-array-assertions\" title=\"Scripts > Chai.js Assertion Support > Collection and Array Assertions\">\nValidate arrays and collections:\n\n```javascript\nhopp.test(\"Array validation\", () => {\nconst tags = hopp.response.body.asJSON().tags\nhopp.expect(tags).to.have.lengthOf(3)\nhopp.expect(tags).to.include('nodejs')\nhopp.expect(tags).to.have.members(['nodejs', 'javascript', 'api'])\nhopp.expect(tags).to.have.ordered.members(['api', 'javascript', 'nodejs'])\n})\n```\n</section>\n\n<section id=\"scripts#numeric-comparisons\" title=\"Scripts > Chai.js Assertion Support > Numeric Comparisons\">\nPerform numeric comparisons and range checks:\n\n```javascript\nhopp.test(\"Numeric assertions\", () => {\nconst responseTime = hopp.response.responseTime\nhopp.expect(responseTime).to.be.below(500)\nhopp.expect(responseTime).to.be.above(0)\nhopp.expect(responseTime).to.be.within(0, 1000)\nhopp.expect(3.14159).to.be.closeTo(3.14, 0.01)\n})\n```\n</section>\n\n<section id=\"scripts#string-assertions\" title=\"Scripts > Chai.js Assertion Support > String Assertions\">\nValidate string content and patterns:\n\n```javascript\nhopp.test(\"String validation\", () => {\nconst contentType = hopp.response.headers['content-type']\nhopp.expect(contentType).to.include('application/json')\nhopp.expect(contentType).to.match(/^application\\/json/)\nhopp.expect('hello').to.have.lengthOf(5)\n})\n```\n</section>\n\n<section id=\"scripts#boolean-state-assertions\" title=\"Scripts > Chai.js Assertion Support > Boolean State Assertions\">\nCheck boolean values and states:\n\n```javascript\nhopp.test(\"Boolean checks\", () => {\nhopp.expect(true).to.be.true\nhopp.expect(false).to.be.false\nhopp.expect(1).to.be.ok\nhopp.expect(null).to.be.null\nhopp.expect(undefined).to.be.undefined\nhopp.expect({}).to.exist\nhopp.expect([]).to.not.be.empty\n})\n```\n</section>\n\n<section id=\"scripts#complex-assertion-chains\" title=\"Scripts > Chai.js Assertion Support > Complex Assertion Chains\">\nCombine multiple assertions for comprehensive validation:\n\n```javascript\nhopp.test(\"Complex validation\", () => {\nconst data = hopp.response.body.asJSON()\nhopp.expect(data)\n.to.be.an('object')\n.and.have.property('userId')\n.that.is.a('number')\n.and.is.above(0)\n})\n```\n</section>\n\n<section id=\"scripts#real-world-example-api-pagination\" title=\"Scripts > Chai.js Assertion Support > Real-World Example: API Pagination\">\n```javascript\nhopp.test(\"Pagination metadata validation\", () => {\nconst data = hopp.response.body.asJSON()\n\n// Validate pagination structure\nhopp.expect(data).to.have.all.keys('items', 'page', 'total', 'hasMore')\nhopp.expect(data.items).to.be.an.instanceOf(Array)\nhopp.expect(data.items).to.have.lengthOf.at.most(50)\n\n// Validate each item\ndata.items.forEach(item => {\nhopp.expect(item).to.have.all.keys('id', 'name', 'createdAt')\nhopp.expect(item.id).to.be.a('string')\n})\n\n// Store next page cursor\nif (data.hasMore) {\nhopp.env.active.set('nextPage', String(data.page + 1))\n}\n})\n```\n</section>\n\n<section id=\"scripts#complete-assertion-reference\" title=\"Scripts > Chai.js Assertion Support > Complete Assertion Reference\">\n**Type assertions:**\n- `.a(type)` / `.an(type)` - Check value type\n- `.instanceof(constructor)` - Check instance type\n\n**Equality assertions:**\n- `.equal(value)` / `.eq(value)` - Strict equality (===)\n- `.eql(value)` - Deep equality\n\n**Property assertions:**\n- `.property(name)` - Has property\n- `.own.property(name)` - Has own property (not inherited)\n- `.nested.property(path)` - Has nested property (e.g., 'a.b.c')\n\n**Collection assertions:**\n- `.include(value)` / `.contain(value)` - Contains value\n- `.members(array)` - Has members (order-independent)\n- `.ordered.members(array)` - Has members in order\n- `.keys(...keys)` - Has keys\n- `.lengthOf(n)` - Length equals n\n- `.lengthOf.at.least(n)` - Minimum length\n- `.lengthOf.at.most(n)` - Maximum length\n\n**Comparison assertions:**\n- `.above(n)` / `.gt(n)` - Greater than\n- `.below(n)` / `.lt(n)` - Less than\n- `.at.least(n)` / `.gte(n)` - Greater than or equal\n- `.at.most(n)` / `.lte(n)` - Less than or equal\n- `.within(min, max)` - Within range\n- `.closeTo(expected, delta)` - Approximately equal\n\n**Boolean assertions:**\n- `.ok` - Truthy\n- `.true` - Strictly true\n- `.false` - Strictly false\n- `.null` - Strictly null\n- `.undefined` - Strictly undefined\n- `.exist` - Not null or undefined\n- `.empty` - Empty (string, array, object)\n\n**String assertions:**\n- `.match(regex)` - Matches regular expression\n- `.string(substring)` - Contains substring\n\n**Function assertions:**\n- `.throw()` / `.throw(ErrorType)` - Throws error\n- `.respondTo(method)` - Has method\n\n**Object state assertions:**\n- `.extensible` - Object.isExtensible()\n- `.sealed` - Object.isSealed()\n- `.frozen` - Object.isFrozen()\n\n**Modifiers:**\n- `.not` - Negation\n- `.deep` - Deep comparison\n- `.own` - Own properties only\n- `.ordered` - Order matters\n- `.nested` - Nested property access\n- `.all` - All items/keys\n- `.any` - Any items/keys\n- `.to` / `.be` / `.is` / `.that` / `.and` / `.have` / `.with` - Language chains for readability\n</section>\n\n<section id=\"scripts#pm-namespace---postman-compatibility-layer\" title=\"Scripts > `pm` Namespace - Postman Compatibility Layer\">\nPostman API compatibility for seamless migration with experimental Postman collection import support (v2.0/v2.1). The `pm` namespace provides `pm.expect()` with full Chai.js assertion support for Postman-compatible testing.\n\n**Experimental Script Import:** When importing Postman collections, Hoppscotch can now import pre-request scripts and test scripts (experimental feature requiring user consent). This enables you to migrate your existing Postman workflows including their scripting logic.\n</section>\n\n<section id=\"scripts#core-apis\" title=\"Scripts > `pm` Namespace - Postman Compatibility Layer > Core APIs\">\n```javascript\n// Environment and variable management\npm.environment.get(key: string): string | null\npm.environment.set(key: string, value: string): void\npm.environment.unset(key: string): void\npm.environment.has(key: string): boolean\n\npm.globals.get(key: string): string | null\npm.globals.set(key: string, value: string): void\npm.globals.unset(key: string): void\npm.globals.has(key: string): boolean\n\npm.variables.get(key: string): string | null\npm.variables.set(key: string, value: string): void\npm.variables.has(key: string): boolean\npm.variables.replaceIn(template: string): string\n\n// Request access (read-only)\npm.request.url: URL-like (toString available; additional properties may be limited initially)\npm.request.method: string\npm.request.headers: HoppRESTHeader[]\npm.request.body: HoppRESTReqBody\npm.request.auth: HoppRESTAuth\n\n// Response access (post-request only)\npm.response.code: number\npm.response.status: string\npm.response.responseTime: number  // ms\npm.response.json(): Record<string, any>\npm.response.text(): string\npm.response.headers.get(name: string): string | null\npm.response.headers.has(name: string): boolean\npm.response.headers.all(): HoppRESTResponseHeader[]\npm.response.stream: Uint8Array  // Raw response bytes\n\n// Testing integration\npm.test(testName: string, testFunction: () => void): void\npm.expect(actual: any): Expectation\n\n// Script context information\npm.info.eventName: string  // \"pre-request\" or \"post-request\"\npm.info.requestName: string\npm.info.requestId: string\n\n// Asynchronous requests\npm.sendRequest(request: string | Object, callback: (err: any, res: any) => void): void\n```\n</section>\n\n<section id=\"scripts#postman-chaijs-assertions\" title=\"Scripts > `pm` Namespace - Postman Compatibility Layer > Postman Chai.js Assertions\">\nUse `pm.expect()` with full Chai.js BDD assertion support for Postman-compatible scripts:\n\n```javascript\n// Basic assertions\npm.test(\"Status code is 200\", () => {\npm.expect(pm.response.code).to.equal(200)\npm.expect(pm.response.responseTime).to.be.below(500)\n})\n\n// Response body validation\npm.test(\"Response structure\", () => {\nconst jsonData = pm.response.json()\npm.expect(jsonData).to.have.property('success')\npm.expect(jsonData.success).to.be.true\npm.expect(jsonData.data).to.be.an('array')\n})\n\n// Array validation\npm.test(\"Array contains expected items\", () => {\nconst items = pm.response.json().items\npm.expect(items).to.have.lengthOf.at.least(1)\npm.expect(items).to.include('apple')\npm.expect(items).to.have.members(['apple', 'banana', 'cherry'])\n})\n\n// Header validation\npm.test(\"Headers are correct\", () => {\npm.expect(pm.response.headers.get('content-type')).to.include('application/json')\n})\n```\n</section>\n\n<section id=\"scripts#postman-response-assertions\" title=\"Scripts > `pm` Namespace - Postman Compatibility Layer > Postman Response Assertions\">\nPostman-specific response validation methods:\n\n```javascript\npm.test(\"Response validation\", () => {\npm.expect(pm.response.to.have.status(200))\npm.expect(pm.response.to.have.header('content-type'))\npm.expect(pm.response.to.have.body())\npm.expect(pm.response.to.have.jsonBody())\npm.expect(pm.response.to.be.ok) // 2xx status\npm.expect(pm.response.to.be.json)\n})\n\npm.test(\"JSON body validation\", () => {\npm.expect(pm.response.to.have.jsonBody('userId'))\npm.expect(pm.response.to.have.jsonBody('profile.name'))\npm.expect(pm.response.to.have.jsonSchema({\ntype: 'object',\nrequired: ['userId', 'email'],\nproperties: {\nuserId: { type: 'number' },\nemail: { type: 'string' }\n}\n}))\n})\n```\n</section>\n\n<section id=\"scripts#oauth-token-handling-example\" title=\"Scripts > `pm` Namespace - Postman Compatibility Layer > OAuth Token Handling Example\">\n```javascript\npm.test(\"OAuth token handling\", () => {\nconst response = pm.response.json()\nconst expiresIn = response.expires_in // 3600 seconds\nconst expiryTime = Date.now() + (expiresIn * 1000)\n\n// Auto-converts number to string\npm.environment.set('token_expiry', expiryTime)\npm.environment.set('access_token', response.access_token)\n\n// Verify storage\npm.expect(pm.environment.get('access_token')).to.equal(response.access_token)\n})\n```\n</section>\n\n<section id=\"scripts#pm-specific-response-assertions\" title=\"Scripts > `pm` Namespace - Postman Compatibility Layer > PM-Specific Response Assertions\">\nThe following assertions are specific to the Postman compatibility layer:\n\n- `pm.response.to.have.status(code)` - Status code check\n- `pm.response.to.have.header(name)` - Header existence\n- `pm.response.to.have.body()` - Has response body\n- `pm.response.to.have.jsonBody()` - JSON body exists\n- `pm.response.to.have.jsonBody(path)` - JSON property exists\n- `pm.response.to.have.jsonSchema(schema)` - Validates JSON schema\n- `pm.response.to.be.ok` - 2xx status code\n- `pm.response.to.be.success` - Alias for ok\n- `pm.response.to.be.json` - JSON content type\n</section>\n\n<section id=\"scripts#sending-requests\" title=\"Scripts > `pm` Namespace - Postman Compatibility Layer > Sending Requests\">\nThe `pm.sendRequest` method allows you to send HTTP requests asynchronously from your scripts. This is useful for chaining requests or fetching data from other APIs.\n\n```javascript\npm.sendRequest(\"https://postman-echo.com/get\", (err, res) => {\nif (err) {\nconsole.log(err);\n} else {\npm.expect(res).to.have.property('code', 200);\npm.expect(res).to.have.property('status', 'OK');\n}\n});\n```\n\nIt is recommended to use the Agent interceptor on the Web App and the Native interceptor on the Desktop App for `fetch()`, `hopp.fetch()` and `pm.sendRequest()` usages.\n</section>\n\n<section id=\"scripts#unsupported-postman-features\" title=\"Scripts > `pm` Namespace - Postman Compatibility Layer > Unsupported Postman Features\">\nThe following Postman features are not currently supported:\n\n- `pm.visualizer`\n- `pm.collectionVariables`\n- `pm.iterationData`\n- `pm.execution.setNextRequest()`\n- Legacy patterns like global `responseBody` variable, `require()`, etc.\n\nThese limitations are documented in error messages when attempting to use unsupported APIs. The supported version range for Postman collections is v2.0/v2.1.\n</section>\n\n<section id=\"scripts#pw-namespace---legacy-compatibility\" title=\"Scripts > `pw` Namespace - Legacy Compatibility\">\nMaintained for backwards compatibility with existing scripts:\n\n```javascript\n// Legacy environment operations\npw.env.get(key: string): string | null\npw.env.getResolve(key: string): string | null\npw.env.set(key: string, value: string): void\npw.env.unset(key: string): void\npw.env.resolve(template: string): string\n\n// Legacy response access\npw.response.status: number\npw.response.body: any\npw.response.headers: HoppRESTResponseHeader[]\n\n// Legacy testing framework\npw.test(testName: string, testFunction: () => void): void\npw.expect(actual: any): Expectation\n```\n</section>\n\n<section id=\"scripts#cookie-object-structure\" title=\"Scripts > Cookie Object Structure\">\nCookies are represented as objects with the following properties:\n\n```javascript\ntype Cookie = {\nname: string           // Cookie name\nvalue: string          // Cookie value\ndomain: string         // Domain the cookie belongs to\npath: string           // Path scope of the cookie (default: \"/\")\nexpires?: string       // Expiration date in ISO format, null for session cookies\nmaxAge?: number        // Maximum age in seconds, null if not set\nhttpOnly: boolean      // Whether cookie is HTTP-only\nsecure: boolean        // Whether cookie should only be sent over HTTPS\nsameSite: 'None' | 'Lax' | 'Strict'  // SameSite attribute\n}\n```\n</section>\n\n<section id=\"scripts#environment-management\" title=\"Scripts > Usage Examples > Environment Management\">\n```javascript\n// Set and get environment variables\nhopp.env.set(\"api_token\", \"abc123\")\nconst token = hopp.env.get(\"api_token\")\n\n// Scope-specific operations\nhopp.env.global.set(\"base_url\", \"https://api.example.com\")\nhopp.env.active.set(\"user_id\", \"12345\")\n\n// Reset to initial values\nhopp.env.reset(\"api_token\")\n```\n</section>\n\n<section id=\"scripts#request-manipulation\" title=\"Scripts > Usage Examples > Request Manipulation\">\n```javascript\n// Modify request before sending\nhopp.request.setHeader(\"Authorization\", \"Bearer \" + hopp.env.get(\"token\"))\nhopp.request.setUrl(\"https://api.example.com/users/\" + hopp.env.get(\"user_id\"))\nhopp.request.setMethod(\"POST\")\n```\n</section>\n\n<section id=\"scripts#response-testing\" title=\"Scripts > Usage Examples > Response Testing\">\n```javascript\nhopp.test(\"API responds successfully\", () => {\nhopp.expect(hopp.response.statusCode).toBeLevel2xx()\nhopp.expect(hopp.response.responseTime).toBe(1000)\n\nconst data = hopp.response.body.asJSON()\nhopp.expect(data).toBeType(\"object\")\nhopp.expect(data.users).toHaveLength(10)\n})\n```\n</section>\n\n<section id=\"scripts#cookie-management\" title=\"Scripts > Usage Examples > Cookie Management\">\n```javascript\n// Set authentication cookie\nhopp.cookies.set(\"api.example.com\", {\nname: \"session_id\",\nvalue: \"abc123\",\ndomain: \"api.example.com\",\npath: \"/api\",\nexpires: new Date(Date.now() + 86400000).toISOString(), // 24 hours from now\nmaxAge: 86400, // 24 hours in seconds\nhttpOnly: true,\nsecure: true,\nsameSite: \"Lax\",\n})\n\n// Check if cookie exists\nif (hopp.cookies.has(\"api.example.com\", \"session_id\")) {\nconst cookie = hopp.cookies.get(\"api.example.com\", \"session_id\")\nhopp.env.set(\"session_token\", cookie.value)\n}\n```\n\nHoppscotch provides ECMAScript APIs that can be used in writing pre-request scripts and building tests. You can enter your code and run the necessary scripts.\n</section>\n\n<section id=\"scripts#the-pw-object\" title=\"Scripts > The `pw` object\">\nThe `pw` object provides access to request and response data and variables in your Hoppscotch instance.\n\nThe `pw` object houses the following methods:\n</section>\n\n<section id=\"scripts#pwenvsetvariable-value\" title=\"Scripts > `pw.env.set(\"variable\", \"value\")`\">\n`pw.env.set()` can be used directly for quick and convenient environment variable definition.\n\n```javascript\npw.env.set(\"baseURL\", \"https://httpbin.org\");\n```\n\nHere are some practical examples that show how you can use `pw.env.set()` to encode and decode strings with Base64:\n</section>\n\n<section id=\"scripts#1-pwenvsetvariable-atobvalue\" title=\"Scripts > `pw.env.set(\"variable\", \"value\")` > 1.  `pw.env.set(\"variable\", atob(\"value\"))`\">\nUse the `atob()` function to **decode a Base64 encoded string** and set it as an environment variable.\n```javascript\npw.env.set(\"atob\", atob(\"SG9wcHNjb3RjaA==\"));\n```\n</section>\n\n<section id=\"scripts#2-pwenvsetvariable-btoavalue\" title=\"Scripts > `pw.env.set(\"variable\", \"value\")` > 2.  `pw.env.set(\"variable\", btoa(\"value\"))`\">\nUse the `btoa()` function to **encode a regular string into Base64** and set it as an environment variable.\n```javascript\npw.env.set(\"btoa\", btoa(\"Hoppscotch\"));\n```\n</section>\n\n<section id=\"scripts#pwenvunsetvariable\" title=\"Scripts > `pw.env.unset(\"variable\")`\">\n`pw.env.unset()` can be used to remove the value of the variable present in the current active environment\n\n```javascript\npw.env.unset(\"baseURL\");\n```\n</section>\n\n<section id=\"scripts#pwenvgetvariable\" title=\"Scripts > `pw.env.get(\"variable\")`\">\nRetrieves the value of the selected environment's variable. Accepts an environment variable as an argument.\n\n```javascript\npw.env.get(\"variable\");\npw.env.get(\"baseURL\");\n```\n</section>\n\n<section id=\"scripts#pwenvgetresolvevariable\" title=\"Scripts > `pw.env.getResolve(\"variable\")`\">\nRetrieves the value of the selected environment's variable recursively. Accepts an environment variable as an argument.\n\n```javascript\npw.env.getResolve(\"variable\");\npw.env.getResolve(\"baseURL\");\n```\n</section>\n\n<section id=\"scripts#pwenvresolvevariable\" title=\"Scripts > `pw.env.resolve(\"variable\")`\">\nRetrieves the value of the selected environment's variable recursively. Accepts an environment variable string as an argument.\n\n```javascript\npw.env.resolve(\"<<variable_1>><<variable_2>>\");\npw.env.resolve(\"<><>\");\n```\n</section>\n\n<section id=\"scripts#pwexpectvalue\" title=\"Scripts > `pw.expect(value)`\">\nThe expect method returns an expectation object, on which you can call matcher functions.\n\nThe example below calls the matcher function `toBe` on the expectation object that is returned by calling `pw.expect` with the response id, `pw.response.body.id` as an argument.\n\nUse `pw.expect` directly for quick and convenient testing. Every `pw.expect` statement will generate a line on the test report.\n\n```javascript\n// This test will pass\npw.expect(1).toBe(1);\n\n// This test will fail\npw.expect(2).not.toBe(2);\n```\n</section>\n\n<section id=\"scripts#pwtestname-function\" title=\"Scripts > `pw.test(name, function)`\">\nTo create a group of tests, with the name as a string and fn as a callback function to write tests associated with the group. The test results will include the given name for better organization.\n\nLet's wrap expect statements with `pw.test` to the group and describe related statements.\n\n```javascript\n// This will return 4 lines on the test report, grouped under \"Arithmetic operations\"\npw.test(\"Arithmetic operations\", () => {\nconst size = 500 + 500;\npw.expect(size).toBe(1000);\npw.expect(size - 500).toBe(500);\npw.expect(size * 4).toBe(4000);\npw.expect(size / 4).toBe(250);\n});\n```\n\nIf neither a `pw.expect` nor a `pw.test` statement is present, no test reports will be generated.\n\n```javascript\n// This will not generate any test reports\n(99 + 1).toBe(100);\n```\n</section>\n\n<section id=\"scripts#pwtobevalue\" title=\"Scripts > `pw.toBe(value)`\">\nTest for exact equality using `toBe`.\n\n```javascript\npw.expect(pw.response.body.category).toBe(\"Sneakers\");\n```\n\n`toBe` uses strict equality and is recommended for primitive data types.\n\n```javascript\n// These tests will fail\npw.expect(\"hello\").toBe(\"Hello\");\npw.expect(5).toBe(\"5\");\npw.expect([]).toBe([]);\n```\n</section>\n\n<section id=\"scripts#pwnot\" title=\"Scripts > `pw.not()`\">\nTest for negation by adding `.not` before calling the matcher function.\n\n```javascript\n// These tests will pass\npw.expect(true).not.toBe(false);\npw.expect(200).not.toBeLevel3xx();\n```\n</section>\n\n<section id=\"scripts#pwtobelevelxxx\" title=\"Scripts > `pw.toBeLevelxxx()`\">\nThere are four different matcher functions for quick and convenient testing of the http status code that is returned:\n\n- `toBeLevel2xx()`\n- `toBeLevel3xx()`\n- `toBeLevel4xx()`\n- `toBeLevel5xx()`\n\nFor example, an argument passed to expect must be within `200` and `299` inclusive to pass `toBeLevel2xx()`.\n\n```javascript\n// These tests will pass\npw.expect(204).toBeLevel2xx();\npw.expect(308).toBeLevel3xx();\npw.expect(404).toBeLevel4xx();\npw.expect(503).toBeLevel5xx();\n```\n\nIf the argument passed to `expect()` is a non-numeric value, it is first parsed with `parseInt()`.\n\n```javascript\n// This test will pass\npw.expect(\"404\").toBeLevel4xx();\n```\n</section>\n\n<section id=\"scripts#pwtobetypetype\" title=\"Scripts > `pw.toBeType(type)`\">\nUse `.toBeType(type)` for type checking. The argument for this method should be either of the following `string`, `boolean`, `number`, `object`, `undefined`, `bigint`, `symbol`, or `function`.\n\n```javascript\n// These tests will pass\npw.expect(5).toBeType(\"number\");\npw.expect(\"Hello, world!\").toBeType(\"string\");\n\npw.expect(5).not.toBeType(\"string\");\npw.expect(\"Hello, world!\").not.toBeType(\"number\");\n```\n</section>\n\n<section id=\"scripts#pwtohavelengthnumber\" title=\"Scripts > `pw.toHaveLength(number)`\">\nUse `.toHaveLength(number)` to check that an object has a `.length` property and it is set to a certain numeric value.\n\n```javascript\n// These expectations will pass\npw.expect(\"hoppscotch\").toHaveLength(10);\npw.expect(\"hoppscotch\").not.toHaveLength(9);\n\npw.expect([\"apple\", \"banana\", \"coconut\"]).toHaveLength(3);\npw.expect([\"apple\", \"banana\", \"coconut\"]).not.toHaveLength(4);\n```\n</section>\n\n<section id=\"scripts#pwtoincludevalue\" title=\"Scripts > `pw.toInclude(value)`\">\nUse `.toInclude(value)` to check that a string/array has a value entry.\n\n```javascript\n// These expectations will pass\npw.expect(\"hoppscotch\").toInclude(\"hopp\");\npw.expect(\"hoppscotch\").not.toInclude(\"scotch\");\n\npw.expect([\"apple\", \"banana\", \"coconut\"]).toInclude(\"banana\");\npw.expect([\"apple\", \"banana\", \"coconut\"]).not.toInclude(\"grape\");\n```\n</section>\n\n<section id=\"scripts#pwresponse\" title=\"Scripts > `pw.response`\">\nAssert response data by accessing the `pw.response` object.\n\n```javascript\n// This test will pass\npw.test(\"Response is ok\", () => {\npw.expect(pw.response.status).toBe(200);\n});\n```\n\nCurrently supports the following response values:\n\n- `status`: -number- The status code as an integer.\n- `headers`: -object- The response headers.\n- `body`: -object- the data in the response. In many requests, this is the JSON sent by the server.\n</section>\n\n<section id=\"scripts#setting-environment-variables-from-api-responses\" title=\"Scripts > `pw.response` > Setting Environment Variables from API Responses\">\nBy following these steps, you can store data from one API response and access it later using Environment Variables, making it available for use in subsequent API calls.\n\nAssume in this example that the payload returns `access_token` and `id_token` as part of a JSON response.\n\n1. Create Environment Variables without setting their values initially. For example:\n* `idToken`\n* `accessToken`\n\n2. In the \"Tests\" tab of the first API request (that returns the tokens), add the following code:\n\n```javascript\nconst jsonData = pw.response.body; // Save the JSON payload response\n\npw.env.set(\"accessToken\", jsonData.access_token); // Set \"accessToken\" to the value of \"access_token\" in the response\n\npw.env.set(\"idToken\", jsonData.id_token); // Set \"idToken\" to the value of \"id_token\" in the response\n```\n\n3. Use these Environment Variables in subsequent API calls within the same collection using the `<>` syntax as usual.\n\nRead about pre-request scripts.\n\nRead about post-request tests.\n\nRead about environments.\n</section>\n\n<section id=\"shortcuts#intro\" title=\"Shortcuts\">\nYou can improve your workflow by efficiently performing actions straight from your keyboard.\n\nBring up the shortcuts sidebar on Hoppscotch using `Ctrl/Cmd` + `/`.\n</section>\n\n<section id=\"shortcuts#general-shortcuts\" title=\"Shortcuts > General shortcuts\">\n| Shortcut         | Action                |\n| ---------------- | --------------------- |\n| `?`              | Help menu             |\n| `K`              | Search & command menu |\n| `Ctrl/Cmd` + `/` | Keyboard Shortcuts    |\n| `esc`            | Close current menu    |\n</section>\n\n<section id=\"shortcuts#request-shortcuts\" title=\"Shortcuts > Request shortcuts\">\n| Shortcut             | Action                                |\n| -------------------- | ------------------------------------- |\n| `Ctrl/Cmd` + `enter` | Send request                          |\n| `Ctrl/Cmd` + `S`     | Save to collections                   |\n| `Ctrl/Cmd` + `U`     | Generate and copy request link        |\n| `Ctrl/Cmd` + `I`     | Reset Request to `echo.hoppscotch.io` |\n| `Alt/Option` + `↑`   | Select Next method                    |\n| `Alt/Option` + `↓`   | Select Previous method                |\n| `Alt/Option` + `G`   | Select GET method                     |\n| `Alt/Option` + `H`   | Select HEAD method                    |\n| `Alt/Option` + `P`   | Select POST method                    |\n| `Alt/Option` + `U`   | Select PUT method                     |\n| `Alt/Option` + `X`   | Select DELETE method                  |\n</section>\n\n<section id=\"shortcuts#response-shortcuts\" title=\"Shortcuts > Response shortcuts\">\n| Shortcut         | Action                      |\n| ---------------- | --------------------------- |\n| `Ctrl/Cmd` + `J` | Download response as a file |\n| `Ctrl/Cmd` + `.` | Copy response to clipboard  |\n</section>\n\n<section id=\"shortcuts#navigation-shortcuts\" title=\"Shortcuts > Navigation shortcuts\">\n| Shortcut           | Action                   |\n| ------------------ | ------------------------ |\n| `Ctrl/Cmd` + `←`   | Go back to previous page |\n| `Ctrl/Cmd` + `→`   | Go forward to next page  |\n| `Alt/Option` + `R` | Go to REST page          |\n| `Alt/Option` + `Q` | Go to GraphQL page       |\n| `Alt/Option` + `W` | Go to Realtime page      |\n| `Alt/Option` + `S` | Go to Settings page      |\n| `Alt/Option` + `M` | Go to Profile page       |\n</section>\n\n<section id=\"shortcuts#miscellaneous-shortcuts\" title=\"Shortcuts > Miscellaneous shortcuts\">\n| Shortcut         | Action                      |\n| ---------------- | --------------------------- |\n| `Ctrl/Cmd` + `M` | Invite people to Hoppscotch |\n</section>\n\n<section id=\"snippets#intro\" title=\"Code Snippets\">\nCode snippets allows you to rapidly build your API integration in a variety of languages and frameworks.\n</section>\n\n<section id=\"snippets#generate-code-snippets\" title=\"Code Snippets > Generate code snippets\">\nTo generate a code snippet for your API, locate the **Code Generate** `<>` icon in the right sidebar, alongside collections, environments, and history. Then, select the language in which you prefer to receive your API request.\n</section>\n\n<section id=\"snippets#copy-code-snippets\" title=\"Code Snippets > Copy code snippets\">\nChoose the language and framework you want to generate the code snippet for and click the \"**Copy**\" button to copy the code snippet to your clipboard.\n</section>\n\n<section id=\"snippets#supported-languages\" title=\"Code Snippets > Supported languages\">\n- Shell\n- Javascript\n- Node\n- C\n- Java\n- PHP\n- Objective-C\n- Swift\n- Python\n- Ruby\n- C#\n- Go\n- OCaml\n</section>\n\n<section id=\"snippets#preview-request-setup\" title=\"Code Snippets > Preview request setup\">\n1. Open the \"**Generate Code**\" tab from the sidebar.\n2. Click on the drop-down to select the language.\n3. Select \"**HTTP - HTTP 1.1 Request String**\" from the language list.\n\nThis displays the current request setup in HTTP 1.1 Request String syntax.\n</section>\n\n<section id=\"spotlight#intro\" title=\"Spotlight\">\nPress &nbsp; ⌘ + K &nbsp; anytime to open Spotlight.\n\nSpotlight is an innovative feature introduced in Hoppscotch, designed to enhance your interaction with the application. By utilizing Spotlight, you can efficiently navigate through various functionalities and perform tasks swiftly.\n</section>\n\n<section id=\"spotlight#activation\" title=\"Spotlight > Activation\">\nTo activate the Spotlight search functionality, you can employ the following key combinations based on your operating system:\n\n* On macOS: Press `Cmd` + `K`\n* On Windows or Linux: Press `Ctrl` + `K`\n</section>\n\n<section id=\"spotlight#spotlight-interface\" title=\"Spotlight > Spotlight Interface\">\nUpon triggering the Spotlight search, a search field will be displayed, allowing you to provide input. As you type, relevant suggestions will dynamically appear, aiding in quickly finding desired functionalities.\n</section>\n\n<section id=\"spotlight#navigation-and-selection\" title=\"Spotlight > Navigation and Selection\">\nSpotlight not only offers dynamic suggestions but also facilitates their navigation and selection. The presented suggestions are ranked by relevance, enabling you to easily identify your desired options. Navigation can be achieved through:\n\n* Arrow keys: Use the arrow keys to move through the suggestions.\n* Enter key: Press the Enter key to select the highlighted suggestion.\n\nAlternatively, you can achieve the same functionality using the mouse or trackpad.\n\nSpotlight revolutionizes the user experience within Hoppscotch by streamlining various tasks and reducing unnecessary clicks. With Spotlight, you can accomplish the following tasks more efficiently:\n\n- Navigate to any page within the app.\n- Search and find requests in your collections.\n- Create, edit, and quickly switch workspaces and environments.\n- Rename, save, and send requests.\n</section>\n\n<section id=\"variables#intro\" title=\"Variables\">\nHoppscotch provides you the ability to create and use variables throughout the app. This helps you reuse values throughout Hoppscotch just by invoking the variable name.\n\nHoppscotch considers an object within angular brackets as a variable, e.g. `<>`.\n</section>\n\n<section id=\"variables#variable-scopes\" title=\"Variables > Variable Scopes\">\nHoppscotch provides you different variables scopes, allowing you to use different scopes for different contexts.\n\n1. **Global Variables:** can be accessed throughout Hoppscotch and has the broadest scope of all variables.\n2. **Environment Variables:** allow your variables to be scoped to an environment. Environment variables are useful when you have the same set of variables for two environments such as production and staging.\n3. **Request Variables:** are scoped to just an individual request, request variables are useful when you want to use variables in your URL path or when you want to embed a variable URL.\n4. **Predefined Variables:** are automatically generated at runtime and can be accessed globally throughout Hoppscotch using the `$` symbol, such as `$guid` or `$timestamp`.\n5. **Collection Variables:** are scoped to individual collection and child folders, perfect for sharing base URLs, tokens and defaults across a set of requests without leaking to other workspaces.\n\nThe scope of each variable can be identified from the color of the variable name. If a variable with the same name exists, it is resolved in the order of priority.\n\n| Variable Scope | Color | Priority |\n| -------------- | ----- | -------- |\n| Request        | 🟠    | 1        |\n| Collection     | 🟣    | 2        |\n| Predefined     | 🟡    | 3        |\n| Environment    | 🟢    | 4        |\n| Global         | 🔵    | 5        |\n| Non resolvable | 🔴    | -        |\n</section>\n\n<section id=\"variables#types-of-variables\" title=\"Variables > Types of Variables\">\n1. **A regular variable**: allows users to reference the variable throughout Hoppscotch, and anyone can see the value associated with the variable.\nIn a workspace, regular environment variable-value pairs will be synced to the server, making them available to all workspace members.\nHowever, you have the option to choose whether to sync a regular variable value present in your personal workspace.\n2. **A secret variable:** enables users to specify secrets and reference the values as variables. The values of secret variables in any workspace will never be synced to the server or shared with any workspace members.\nIt is expected that in a collaborative workspace the user will populate the value of the variable at runtime.\nAll secret variable values in Hoppscotch will be masked using asterisks (\\*\\*\\*). Secret Variables cannot be scoped to a request and can only be scoped in an environment or globally.\n\n{\" \"}\nSecret variables values will not be exported when an environment is exported.\n\n3. **A predefined variable:** is automatically generated at runtime and provides dynamic, context-specific data. Predefined variables are available throughout your requests and responses and are useful for incorporating system-level information or dynamic values into your API interactions without manual configuration.\nAll predefined variables are accessible throughout Hoppscotch and can be retrieved using the `$` symbol. Below is the list of predefined variables whose values are dynamically generated during the request or collection run:\n\n> | **Variable Name** | **Description**                                                                               | **Example**                            |\n> | ----------------- | --------------------------------------------------------------------------------------------- | -------------------------------------- |\n> | `$guid`           | A v4 style unique (GUID) identifier for each request.                                         | `123e4567-e89b-12d3-a456-426614174000` |\n> | `$timestamp`      | The current UNIX timestamp in seconds                                                         | `1693047645`                           |\n> | `$isoTimestamp`   | The current date and time in ISO-8601 format at zero UTC (also known as \"Zulu time\" or UTC-0) | `2024-09-25T00:00:00.000Z`             |\n> | `$randomUUID`     | A random 36-character UUID.                                                                   | `6929bb52-3ab2-448a-9796-d6480ecad36b` |\n>\n</section>\n\n<section id=\"variables#numbers-text-and-colors\" title=\"Variables > Types of Variables > Numbers, Text, and Colors\">\n>\n> | **Variable Name**     | **Description**                                                          | **Example**             |\n> | --------------------- | ------------------------------------------------------------------------ | ----------------------- |\n> | `$randomAlphaNumeric` | A random alpha-numeric character.                                        | `A9X1Z3`                |\n> | `$randomBoolean`      | A random boolean value.                                                  | `true` , `false`        |\n> | `$randomInt`          | A random integer value between 0 and 1000.                               | `29` , `432` , `786`    |\n> | `$randomColor`        | A random color amongst **red, green, blue, yellow, purple, and orange.** | `yellow`                |\n> | `$randomHexColor`     | A random hex value.                                                      | `#f2a729`               |\n> | `$randomAbbreviation` | A random abbreviation.                                                   | `SQL` , `JSON` , `HTML` |\n>\n</section>\n\n<section id=\"variables#internet-and-ip-addresses\" title=\"Variables > Types of Variables > Internet and IP addresses\">\n>\n> | **Variable Name**   | **Description**                                | **Example**                               |\n> | ------------------- | ---------------------------------------------- | ----------------------------------------- |\n> | `$randomIP`         | A random IPv4 address                          | `192.168.0.101`                           |\n> | `$randomIPV6`       | A random IPv6 address                          | `2001:0db8:85a3:0000:0000:8a2e:0370:7334` |\n> | `$randomMACAddress` | A random MAC address.                          | `00:1B:44:11:3A:B7`                       |\n> | `$randomPassword`   | A random 15-character alpha-numeric password.  | `H8w72Sx93KlqA1b`                         |\n> | `$randomLocale`     | A random two-letter language code (ISO 639-1). | `en`, `fr`, `es`                          |\n> | `$randomUserAgent`  | A random user agent.                           | `Mozilla/5.0 (Windows NT 10.0; Win64)`    |\n> | `$randomProtocol`   | A random internet protocol.                    | `https`, `ftp`                            |\n> | `$randomSemver`     | A random semantic version number.              | `1.2.3`                                   |\n>\n</section>\n\n<section id=\"variables#names\" title=\"Variables > Types of Variables > Names\">\n>\n> | **Variable Name**   | **Description**       | **Example**                                         |\n> | ------------------- | --------------------- | --------------------------------------------------- |\n> | `$randomFirstName`  | A random first name.  | `Ethan` , `Chandler`, `John`                        |\n> | `$randomLastName`   | A random last name.   | `Schaden` , `Schneider` , `Doe`                     |\n> | `$randomFullName`   | A random Full name.   | `Ethan Schaden` , `Chandler Schneider` , `John Doe` |\n> | `$randomNamePrefix` | A random name prefix. | `Dr.` , `Miss.` , `Prof.`                           |\n> | `$randomNameSuffix` | A random name suffix. | `MD` , `PhD` , `Jr.`                                |\n>\n</section>\n\n<section id=\"variables#addresses-and-profession\" title=\"Variables > Types of Variables > Addresses and Profession\">\n>\n> | **Variable Name**      | **Description**          | **Example**                                        |\n> | ---------------------- | ------------------------ | -------------------------------------------------- |\n> | `$randomCity`          | A random city name.      | `New York` , `Houston` , `Philadelphia`            |\n> | `$randomJobArea`       | A random job area.       | `Intranet` , `Development` , `Testing`             |\n> | `$randomJobDescriptor` | A random job descriptor. | `Corporate` , `Lead` , `Principal`                 |\n> | `$randomJobTitle`      | A random job title.      | `Global Branding Officer` , `Productivity Analyst` |\n> | `$randomJobType`       | A random job type.       | `Manager` , `Coordinator` , `Director`             |\n\nChoose the environment that aligns best with your development workflow.\n</section>\n\n<section id=\"widgets#intro\" title=\"Widgets\">\nWidgets are small, interactive components that can be embedded in HTML pages to provide a seamless experience for your audience. Hoppscotch offers three types of widgets: links, buttons, and embeds.\n</section>\n\n<section id=\"widgets#links\" title=\"Widgets > Links\">\nLinks are the most basic type of widget. They are simply a URL that can be shared with others. You can generate links to your requests in three different formats: raw, HTML, and Markdown.\n</section>\n\n<section id=\"widgets#buttons\" title=\"Widgets > Buttons\">\nButtons are a more advanced type of widget. They are a link that can be embedded in HTML or Markdown files. You can customize the button's appearance and behavior to suit your needs. You can also generate buttons in two different formats: HTML and Markdown.\n</section>\n\n<section id=\"widgets#embeds\" title=\"Widgets > Embeds\">\nEmbeds are the most advanced type of widget. They are a mini version of Hoppscotch that can be embedded in an HTML page, enabling your audience to interact seamlessly with your API request. You can customize the embed's appearance and behavior to suit your needs.\n</section>\n\n<section id=\"widgets#shared-requests\" title=\"Widgets > Shared requests\">\nSharing a request does not provide others with access to your request. Instead, it generates a link that can be shared with others. It's important to note that if a shared request contains any environment variables, proper functionality may be compromised unless the recipient has access to the same environment variables. Therefore, it is advisable to share requests that do not contain environment variables or replace any environment variables with their corresponding values before sharing.\n</section>\n\n<section id=\"widgets#sharing-a-request-in-a-collection\" title=\"Widgets > Shared requests > Create a shared request: > Sharing a request in a collection:\">\n1. Right-click on a saved request within a collection and select \"**Share Request**\".\n2. Choose between link, button, and embed widgets.\n3. Click on the \"**Create**\" button.\n4. Copy the share link.\n</section>\n\n<section id=\"widgets#sharing-a-request-in-workspace\" title=\"Widgets > Shared requests > Create a shared request: > Sharing a request in workspace:\">\n1. Click on the \"**Share request**\" button in drop-down menu next to the \"**Save**\" button.\n2. Choose between link, button, and embed widgets.\n3. Click on the \"**Create**\" button.\n4. Copy the share link.\n</section>\n\n<section id=\"widgets#view-your-shared-requests\" title=\"Widgets > Shared requests > View your shared requests:\">\n1. Click on the \"**Shared Requests**\" button in the sidebar.\n2. You will see a list of all your shared requests.\n3. Click on the request to open it in a new tab.\n4. You can also customize the widget, copy the link, or delete the shared request by right-clicking on it or the 3-dot menu.\n</section>\n\n<section id=\"workspaces#intro\" title=\"Workspaces\">\nOnce you are logged into Hoppscotch, you can toggle between multiple workspaces to organize your workflow.\n\nYou can choose between your workspace titled \"**Personal Workspace**\" or create a workspace for your teams so that you can collaborate.\n\nCurrently, organizing requests across multiple shared workspaces is limited to RESTful protocol. GraphQL and Realtime APIs are available only in the personal workspace and are not supported for collaboration in shared workspaces.\n</section>\n\n<section id=\"workspaces#create-a-workspace\" title=\"Workspaces > Create a workspace\">\nTo create a workspace, click on the **\"+\"** icon on the top right corner of the workspace switcher. Alternatively, you can also click on the \"**Create new workspace**\" button on the \"Profile\" page under the \"**Workspaces**\" section.\n\nCreating a workspace makes you the owner of the workspace. You can invite other users to the workspace and assign them roles.\n</section>\n\n<section id=\"workspaces#invite-users-to-a-workspace\" title=\"Workspaces > Invite users to a workspace\">\nTo invite users to a workspace, click on the \"**Invite**\" button and enter the email address of the user you want to invite. You can invite multiple users at once by adding the email addresses in the input field.\n</section>\n\n<section id=\"workspaces#switch-between-workspaces\" title=\"Workspaces > Switch between workspaces\">\nTo switch between workspaces, click on the workspace switcher in the top right corner of the app and select the workspace you want to switch to.\n</section>\n\n<section id=\"workspaces#edit-a-workspace\" title=\"Workspaces > Edit a workspace\">\nYou can only edit a workspace if you are the owner of the workspace.\n</section>\n\n<section id=\"workspaces#rename-a-workspace\" title=\"Workspaces > Edit a workspace > Rename a workspace\">\nTo rename a workspace, click on the workspace settings button on the top right corner of the app. Then click on the workspace name and enter the new name.\n</section>\n\n<section id=\"workspaces#remove-a-user-from-a-workspace\" title=\"Workspaces > Edit a workspace > Remove a user from a workspace\">\nTo remove a user from a workspace, click on the workspace settings button on the top right corner of the app. Then click on the \"**Delete**\" button on the user you want to remove from the workspace.\n</section>\n\n<section id=\"workspaces#leave-a-workspace\" title=\"Workspaces > Edit a workspace > Leave a workspace\">\nTo leave a workspace, click on the workspace settings button on the top right corner of the app. Then click on the \"**Delete**\" button on the workspace you want to leave.\n\nYou can only leave a workspace if you are not the owner of the workspace. If you are the owner of the workspace, you will have to delete the workspace to leave it. Alternatively, you can also transfer the ownership of the workspace to another user and then leave the workspace.\n</section>\n\n<section id=\"workspaces#change-member-role\" title=\"Workspaces > Edit a workspace > Change member role\">\nThere are three types of roles for members in a workspace:\n\n- **Owner**: The owner of the workspace has full access to the workspace and can invite other users to the workspace. The owner can also delete the workspace.\n- **Editor**: The editor of the workspace has edit access to the workspace and can create, edit, and delete collections, environments, and requests in the workspace.\n- **Viewer**: The viewer of the workspace has read-only access to the workspace and can only view the collections, environments, and requests in the workspace.\n\nTo change the role of a member in a workspace, click on the workspace settings button on the top right corner of the app. Then click on the \"**Role**\" drop-down on the user you want to change the role of. Then select the role you want to assign to the user then click \"**Save**\".\n</section>\n\n<section id=\"workspaces#delete-a-workspace\" title=\"Workspaces > Edit a workspace > Delete a workspace\">\nTo delete a workspace, click on the \"**Delete**\" button on the workspace you want to delete on the \"Profile\" page under the \"**Workspaces**\" section.\n</section>\n",
+ "response_text": "{\n  \"page_interceptor\": [\n    {\n      \"section_id\": \"interceptor#hoppscotch-agent\",\n      \"statement\": \"User can navigate to Interceptors under Settings to configure the Hoppscotch Agent.\",\n      \"quote\": \"Open Hoppscotch app and navigate to the \\\"Interceptors\\\" section in the \\\"Settings\\\" page.\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Visible and operable in the web UI without signing in.\",\n      \"ui_cues\": [\"Interceptors\", \"Settings\", \"Agent\"]\n    },\n    {\n      \"section_id\": \"interceptor#proxy\",\n      \"statement\": \"User can enable proxy interceptor from the Settings page under the Interceptors section.\",\n      \"quote\": \"Enable proxy interceptor from \\\"Settings page\\\" under the Interceptors section.\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Visible and operable in the web UI without signing in.\",\n      \"ui_cues\": [\"Settings page\", \"Interceptors\"]\n    },\n    {\n      \"section_id\": \"interceptor#configure-proxyscotch-in-hoppscotch\",\n      \"statement\": \"User can configure the Proxy URL in the Settings page to use Proxyscotch.\",\n      \"quote\": \"configure Hoppscotch to use http://localhost:9159 as the Proxy URL in the \\\"Settings\\\" page.\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Visible and operable in the web UI without signing in.\",\n      \"ui_cues\": [\"Settings\", \"Proxy URL\"]\n    }\n  ],\n  \"page_mock\": [\n    {\n      \"section_id\": \"mock#create-a-mock-server\",\n      \"statement\": \"User can create a new mock server by selecting a source collection and providing a name.\",\n      \"quote\": \"Select source collection - Provide a mock server name - Choose a response delay\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Visible and operable in the web UI without signing in.\",\n      \"ui_cues\": [\"New\", \"Configure Mock Server\"]\n    },\n    {\n      \"section_id\": \"mock#save-a-response-as-an-example\",\n      \"statement\": \"User can save a response as an example by clicking the save as example icon.\",\n      \"quote\": \"In the response section, click the \\\"Save as Example\\\" icon\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Visible and operable in the web UI without signing in.\",\n      \"ui_cues\": [\"Save as Example\"]\n    }\n  ],\n  \"page_pat\": [\n    {\n      \"section_id\": \"pat#generating-personal-access-token\",\n      \"statement\": \"User can generate a Personal Access Token from profile settings.\",\n      \"quote\": \"Within the Personal Access Tokens section, find the option to \\\"Generate New Token\\\" and click on it.\",\n      \"testability\": \"NEEDS_LOGIN\",\n      \"testability_reason\": \"Generating personal access tokens requires an authenticated user account.\",\n      \"ui_cues\": [\"Personal Access Tokens\", \"Generate New Token\"]\n    },\n    {\n      \"section_id\": \"pat#enterprise-token-management\",\n      \"statement\": \"Admin can oversee and delete tokens generated by all users within the enterprise environment.\",\n      \"quote\": \"Admin can oversee and manage tokens generated by all users within the enterprise environment.\",\n      \"testability\": \"NEEDS_LOGIN\",\n      \"testability_reason\": \"Involves enterprise admin roles and user management.\",\n      \"ui_cues\": [\"Personal Access Tokens\", \"Admin\"]\n    }\n  ],\n  \"page_realtime_api_testing\": [\n    {\n      \"section_id\": \"realtime-api-testing#request\",\n      \"statement\": \"User can select from four different realtime protocols including WebSocket, SSE, Socket.IO, and MQTT.\",\n      \"quote\": \"choose from four different protocols WebSocket, SSE, Socket.IO, and MQTT.\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Visible and selectable in the realtime client UI without login.\",\n      \"ui_cues\": [\"WebSocket\", \"SSE\", \"Socket.IO\", \"MQTT\"]\n    }\n  ],\n  \"page_rest_api_testing\": [\n    {\n      \"section_id\": \"rest-api-testing#request\",\n      \"statement\": \"User can select HTTP methods and specify request headers, body, auth, parameters, and pre-request scripts.\",\n      \"quote\": \"You can select from a range of HTTP methods such as GET, POST, PUT etc.\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Visible and operable in the REST client UI without login.\",\n      \"ui_cues\": [\"GET\", \"POST\", \"PUT\", \"Headers\", \"Authorization\"]\n    },\n    {\n      \"section_id\": \"rest-api-testing#response\",\n      \"statement\": \"User can download and copy returned responses from the response section.\",\n      \"quote\": \"You can download and copy the returned responses for further use.\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Visible and operable in the REST client response view without login.\",\n      \"ui_cues\": [\"Download\", \"Copy\"]\n    }\n  ],\n  \"page_runner\": [\n    {\n      \"section_id\": \"runner#running-a-collection\",\n      \"statement\": \"User can run a collection by right-clicking it and selecting Run Collection.\",\n      \"quote\": \"Right-click on the collection and select the \\\"Run Collection\\\" option.\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Visible and operable in the collection context menu without login.\",\n      \"ui_cues\": [\"Run Collection\"]\n    },\n    {\n      \"section_id\": \"runner#run-settings\",\n      \"statement\": \"User can configure delay, error stopping, persisting responses, and keeping variable values in run settings.\",\n      \"quote\": \"1. Delay: Set an interval delay (in milliseconds) between running each request.\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Visible and configurable in the Runner UI without login.\",\n      \"ui_cues\": [\"Delay\", \"Stop Run if Error Occurs\", \"Persist Responses\"]\n    }\n  ],\n  \"page_scripts\": [\n    {\n      \"section_id\": \"scripts#intro\",\n      \"statement\": \"User can update the scripting preference from Settings to Experiments.\",\n      \"quote\": \"the preference can be updated from Settings → Experiments.\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Settings and toggles are fully accessible in the web UI without login.\",\n      \"ui_cues\": [\"Settings\", \"Experiments\"]\n    }\n  ],\n  \"page_shortcuts\": [\n    {\n      \"section_id\": \"shortcuts#general-shortcuts\",\n      \"statement\": \"User can open the keyboard shortcuts sidebar using Ctrl/Cmd and forward slash.\",\n      \"quote\": \"Bring up the shortcuts sidebar on Hoppscotch using Ctrl/Cmd + /.\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Keyboard shortcut triggers UI elements without login.\",\n      \"ui_cues\": [\"Keyboard Shortcuts\"]\n    },\n    {\n      \"section_id\": \"shortcuts#navigation-shortcuts\",\n      \"statement\": \"User can navigate to the REST page using Alt/Option and R.\",\n      \"quote\": \"Alt/Option + R | Go to REST page\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Navigation shortcut works directly in the web app without login.\",\n      \"ui_cues\": [\"REST\"]\n    }\n  ],\n  \"page_snippets\": [\n    {\n      \"section_id\": \"snippets#generate-code-snippets\",\n      \"statement\": \"User can generate code snippets by clicking the Code Generate icon in the right sidebar.\",\n      \"quote\": \"locate the Code Generate <> icon in the right sidebar, alongside collections, environments, and history.\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Sidebar icon is visible and clickable without signing in.\",\n      \"ui_cues\": [\"Code Generate\"]\n    },\n    {\n      \"section_id\": \"snippets#copy-code-snippets\",\n      \"statement\": \"User can copy the generated code snippet to the clipboard by clicking the Copy button.\",\n      \"quote\": \"click the \\\"Copy\\\" button to copy the code snippet to your clipboard.\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Button is interactive in the UI without sign-in.\",\n      \"ui_cues\": [\"Copy\"]\n    }\n  ],\n  \"page_spotlight\": [\n    {\n      \"section_id\": \"spotlight#activation\",\n      \"statement\": \"User can open Spotlight by pressing Cmd + K on macOS or Ctrl + K on Windows or Linux.\",\n      \"quote\": \"On macOS: Press Cmd + K\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Global spotlight overlay opens in the browser UI without login.\",\n      \"ui_cues\": [\"Spotlight\"]\n    },\n    {\n      \"section_id\": \"spotlight#navigation-and-selection\",\n      \"statement\": \"User can navigate search suggestions using arrow keys and select them with the Enter key.\",\n      \"quote\": \"Use the arrow keys to move through the suggestions.\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Keyboard navigation in Spotlight works in the web app without sign-in.\",\n      \"ui_cues\": [\"Spotlight\"]\n    }\n  ],\n  \"page_variables\": [\n    {\n      \"section_id\": \"variables#variable-scopes\",\n      \"statement\": \"User can view variable scopes and their priority order from the application.\",\n      \"quote\": \"Hoppscotch provides you different variables scopes, allowing you to use different scopes for different contexts.\",\n      \"testability\": \"UI_OBSERVABLE\",\n      \"testability_reason\": \"Variable management is available in personal workspace without login.\",\n      \"ui_cues\": [\"Variables\"]\n    }\n  ],\n  \"page_widgets\": [\n    {\n      \"section_id\": \"widgets#sharing-a-request-in-a-collection\",\n      \"statement\": \"User can share a request from a collection by right-clicking and selecting Share Request.\",\n      \"quote\": \"Right-click on a saved request within a collection and select \\\"Share Request\\\".\",\n      \"testability\": \"NEEDS_LOGIN\",\n      \"testability_reason\": \"Shared requests involve share links and cloud sync features which require login.\",\n      \"ui_cues\": [\"Share Request\", \"Create\"]\n    },\n    {\n      \"section_id\": \"widgets#view-your-shared-requests\",\n      \"statement\": \"User can view a list of shared requests by clicking the Shared Requests button in the sidebar.\",\n      \"quote\": \"Click on the \\\"Shared Requests\\\" button in the sidebar.\",\n      \"testability\": \"NEEDS_LOGIN\",\n      \"testability_reason\": \"Shared requests require an authenticated account.\",\n      \"ui_cues\": [\"Shared Requests\"]\n    }\n  ],\n  \"page_workspaces\": [\n    {\n      \"section_id\": \"workspaces#create-a-workspace\",\n      \"statement\": \"User can create a workspace by clicking the plus icon on the workspace switcher.\",\n      \"quote\": \"click on the \\\"+\\\" icon on the top right corner of the workspace switcher.\",\n      \"testability\": \"NEEDS_LOGIN\",\n      \"testability_reason\": \"Workspaces and team collaboration require user login.\",\n      \"ui_cues\": [\"Create new workspace\"]\n    },\n    {\n      \"section_id\": \"workspaces#switch-between-workspaces\",\n      \"statement\": \"User can switch between workspaces using the workspace switcher in the top right corner.\",\n      \"quote\": \"click on the workspace switcher in the top right corner of the app and select the workspace\",\n      \"testability\": \"NEEDS_LOGIN\",\n      \"testability_reason\": \"Workspaces require user authentication.\",\n      \"ui_cues\": [\"Workspace Switcher\"]\n    }\n  ]\n}",
+ "schema": {
+  "properties": {
+   "page_interceptor": {
+    "description": "Requirements from page 'interceptor'",
+    "items": {
+     "properties": {
+      "quote": {
+       "description": "Verbatim span (5-40 words) from that section",
+       "type": "STRING"
+      },
+      "section_id": {
+       "enum": [
+        "interceptor#intro",
+        "interceptor#hoppscotch-agent",
+        "interceptor#proxy",
+        "interceptor#proxyscotch",
+        "interceptor#self-hosted-proxyscotch",
+        "interceptor#proxyscotch-installer",
+        "interceptor#building-proxyscotch-from-source",
+        "interceptor#running-the-proxyscotch-server",
+        "interceptor#available-server-options",
+        "interceptor#configure-proxyscotch-in-hoppscotch",
+        "interceptor#browser-extension",
+        "interceptor#how-to-use-the-browser-extension",
+        "interceptor#origins"
+       ],
+       "type": "STRING"
+      },
+      "statement": {
+       "description": "One atomic capability, max 20 words",
+       "type": "STRING"
+      },
+      "testability": {
+       "enum": [
+        "UI_OBSERVABLE",
+        "NEEDS_LOGIN",
+        "DESKTOP_ONLY",
+        "NOT_WEB_UI"
+       ],
+       "type": "STRING"
+      },
+      "testability_reason": {
+       "type": "STRING"
+      },
+      "ui_cues": {
+       "description": "1-6 on-screen words or labels",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      }
+     },
+     "propertyOrdering": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "required": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "type": "OBJECT"
+    },
+    "minItems": 1,
+    "type": "ARRAY"
+   },
+   "page_mock": {
+    "description": "Requirements from page 'mock'",
+    "items": {
+     "properties": {
+      "quote": {
+       "description": "Verbatim span (5-40 words) from that section",
+       "type": "STRING"
+      },
+      "section_id": {
+       "enum": [
+        "mock#intro",
+        "mock#what-you-can-do",
+        "mock#create-a-mock-server",
+        "mock#define-routes-and-responses",
+        "mock#example-route",
+        "mock#dynamic-responses-with-variables",
+        "mock#save-a-response-as-an-example",
+        "mock#latency-errors-and-headers",
+        "mock#using-mocks-with-collections-and-environments",
+        "mock#collaboration-and-sharing",
+        "mock#best-practices",
+        "mock#troubleshooting",
+        "mock#how-do-mocks-differ-from-live-endpoints",
+        "mock#can-i-generate-mocks-from-my-existing-requests",
+        "mock#can-i-parametrize-responses-without-code",
+        "mock#can-i-selfhost-mock-servers",
+        "mock#related"
+       ],
+       "type": "STRING"
+      },
+      "statement": {
+       "description": "One atomic capability, max 20 words",
+       "type": "STRING"
+      },
+      "testability": {
+       "enum": [
+        "UI_OBSERVABLE",
+        "NEEDS_LOGIN",
+        "DESKTOP_ONLY",
+        "NOT_WEB_UI"
+       ],
+       "type": "STRING"
+      },
+      "testability_reason": {
+       "type": "STRING"
+      },
+      "ui_cues": {
+       "description": "1-6 on-screen words or labels",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      }
+     },
+     "propertyOrdering": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "required": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "type": "OBJECT"
+    },
+    "minItems": 1,
+    "type": "ARRAY"
+   },
+   "page_pat": {
+    "description": "Requirements from page 'pat'",
+    "items": {
+     "properties": {
+      "quote": {
+       "description": "Verbatim span (5-40 words) from that section",
+       "type": "STRING"
+      },
+      "section_id": {
+       "enum": [
+        "pat#intro",
+        "pat#generating-personal-access-token",
+        "pat#enterprise-token-management"
+       ],
+       "type": "STRING"
+      },
+      "statement": {
+       "description": "One atomic capability, max 20 words",
+       "type": "STRING"
+      },
+      "testability": {
+       "enum": [
+        "UI_OBSERVABLE",
+        "NEEDS_LOGIN",
+        "DESKTOP_ONLY",
+        "NOT_WEB_UI"
+       ],
+       "type": "STRING"
+      },
+      "testability_reason": {
+       "type": "STRING"
+      },
+      "ui_cues": {
+       "description": "1-6 on-screen words or labels",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      }
+     },
+     "propertyOrdering": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "required": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "type": "OBJECT"
+    },
+    "minItems": 1,
+    "type": "ARRAY"
+   },
+   "page_realtime_api_testing": {
+    "description": "Requirements from page 'realtime-api-testing'",
+    "items": {
+     "properties": {
+      "quote": {
+       "description": "Verbatim span (5-40 words) from that section",
+       "type": "STRING"
+      },
+      "section_id": {
+       "enum": [
+        "realtime-api-testing#intro",
+        "realtime-api-testing#request",
+        "realtime-api-testing#response"
+       ],
+       "type": "STRING"
+      },
+      "statement": {
+       "description": "One atomic capability, max 20 words",
+       "type": "STRING"
+      },
+      "testability": {
+       "enum": [
+        "UI_OBSERVABLE",
+        "NEEDS_LOGIN",
+        "DESKTOP_ONLY",
+        "NOT_WEB_UI"
+       ],
+       "type": "STRING"
+      },
+      "testability_reason": {
+       "type": "STRING"
+      },
+      "ui_cues": {
+       "description": "1-6 on-screen words or labels",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      }
+     },
+     "propertyOrdering": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "required": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "type": "OBJECT"
+    },
+    "minItems": 1,
+    "type": "ARRAY"
+   },
+   "page_rest_api_testing": {
+    "description": "Requirements from page 'rest-api-testing'",
+    "items": {
+     "properties": {
+      "quote": {
+       "description": "Verbatim span (5-40 words) from that section",
+       "type": "STRING"
+      },
+      "section_id": {
+       "enum": [
+        "rest-api-testing#intro",
+        "rest-api-testing#request",
+        "rest-api-testing#response",
+        "rest-api-testing#other-features"
+       ],
+       "type": "STRING"
+      },
+      "statement": {
+       "description": "One atomic capability, max 20 words",
+       "type": "STRING"
+      },
+      "testability": {
+       "enum": [
+        "UI_OBSERVABLE",
+        "NEEDS_LOGIN",
+        "DESKTOP_ONLY",
+        "NOT_WEB_UI"
+       ],
+       "type": "STRING"
+      },
+      "testability_reason": {
+       "type": "STRING"
+      },
+      "ui_cues": {
+       "description": "1-6 on-screen words or labels",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      }
+     },
+     "propertyOrdering": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "required": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "type": "OBJECT"
+    },
+    "minItems": 1,
+    "type": "ARRAY"
+   },
+   "page_runner": {
+    "description": "Requirements from page 'runner'",
+    "items": {
+     "properties": {
+      "quote": {
+       "description": "Verbatim span (5-40 words) from that section",
+       "type": "STRING"
+      },
+      "section_id": {
+       "enum": [
+        "runner#intro",
+        "runner#running-a-collection",
+        "runner#run-settings",
+        "runner#executing-the-run",
+        "runner#running-and-post-run-actions",
+        "runner#runner-results"
+       ],
+       "type": "STRING"
+      },
+      "statement": {
+       "description": "One atomic capability, max 20 words",
+       "type": "STRING"
+      },
+      "testability": {
+       "enum": [
+        "UI_OBSERVABLE",
+        "NEEDS_LOGIN",
+        "DESKTOP_ONLY",
+        "NOT_WEB_UI"
+       ],
+       "type": "STRING"
+      },
+      "testability_reason": {
+       "type": "STRING"
+      },
+      "ui_cues": {
+       "description": "1-6 on-screen words or labels",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      }
+     },
+     "propertyOrdering": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "required": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "type": "OBJECT"
+    },
+    "minItems": 1,
+    "type": "ARRAY"
+   },
+   "page_scripts": {
+    "description": "Requirements from page 'scripts'",
+    "items": {
+     "properties": {
+      "quote": {
+       "description": "Verbatim span (5-40 words) from that section",
+       "type": "STRING"
+      },
+      "section_id": {
+       "enum": [
+        "scripts#intro",
+        "scripts#hoppenv-namespace",
+        "scripts#hoppenvgetkey-string",
+        "scripts#hoppenvgetrawkey-string",
+        "scripts#hoppenvsetkey-string-value-string",
+        "scripts#hoppenvdeletekey-string",
+        "scripts#hoppenvresetkey-string",
+        "scripts#hoppenvgetinitialrawkey-string",
+        "scripts#hoppenvsetinitialkey-string-value-string",
+        "scripts#active-environment-scope",
+        "scripts#hoppenvactivegetkey-string",
+        "scripts#hoppenvactivegetrawkey-string",
+        "scripts#hoppenvactivesetkey-string-value-string",
+        "scripts#hoppenvactivedeletekey-string",
+        "scripts#hoppenvactiveresetkey-string",
+        "scripts#hoppenvactivegetinitialrawkey-string",
+        "scripts#hoppenvactivesetinitialkey-string-value-string",
+        "scripts#global-environment-scope",
+        "scripts#hoppenvglobalgetkey-string",
+        "scripts#hoppenvglobalgetrawkey-string",
+        "scripts#hoppenvglobalsetkey-string-value-string",
+        "scripts#hoppenvglobaldeletekey-string",
+        "scripts#hoppenvglobalresetkey-string",
+        "scripts#hoppenvglobalgetinitialrawkey-string",
+        "scripts#hoppenvglobalsetinitialkey-string-value-string",
+        "scripts#hopprequest-namespace",
+        "scripts#hopprequesturl",
+        "scripts#hopprequestmethod",
+        "scripts#hopprequestparams",
+        "scripts#hopprequestheaders",
+        "scripts#hopprequestbody",
+        "scripts#hopprequestauth",
+        "scripts#hopprequestseturlurl-string",
+        "scripts#hopprequestsetmethodmethod-string",
+        "scripts#hopprequestsetheadername-string-value-string",
+        "scripts#hopprequestsetheadersheaders-hopprestheader",
+        "scripts#hopprequestremoveheadername-string",
+        "scripts#hopprequestsetparamname-string-value-string",
+        "scripts#hopprequestsetparamsparams-hopprestparam",
+        "scripts#hopprequestremoveparamname-string",
+        "scripts#hopprequestsetbodybody-partial",
+        "scripts#hopprequestsetauthauth-partial",
+        "scripts#hopprequestvariablesgetkey-string",
+        "scripts#hopprequestvariablessetkey-string-value-string",
+        "scripts#hoppresponse-namespace",
+        "scripts#hoppresponsestatuscode",
+        "scripts#hoppresponsestatustext",
+        "scripts#hoppresponseheaders",
+        "scripts#hoppresponseresponsetime",
+        "scripts#hoppresponsebodyasjson",
+        "scripts#hoppresponsebodyastext",
+        "scripts#hoppresponsebodybytes",
+        "scripts#hoppcookies-namespace",
+        "scripts#hoppcookiesgetdomain-string-cookiename-string",
+        "scripts#hoppcookiessetdomain-string-cookie-cookie",
+        "scripts#hoppcookieshasdomain-string-cookiename-string",
+        "scripts#hoppcookiesgetalldomain-string",
+        "scripts#hoppcookiesdeletedomain-string-cookiename-string",
+        "scripts#hoppcookiescleardomain-string",
+        "scripts#hopptest-and-hoppexpect-testing-framework",
+        "scripts#hopptesttestname-string-testfunction-void",
+        "scripts#hoppexpectactual-any",
+        "scripts#hoppexpectvaluetobeexpected-any",
+        "scripts#hoppexpectvaluetobetypetype-string",
+        "scripts#hoppexpectvaluetohavelengthnumber-number",
+        "scripts#hoppexpectvaluetoincludeitem-any",
+        "scripts#hoppexpectstatuscodetobelevel2xx",
+        "scripts#hoppexpectstatuscodetobelevel3xx",
+        "scripts#hoppexpectstatuscodetobelevel4xx",
+        "scripts#hoppexpectstatuscodetobelevel5xx",
+        "scripts#negation-support",
+        "scripts#chaijs-assertion-support",
+        "scripts#type-assertions",
+        "scripts#equality-assertions",
+        "scripts#property-assertions",
+        "scripts#collection-and-array-assertions",
+        "scripts#numeric-comparisons",
+        "scripts#string-assertions",
+        "scripts#boolean-state-assertions",
+        "scripts#complex-assertion-chains",
+        "scripts#real-world-example-api-pagination",
+        "scripts#complete-assertion-reference",
+        "scripts#pm-namespace---postman-compatibility-layer",
+        "scripts#core-apis",
+        "scripts#postman-chaijs-assertions",
+        "scripts#postman-response-assertions",
+        "scripts#oauth-token-handling-example",
+        "scripts#pm-specific-response-assertions",
+        "scripts#sending-requests",
+        "scripts#unsupported-postman-features",
+        "scripts#pw-namespace---legacy-compatibility",
+        "scripts#cookie-object-structure",
+        "scripts#environment-management",
+        "scripts#request-manipulation",
+        "scripts#response-testing",
+        "scripts#cookie-management",
+        "scripts#the-pw-object",
+        "scripts#pwenvsetvariable-value",
+        "scripts#1-pwenvsetvariable-atobvalue",
+        "scripts#2-pwenvsetvariable-btoavalue",
+        "scripts#pwenvunsetvariable",
+        "scripts#pwenvgetvariable",
+        "scripts#pwenvgetresolvevariable",
+        "scripts#pwenvresolvevariable",
+        "scripts#pwexpectvalue",
+        "scripts#pwtestname-function",
+        "scripts#pwtobevalue",
+        "scripts#pwnot",
+        "scripts#pwtobelevelxxx",
+        "scripts#pwtobetypetype",
+        "scripts#pwtohavelengthnumber",
+        "scripts#pwtoincludevalue",
+        "scripts#pwresponse",
+        "scripts#setting-environment-variables-from-api-responses"
+       ],
+       "type": "STRING"
+      },
+      "statement": {
+       "description": "One atomic capability, max 20 words",
+       "type": "STRING"
+      },
+      "testability": {
+       "enum": [
+        "UI_OBSERVABLE",
+        "NEEDS_LOGIN",
+        "DESKTOP_ONLY",
+        "NOT_WEB_UI"
+       ],
+       "type": "STRING"
+      },
+      "testability_reason": {
+       "type": "STRING"
+      },
+      "ui_cues": {
+       "description": "1-6 on-screen words or labels",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      }
+     },
+     "propertyOrdering": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "required": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "type": "OBJECT"
+    },
+    "minItems": 1,
+    "type": "ARRAY"
+   },
+   "page_shortcuts": {
+    "description": "Requirements from page 'shortcuts'",
+    "items": {
+     "properties": {
+      "quote": {
+       "description": "Verbatim span (5-40 words) from that section",
+       "type": "STRING"
+      },
+      "section_id": {
+       "enum": [
+        "shortcuts#intro",
+        "shortcuts#general-shortcuts",
+        "shortcuts#request-shortcuts",
+        "shortcuts#response-shortcuts",
+        "shortcuts#navigation-shortcuts",
+        "shortcuts#miscellaneous-shortcuts"
+       ],
+       "type": "STRING"
+      },
+      "statement": {
+       "description": "One atomic capability, max 20 words",
+       "type": "STRING"
+      },
+      "testability": {
+       "enum": [
+        "UI_OBSERVABLE",
+        "NEEDS_LOGIN",
+        "DESKTOP_ONLY",
+        "NOT_WEB_UI"
+       ],
+       "type": "STRING"
+      },
+      "testability_reason": {
+       "type": "STRING"
+      },
+      "ui_cues": {
+       "description": "1-6 on-screen words or labels",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      }
+     },
+     "propertyOrdering": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "required": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "type": "OBJECT"
+    },
+    "minItems": 1,
+    "type": "ARRAY"
+   },
+   "page_snippets": {
+    "description": "Requirements from page 'snippets'",
+    "items": {
+     "properties": {
+      "quote": {
+       "description": "Verbatim span (5-40 words) from that section",
+       "type": "STRING"
+      },
+      "section_id": {
+       "enum": [
+        "snippets#intro",
+        "snippets#generate-code-snippets",
+        "snippets#copy-code-snippets",
+        "snippets#supported-languages",
+        "snippets#preview-request-setup"
+       ],
+       "type": "STRING"
+      },
+      "statement": {
+       "description": "One atomic capability, max 20 words",
+       "type": "STRING"
+      },
+      "testability": {
+       "enum": [
+        "UI_OBSERVABLE",
+        "NEEDS_LOGIN",
+        "DESKTOP_ONLY",
+        "NOT_WEB_UI"
+       ],
+       "type": "STRING"
+      },
+      "testability_reason": {
+       "type": "STRING"
+      },
+      "ui_cues": {
+       "description": "1-6 on-screen words or labels",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      }
+     },
+     "propertyOrdering": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "required": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "type": "OBJECT"
+    },
+    "minItems": 1,
+    "type": "ARRAY"
+   },
+   "page_spotlight": {
+    "description": "Requirements from page 'spotlight'",
+    "items": {
+     "properties": {
+      "quote": {
+       "description": "Verbatim span (5-40 words) from that section",
+       "type": "STRING"
+      },
+      "section_id": {
+       "enum": [
+        "spotlight#intro",
+        "spotlight#activation",
+        "spotlight#spotlight-interface",
+        "spotlight#navigation-and-selection"
+       ],
+       "type": "STRING"
+      },
+      "statement": {
+       "description": "One atomic capability, max 20 words",
+       "type": "STRING"
+      },
+      "testability": {
+       "enum": [
+        "UI_OBSERVABLE",
+        "NEEDS_LOGIN",
+        "DESKTOP_ONLY",
+        "NOT_WEB_UI"
+       ],
+       "type": "STRING"
+      },
+      "testability_reason": {
+       "type": "STRING"
+      },
+      "ui_cues": {
+       "description": "1-6 on-screen words or labels",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      }
+     },
+     "propertyOrdering": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "required": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "type": "OBJECT"
+    },
+    "minItems": 1,
+    "type": "ARRAY"
+   },
+   "page_variables": {
+    "description": "Requirements from page 'variables'",
+    "items": {
+     "properties": {
+      "quote": {
+       "description": "Verbatim span (5-40 words) from that section",
+       "type": "STRING"
+      },
+      "section_id": {
+       "enum": [
+        "variables#intro",
+        "variables#variable-scopes",
+        "variables#types-of-variables",
+        "variables#numbers-text-and-colors",
+        "variables#internet-and-ip-addresses",
+        "variables#names",
+        "variables#addresses-and-profession"
+       ],
+       "type": "STRING"
+      },
+      "statement": {
+       "description": "One atomic capability, max 20 words",
+       "type": "STRING"
+      },
+      "testability": {
+       "enum": [
+        "UI_OBSERVABLE",
+        "NEEDS_LOGIN",
+        "DESKTOP_ONLY",
+        "NOT_WEB_UI"
+       ],
+       "type": "STRING"
+      },
+      "testability_reason": {
+       "type": "STRING"
+      },
+      "ui_cues": {
+       "description": "1-6 on-screen words or labels",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      }
+     },
+     "propertyOrdering": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "required": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "type": "OBJECT"
+    },
+    "minItems": 1,
+    "type": "ARRAY"
+   },
+   "page_widgets": {
+    "description": "Requirements from page 'widgets'",
+    "items": {
+     "properties": {
+      "quote": {
+       "description": "Verbatim span (5-40 words) from that section",
+       "type": "STRING"
+      },
+      "section_id": {
+       "enum": [
+        "widgets#intro",
+        "widgets#links",
+        "widgets#buttons",
+        "widgets#embeds",
+        "widgets#shared-requests",
+        "widgets#sharing-a-request-in-a-collection",
+        "widgets#sharing-a-request-in-workspace",
+        "widgets#view-your-shared-requests"
+       ],
+       "type": "STRING"
+      },
+      "statement": {
+       "description": "One atomic capability, max 20 words",
+       "type": "STRING"
+      },
+      "testability": {
+       "enum": [
+        "UI_OBSERVABLE",
+        "NEEDS_LOGIN",
+        "DESKTOP_ONLY",
+        "NOT_WEB_UI"
+       ],
+       "type": "STRING"
+      },
+      "testability_reason": {
+       "type": "STRING"
+      },
+      "ui_cues": {
+       "description": "1-6 on-screen words or labels",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      }
+     },
+     "propertyOrdering": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "required": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "type": "OBJECT"
+    },
+    "minItems": 1,
+    "type": "ARRAY"
+   },
+   "page_workspaces": {
+    "description": "Requirements from page 'workspaces'",
+    "items": {
+     "properties": {
+      "quote": {
+       "description": "Verbatim span (5-40 words) from that section",
+       "type": "STRING"
+      },
+      "section_id": {
+       "enum": [
+        "workspaces#intro",
+        "workspaces#create-a-workspace",
+        "workspaces#invite-users-to-a-workspace",
+        "workspaces#switch-between-workspaces",
+        "workspaces#edit-a-workspace",
+        "workspaces#rename-a-workspace",
+        "workspaces#remove-a-user-from-a-workspace",
+        "workspaces#leave-a-workspace",
+        "workspaces#change-member-role",
+        "workspaces#delete-a-workspace"
+       ],
+       "type": "STRING"
+      },
+      "statement": {
+       "description": "One atomic capability, max 20 words",
+       "type": "STRING"
+      },
+      "testability": {
+       "enum": [
+        "UI_OBSERVABLE",
+        "NEEDS_LOGIN",
+        "DESKTOP_ONLY",
+        "NOT_WEB_UI"
+       ],
+       "type": "STRING"
+      },
+      "testability_reason": {
+       "type": "STRING"
+      },
+      "ui_cues": {
+       "description": "1-6 on-screen words or labels",
+       "items": {
+        "type": "STRING"
+       },
+       "type": "ARRAY"
+      }
+     },
+     "propertyOrdering": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "required": [
+      "section_id",
+      "statement",
+      "quote",
+      "testability",
+      "testability_reason",
+      "ui_cues"
+     ],
+     "type": "OBJECT"
+    },
+    "minItems": 1,
+    "type": "ARRAY"
+   }
+  },
+  "propertyOrdering": [
+   "page_interceptor",
+   "page_mock",
+   "page_pat",
+   "page_realtime_api_testing",
+   "page_rest_api_testing",
+   "page_runner",
+   "page_scripts",
+   "page_shortcuts",
+   "page_snippets",
+   "page_spotlight",
+   "page_variables",
+   "page_widgets",
+   "page_workspaces"
+  ],
+  "required": [
+   "page_interceptor",
+   "page_mock",
+   "page_pat",
+   "page_realtime_api_testing",
+   "page_rest_api_testing",
+   "page_runner",
+   "page_scripts",
+   "page_shortcuts",
+   "page_snippets",
+   "page_spotlight",
+   "page_variables",
+   "page_widgets",
+   "page_workspaces"
+  ],
+  "type": "OBJECT"
+ },
+ "seed": 7,
+ "system": "You turn product documentation into atomic, testable product requirements for a QA team.\nRules:\n- One requirement = one capability or behaviour a user could verify. Skip definitions, marketing, navigation hints\n  and links to other pages. Merge sentences that restate the same capability. Aim for 1-4 requirements per section.\n- statement: plain English, starts with \"User can\" or \"The app\", max 20 words.\n- quote: copy a contiguous span of 5-40 words from the cited section EXACTLY, character for character (you may drop\n  markdown symbols like ** or `). Never paraphrase inside quote.\n- testability:\n  UI_OBSERVABLE = visible or operable in the web app (hoppscotch.io) WITHOUT signing in. Signed-out users already get\n    personal collections, global and personal environments, history, settings, scripts, and REST/GraphQL/realtime clients.\n  NEEDS_LOGIN = only when the text involves teams, shared or workspace members, roles (owner/editor/viewer), cloud sync,\n    share links, access tokens, admin settings or an account.\n  DESKTOP_ONLY = only in the desktop app.\n  NOT_WEB_UI = CLI, self-hosting, backend/API behaviour, or a non-functional property.\n- For API reference listings (many functions of one namespace), write ONE requirement per namespace, not one per function.\n- ui_cues: words a tester would look for on screen (button, tab or menu labels), not explanations.\nKnown sign-in-only features of this app (label them NEEDS_LOGIN): AI features such as 'Modify with AI' (they open the sign-in dialog); teams, shared or workspace members and roles; cloud sync and shared requests links; personal access tokens",
+ "task": "ingest:interceptor,mock,pat,realtime-api-testing,rest-api-testing,runner,scripts,shortcuts,snippets,spotlight,variables,widgets,workspaces",
+ "temperature": 0.0
+}

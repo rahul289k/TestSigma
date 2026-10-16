@@ -1,0 +1,18 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+data/
+runs/*
+!runs/.gitkeep
+src/triangulate/code/node/node_modules/
+cache/llm/_quota.json
+cache/llm/_ledger.json
+
+# temporary file while docs/build_pdf.py runs
+docs/.design-print.html
+.DS_Store

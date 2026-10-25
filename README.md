@@ -33,6 +33,7 @@ are all public.
 | [`docs/DESIGN.pdf`](docs/DESIGN.pdf) | **Design document** (11 pages): agent decomposition, graph schema, modelling absence, confidence and human-in-the-loop, eval, measured results, scope decisions, "with another week". Source: [`docs/DESIGN.md`](docs/DESIGN.md), rebuilt with `.venv/bin/python docs/build_pdf.py` |
 | [`docs/how-it-works.html`](docs/how-it-works.html) | Plain-language overview with flow diagrams (open in a browser) |
 | [`docs/run-and-test.html`](docs/run-and-test.html) | Hands-on guide: run each stage, inspect its output, explore the relations in Neo4j, analyse a PR, check the scorecard |
+| [`docs/RUN_STATS.md`](docs/RUN_STATS.md) | What every number a stage prints means (`proposed`, `kept`, `rejected`, `states`, `mapped`, …), with the real run's values |
 | [`samples/`](samples/) | Reports for five real PRs (`report.html`, `report.md`, `impact.json`) and `run-summary.json`. Start with [`samples/pr-6706/report.html`](samples/pr-6706/report.html) |
 | [`PLAN.html`](PLAN.html) | The plan written and reviewed before implementation |
 
